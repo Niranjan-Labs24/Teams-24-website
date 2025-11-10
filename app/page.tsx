@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react"
 import { Navbar } from "@/components/navbar"
 import  ImageCarousel  from "@/components/image-carousel"
-import { WhatWeDeliver } from "@/components/what-we-deliver"
+import WhatWeDeliver  from "@/components/what-we-deliver"
 import { ProblemWeSolve } from "@/components/problem-we-solve"
 import { WhatWeOffer } from "@/components/what-we-offer"
 import  Testimonials  from "@/components/testimonials"
