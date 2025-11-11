@@ -15,7 +15,7 @@ import { CTASection } from "@/components/cta-section"
 import  ScrollSection  from "@/components/ScrollSection"
 import IdealForSection from "@/components/IdealForSection"
 import HowItWorks from "@/components/HowItWorks"
-import { GlassmorphicNavbar } from "@/components/glassmorphic-navbar"
+import  GlassmorphicNavbar from "@/components/glassmorphic-navbar"
 import HeroSection from "@/components/HeroSection"
 export default function Home() {
   const [mounted, setMounted] = useState(false)
