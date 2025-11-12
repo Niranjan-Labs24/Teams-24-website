@@ -32,7 +32,7 @@ export default function Home() {
       
             <div className="relative w-full min-h-screen overflow-hidden bg-black">
               {/* Glassmorphic navbar */}
-              <GlassmorphicNavbar />
+           <GlassmorphicNavbar /> 
               <HeroSection/>
               
              

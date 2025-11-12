@@ -11,15 +11,15 @@ export default function GlassmorphicNavbar() {
   return (
     <nav
       className="
-        fixed top-[32px] left-[50px] right-[50px]
+        fixed top-[20px] left-[60px] right-[60px] /* Increased left/right for narrower width */
         z-[9999]
         flex items-center justify-between
-        rounded-[72px]
+        rounded-[60px] /* Slightly smaller border radius */
         border border-white/20
         bg-[#13131333]
         backdrop-blur-[44px]
-        px-8 py-[14px]
-        md:py-[18px]
+        px-6 py-[10px] /* Reduced padding for less height */
+        md:py-[12px] /* Reduced mobile padding */
         transition-all duration-300
       "
       style={{
@@ -29,20 +29,20 @@ export default function GlassmorphicNavbar() {
       {/* Left Section - Logo + Name */}
       <div className="flex items-center gap-2">
         <Image
-          src="/logo.png" // 👈 Replace this with your public/logo.png
+          src="/logo.png"
           alt="Teams24 Logo"
-          width={20}
-          height={20}
+          width={18} /* Slightly smaller logo */
+          height={18}
           className="object-contain"
         />
         <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
           <span
-            className="text-[20.45px] tracking-[-0.05em] leading-[12.05px] font-normal"
+            className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal" /* Smaller text */
             style={{ marginRight: "2px" }}
           >
             Teams
           </span>
-          <span className="text-[20.45px] tracking-[-0.05em] leading-[12.05px] font-normal">
+          <span className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal">
             24
           </span>
         </div>
@@ -54,7 +54,7 @@ export default function GlassmorphicNavbar() {
           <a
             key={i}
             href="#"
-            className="text-[16px] font-[500] font-[Manrope] tracking-[-0.02em] leading-[16px] opacity-90 hover:opacity-100 transition"
+            className="text-[15px] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition" /* Slightly smaller text */
           >
             {link}
           </a>
@@ -67,8 +67,8 @@ export default function GlassmorphicNavbar() {
           hidden md:block
           bg-[#FFFFFF] text-black
           rounded-[62px]
-          px-[52px] py-[16px]
-          font-[Manrope] font-semibold text-[16px] tracking-[-0.03em]
+          px-[48px] py-[14px] /* Reduced button padding */
+          font-[Manrope] font-semibold text-[15px] tracking-[-0.03em] /* Slightly smaller text */
           border border-transparent
           hover:bg-[#f5f5f5]
           transition-all duration-300
@@ -80,7 +80,7 @@ export default function GlassmorphicNavbar() {
       {/* Hamburger Menu (Mobile / Tablet) */}
       <div className="md:hidden flex items-center">
         <button onClick={() => setIsOpen(!isOpen)} className="text-white">
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />} {/* Smaller icons */}
         </button>
       </div>
 
@@ -93,11 +93,11 @@ export default function GlassmorphicNavbar() {
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.25 }}
             className="
-              absolute top-[90px] right-[20px]
+              absolute top-[70px] right-[20px] /* Adjusted position for smaller navbar */
               w-[220px]
               bg-[#000000cc] backdrop-blur-[20px]
               flex flex-col items-start
-              py-4 px-5 gap-4
+              py-3 px-4 gap-3 /* Reduced padding */
               rounded-[24px]
               border border-white/10
               md:hidden
@@ -108,7 +108,7 @@ export default function GlassmorphicNavbar() {
                 <a
                   key={i}
                   href="#"
-                  className="text-white text-[16px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition"
+                  className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition"
                 >
                   {link}
                 </a>
@@ -117,8 +117,8 @@ export default function GlassmorphicNavbar() {
             <button
               className="
                 bg-[#FFFFFF] text-black
-                rounded-[62px] px-[32px] py-[10px]
-                font-[Manrope] font-semibold text-[14px]
+                rounded-[62px] px-[28px] py-[8px] /* Reduced padding */
+                font-[Manrope] font-semibold text-[13px] /* Smaller text */
                 hover:bg-[#f5f5f5]
                 transition-all duration-300
                 w-full
@@ -133,4 +133,3 @@ export default function GlassmorphicNavbar() {
     </nav>
   );
 }
-  

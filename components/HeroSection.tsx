@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -25,7 +26,7 @@ const cards: Card[] = [
     tag: "80% Interview rate",
   },
   {
-    img: "/markerter.png",
+    img: "/marketer.png",
     subtitle: "Brandify",
     title: "Hire Digital Marketers instantly",
     tag: "Top Rated Talent",
@@ -46,26 +47,43 @@ export default function HeroSection(): JSX.Element {
     (index + cards.length) % cards.length;
 
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 bg-[#080808] text-white overflow-hidden">
-      {/* LEFT TEXT */}
-      <div className="flex-1 max-w-xl space-y-6 mt-20 lg:mt-0 text-center lg:text-left">
-        <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+    <section 
+      className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 overflow-hidden"
+      style={{
+        backgroundImage: "url('/background-image.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
+      {/* Background Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      {/* LEFT TEXT CONTENT */}
+      <div className="flex-1 max-w-[707px] space-y-8 mt-20 lg:mt-0 text-center lg:text-left relative z-10">
+        {/* Main Heading */}
+        <h1 className="text-[40px] lg:text-[64px] font-manrope font-bold leading-[56px] lg:leading-[72px] tracking-[-0.02em] text-white">
           Flexibility of a freelancer <br /> with commitment of an employee
         </h1>
-        <p className="text-gray-300 text-lg">
+        
+        {/* Subtitle */}
+        <p className="font-manrope font-medium text-[22px] leading-[32px] tracking-[-0.02em] text-white opacity-100">
           Hiring can be as easier as shopping
         </p>
 
-        <div className="flex flex-col lg:flex-row items-center gap-4">
-          <button className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-gray-200 transition">
+        {/* CTA Buttons */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 pt-8">
+          <button className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg">
             Build your team
           </button>
-          <p className="text-sm text-gray-400">☎️ Book a free discovery call</p>
+          <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300 flex items-center gap-2">
+            <span className="text-lg">☎️</span> Book a free discovery call
+          </p>
         </div>
       </div>
 
       {/* RIGHT SIDE - CAROUSEL */}
-      <div className="flex-1 w-full mt-16 lg:mt-0 flex justify-center lg:justify-end relative">
+      <div className="flex-1 w-full mt-16 lg:mt-0 flex justify-center lg:justify-end relative z-10">
 
         {/* 🟩 Vertical Scroll Indicator (Desktop only) */}
         <div className="hidden lg:flex flex-col absolute right-[-30px] top-1/2 -translate-y-1/2 items-center gap-2 z-20">
@@ -103,29 +121,30 @@ export default function HeroSection(): JSX.Element {
           ))}
         </div>
 
-        {/* 🖥️ Desktop Carousel */}
-        <div className="hidden lg:flex flex-col items-center justify-center relative h-[550px] w-[350px] overflow-hidden">
+        {/* 🖥️ Desktop Carousel - BOTTOM → MIDDLE → TOP */}
+        <div className="hidden lg:flex flex-col items-center justify-center relative h-[700px] w-[350px] overflow-visible">
           {cards.map((card, i) => {
-            const circularIndex = getCircularIndex(i - currentIndex);
+            const circularIndex = getCircularIndex(currentIndex - i);
             let y = 0,
               scale = 1,
               opacity = 1,
               zIndex = 10;
 
+            // 🟢 BOTTOM → MIDDLE → TOP FLOW
             if (circularIndex === 0) {
-              y = -200;
+              y = 340; // Bottom position (next card)
               scale = 0.85;
-              opacity = 0.5;
+              opacity = 0.7;
               zIndex = 1;
             } else if (circularIndex === 1) {
-              y = 0;
-              scale = 1.1;
+              y = 0; // Middle position (current active card)
+              scale = 1;
               opacity = 1;
               zIndex = 10;
             } else if (circularIndex === 2) {
-              y = 200;
+              y = -340; // Top position (previous card)
               scale = 0.85;
-              opacity = 0.5;
+              opacity = 0.7;
               zIndex = 1;
             }
 
@@ -134,7 +153,7 @@ export default function HeroSection(): JSX.Element {
                 key={i}
                 animate={{ y, scale, opacity, zIndex }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute w-[300px] h-[380px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
+                className="absolute w-[280px] h-[340px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
               >
                 <Image
                   src={card.img}
@@ -143,45 +162,36 @@ export default function HeroSection(): JSX.Element {
                   className="object-cover"
                   priority={circularIndex === 1}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <p className="text-sm opacity-80">{card.subtitle}</p>
-                  <h3 className="text-lg font-semibold max-w-[200px]">
-                    {card.title}
-                  </h3>
-                </div>
-                <span className="absolute top-4 right-4 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
-                  {card.tag}
-                </span>
               </motion.div>
             );
           })}
         </div>
 
-        {/* 📱 Mobile + Tablet Carousel */}
-        <div className="flex lg:hidden items-center justify-center relative w-full h-[420px] overflow-hidden">
+        {/* 📱 Mobile & Tablet Carousel - LEFT → MIDDLE → RIGHT */}
+        <div className="flex lg:hidden items-center justify-center relative w-full h-[380px] overflow-visible">
           {cards.map((card, i) => {
-            const circularIndex = getCircularIndex(i - currentIndex);
+            const circularIndex = getCircularIndex(currentIndex - i);
             let x = 0,
               scale = 1,
               opacity = 1,
               zIndex = 10;
 
+            // 🟢 LEFT → MIDDLE → RIGHT FLOW
             if (circularIndex === 0) {
-              x = -200;
-              scale = 0.85;
-              opacity = 0.5;
-              zIndex = 1;
+              x = -220; // Left position (previous card)
+              scale = 0.8;
+              opacity = 0.7;
+              zIndex = 5;
             } else if (circularIndex === 1) {
-              x = 0;
-              scale = 1.1;
+              x = 0; // Middle position (current active card)
+              scale = 1;
               opacity = 1;
               zIndex = 10;
             } else if (circularIndex === 2) {
-              x = 200;
-              scale = 0.85;
-              opacity = 0.5;
-              zIndex = 1;
+              x = 220; // Right position (next card)
+              scale = 0.8;
+              opacity = 0.7;
+              zIndex = 5;
             }
 
             return (
@@ -189,7 +199,7 @@ export default function HeroSection(): JSX.Element {
                 key={i}
                 animate={{ x, scale, opacity, zIndex }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute w-[270px] h-[360px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
+                className="absolute w-[200px] h-[280px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
               >
                 <Image
                   src={card.img}
@@ -198,16 +208,6 @@ export default function HeroSection(): JSX.Element {
                   className="object-cover"
                   priority={circularIndex === 1}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <p className="text-sm opacity-80">{card.subtitle}</p>
-                  <h3 className="text-lg font-semibold max-w-[200px]">
-                    {card.title}
-                  </h3>
-                </div>
-                <span className="absolute top-4 right-4 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
-                  {card.tag}
-                </span>
               </motion.div>
             );
           })}
