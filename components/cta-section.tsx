@@ -244,7 +244,8 @@ useEffect(() => {
   </div>
 
   {/* ====== SECTION 3 (Button) ====== */}
-  <button
+  <button 
+  onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
     className="
       mt-8
       w-[150px] sm:w-[170px] md:w-[190px]

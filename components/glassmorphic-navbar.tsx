@@ -60,7 +60,7 @@ export default function GlassmorphicNavbar() {
         <Image
           src="/logo.png"
           alt="Teams24 Logo"
-          width={18} /* Slightly smaller logo */
+          width={18} 
           height={18}
           className="object-contain"
         />

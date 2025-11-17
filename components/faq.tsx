@@ -30,7 +30,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-black text-white py-20 px-4 sm:px-6 lg:px-8" id="faq">
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
         {/* LEFT SIDE */}
         <div className="flex flex-col lg:w-[419px]">
@@ -66,7 +66,7 @@ export function FAQ() {
           >
             Frequently asked
             <br />
-            questions?
+            questions
           </h2>
         </div>
 
