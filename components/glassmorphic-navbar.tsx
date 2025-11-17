@@ -8,6 +8,35 @@ import { Menu, X } from "lucide-react";
 export default function GlassmorphicNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Navigation links with their respective section IDs
+  const navigationLinks = [
+    { name: "What we do", id: "what-we-do" },
+    { name: "How it works", id: "how-it-works" },
+    { name: "Services", id: "services" },
+    { name: "Careers", id: "careers" }
+  ];
+
+  // Smooth scroll function
+  const handleSmoothScroll = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Adjust this based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setIsOpen(false); // Close mobile menu after clicking
+  };
+
+  const handleGetInTouch = () => {
+    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
+    setIsOpen(false);
+  };
+
   return (
     <nav
       className="
@@ -50,19 +79,20 @@ export default function GlassmorphicNavbar() {
 
       {/* Center Nav Links (Desktop Only) */}
       <div className="hidden md:flex items-center gap-[56px] text-white">
-        {["What we do", "How it works", "Services", "Careers"].map((link, i) => (
-          <a
+        {navigationLinks.map((link, i) => (
+          <button
             key={i}
-            href="#"
-            className="text-[15px] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition" /* Slightly smaller text */
+            onClick={() => handleSmoothScroll(link.id)}
+            className="text-[15px] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition cursor-pointer"
           >
-            {link}
-          </a>
+            {link.name}
+          </button>
         ))}
       </div>
 
       {/* Right Section - Get in Touch */}
       <button
+        onClick={handleGetInTouch}
         className="
           hidden md:block
           bg-[#FFFFFF] text-black
@@ -72,6 +102,7 @@ export default function GlassmorphicNavbar() {
           border border-transparent
           hover:bg-[#f5f5f5]
           transition-all duration-300
+          cursor-pointer
         "
       >
         Get in touch
@@ -103,18 +134,17 @@ export default function GlassmorphicNavbar() {
               md:hidden
             "
           >
-            {["What we do", "How it works", "Services", "Careers"].map(
-              (link, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition"
-                >
-                  {link}
-                </a>
-              )
-            )}
+            {navigationLinks.map((link, i) => (
+              <button
+                key={i}
+                onClick={() => handleSmoothScroll(link.id)}
+                className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left"
+              >
+                {link.name}
+              </button>
+            ))}
             <button
+              onClick={handleGetInTouch}
               className="
                 bg-[#FFFFFF] text-black
                 rounded-[62px] px-[28px] py-[8px] /* Reduced padding */
@@ -123,6 +153,7 @@ export default function GlassmorphicNavbar() {
                 transition-all duration-300
                 w-full
                 text-center
+                cursor-pointer
               "
             >
               Get in touch

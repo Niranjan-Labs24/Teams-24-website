@@ -31,7 +31,7 @@ const jobs = [
 
 export function Careers() {
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-12 bg-white">
+    <section className="py-20 px-4 sm:px-8 lg:px-12 bg-white" id="careers">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <p className="text-sm font-medium text-gray-600 mb-4">Careers</p>

@@ -73,7 +73,9 @@ export default function HeroSection(): JSX.Element {
 
         {/* CTA Buttons */}
         <div className="flex flex-col lg:flex-row items-center gap-8 pt-8">
-          <button className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg">
+          <button 
+            onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
+          className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg">
             Build your team
           </button>
           <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300 flex items-center gap-2">

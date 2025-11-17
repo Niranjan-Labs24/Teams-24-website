@@ -9,9 +9,7 @@ import { gsap } from "gsap";
 
 export function CTASection() {
   const logosRef = useRef<(HTMLDivElement | null)[]>([]);
-// ✅ create refs for all logos
-  // ✅ Step 1: Each logo now i
-  // ncludes pixel-perfect data (position, size, rotation)
+
  const logos = [
   {
     name: "Salesforce",

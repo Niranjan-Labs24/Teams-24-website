@@ -34,7 +34,6 @@ const steps = [
 const HowItWorks = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLElement | null)[]>([]);
-  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -84,17 +83,6 @@ const HowItWorks = () => {
               const prevContent = stepRefs.current[index - 1]?.querySelector(".step-content");
               if (prevContent) gsap.set(prevContent, { opacity: 1 - progress });
             }
-
-            // Progress bar for mobile
-            if (progressBarRef.current) {
-              const totalSteps = steps.length;
-              const stepProgress = (index + progress) / (totalSteps - 1);
-              gsap.to(progressBarRef.current, {
-                scaleX: stepProgress,
-                transformOrigin: "left center",
-                ease: "none",
-              });
-            }
           },
         });
       });
@@ -104,7 +92,8 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-black text-white font-[Manrope] overflow-hidden">
+
+    <div ref={containerRef} className="relative bg-black text-white font-[Manrope]" id="how-it-works">
       {/* Sticky header scoped to section */}
       <div className="sticky top-0 z-30 bg-black/95 backdrop-blur-sm py-6 px-6 border-b border-white/20">
         <h2 className="text-lg md:text-xl font-normal tracking-wide">How it works</h2>
@@ -117,12 +106,12 @@ const HowItWorks = () => {
           ref={(el) => {
             if (el) stepRefs.current[index] = el;
           }}
-          className="relative h-screen w-full flex items-center justify-center px-4 md:px-12 overflow-hidden"
+          className="relative h-screen w-full flex items-center justify-center px-4 md:px-12 pt-16 sm:pt-20 md:pt-24 lg:pt-28"
           style={{ zIndex: 10 + index }}
         >
-          <div className="step-content absolute inset-0 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0">
+          <div className="step-content w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             {/* Left Sidebar (desktop only) */}
-            <div className="hidden lg:flex step-sidebar flex-col gap-8">
+            <div className="hidden lg:flex step-sidebar flex-col gap-8 flex-shrink-0">
               {steps.map((s) => (
                 <div key={s.id} className="flex items-center gap-4">
                   <div
@@ -141,44 +130,33 @@ const HowItWorks = () => {
               ))}
             </div>
 
-            {/* Center Image */}
-            <div className="step-image flex items-center justify-center flex-1 lg:mx-12">
+            {/* Center Image - Reduced sizes for laptop/desktop */}
+            <div className="step-image flex items-center justify-center flex-1 lg:mx-8">
               <Image
                 src={step.image}
                 alt={`Step ${step.id}`}
-                width={400}
-                height={400}
-                className="object-contain drop-shadow-2xl rounded-2xl"
+                width={500}
+                height={500}
+                className="object-contain rounded-2xl w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[400px]"
                 style={{
                   filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))",
                 }}
               />
             </div>
 
-            {/* Right Text */}
-            <div className="step-text max-w-[400px] space-y-4 text-center lg:text-left">
+            {/* Right Text - Responsive sizing */}
+            <div className="step-text w-full max-w-[400px] space-y-4 text-center lg:text-left flex-shrink-0">
               <div className="text-sm font-light tracking-widest text-gray-400">[{step.id}]</div>
-              <h3 className="text-3xl md:text-5xl font-semibold leading-tight">{step.title}</h3>
-              <p className="text-base md:text-lg text-gray-400 leading-relaxed">{step.description}</p>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+                {step.title}
+              </h3>
+              <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
+                {step.description}
+              </p>
             </div>
           </div>
         </section>
       ))}
-
-      {/* Mobile / Tablet progress indicator */}
-      <div className="lg:hidden fixed bottom-6 left-0 w-full flex flex-col items-center z-40 px-8">
-        <div className="relative w-full max-w-md h-[2px] bg-gray-700 rounded-full overflow-hidden">
-          <div
-            ref={progressBarRef}
-            className="absolute top-0 left-0 h-full bg-white scale-x-0 origin-left transition-transform duration-300"
-          />
-        </div>
-        <div className="flex justify-between text-xs text-gray-400 mt-2 w-full max-w-md">
-          {steps.map((s) => (
-            <span key={s.id}>Step {s.id}</span>
-          ))}
-        </div>
-      </div>
 
       <div className="h-screen" />
     </div>
