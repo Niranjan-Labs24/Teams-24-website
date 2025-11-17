@@ -1,21 +1,13 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ScrollSection from "./ScrollSection";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import section1Visual from "@/assets/section1-visual.png";
 import candidatesCard from "@/assets/candidates-card.png";
 import testimonialCard from "@/assets/testimonial-card.png";
 import rolesVisual from "@/assets/roles-visual.png";
+import Testimonials from "./testimonials";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const IdealForSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-
+export const IdealForSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(1);
   const sections = [
     {
       index: 1,
@@ -50,45 +42,78 @@ const IdealForSection = () => {
     },
   ];
 
+  // Improved scroll tracking
   useEffect(() => {
-    const container = containerRef.current;
-    const header = headerRef.current;
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate which section is currently in view based on scroll position
+      const sectionHeights = sections.map((_, index) => {
+        const sectionElement = document.getElementById(`section-${index + 1}`);
+        if (sectionElement) {
+          const rect = sectionElement.getBoundingClientRect();
+          return {
+            index: index + 1,
+            top: rect.top + window.scrollY,
+            bottom: rect.bottom + window.scrollY
+          };
+        }
+        return { index: index + 1, top: 0, bottom: 0 };
+      });
 
-    if (!container || !header) return;
+      // Find the section that's currently in the center of the viewport
+      const viewportCenter = scrollPosition + (windowHeight / 2);
+      let activeSection = 1;
 
-    // Pin the header only within the IdealForSection area
-    ScrollTrigger.create({
-      trigger: container,
-      start: "top top",
-      end: `+=${(sections.length - 1) * 100}%`, 
-      pin: header,
-      pinSpacing: false,
-    });
+      for (const section of sectionHeights) {
+        if (viewportCenter >= section.top && viewportCenter <= section.bottom) {
+          activeSection = section.index;
+          break;
+        }
+      }
+
+      setCurrentIndex(activeSection);
+    };
+
+    // Use requestAnimationFrame for smoother performance
+    let ticking = false;
+    const updateIndex = () => {
+      handleScroll();
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateIndex);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [sections.length]);
 
   return (
-    <div ref={containerRef} className="relative bg-black min-h-screen">
-      {/* Header that stays fixed only during this section */}
-      <div ref={headerRef} className="top-10 left-0 right-0 z-50">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center">
-            <div className="text-white text-muted-foreground text-sm font-medium tracking-wider mr-4">
-              Ideal for
-            </div>
-            <hr className="border-t border-white" />
-            {/* <div className="flex-grow h-px bg-gradient-to-r from-white/30 to-transparent"></div> */}
-          </div>
-        </div>
-      </div>
-
+    <div className="relative bg-black">
       {/* Scroll Sections */}
       {sections.map((section) => (
-        <ScrollSection key={section.index} {...section} />
+        <ScrollSection 
+          key={section.index} 
+          {...section} 
+          currentIndex={currentIndex}
+          totalSections={sections.length}
+        />
       ))}
+
+      {/* Static section after scroll sections */}
+      <Testimonials />
     </div>
   );
 };
