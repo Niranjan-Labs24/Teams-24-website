@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 
 export function ProblemWeSolve() {
   const [isWithTeams24, setIsWithTeams24] = useState(false)
-  const [sliderValue, setSliderValue] = useState(0) // Start from 0
+  const [sliderValue, setSliderValue] = useState(0)
   const [animatedValues, setAnimatedValues] = useState({
     metric1: 0,
     metric2: 0,
@@ -19,7 +19,7 @@ export function ProblemWeSolve() {
   // Animation configurations
   const animationConfig = {
     without: {
-      start: 0,    // Start from 0%
+      start: 10,   // Changed from 0 to 10 - start at 10%
       end: 85,     // End at 85%
       duration: 1500, // 1.5 seconds per step
       steps: 20
@@ -198,6 +198,17 @@ export function ProblemWeSolve() {
       }
     }
   }
+
+  // Initialize slider position when component mounts
+  useEffect(() => {
+    // Set initial position to 10% for "Without Teams 24"
+    const initialValue = calculateValueFromPercentage(10, false)
+    setSliderValue(initialValue)
+    
+    // Calculate initial metrics
+    const initialMetrics = calculateMetricsFromValue(initialValue, false)
+    setAnimatedValues(initialMetrics)
+  }, [])
 
   // Reset to auto animation when section comes back into view (unless in manual mode)
   useEffect(() => {
