@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -49,15 +48,21 @@ export default function HeroSection(): JSX.Element {
   return (
     <section 
       className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 overflow-hidden"
-      style={{
-        backgroundImage: "url('/background-image.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
-      }}
     >
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/background-image.png"
+          alt="Background"
+          fill
+          priority
+          quality={90}
+          className="object-cover"
+        />
+      </div>
+
       {/* Background Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
       
       {/* LEFT TEXT CONTENT */}
       <div className="flex-1 max-w-[707px] space-y-8 mt-20 lg:mt-0 text-center lg:text-left relative z-10">
@@ -162,7 +167,7 @@ export default function HeroSection(): JSX.Element {
                   alt={card.title}
                   fill
                   className="object-cover"
-                  priority={circularIndex === 1}
+                  priority
                 />
               </motion.div>
             );
@@ -208,7 +213,7 @@ export default function HeroSection(): JSX.Element {
                   alt={card.title}
                   fill
                   className="object-cover"
-                  priority={circularIndex === 1}
+                  priority
                 />
               </motion.div>
             );

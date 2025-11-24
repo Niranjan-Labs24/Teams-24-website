@@ -40,16 +40,17 @@ export default function GlassmorphicNavbar() {
   return (
     <nav
       className="
-        fixed top-[20px] left-[60px] right-[60px] /* Increased left/right for narrower width */
+        fixed top-5 left-1/2 -translate-x-1/2
         z-[9999]
         flex items-center justify-between
-        rounded-[60px] /* Slightly smaller border radius */
+        rounded-[60px]
         border border-white/20
         bg-[#13131333]
         backdrop-blur-[44px]
-        px-6 py-[10px] /* Reduced padding for less height */
-        md:py-[12px] /* Reduced mobile padding */
+        px-6 py-[10px]
+        md:py-[12px]
         transition-all duration-300
+        w-[90%] md:w-[calc(100%-120px)] max-w-7xl
       "
       style={{
         WebkitBackdropFilter: "blur(44px)",

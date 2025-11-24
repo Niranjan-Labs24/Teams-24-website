@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqItems = [
   {
@@ -76,9 +77,6 @@ export function FAQ() {
             <div
               key={index}
               className="w-full bg-[#0F0F0F] border border-[#FFFFFF14] rounded-[20px] hover:border-gray-600 transition-all duration-300 overflow-hidden"
-              style={{
-                minHeight: "104px",
-              }}
             >
               <button
                 onClick={() =>
@@ -92,7 +90,7 @@ export function FAQ() {
                     fontFamily: "Manrope",
                     fontWeight: 600,
                     fontSize: "20px",
-                    lineHeight: "48px",
+                    lineHeight: "32px",
                     letterSpacing: "-0.04em",
                   }}
                 >
@@ -107,20 +105,30 @@ export function FAQ() {
                 </div>
               </button>
 
-              {openIndex === index && (
-                <div className="px-6 pb-6 border-t border-gray-800 bg-gray-900/20">
-                  <p
-                    className="text-gray-300 leading-relaxed"
-                    style={{
-                      fontFamily: "Manrope",
-                      fontSize: "16px",
-                      lineHeight: "28px",
-                    }}
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
                   >
-                    {item.answer}
-                  </p>
-                </div>
-              )}
+                    <div className="px-6 pb-6 border-t border-gray-800 bg-gray-900/20">
+                      <p
+                        className="text-gray-300 leading-relaxed pt-4"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "16px",
+                          lineHeight: "28px",
+                        }}
+                      >
+                        {item.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>

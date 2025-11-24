@@ -16,7 +16,7 @@ export function ProblemWeSolve() {
   // Initial positions
   const initialPositions = {
     without: 65,  
-    with: 25      // Start at 65%
+    with: 25      
   }
 
   const handleToggle = (withTeams: boolean) => {
@@ -96,7 +96,7 @@ export function ProblemWeSolve() {
 
   // Initialize
   useEffect(() => {
-    const initialValue = calculateValueFromPercentage(10, false)
+    const initialValue = calculateValueFromPercentage(initialPositions.without, false)
     setSliderValue(initialValue)
     const initialMetrics = calculateMetricsFromValue(initialValue, false)
     setAnimatedValues(initialMetrics)
@@ -140,7 +140,6 @@ export function ProblemWeSolve() {
     <section className="w-full bg-white py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '1006px' }}>
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-sm font-semibold text-gray-600 mb-6 lg:mb-8 pb-6 lg:pb-8 border-b border-gray-400">
             The problem we solve
@@ -167,7 +166,7 @@ export function ProblemWeSolve() {
             </span>
           </div>
 
-          {/* Custom Slider Track */}
+        
           <div className="relative w-full py-8 sm:py-10">
             <div className="relative w-full" ref={trackRef}>
               <div 
