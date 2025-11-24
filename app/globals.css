@@ -34,18 +34,18 @@
 
   --radius: 1rem;
 
-  /* Premium gradients - ADDED FROM INDEX.CSS */
+  /* Premium gradients */
   --gradient-purple-orange: linear-gradient(135deg, hsl(280 70% 40%), hsl(25 95% 55%));
   --gradient-cyan-yellow: linear-gradient(135deg, hsl(185 100% 40%), hsl(50 100% 60%));
   --gradient-blue-purple: linear-gradient(135deg, hsl(220 80% 50%), hsl(280 70% 60%));
   --gradient-orange-pink: linear-gradient(135deg, hsl(25 95% 55%), hsl(340 80% 60%));
-  
-  /* Glass morphism - ADDED FROM INDEX.CSS */
+
+  /* Glass morphism */
   --glass-bg: 0 0% 100% / 0.05;
   --glass-border: 0 0% 100% / 0.1;
   --glass-blur: blur(20px);
 
-  /* Animation timings - ADDED FROM INDEX.CSS */
+  /* Animation timings */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
@@ -102,9 +102,10 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
+  html,
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden w-full;
   }
 
   html {
@@ -128,9 +129,12 @@
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
@@ -141,15 +145,17 @@
   }
 
   @keyframes glow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
     }
+
     50% {
       box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
     }
   }
 
-  /* ADDED FROM INDEX.CSS */
   .animate-fade-in {
     animation: fade-in 0.5s ease-in-out;
   }
@@ -158,6 +164,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -172,9 +179,12 @@
   }
 
   @keyframes float-slow {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-8px);
     }
@@ -185,15 +195,20 @@
   }
 
   @keyframes enhanced-float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(0deg);
     }
+
     25% {
       transform: translateY(-8px) rotate(1deg);
     }
+
     50% {
       transform: translateY(-15px) rotate(0deg);
     }
+
     75% {
       transform: translateY(-8px) rotate(-1deg);
     }
