@@ -11,7 +11,10 @@ export function ProblemWeSolve() {
     metric3: 0
   })
   const [isDragging, setIsDragging] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   // Initial positions
   const initialPositions = {
@@ -64,19 +67,17 @@ export function ProblemWeSolve() {
     setAnimatedValues(metrics)
   }
 
-  // Calculate value from percentage
+
   const calculateValueFromPercentage = (percentage: number, withTeams: boolean) => {
     const range = withTeams ? 47 : 11 // 48-1 or 12-1
     return Math.round(1 + (percentage / 100) * range)
   }
 
-  // Calculate percentage from value
   const calculatePercentageFromValue = (value: number, withTeams: boolean) => {
     const range = withTeams ? 47 : 11
     return ((value - 1) / range) * 100
   }
 
-  // Calculate metrics
   const calculateMetricsFromValue = (value: number, withTeams: boolean) => {
     if (withTeams) {
       return {
@@ -94,14 +95,74 @@ export function ProblemWeSolve() {
     }
   }
 
-  // Initialize
+  // Intersection Observer for viewport detection
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isInView) {
+          setIsInView(true)
+       
+          const initialValue = calculateValueFromPercentage(initialPositions.without, false)
+          setSliderValue(initialValue)
+          const initialMetrics = calculateMetricsFromValue(initialValue, false)
+          setAnimatedValues(initialMetrics)
+        }
+      },
+      { threshold: 0.3 } 
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
+  // Scroll progress tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return
+
+      const section = sectionRef.current
+      const rect = section.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      const sectionHeight = section.offsetHeight
+
+      const scrollStart = rect.top - windowHeight
+      const scrollEnd = rect.bottom
+      const scrollRange = scrollEnd - scrollStart
+      const currentScroll = -scrollStart
+      
+      const progress = Math.max(0, Math.min(100, (currentScroll / scrollRange) * 100))
+      setScrollProgress(progress)
+
+   
+      const shouldBeWithTeams = progress > 50
+      if (shouldBeWithTeams !== isWithTeams24) {
+        handleToggle(shouldBeWithTeams)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial calculation
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isWithTeams24])
+
+  
   useEffect(() => {
     const initialValue = calculateValueFromPercentage(initialPositions.without, false)
     setSliderValue(initialValue)
     const initialMetrics = calculateMetricsFromValue(initialValue, false)
     setAnimatedValues(initialMetrics)
 
-    // Event listeners for drag
+    
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
 
@@ -137,7 +198,7 @@ export function ProblemWeSolve() {
   const sliderPercentage = calculatePercentageFromValue(sliderValue, isWithTeams24)
 
   return (
-    <section className="w-full bg-white py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '1006px' }}>
+    <section ref={sectionRef} className="w-full bg-white py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '1006px' }}>
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-12 lg:mb-16">
@@ -175,7 +236,7 @@ export function ProblemWeSolve() {
                 onClick={handleTrackClick}
               >
                 <div 
-                  className="h-full rounded-xl absolute top-0 left-0 z-10 transition-all duration-150"
+                  className="h-full rounded-xl absolute top-0 left-0 z-10 transition-all duration-75"
                   style={{
                     width: `${sliderPercentage}%`,
                     backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
@@ -186,9 +247,9 @@ export function ProblemWeSolve() {
                 />
               </div>
 
-              {/* Draggable Slider Circle */}
+        
               <div
-                className="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20 rounded-full border-4 border-white shadow-lg cursor-grab active:cursor-grabbing transition-all duration-150"
+                className="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20 rounded-full border-4 border-white shadow-lg cursor-grab active:cursor-grabbing transition-all duration-75"
                 style={{
                   left: `${sliderPercentage}%`,
                   backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
@@ -208,7 +269,7 @@ export function ProblemWeSolve() {
           </div>
         </div>
 
-        {/* Metrics Grid */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16 max-w-7xl mx-auto">
           <div className="border-l-4 pl-4 sm:pl-6 py-2 relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
             <div className="absolute left-0 top-0 w-1 h-full opacity-30" style={{
@@ -248,7 +309,7 @@ export function ProblemWeSolve() {
           </div>
         </div>
 
-        {/* Toggle Buttons */}
+        {/* Toggle Buttons - Display Only (controlled by scroll) */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-2xl mx-auto relative">
           <div className="absolute inset-0 rounded-full opacity-20 pointer-events-none" style={{
             background: `linear-gradient(135deg, transparent 0%, white 50%, transparent 100%)`,
@@ -256,9 +317,8 @@ export function ProblemWeSolve() {
             top: '-10px', bottom: '-10px', left: '-10px', right: '-10px'
           }} />
           
-          <button
-            onClick={() => handleToggle(false)}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10"
+          <div
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10 text-center"
             style={{
               backgroundColor: isWithTeams24 ? "#f3f4f6" : "#FF413A",
               color: isWithTeams24 ? "#9ca3af" : "white",
@@ -266,10 +326,9 @@ export function ProblemWeSolve() {
             }}
           >
             Without Teams 24
-          </button>
-          <button
-            onClick={() => handleToggle(true)}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10"
+          </div>
+          <div
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10 text-center"
             style={{
               backgroundColor: isWithTeams24 ? "#0362D1" : "#f3f4f6",
               color: isWithTeams24 ? "white" : "#9ca3af",
@@ -277,7 +336,7 @@ export function ProblemWeSolve() {
             }}
           >
             With Teams 24
-          </button>
+          </div>
         </div>
       </div>
     </section>
