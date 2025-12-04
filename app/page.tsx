@@ -13,8 +13,9 @@ import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/cta-section"
 import  IdealForSection from "@/components/IdealForSection"
 import HowItWorks from "@/components/HowItWorks"
-import  GlassmorphicNavbar from "@/components/glassmorphic-navbar"
 import HeroSection from "@/components/HeroSection"
+import GlassmorphicNavbar from "@/components/glassmorphic-navbar"
+
 export default function Home() {
   const [mounted, setMounted] = useState(false)
 
@@ -26,15 +27,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Main container */}
+      {/* Global Fixed Navbar */}
+      <GlassmorphicNavbar />
       
-            <div className="relative w-full min-h-screen overflow-hidden bg-black">
-              {/* Glassmorphic navbar */}
-           <GlassmorphicNavbar /> 
-              <HeroSection/>
-              
-             
-            </div>
+      {/* Main container */}
+      <HeroSection/>
 
       {/* Scroll sections */}
       

@@ -46,178 +46,233 @@ export default function HeroSection(): JSX.Element {
     (index + cards.length) % cards.length;
 
   return (
-    <section 
-      className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 overflow-hidden"
-    >
-      {/* Optimized Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/background-image.png"
-          alt="Background"
-          fill
-          priority
-          quality={90}
-          className="object-cover"
-        />
+    <section className="bg-white w-full flex justify-center">
+      {/* Mobile Layout: White background with fixed-size background image */}
+      <div className="md:hidden w-full min-h-screen bg-white flex justify-center">
+        <div className="w-full max-w-[393px] min-h-[852px] relative">
+          
+          <div 
+            className="absolute top-[24px] left-[12px] w-[369px] h-[804px] rounded-[32px] overflow-hidden"
+            style={{ zIndex: 0 }}
+          >
+            <Image
+              src="/background-image.png"
+              alt="Background"
+              fill
+              priority
+              quality={90}
+              className="object-cover"
+            />
+          
+            <div className="absolute inset-0 bg-black/40"></div>
+            
+           
+            <div className="relative z-10 flex flex-col items-center px-6 pt-20 pb-12 h-full">
+          
+              <h1 
+                className="font-manrope font-bold text-[28px] leading-[28px] tracking-[-0.06em] text-white text-center w-[330px] mb-6"
+              >
+                Flexibility of a freelancer with commitment of an employee
+              </h1>
+              
+          
+              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-12">
+                Hiring can be as easier as shopping
+              </p>
+            
+              <button 
+                onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
+                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg mb-4"
+              >
+                Build your team
+              </button>
+              
+              {/* Discovery Call Text - Below Button */}
+              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-12">
+                Book a free discovery call
+              </p>
+
+              {/* Mobile Carousel - Now clipped by parent overflow-hidden */}
+              <div className="relative w-full h-[380px] flex items-center justify-center overflow-visible">
+                {cards.map((card, i) => {
+                  const circularIndex = getCircularIndex(currentIndex - i);
+                  let x = 0,
+                    scale = 1,
+                    opacity = 1,
+                    zIndex = 10;
+
+                  if (circularIndex === 0) {
+                    x = -250; 
+                    scale = 0.85;
+                    opacity = 0.7;
+                    zIndex = 1;
+                  } else if (circularIndex === 1) {
+                    x = 0;
+                    scale = 1;
+                    opacity = 1;
+                    zIndex = 10;
+                  } else if (circularIndex === 2) {
+                    x = 250; 
+                    scale = 0.85;
+                    opacity = 0.7;
+                    zIndex = 1;
+                  }
+
+                  return (
+                    <motion.div
+                      key={i}
+                      animate={{ x, scale, opacity, zIndex }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute w-[247.5px] h-[307.84px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
+                    >
+                      <Image
+                        src={card.img}
+                        alt={card.title}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Horizontal Indicator */}
+              <div className="flex justify-center gap-2 mt-8">
+                {cards.map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="h-[4px] w-[40px] rounded-full bg-white/20 overflow-hidden"
+                  >
+                    <motion.div
+                      animate={{
+                        width: currentIndex === i ? "100%" : "0%",
+                      }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="h-full bg-white"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Background Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40 z-0"></div>
-      
-      {/* LEFT TEXT CONTENT */}
-      <div className="flex-1 max-w-[707px] space-y-8 mt-20 lg:mt-0 text-center lg:text-left relative z-10">
-        {/* Main Heading */}
-        <h1 className="text-[40px] lg:text-[64px] font-manrope font-bold leading-[56px] lg:leading-[72px] tracking-[-0.02em] text-white">
-          Flexibility of a freelancer <br /> with commitment of an employee
-        </h1>
+      {/* Desktop/Tablet Layout: Original design with white space */}
+      <div 
+        className="hidden lg:block relative w-full lg:max-w-[1388px] lg:h-[916px] lg:mt-[26px] lg:rounded-[32px] overflow-hidden"
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/background-image.png"
+            alt="Background"
+            fill
+            priority
+            quality={90}
+            className="object-cover"
+          />
+        </div>
+
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
         
-        {/* Subtitle */}
-        <p className="font-manrope font-medium text-[22px] leading-[32px] tracking-[-0.02em] text-white opacity-100">
-          Hiring can be as easier as shopping
-        </p>
+        {/* Content Container */}
+        <div className="relative z-10 h-full flex items-center justify-between px-20">
+          {/* LEFT TEXT CONTENT */}
+          <div className="flex-1 max-w-[707px] space-y-8">
+            {/* Main Heading */}
+            <h1 className="text-[64px] font-manrope font-bold leading-[72px] tracking-[-0.02em] text-white">
+              Flexibility of a freelancer <br /> with commitment of an employee
+            </h1>
+            
+          
+            <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300">
+              Hiring can be as easier as shopping
+            </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col lg:flex-row items-center gap-8 pt-8">
-          <button 
-            onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-          className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg">
-            Build your team
-          </button>
-          <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300 flex items-center gap-2">
-            <span className="text-lg">☎️</span> Book a free discovery call
-          </p>
-        </div>
-      </div>
 
-      {/* RIGHT SIDE - CAROUSEL */}
-      <div className="flex-1 w-full mt-16 lg:mt-0 flex justify-center lg:justify-end relative z-10">
-
-        {/* 🟩 Vertical Scroll Indicator (Desktop only) */}
-        <div className="hidden lg:flex flex-col absolute right-[-30px] top-1/2 -translate-y-1/2 items-center gap-2 z-20">
-          {cards.map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-[4px] h-[40px] rounded-full bg-white/20 overflow-hidden"
-            >
-              <motion.div
-                animate={{
-                  height: currentIndex === i ? "100%" : "0%",
-                }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="w-full bg-white"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* 🟦 Horizontal Indicator (Mobile + Tablet only) */}
-        <div className="flex lg:hidden justify-center gap-2 absolute bottom-[-40px] left-1/2 -translate-x-1/2 z-20">
-          {cards.map((_, i) => (
-            <motion.div
-              key={i}
-              className="h-[4px] w-[40px] rounded-full bg-white/20 overflow-hidden"
-            >
-              <motion.div
-                animate={{
-                  width: currentIndex === i ? "100%" : "0%",
-                }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="h-full bg-white"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* 🖥️ Desktop Carousel - BOTTOM → MIDDLE → TOP */}
-        <div className="hidden lg:flex flex-col items-center justify-center relative h-[700px] w-[350px] overflow-visible">
-          {cards.map((card, i) => {
-            const circularIndex = getCircularIndex(currentIndex - i);
-            let y = 0,
-              scale = 1,
-              opacity = 1,
-              zIndex = 10;
-
-            // 🟢 BOTTOM → MIDDLE → TOP FLOW
-            if (circularIndex === 0) {
-              y = 340; // Bottom position (next card)
-              scale = 0.85;
-              opacity = 0.7;
-              zIndex = 1;
-            } else if (circularIndex === 1) {
-              y = 0; // Middle position (current active card)
-              scale = 1;
-              opacity = 1;
-              zIndex = 10;
-            } else if (circularIndex === 2) {
-              y = -340; // Top position (previous card)
-              scale = 0.85;
-              opacity = 0.7;
-              zIndex = 1;
-            }
-
-            return (
-              <motion.div
-                key={i}
-                animate={{ y, scale, opacity, zIndex }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute w-[280px] h-[340px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
+            <div className="flex flex-col items-start gap-4 pt-8">
+              <button 
+                onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
+                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg"
               >
-                <Image
-                  src={card.img}
-                  alt={card.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </motion.div>
-            );
-          })}
-        </div>
+                Build your team
+              </button>
+              
+             
+              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300">
+                Book a free discovery call
+              </p>
+            </div>
+          </div>
 
-        {/* 📱 Mobile & Tablet Carousel - LEFT → MIDDLE → RIGHT */}
-        <div className="flex lg:hidden items-center justify-center relative w-full h-[380px] overflow-visible">
-          {cards.map((card, i) => {
-            const circularIndex = getCircularIndex(currentIndex - i);
-            let x = 0,
-              scale = 1,
-              opacity = 1,
-              zIndex = 10;
+          {/* CAROUSEL */}
+          <div className="flex-1 flex justify-end relative">
+           
+            <div className="flex flex-col absolute right-[-30px] top-1/2 -translate-y-1/2 items-center gap-2 z-20">
+              {cards.map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="w-[4px] h-[40px] rounded-full bg-white/20 overflow-hidden"
+                >
+                  <motion.div
+                    animate={{
+                      height: currentIndex === i ? "100%" : "0%",
+                    }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="w-full bg-white"
+                  />
+                </motion.div>
+              ))}
+            </div>
 
-            // 🟢 LEFT → MIDDLE → RIGHT FLOW
-            if (circularIndex === 0) {
-              x = -220; // Left position (previous card)
-              scale = 0.8;
-              opacity = 0.7;
-              zIndex = 5;
-            } else if (circularIndex === 1) {
-              x = 0; // Middle position (current active card)
-              scale = 1;
-              opacity = 1;
-              zIndex = 10;
-            } else if (circularIndex === 2) {
-              x = 220; // Right position (next card)
-              scale = 0.8;
-              opacity = 0.7;
-              zIndex = 5;
-            }
+            
+            <div className="flex flex-col items-center justify-center relative h-[700px] w-[350px] overflow-visible">
+              {cards.map((card, i) => {
+                const circularIndex = getCircularIndex(currentIndex - i);
+                let y = 0,
+                  scale = 1,
+                  opacity = 1,
+                  zIndex = 10;
 
-            return (
-              <motion.div
-                key={i}
-                animate={{ x, scale, opacity, zIndex }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute w-[200px] h-[280px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
-              >
-                <Image
-                  src={card.img}
-                  alt={card.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </motion.div>
-            );
-          })}
+                if (circularIndex === 0) {
+                  y = 460;
+                  scale = 0.85;
+                  opacity = 0.7;
+                  zIndex = 1;
+                } else if (circularIndex === 1) {
+                  y = 0; 
+                  scale = 1;
+                  opacity = 1;
+                  zIndex = 10;
+                } else if (circularIndex === 2) {
+                  y = -460;
+                  scale = 0.85;
+                  opacity = 0.7;
+                  zIndex = 1;
+                }
+
+                return (
+                  <motion.div
+                    key={i}
+                    animate={{ y, scale, opacity, zIndex }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute w-[387.5px] h-[482px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
+                  >
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

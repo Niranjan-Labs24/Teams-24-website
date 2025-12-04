@@ -101,8 +101,9 @@ export default function WhatWeDeliver() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center justify-center font-[Manrope] overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 py-16 px-4 sm:px-6 md:px-10"
+      className="relative w-full flex items-center justify-center font-[Manrope] bg-white"
     >
+      <div className="relative w-full lg:max-w-[1388px] min-h-screen lg:rounded-[32px] overflow-hidden flex flex-col items-center justify-center bg-gradient-to-br from-white via-slate-50 to-blue-50 py-16 px-4 sm:px-6 md:px-10">
       {/* 🌀 Floating icons with enhanced floating animation */}
       {icons.map((item, idx) => (
         <div
@@ -150,6 +151,7 @@ export default function WhatWeDeliver() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

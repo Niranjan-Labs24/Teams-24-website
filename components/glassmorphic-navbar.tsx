@@ -40,7 +40,7 @@ export default function GlassmorphicNavbar() {
   return (
     <nav
       className="
-        fixed top-5 left-1/2 -translate-x-1/2
+        fixed top-11 left-1/2 -translate-x-1/2
         z-[9999]
         flex items-center justify-between
         rounded-[60px]
@@ -50,7 +50,7 @@ export default function GlassmorphicNavbar() {
         px-6 py-[10px]
         md:py-[12px]
         transition-all duration-300
-        w-[90%] md:w-[calc(100%-120px)] max-w-7xl
+        w-[85%] md:w-[calc(100%-120px)] max-w-7xl
       "
       style={{
         WebkitBackdropFilter: "blur(44px)",
@@ -67,7 +67,7 @@ export default function GlassmorphicNavbar() {
         />
         <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
           <span
-            className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal" /* Smaller text */
+            className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal"
             style={{ marginRight: "2px" }}
           >
             Teams
@@ -98,8 +98,8 @@ export default function GlassmorphicNavbar() {
           hidden md:block
           bg-[#FFFFFF] text-black
           rounded-[62px]
-          px-[48px] py-[14px] /* Reduced button padding */
-          font-[Manrope] font-semibold text-[15px] tracking-[-0.03em] /* Slightly smaller text */
+          px-[48px] py-[14px]
+          font-[Manrope] font-semibold text-[15px] tracking-[-0.03em]
           border border-transparent
           hover:bg-[#f5f5f5]
           transition-all duration-300
@@ -112,7 +112,7 @@ export default function GlassmorphicNavbar() {
       {/* Hamburger Menu (Mobile / Tablet) */}
       <div className="md:hidden flex items-center">
         <button onClick={() => setIsOpen(!isOpen)} className="text-white">
-          {isOpen ? <X size={24} /> : <Menu size={24} />} {/* Smaller icons */}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -125,11 +125,11 @@ export default function GlassmorphicNavbar() {
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.25 }}
             className="
-              absolute top-[70px] right-[20px] /* Adjusted position for smaller navbar */
+              absolute top-[70px] right-[20px]
               w-[220px]
               bg-[#000000cc] backdrop-blur-[20px]
               flex flex-col items-start
-              py-3 px-4 gap-3 /* Reduced padding */
+              py-3 px-4 gap-3
               rounded-[24px]
               border border-white/10
               md:hidden
@@ -148,8 +148,8 @@ export default function GlassmorphicNavbar() {
               onClick={handleGetInTouch}
               className="
                 bg-[#FFFFFF] text-black
-                rounded-[62px] px-[28px] py-[8px] /* Reduced padding */
-                font-[Manrope] font-semibold text-[13px] /* Smaller text */
+                rounded-[62px] px-[28px] py-[8px]
+                font-[Manrope] font-semibold text-[13px]
                 hover:bg-[#f5f5f5]
                 transition-all duration-300
                 w-full
