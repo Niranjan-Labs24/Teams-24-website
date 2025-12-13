@@ -24,7 +24,12 @@ const IdealForSection = () => {
         "Build your core team faster with dedicated talent partners who understand startup velocity.",
       stat: "50+",
       statLabel: "startups hiring",
-      image: section1Visual,
+      desktopMedia: [
+        { type: "video" as const, src: "/video/1stcard(L).mp4" }
+      ],
+      mobileMedia: [
+        { type: "video" as const, src: "/video/1stcard(M).mp4" }
+      ],
       gradient: "bg-gradient-blue-purple",
     },
     {
@@ -34,8 +39,14 @@ const IdealForSection = () => {
         "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team.",
       stat: "70%",
       statLabel: "hiring success",
-      image: candidatesCard,
-      image2: testimonialCard,
+      desktopMedia: [
+        { type: "video" as const, src: "/video/secondCard(L).mp4" },
+        { type: "image" as const, src: "/video/SecondcardImage(L).png" }
+      ],
+      mobileMedia: [
+        { type: "video" as const, src: "/video/secondCard(M).mp4" },
+        { type: "image" as const, src: "/video/SecondCardImage(m).png" }
+      ],
       gradient: "bg-gradient-cyan-yellow",
     },
     {
@@ -45,7 +56,12 @@ const IdealForSection = () => {
         "Skip the endless meetings and paperwork. Get matched with pre-vetted talent in days, not months.",
       stat: "3x",
       statLabel: "faster to hire",
-      image: rolesVisual,
+      desktopMedia: [
+        { type: "video" as const, src: "/video/ThirdCard(L).mp4" }
+      ],
+      mobileMedia: [
+        { type: "video" as const, src: "/video/thirdCard(M).mp4" }
+      ],
       gradient: "bg-gradient-orange-pink",
     },
   ];
@@ -73,21 +89,27 @@ const IdealForSection = () => {
   return (
     <section id="what-we-do">
     <div ref={containerRef} className="relative bg-black min-h-screen">
-      <div ref={headerRef} className="top-10 left-0 right-0 z-50">
+     <div
+  ref={headerRef}
+  className="sticky top-0 left-0 right-0 z-40 bg-black 
+             pt-24      
+             md:pt-28    
+             lg:pt-32   
+             xl:pt-36  
+             pb-6">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center">
-            <div className="text-white text-muted-foreground text-sm font-medium tracking-wider mr-4">
+          <div className="flex flex-col gap-4">
+            <div className="text-white text-sm font-medium tracking-wider">
               Ideal for
             </div>
-            <hr className="border-t border-white" />
-            {/* <div className="flex-grow h-px bg-gradient-to-r from-white/30 to-transparent"></div> */}
+            <hr className="w-full border-t border-white/30" />
           </div>
         </div>
       </div>
 
       {/* Scroll Sections */}
       {sections.map((section) => (
-        <ScrollSection key={section.index} {...section} />
+        <ScrollSection key={section.index} {...section} totalSections={sections.length} />
       ))}
     </div>
     </section>

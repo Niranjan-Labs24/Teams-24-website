@@ -46,7 +46,7 @@ export default function HeroSection(): JSX.Element {
     (index + cards.length) % cards.length;
 
   return (
-    <section className="bg-white w-full flex justify-center">
+    <section className="bg-white w-full flex justify-center lg:px-[26px]">
       {/* Mobile Layout: White background with fixed-size background image */}
       <div className="md:hidden w-full min-h-screen bg-white flex justify-center">
         <div className="w-full max-w-[393px] min-h-[852px] relative">
@@ -137,22 +137,18 @@ export default function HeroSection(): JSX.Element {
                 })}
               </div>
 
-              {/* Horizontal Indicator */}
-              <div className="flex justify-center gap-2 mt-8">
-                {cards.map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="h-[4px] w-[40px] rounded-full bg-white/20 overflow-hidden"
-                  >
-                    <motion.div
-                      animate={{
-                        width: currentIndex === i ? "100%" : "0%",
-                      }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="h-full bg-white"
+              {/* Horizontal Indicator (Mobile) */}
+              <div className="flex justify-center mt-8">
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
+                  {cards.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`rounded-full transition-all duration-300 ${
+                        currentIndex === i ? "w-8 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/30"
+                      }`}
                     />
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -211,21 +207,18 @@ export default function HeroSection(): JSX.Element {
           {/* CAROUSEL */}
           <div className="flex-1 flex justify-end relative">
            
-            <div className="flex flex-col absolute right-[-30px] top-1/2 -translate-y-1/2 items-center gap-2 z-20">
-              {cards.map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-[4px] h-[40px] rounded-full bg-white/20 overflow-hidden"
-                >
-                  <motion.div
-                    animate={{
-                      height: currentIndex === i ? "100%" : "0%",
-                    }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="w-full bg-white"
+            {/* Vertical Indicator (Desktop) */}
+            <div className="absolute right-[20px] top-1/2 -translate-y-1/2 z-20">
+               <div className="inline-flex flex-col items-center gap-2 px-2 py-3 rounded-full border border-white/10 bg-white/5 h-fit">
+                {cards.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`rounded-full transition-all duration-300 ${
+                      currentIndex === i ? "h-8 w-1.5 bg-white" : "h-1.5 w-1.5 bg-white/30"
+                    }`}
                   />
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </div>
 
             
