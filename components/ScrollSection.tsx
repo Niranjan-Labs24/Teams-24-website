@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -5,23 +7,30 @@ import { StaticImageData } from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface MediaAsset {
+  type: 'video' | 'image';
+  src: string | StaticImageData;
+}
+
 interface ScrollSectionProps {
   index: number;
+  totalSections: number;
   title: string;
   stat: string;
   statLabel: string;
-  image: StaticImageData;
-  image2?: StaticImageData;
+  desktopMedia: MediaAsset[];
+  mobileMedia: MediaAsset[];
   gradient: string;
 }
 
 const ScrollSection = ({
   index,
+  totalSections,
   title,
   stat,
   statLabel,
-  image,
-  image2,
+  desktopMedia,
+  mobileMedia,
   gradient,
 }: ScrollSectionProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -29,7 +38,7 @@ const ScrollSection = ({
   const mobileContentRef = useRef<HTMLDivElement>(null);
   const desktopImageRef = useRef<HTMLDivElement>(null);
   const mobileImageRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     const section = sectionRef.current;
     const desktopContent = desktopContentRef.current;
@@ -47,7 +56,18 @@ const ScrollSection = ({
       pin: true,
       pinSpacing: false,
       scrub: 1,
+      onEnter: () => playVideos(),
+      onEnterBack: () => playVideos(),
     });
+
+    const playVideos = () => {
+      // Dynamically find all video elements within this section and play them
+      const videos = section.querySelectorAll('video');
+      videos.forEach((video) => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+    };
 
     // Fade out desktop content when scrolling away
     if (desktopContent) {
@@ -126,6 +146,80 @@ const ScrollSection = ({
     };
   }, []);
 
+  const renderVisual = (mediaItems: MediaAsset[], isMobile: boolean = false) => {
+    if (!mediaItems || mediaItems.length === 0) return null;
+
+    // Grid layout for 2 items
+    if (mediaItems.length === 2) {
+      return (
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {mediaItems.map((item, idx) => (
+            <div 
+              key={idx}
+              className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
+                isMobile && index === 2 ? 'h-[250px] sm:h-[300px]' : ''
+              }`}
+              style={{ animationDelay: idx === 1 ? '0.2s' : '0s' }}
+            >
+              {item.type === 'video' ? (
+                <video
+                  src={item.src as string}
+                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={typeof item.src === 'string' ? item.src : item.src.src}
+                  alt={title}
+                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // Single item
+    const item = mediaItems[0];
+    return (
+      <div className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2`}>
+        {item.type === 'video' ? (
+          <video
+            src={item.src as string}
+            className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <img
+            src={typeof item.src === 'string' ? item.src : item.src.src}
+            alt={title}
+            className="w-full h-auto rounded-xl sm:rounded-2xl"
+          />
+        )}
+      </div>
+    );
+  };
+  
+  const renderProgressIndicator = () => (
+    <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
+      {Array.from({ length: totalSections }).map((_, i) => (
+        <div
+          key={i}
+          className={`rounded-full transition-all duration-300 ${
+            i + 1 === index ? "w-8 sm:w-12 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/30"
+          }`}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <section
       ref={sectionRef}
@@ -145,27 +239,34 @@ const ScrollSection = ({
               <div className="text-white text-muted-foreground text-sm sm:text-lg font-mono">
                 [{index.toString().padStart(2, "0")}]
               </div>
-              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                 {title}
               </h2>
             </div>
+            
+             {/* Progress Indicator */}
+             <div className="pt-2">
+              {renderProgressIndicator()}
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <div className="w-12 sm:w-16 h-1 bg-primary rounded-full" />
-            <div className="flex items-baseline gap-2">
-              <div className="text-white text-4xl sm:text-5xl lg:text-6xl font-bold">
-                {stat}
-              </div>
-              <div className="text-white text-base sm:text-lg text-muted-foreground">
-                {statLabel}
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex flex-col">
+                <div className="text-white text-4xl sm:text-5xl font-bold">
+                  {stat}
+                </div>
+                <div className="text-white text-base sm:text-lg text-muted-foreground">
+                  {statLabel}
+                </div>
               </div>
             </div>
+            
           </div>
         </div>
 
         {/* Mobile & Tablet Layout */}
-        <div ref={mobileContentRef} className="lg:hidden space-y-8 w-full">
+        <div ref={mobileContentRef} className="lg:hidden space-y-6 w-full">
           {/* Title Section */}
           <div className="space-y-4">
             <div className="space-y-2">
@@ -176,86 +277,36 @@ const ScrollSection = ({
                 {title}
               </h2>
             </div>
+             {/* Progress Indicator */}
+             <div className="pt-1">
+              {renderProgressIndicator()}
+            </div>
           </div>
 
-          {/* Image Section */}
+          {/* Media Section */}
           <div ref={mobileImageRef} className="relative">
-            {image2 ? (
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float">
-                  <img
-                    src={image.src}
-                    alt={title}
-                    className="w-full h-auto rounded-xl sm:rounded-2xl"
-                  />
-                </div>
-                <div 
-                  className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float" 
-                  style={{ animationDelay: '0.2s' }}
-                >
-                  <img
-                    src={image2.src}
-                    alt={`${title} testimonial`}
-                    className="w-full h-auto rounded-xl sm:rounded-2xl"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float">
-                <img
-                  src={image.src}
-                  alt={title}
-                  className="w-full h-auto rounded-xl sm:rounded-2xl"
-                />
-              </div>
-            )}
+            {renderVisual(mobileMedia, true)}
           </div>
 
           {/* Stat Section */}
-          <div className="space-y-2">
-            <div className="w-12 sm:w-16 h-1 bg-primary rounded-full" />
-            <div className="flex items-baseline gap-2">
-              <div className="text-white text-4xl sm:text-5xl font-bold">
-                {stat}
-              </div>
-              <div className="text-white text-base sm:text-lg text-muted-foreground">
-                {statLabel}
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex flex-col">
+                <div className="text-white text-4xl sm:text-5xl font-bold">
+                  {stat}
+                </div>
+                <div className="text-white text-base sm:text-lg text-muted-foreground">
+                  {statLabel}
+                </div>
               </div>
             </div>
+            
           </div>
         </div>
 
         {/* Right Image(s) - Desktop */}
         <div ref={desktopImageRef} className="hidden lg:block relative">
-          {image2 ? (
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float">
-                <img
-                  src={image.src}
-                  alt={title}
-                  className="w-full h-auto rounded-xl sm:rounded-2xl"
-                />
-              </div>
-              <div 
-                className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float" 
-                style={{ animationDelay: '0.2s' }}
-              >
-                <img
-                  src={image2.src}
-                  alt={`${title} testimonial`}
-                  className="w-full h-auto rounded-xl sm:rounded-2xl"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 animate-float">
-              <img
-                src={image.src}
-                alt={title}
-                className="w-full h-auto rounded-xl sm:rounded-2xl"
-              />
-            </div>
-          )}
+           {renderVisual(desktopMedia, false)}
         </div>
       </div>
     </section>
