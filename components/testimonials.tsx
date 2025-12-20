@@ -46,59 +46,59 @@ export default function Testimonials() {
   return (
     <section className="w-full flex justify-center bg-black text-white font-[Manrope] py-16 px-6 relative overflow-visible">
       <div
-        className="relative max-w-[1440px] w-full"
+        className="relative max-w-[90rem] w-full"
         style={{ height: "auto", opacity: 1 }}>
         {/* Header */}
         <div
           className="absolute lg:static z-20"
           style={{
-            width: 204,
-            height: 32,
-            top: 64,
-            left: 72,
+            width: "12.75rem",
+            height: "2rem",
+            top: "4rem",
+            left: "4.5rem",
           }}>
           <h2
-            className="font-[500] text-[22px] leading-[32px] text-white"
+            className="font-[500] text-[1.375rem] leading-[2rem] text-white"
             style={{
               letterSpacing: "-0.02em",
               fontFamily: "Manrope",
             }}>
             What our clients say
           </h2>
-          <div className="mt-4 border-t border-white/20 w-[200px]" />
+          <div className="mt-4 border-t border-white/20 w-[12.5rem]" />
         </div>
 
         {/* Main content */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:mt-[100px] gap-8 lg:gap-0 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:mt-[6.25rem] gap-8 lg:gap-0 relative z-10">
           {/* Quote box */}
           <div
-            className="bg-[rgba(255,255,255,0.02)] rounded-[32px] p-8 relative order-2 lg:order-1"
+            className="bg-[rgba(255,255,255,0.02)] rounded-[2rem] p-8 relative order-2 lg:order-1"
             style={{
               width: "100%",
-              maxWidth: 578,
-              height: 360,
+              maxWidth: "36.125rem",
+              height: "22.5rem",
             }}>
             <div
               className="flex flex-col"
-              style={{ width: 480, height: 160, gap: 8 }}>
+              style={{ width: "30rem", height: "10rem", gap: "0.5rem" }}>
               <div
                 className="text-gray-500"
                 style={{
-                  width: 32,
-                  height: 32,
-                  fontSize: 40,
-                  lineHeight: "32px",
+                  width: "2rem",
+                  height: "2rem",
+                  fontSize: "2.5rem",
+                  lineHeight: "2rem",
                 }}>
                 "
               </div>
               <p
                 className="text-white"
                 style={{
-                  width: 480,
-                  height: 120,
+                  width: "30rem",
+                  height: "7.5rem",
                   fontWeight: 600,
-                  fontSize: 26,
-                  lineHeight: "30px",
+                  fontSize: "1.625rem",
+                  lineHeight: "1.875rem",
                   letterSpacing: "-0.04em",
                 }}>
                 {t.quote}
@@ -108,10 +108,10 @@ export default function Testimonials() {
             <div
               className="absolute flex items-center gap-3"
               style={{
-                width: 241,
-                height: 58,
-                top: 270,
-                left: 44,
+                width: "15.0625rem",
+                height: "3.625rem",
+                top: "16.875rem",
+                left: "2.75rem",
               }}>
               <img
                 src={t.image}
@@ -127,11 +127,11 @@ export default function Testimonials() {
 
           {/* Video section */}
           <div
-            className="rounded-[32px] overflow-hidden border border-white/10 bg-gray-900 order-1 lg:order-2"
+            className="rounded-[2rem] overflow-hidden border border-white/10 bg-gray-900 order-1 lg:order-2"
             style={{
               width: "100%",
-              maxWidth: 686,
-              height: 360,
+              maxWidth: "42.875rem",
+              height: "22.5rem",
             }}>
             <iframe
               key={playerKey}
@@ -150,11 +150,11 @@ export default function Testimonials() {
           <div
             className="flex gap-2 items-center justify-center absolute lg:static"
             style={{
-              width: 144,
-              height: 40,
-              top: 593,
-              left: 116,
-              borderRadius: 72,
+              width: "9rem",
+              height: "2.5rem",
+              top: "37.0625rem",
+              left: "7.25rem",
+              borderRadius: "4.5rem",
             }}>
             {testimonials.map((_, idx) => (
               <button
@@ -174,10 +174,10 @@ export default function Testimonials() {
           <div
             className="absolute lg:static flex gap-4 justify-center"
             style={{
-              width: 120,
-              height: 52,
-              top: 586,
-              left: 1248,
+              width: "7.5rem",
+              height: "3.25rem",
+              top: "36.625rem",
+              left: "78rem",
               opacity: 1,
             }}>
             <button
@@ -201,8 +201,8 @@ export default function Testimonials() {
             padding: 4rem 1rem;
           }
           /* Make sure buttons and dots remain visible */
-          div[style*="left: 1248px"],
-          div[style*="left: 116px"] {
+          div[style*="left: 78rem"],
+          div[style*="left: 7.25rem"] {
             position: static !important;
             margin: 1rem auto 0 auto;
             justify-content: center;

@@ -32,9 +32,9 @@ export function FAQ() {
 
   return (
     <section className="w-full bg-black text-white py-20 px-4 sm:px-6 lg:px-8" id="faq">
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
+      <div className="max-w-[90rem] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
         {/* LEFT SIDE */}
-        <div className="flex flex-col lg:w-[419px]">
+        <div className="flex flex-col lg:w-[26rem]">
           {/* Top small header */}
           <div className="mb-4 lg:mb-6">
             <p
@@ -42,8 +42,8 @@ export function FAQ() {
               style={{
                 fontFamily: "Manrope",
                 fontWeight: 600,
-                fontSize: "20px",
-                lineHeight: "32px",
+                fontSize: "1.25rem",
+                lineHeight: "2rem",
                 letterSpacing: "-0.04em",
               }}
             >
@@ -60,8 +60,8 @@ export function FAQ() {
             style={{
               fontFamily: "Manrope",
               fontWeight: 700,
-              fontSize: "56px",
-              lineHeight: "48px",
+              fontSize: "3.5rem",
+              lineHeight: "3rem",
               letterSpacing: "-0.06em",
             }}
           >
@@ -72,11 +72,11 @@ export function FAQ() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-full lg:w-[607px] flex flex-col gap-5">
+        <div className="w-full lg:w-[38rem] flex flex-col gap-5">
           {faqItems.map((item, index) => (
             <div
               key={index}
-              className="w-full bg-[#0F0F0F] border border-[#FFFFFF14] rounded-[20px] hover:border-gray-600 transition-all duration-300 overflow-hidden"
+              className="w-full bg-[#0F0F0F] border border-[#FFFFFF14] rounded-[1.25rem] hover:border-gray-600 transition-all duration-300 overflow-hidden"
             >
               <button
                 onClick={() =>
@@ -119,8 +119,8 @@ export function FAQ() {
                         className="text-gray-300 leading-relaxed pt-4"
                         style={{
                           fontFamily: "Manrope",
-                          fontSize: "16px",
-                          lineHeight: "28px",
+                          fontSize: "1rem",
+                          lineHeight: "1.75rem",
                         }}
                       >
                         {item.answer}

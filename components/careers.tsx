@@ -37,18 +37,18 @@ export function Careers() {
         <p className="text-sm font-medium text-gray-600 mb-4">Careers</p>
 
         <div className="border-t border-black pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <h2 className="font-[Manrope] font-semibold text-[36px] sm:text-[44px] leading-[48px] tracking-[-0.04em] text-black">
+          <h2 className="font-[Manrope] font-semibold text-[2.25rem] sm:text-[2.75rem] leading-[3rem] tracking-[-0.04em] text-black">
             Open positions
           </h2>
 
           <button
-            className="relative w-[227px] h-[72px] bg-[#0F0F0F] rounded-[12px] border-[4px] border-[#0F0F0F]
-             flex items-center justify-center px-[40px] py-[20px]
+            className="relative w-[14.1875rem] h-[4.5rem] bg-[#0F0F0F] rounded-xl border-4 border-[#0F0F0F]
+             flex items-center justify-center px-10 py-5
              hover:bg-black/80 transition"
           >
             <span
-              className="block w-[147px] h-[32px] text-white font-[Urbanist] font-semibold text-[20px]
-              leading-[32px] tracking-[-0.03em] text-center overflow-hidden whitespace-nowrap"
+              className="block w-[9.1875rem] h-8 text-white font-[Urbanist] font-semibold text-xl
+              leading-8 tracking-[-0.03em] text-center overflow-hidden whitespace-nowrap"
             >
               View all openings
             </span>
@@ -56,12 +56,12 @@ export function Careers() {
         </div>
 
         {/* Jobs list */}
-        <div className="mt-16 w-full max-w-[1296px] divide-y divide-gray-300">
+        <div className="mt-16 w-full max-w-[81rem] divide-y divide-gray-300">
           {jobs.map((job, index) => (
             <Link
               key={index}
               href={job.link}
-              className="flex items-center justify-between h-auto md:h-[132px] py-6 px-4 md:px-8 hover:bg-gray-50 transition group cursor-pointer"
+              className="flex items-center justify-between h-auto md:h-[8.25rem] py-6 px-4 md:px-8 hover:bg-gray-50 transition group cursor-pointer"
             >
               {/* Left side */}
               <div className="flex items-start gap-4 sm:gap-6 flex-1">
@@ -77,11 +77,11 @@ export function Careers() {
               </div>
 
               {/* Right side - Arrow icon */}
-              <div className="w-[44px] h-[44px] flex items-center justify-center rounded-full bg-gray-700 transition-all duration-300 flex-shrink-0 group-hover:bg-gray-800 group-hover:scale-110 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+              <div className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-700 transition-all duration-300 flex-shrink-0 group-hover:bg-gray-800 group-hover:scale-110 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.4)]">
                 <img
                   src="/arrow-icon.png"
                   alt="Navigate"
-                  className="w-[19.1px] h-[16.25px] transition-all duration-300 group-hover:brightness-150"
+                  className="w-[1.2rem] h-[1rem] transition-all duration-300 group-hover:brightness-150"
                 />
               </div>
             </Link>

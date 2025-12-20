@@ -103,7 +103,7 @@ export default function WhatWeDeliver() {
       ref={sectionRef}
       className="relative w-full flex items-center justify-center font-[Manrope] bg-white"
     >
-      <div className="relative w-full lg:max-w-[1388px] min-h-screen lg:rounded-[32px] overflow-hidden flex flex-col items-center justify-center bg-gradient-to-br from-white via-slate-50 to-blue-50 py-16 px-4 sm:px-6 md:px-10">
+      <div className="relative w-full lg:max-w-[86.75rem] min-h-screen lg:rounded-[2rem] overflow-hidden flex flex-col items-center justify-center bg-gradient-to-br from-white via-slate-50 to-blue-50 py-16 px-4 sm:px-6 md:px-10">
       {/* 🌀 Floating icons with enhanced floating animation */}
       {icons.map((item, idx) => (
         <div
@@ -111,7 +111,7 @@ export default function WhatWeDeliver() {
           ref={setIconRef(idx)}
           className={`absolute opacity-70 transition-all duration-300 ${item.className}`}
         >
-          <div className="w-[22px] h-[22px] sm:w-[28px] sm:h-[28px] md:w-[34px] md:h-[34px]">
+          <div className="w-[1.375rem] h-[1.375rem] sm:w-[1.75rem] sm:h-[1.75rem] md:w-[2.125rem] md:h-[2.125rem]">
             <Image
               src={item.src}
               alt={`icon-${item.id}`}
@@ -124,9 +124,9 @@ export default function WhatWeDeliver() {
       ))}
 
       {/* 🧩 Main Content */}
-      <div ref={contentRef} className="relative z-10 flex flex-col items-center text-center gap-6 max-w-[850px] mx-auto">
+      <div ref={contentRef} className="relative z-10 flex flex-col items-center text-center gap-6 max-w-[53.125rem] mx-auto">
         {/* Section Heading */}
-        <div className="text-gray-800 text-[16px] sm:text-[18px] md:text-[20px] font-semibold tracking-tight flex items-center gap-2">
+        <div className="text-gray-800 text-base sm:text-lg md:text-xl font-semibold tracking-tight flex items-center gap-2">
           <span className="w-2 h-2 bg-gray-800 rounded-full"></span>
           What we deliver
         </div>
@@ -136,13 +136,13 @@ export default function WhatWeDeliver() {
           {lines.map((line, idx) => (
             <div key={idx} className="relative overflow-hidden">
               {/* Watermark text (always visible) */}
-              <p className="text-[20px] sm:text-[28px] md:text-[42px] font-bold text-gray-300 tracking-[-0.03em] leading-[28px] sm:leading-[38px] md:leading-[54px] select-none">
+              <p className="text-xl sm:text-[1.75rem] md:text-[2.625rem] font-bold text-gray-300 tracking-[-0.03em] leading-[1.75rem] sm:leading-[2.375rem] md:leading-[3.375rem] select-none">
                 {line}
               </p>
 
               {/* Animated black text overlay */}
               <p
-                className={`absolute inset-0 text-[20px] sm:text-[28px] md:text-[42px] font-bold tracking-[-0.03em] leading-[28px] sm:leading-[38px] md:leading-[54px] transition-all duration-500 ${
+                className={`absolute inset-0 text-xl sm:text-[1.75rem] md:text-[2.625rem] font-bold tracking-[-0.03em] leading-[1.75rem] sm:leading-[2.375rem] md:leading-[3.375rem] transition-all duration-500 ${
                   idx < activeLines ? "text-gray-900 opacity-100" : "text-gray-300 opacity-0"
                 }`}
               >

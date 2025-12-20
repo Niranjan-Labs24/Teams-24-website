@@ -43,14 +43,14 @@ export default function GlassmorphicNavbar() {
         fixed top-11 left-1/2 -translate-x-1/2
         z-[9999]
         flex items-center justify-between
-        rounded-[60px]
+        rounded-[3.75rem]
         border border-white/20
         bg-[#13131333]
         backdrop-blur-[44px]
-        px-6 py-[10px]
-        md:py-[12px]
+        px-6 py-2.5
+        md:py-3
         transition-all duration-300
-        w-[85%] md:w-[calc(100%-120px)] max-w-7xl
+        w-[85%] md:w-[calc(100%-7.5rem)] max-w-7xl
       "
       style={{
         WebkitBackdropFilter: "blur(44px)",
@@ -67,24 +67,24 @@ export default function GlassmorphicNavbar() {
         />
         <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
           <span
-            className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal"
+            className="text-lg tracking-[-0.05em] leading-[10px] font-normal"
             style={{ marginRight: "2px" }}
           >
             Teams
           </span>
-          <span className="text-[18px] tracking-[-0.05em] leading-[10px] font-normal">
+          <span className="text-lg tracking-[-0.05em] leading-[10px] font-normal">
             24
           </span>
         </div>
       </div>
 
       {/* Center Nav Links (Desktop Only) */}
-      <div className="hidden md:flex items-center gap-[56px] text-white">
+      <div className="hidden md:flex items-center gap-14 text-white">
         {navigationLinks.map((link, i) => (
           <button
             key={i}
             onClick={() => handleSmoothScroll(link.id)}
-            className="text-[15px] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition cursor-pointer"
+            className="text-[0.9375rem] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition cursor-pointer"
           >
             {link.name}
           </button>
@@ -97,9 +97,9 @@ export default function GlassmorphicNavbar() {
         className="
           hidden md:block
           bg-[#FFFFFF] text-black
-          rounded-[62px]
-          px-[48px] py-[14px]
-          font-[Manrope] font-semibold text-[15px] tracking-[-0.03em]
+          rounded-[3.875rem]
+          px-12 py-3.5
+          font-[Manrope] font-semibold text-[0.9375rem] tracking-[-0.03em]
           border border-transparent
           hover:bg-[#f5f5f5]
           transition-all duration-300
@@ -125,12 +125,12 @@ export default function GlassmorphicNavbar() {
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
             transition={{ duration: 0.25 }}
             className="
-              absolute top-[70px] right-[20px]
-              w-[220px]
+              absolute top-[4.375rem] right-5
+              w-[13.75rem]
               bg-[#000000cc] backdrop-blur-[20px]
               flex flex-col items-start
               py-3 px-4 gap-3
-              rounded-[24px]
+              rounded-3xl
               border border-white/10
               md:hidden
             "
@@ -148,7 +148,7 @@ export default function GlassmorphicNavbar() {
               onClick={handleGetInTouch}
               className="
                 bg-[#FFFFFF] text-black
-                rounded-[62px] px-[28px] py-[8px]
+                rounded-[3.875rem] px-7 py-2
                 font-[Manrope] font-semibold text-[13px]
                 hover:bg-[#f5f5f5]
                 transition-all duration-300
