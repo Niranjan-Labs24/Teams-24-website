@@ -1,20 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import ScrollSection from "./ScrollSection";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-import section1Visual from "@/assets/section1-visual.png";
-import candidatesCard from "@/assets/candidates-card.png";
-import testimonialCard from "@/assets/testimonial-card.png";
-import rolesVisual from "@/assets/roles-visual.png";
-
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const IdealForSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  
+  // State to track scroll progress for UI updates
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [sectionProgress, setSectionProgress] = useState(0);
+
+  // Auto-scroll references
+  const autoScrollTween = useRef<gsap.core.Tween | null>(null);
+  const isUserScrolling = useRef(false);
+  const userScrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const sections = [
     {
@@ -66,52 +71,151 @@ const IdealForSection = () => {
     },
   ];
 
+  const startAutoScroll = useCallback(() => {
+    if (isUserScrolling.current) return;
+    
+    // Check if ScrollTrigger instance exists
+    const st = ScrollTrigger.getById("ideal-for-scroll");
+    if (!st) return;
+
+    const currentScroll = window.scrollY;
+    const endScroll = st.end;
+    const startScroll = st.start;
+
+    // Check bounds
+    // We add a small buffer (50px) to ensure we don't start it if we are barely in
+    if (currentScroll < startScroll - 50 || currentScroll >= endScroll) return;
+
+    const distanceRemaining = endScroll - currentScroll;
+    const totalDistance = endScroll - startScroll;
+    const totalTime = sections.length * 10; // 10s per section
+    
+    // Calculate Speed (pixels per second)
+    // const speed = totalDistance / totalTime;
+    
+    const duration = (distanceRemaining / totalDistance) * totalTime;
+
+    if (duration <= 0.1) return;
+
+    autoScrollTween.current = gsap.to(window, {
+        scrollTo: endScroll,
+        duration: duration,
+        ease: "none",
+        overwrite: "auto"
+    });
+  }, [sections.length]);
+
+  const handleUserScroll = useCallback(() => {
+    if (autoScrollTween.current) {
+        autoScrollTween.current.kill();
+        autoScrollTween.current = null;
+    }
+    
+    isUserScrolling.current = true;
+
+    if (userScrollTimeout.current) {
+        clearTimeout(userScrollTimeout.current);
+    }
+
+    userScrollTimeout.current = setTimeout(() => {
+        isUserScrolling.current = false;
+        startAutoScroll();
+    }, 1500);
+  }, [startAutoScroll]);
+
+  // Global event listeners
+  useEffect(() => {
+    const onInteraction = () => handleUserScroll();
+    
+    window.addEventListener("wheel", onInteraction, { passive: true });
+    window.addEventListener("touchmove", onInteraction, { passive: true });
+    window.addEventListener("keydown", onInteraction, { passive: true });
+    
+    return () => {
+        window.removeEventListener("wheel", onInteraction);
+        window.removeEventListener("touchmove", onInteraction);
+        window.removeEventListener("keydown", onInteraction);
+        if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current);
+        if (autoScrollTween.current) autoScrollTween.current.kill();
+    };
+  }, [handleUserScroll]);
+
   useEffect(() => {
     const container = containerRef.current;
-    const header = headerRef.current;
+    const track = trackRef.current;
 
-    if (!container || !header) return;
+    if (!container || !track) return;
 
-    // Pin the header only within the IdealForSection area
-    ScrollTrigger.create({
+    const totalSections = sections.length;
+    
+    const scrollTrigger = ScrollTrigger.create({
+      id: "ideal-for-scroll",
       trigger: container,
       start: "top top",
-      end: `+=${(sections.length - 1) * 100}%`, 
-      pin: header,
-      pinSpacing: false,
+      end: `+=${totalSections * 100}%`, 
+      pin: true,
+      scrub: 1, 
+      onUpdate: (self) => {
+        const p = Math.min(0.9999, Math.max(0, self.progress));
+        const totalProgress = p * totalSections;
+        
+        let currentIndex = Math.floor(totalProgress) + 1;
+        const localProgress = (totalProgress % 1);
+
+        setActiveIndex(currentIndex);
+        setSectionProgress(localProgress);
+        
+        if (track) {
+            const xPos = -(currentIndex - 1) * 100;
+            track.style.transform = `translateX(${xPos}vw)`; 
+        }
+      },
+      onEnter: () => startAutoScroll(),
+      onEnterBack: () => startAutoScroll(),
+      onLeave: () => {
+         if (autoScrollTween.current) autoScrollTween.current.kill();
+      },
+      onLeaveBack: () => {
+         if (autoScrollTween.current) autoScrollTween.current.kill();
+      }
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      scrollTrigger.kill();
+      if (autoScrollTween.current) autoScrollTween.current.kill();
     };
-  }, []);
+  }, [sections.length, startAutoScroll]);
 
   return (
-    <section id="what-we-do">
-    <div ref={containerRef} className="relative bg-black min-h-screen">
-     <div
-  ref={headerRef}
-  className="sticky top-0 left-0 right-0 z-40 bg-black 
-             pt-24      
-             md:pt-28    
-             lg:pt-32   
-             xl:pt-36  
-             pb-6">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col gap-4">
-            <div className="text-white text-sm font-medium tracking-wider">
-              Ideal for
+    <section id="what-we-do" ref={containerRef} className="relative bg-black h-screen overflow-hidden">
+        {/* Fixed Header - Overlay */}
+        <div className="absolute top-0 left-0 right-0 z-40 pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-6 pointer-events-none">
+            <div className="container mx-auto px-6 lg:px-12">
+            <div className="flex flex-col gap-4">
+                <div className="text-white text-sm font-medium tracking-wider">
+                Ideal for
+                </div>
+                <hr className="w-full border-t border-white/30" />
             </div>
-            <hr className="w-full border-t border-white/30" />
-          </div>
+            </div>
         </div>
-      </div>
 
-      {/* Scroll Sections */}
-      {sections.map((section) => (
-        <ScrollSection key={section.index} {...section} totalSections={sections.length} />
-      ))}
-    </div>
+        {/* Horizontal Track */}
+        <div 
+            ref={trackRef}
+            className="flex h-full transition-transform duration-700 ease-in-out will-change-transform"
+            style={{ width: `${sections.length * 100}vw` }} 
+        >
+            {sections.map((section) => (
+                <ScrollSection 
+                    key={section.index} 
+                    {...section} 
+                    totalSections={sections.length} 
+                    activeIndex={activeIndex}
+                    sectionProgress={sectionProgress}
+                />
+            ))}
+        </div>
     </section>
   );
 };

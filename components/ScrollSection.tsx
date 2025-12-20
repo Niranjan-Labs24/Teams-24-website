@@ -1,11 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { StaticImageData } from 'next/image';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface MediaAsset {
   type: 'video' | 'image';
@@ -21,6 +16,8 @@ interface ScrollSectionProps {
   desktopMedia: MediaAsset[];
   mobileMedia: MediaAsset[];
   gradient: string;
+  activeIndex: number;
+  sectionProgress: number;
 }
 
 const ScrollSection = ({
@@ -32,119 +29,9 @@ const ScrollSection = ({
   desktopMedia,
   mobileMedia,
   gradient,
+  activeIndex,
+  sectionProgress,
 }: ScrollSectionProps) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const desktopContentRef = useRef<HTMLDivElement>(null);
-  const mobileContentRef = useRef<HTMLDivElement>(null);
-  const desktopImageRef = useRef<HTMLDivElement>(null);
-  const mobileImageRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const section = sectionRef.current;
-    const desktopContent = desktopContentRef.current;
-    const mobileContent = mobileContentRef.current;
-    const desktopImage = desktopImageRef.current;
-    const mobileImage = mobileImageRef.current;
-
-    if (!section) return;
-
-    // Pin section during scroll
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-      pinSpacing: false,
-      scrub: 1,
-      onEnter: () => playVideos(),
-      onEnterBack: () => playVideos(),
-    });
-
-    const playVideos = () => {
-      // Dynamically find all video elements within this section and play them
-      const videos = section.querySelectorAll('video');
-      videos.forEach((video) => {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      });
-    };
-
-    // Fade out desktop content when scrolling away
-    if (desktopContent) {
-      gsap.fromTo(
-        desktopContent,
-        { opacity: 1, y: 0 },
-        {
-          opacity: 0,
-          y: -50,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=50%",
-            scrub: 1,
-          },
-        }
-      );
-    }
-
-    // Fade out mobile content when scrolling away
-    if (mobileContent) {
-      gsap.fromTo(
-        mobileContent,
-        { opacity: 1, y: 0 },
-        {
-          opacity: 0,
-          y: -50,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=50%",
-            scrub: 1,
-          },
-        }
-      );
-    }
-
-    // Scale and fade out desktop image
-    if (desktopImage) {
-      gsap.fromTo(
-        desktopImage,
-        { scale: 1, opacity: 1 },
-        {
-          scale: 0.8,
-          opacity: 0,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=50%",
-            scrub: 1,
-          },
-        }
-      );
-    }
-
-    // Scale and fade out mobile image
-    if (mobileImage) {
-      gsap.fromTo(
-        mobileImage,
-        { scale: 1, opacity: 1 },
-        {
-          scale: 0.8,
-          opacity: 0,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=50%",
-            scrub: 1,
-          },
-        }
-      );
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
 
   const renderVisual = (mediaItems: MediaAsset[], isMobile: boolean = false) => {
     if (!mediaItems || mediaItems.length === 0) return null;
@@ -159,7 +46,6 @@ const ScrollSection = ({
               className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
                 isMobile && index === 2 ? 'h-[250px] sm:h-[300px]' : ''
               }`}
-              style={{ animationDelay: idx === 1 ? '0.2s' : '0s' }}
             >
               {item.type === 'video' ? (
                 <video
@@ -172,7 +58,7 @@ const ScrollSection = ({
                 />
               ) : (
                 <img
-                  src={typeof item.src === 'string' ? item.src : item.src.src}
+                  src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
                   alt={title}
                   className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
                 />
@@ -198,7 +84,7 @@ const ScrollSection = ({
           />
         ) : (
           <img
-            src={typeof item.src === 'string' ? item.src : item.src.src}
+            src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
             alt={title}
             className="w-full h-auto rounded-xl sm:rounded-2xl"
           />
@@ -209,21 +95,37 @@ const ScrollSection = ({
   
   const renderProgressIndicator = () => (
     <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
-      {Array.from({ length: totalSections }).map((_, i) => (
-        <div
-          key={i}
-          className={`rounded-full transition-all duration-300 ${
-            i + 1 === index ? "w-8 sm:w-12 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/30"
-          }`}
-        />
-      ))}
+      {Array.from({ length: totalSections }).map((_, i) => {
+        const indexVal = i + 1;
+        const isCurrent = indexVal === activeIndex;
+        const isCompleted = indexVal < activeIndex;
+
+        // Width logic:
+        const widthClass = isCurrent ? "w-8 sm:w-12" : "w-1.5";
+        
+        return (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full bg-white/30 overflow-hidden transition-all duration-300 ${widthClass}`}
+          >
+             {/* Fill part */}
+            {(isCurrent || isCompleted) && (
+                 <div 
+                    className="h-full bg-white transition-all duration-75 ease-linear"
+                    style={{ 
+                        width: isCompleted ? '100%' : (isCurrent ? `${sectionProgress * 100}%` : '0%') 
+                    }}
+                 />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 
   return (
     <section
-      ref={sectionRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-screen flex-shrink-0 flex flex-col items-center justify-center overflow-hidden pt-44 lg:pt-64"
     >
       {/* Background Gradient */}
       <div
@@ -231,9 +133,9 @@ const ScrollSection = ({
         style={{ transform: "scale(1.5)" }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 w-full flex-1">
         {/* Left Content - Desktop */}
-        <div ref={desktopContentRef} className="hidden lg:block space-y-6 lg:space-y-8">
+        <div className="hidden lg:block space-y-6 lg:space-y-8">
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="text-white text-muted-foreground text-sm sm:text-lg font-mono">
@@ -246,7 +148,7 @@ const ScrollSection = ({
             
              {/* Progress Indicator */}
              <div className="pt-2">
-              {renderProgressIndicator()}
+               {renderProgressIndicator()}
             </div>
           </div>
 
@@ -266,7 +168,7 @@ const ScrollSection = ({
         </div>
 
         {/* Mobile & Tablet Layout */}
-        <div ref={mobileContentRef} className="lg:hidden space-y-6 w-full">
+        <div className="lg:hidden space-y-6 w-full">
           {/* Title Section */}
           <div className="space-y-4">
             <div className="space-y-2">
@@ -279,12 +181,12 @@ const ScrollSection = ({
             </div>
              {/* Progress Indicator */}
              <div className="pt-1">
-              {renderProgressIndicator()}
+               {renderProgressIndicator()}
             </div>
           </div>
 
           {/* Media Section */}
-          <div ref={mobileImageRef} className="relative">
+          <div className="relative">
             {renderVisual(mobileMedia, true)}
           </div>
 
@@ -305,7 +207,7 @@ const ScrollSection = ({
         </div>
 
         {/* Right Image(s) - Desktop */}
-        <div ref={desktopImageRef} className="hidden lg:block relative">
+        <div className="hidden lg:block relative">
            {renderVisual(desktopMedia, false)}
         </div>
       </div>
