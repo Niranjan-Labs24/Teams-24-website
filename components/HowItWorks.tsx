@@ -137,7 +137,7 @@ const HowItWorks = () => {
                 alt={`Step ${step.id}`}
                 width={500}
                 height={500}
-                className="object-contain rounded-2xl w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[400px]"
+                className="object-contain rounded-2xl w-full max-w-[17.5rem] sm:max-w-[20rem] md:max-w-[21.875rem] lg:max-w-[23.75rem] xl:max-w-[25rem]"
                 style={{
                   filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))",
                 }}
@@ -145,7 +145,7 @@ const HowItWorks = () => {
             </div>
 
             {/* Right Text - Responsive sizing */}
-            <div className="step-text w-full max-w-[400px] space-y-4 text-center lg:text-left flex-shrink-0">
+            <div className="step-text w-full max-w-[25rem] space-y-4 text-center lg:text-left flex-shrink-0">
               <div className="text-sm font-light tracking-widest text-gray-400">[{step.id}]</div>
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
                 {step.title}

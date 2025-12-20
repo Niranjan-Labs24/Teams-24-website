@@ -46,7 +46,7 @@ export default function HeroSection(): JSX.Element {
     (index + cards.length) % cards.length;
 
   return (
-    <section className="bg-white w-full flex justify-center lg:px-[26px]">
+    <section className="bg-white w-full flex justify-center lg:px-6 2xl:px-0">
       {/* Mobile Layout: White background with fixed-size background image */}
       <div className="md:hidden w-full min-h-screen bg-white flex justify-center">
         <div className="w-full max-w-[393px] min-h-[852px] relative">
@@ -157,7 +157,7 @@ export default function HeroSection(): JSX.Element {
 
       {/* Desktop/Tablet Layout: Original design with white space */}
       <div 
-        className="hidden lg:block relative w-full lg:max-w-[1388px] lg:h-[916px] lg:mt-[26px] lg:rounded-[32px] overflow-hidden"
+        className="hidden lg:block relative w-full lg:max-w-[86rem] lg:h-[57rem] lg:mt-7 lg:rounded-[2rem] overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -177,14 +177,14 @@ export default function HeroSection(): JSX.Element {
         {/* Content Container */}
         <div className="relative z-10 h-full flex items-center justify-between px-20">
           {/* LEFT TEXT CONTENT */}
-          <div className="flex-1 max-w-[707px] space-y-8">
+          <div className="flex-1 max-w-[44rem] space-y-8">
             {/* Main Heading */}
-            <h1 className="text-[64px] font-manrope font-bold leading-[72px] tracking-[-0.02em] text-white">
+            <h1 className="text-[4rem] font-manrope font-bold leading-[1.125] tracking-[-0.02em] text-white">
               Flexibility of a freelancer <br /> with commitment of an employee
             </h1>
             
           
-            <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300">
+            <p className="font-manrope font-medium text-base leading-[1.5] text-gray-300">
               Hiring can be as easier as shopping
             </p>
 
@@ -192,13 +192,13 @@ export default function HeroSection(): JSX.Element {
             <div className="flex flex-col items-start gap-4 pt-8">
               <button 
                 onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg"
+                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-lg leading-[1.55] hover:bg-gray-200 transition-all duration-300 shadow-lg"
               >
                 Build your team
               </button>
               
              
-              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-300">
+              <p className="font-manrope font-medium text-base leading-[1.5] text-gray-300">
                 Book a free discovery call
               </p>
             </div>
@@ -207,8 +207,8 @@ export default function HeroSection(): JSX.Element {
           {/* CAROUSEL */}
           <div className="flex-1 flex justify-end relative">
            
-            {/* Vertical Indicator (Desktop) */}
-            <div className="absolute right-[20px] top-1/2 -translate-y-1/2 z-20">
+            {/* Vertical Indicator (Desktop) - Right Side */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20">
                <div className="inline-flex flex-col items-center gap-2 px-2 py-3 rounded-full border border-white/10 bg-white/5 h-fit">
                 {cards.map((_, i) => (
                   <div
@@ -222,7 +222,7 @@ export default function HeroSection(): JSX.Element {
             </div>
 
             
-            <div className="flex flex-col items-center justify-center relative h-[700px] w-[350px] overflow-visible">
+            <div className="flex flex-col items-center justify-center relative h-[43.75rem] w-[22rem] overflow-visible mr-8">
               {cards.map((card, i) => {
                 const circularIndex = getCircularIndex(currentIndex - i);
                 let y = 0,
@@ -252,7 +252,7 @@ export default function HeroSection(): JSX.Element {
                     key={i}
                     animate={{ y, scale, opacity, zIndex }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="absolute w-[387.5px] h-[482px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
+                    className="absolute w-[24rem] h-[30rem] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
                   >
                     <Image
                       src={card.img}

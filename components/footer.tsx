@@ -26,8 +26,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-[1440px] mx-auto h-auto min-h-[649px] bg-white font-[Manrope]  relative overflow-hidden">
-      <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[108px] px-4 sm:px-6 md:px-8 lg:px-[94px] pb-32">
+    <footer className="w-full max-w-[90rem] mx-auto h-auto min-h-[40.5rem] bg-white font-[Manrope]  relative overflow-hidden">
+      <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[6.75rem] px-4 sm:px-6 md:px-8 lg:px-[5.875rem] pb-32">
         {/* ✅ Responsive Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-0 items-start">
           {/* ✅ Logo */}
@@ -45,7 +45,7 @@ export function Footer() {
                 style={{
                   fontFamily: "Manrope, sans-serif",
                   fontWeight: 700,
-                  fontSize: "clamp(20px, 4vw, 24px)",
+                  fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
                   lineHeight: "40px",
                 }}
               >
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Company Section */}
-          <div className="lg:ml-[58px]">
+          <div className="lg:ml-[3.625rem]">
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Company</p>
             <ul className="space-y-2 md:space-y-3">
               <li>
@@ -94,7 +94,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Legal Section */}
-          <div className="lg:ml-[89px]">
+          <div className="lg:ml-[5.5rem]">
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Legal</p>
             <ul className="space-y-2 md:space-y-3">
               <li>
@@ -117,7 +117,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Contact Section */}
-          <div className="col-span-2 lg:col-span-1 lg:ml-[89px] mt-8 lg:mt-0">
+          <div className="col-span-2 lg:col-span-1 lg:ml-[5.5rem] mt-8 lg:mt-0">
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Contact</p>
             <p className="text-gray-600 mb-4 md:mb-6 font-semibold text-base">
               <Link
@@ -203,14 +203,14 @@ export function Footer() {
       </div>
 
       {/* ✅ Watermark (Unchanged) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen max-w-[1440px] overflow-hidden pointer-events-none">
-        <div className="w-full h-[120px] sm:h-[150px] md:h-[200px] lg:h-[250px] xl:h-[350px] flex items-end justify-center select-none opacity-10">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen max-w-[90rem] overflow-hidden pointer-events-none">
+        <div className="w-full h-[7.5rem] sm:h-[9.375rem] md:h-[12.5rem] lg:h-[15.625rem] xl:h-[21.875rem] flex items-end justify-center select-none opacity-10">
           <p
             className="font-normal text-center whitespace-nowrap w-full px-4"
             style={{
               fontFamily: "Dyson Sans Modern",
               fontWeight: 400,
-              fontSize: "clamp(80px, 25vw, 400px)",
+              fontSize: "clamp(5rem, 25vw, 25rem)",
               lineHeight: "0.6",
               color: "#131313",
               transform: "translateY(15%)",

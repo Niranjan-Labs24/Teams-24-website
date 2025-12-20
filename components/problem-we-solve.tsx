@@ -198,7 +198,7 @@ export function ProblemWeSolve() {
   const sliderPercentage = calculatePercentageFromValue(sliderValue, isWithTeams24)
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '1006px' }}>
+    <section ref={sectionRef} className="w-full bg-white py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '62.875rem' }}>
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-12 lg:mb-16">
@@ -211,7 +211,7 @@ export function ProblemWeSolve() {
         </div>
 
         {/* Slider Section */}
-        <div className="bg-white rounded-3xl border border-[#22222233] p-6 sm:p-8 mb-12 lg:mb-16 mx-auto relative overflow-hidden" style={{ maxWidth: '1244px', minHeight: '182px' }}>
+        <div className="bg-white rounded-3xl border border-[#22222233] p-6 sm:p-8 mb-12 lg:mb-16 mx-auto relative overflow-hidden" style={{ maxWidth: '77.75rem', minHeight: '11.375rem' }}>
           
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
             background: `linear-gradient(135deg, transparent 0%, white 50%, transparent 100%)`,
@@ -232,7 +232,7 @@ export function ProblemWeSolve() {
             <div className="relative w-full" ref={trackRef}>
               <div 
                 className="w-full rounded-xl bg-[#2222220F] relative z-0 cursor-pointer"
-                style={{ height: '24px', borderRadius: '12px' }}
+                style={{ height: '1.5rem', borderRadius: '0.75rem' }}
                 onClick={handleTrackClick}
               >
                 <div 
@@ -240,8 +240,8 @@ export function ProblemWeSolve() {
                   style={{
                     width: `${sliderPercentage}%`,
                     backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
-                    height: '24px',
-                    borderRadius: '12px',
+                    height: '1.5rem',
+                    borderRadius: '0.75rem',
                     boxShadow: 'inset 0 2px 4px rgba(255,255,255,0.3)'
                   }}
                 />
@@ -253,8 +253,8 @@ export function ProblemWeSolve() {
                 style={{
                   left: `${sliderPercentage}%`,
                   backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
-                  width: '44px',
-                  height: '44px',
+                  width: '2.75rem',
+                  height: '2.75rem',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.5)'
                 }}
                 onMouseDown={handleMouseDown}

@@ -156,12 +156,12 @@ useEffect(() => {
       className="
         relative 
         w-full 
-        max-w-[1264px] 
+        max-w-[79rem] 
         mx-auto 
-        h-[527px] 
+        h-[33rem] 
         bg-white 
         overflow-hidden 
-        rounded-[32px] 
+        rounded-[2rem] 
         border border-[#00000014]
         px-4 sm:px-6 md:px-8 
         flex items-center justify-center
@@ -196,13 +196,13 @@ useEffect(() => {
   <div className="relative z-10 text-center flex flex-col items-center justify-center gap-10 px-4 sm:px-6 md:px-8">
 
   {/* ====== SECTION 1 ====== */}
-  <div className="max-w-[292px] w-full">
+  <div className="max-w-[18.25rem] w-full">
     <p
       className="
         text-gray-700
         font-[600]
-        text-[19px]
-        leading-[32px]
+        text-[1.1875rem]
+        leading-[2rem]
         tracking-[-0.02em]
         text-center
         font-[Manrope]
@@ -213,14 +213,14 @@ useEffect(() => {
 
     {/* Decorative line below text */}
     <div className="flex justify-center mt-4">
-      <div className="h-[4px] w-1/3 bg-black rounded-full"></div>
+      <div className="h-1 w-1/3 bg-black rounded-full"></div>
     </div>
   </div>
 
   {/* ====== SECTION 2 ====== */}
   <div
     className="
-      max-w-[978px] 
+      max-w-[61rem] 
       w-full
       mt-6
       px-2
@@ -231,8 +231,8 @@ useEffect(() => {
         text-black
         font-[700]
         font-[Manrope]
-        text-[32px] sm:text-[40px] md:text-[48px]
-        leading-[38px] sm:leading-[44px] md:leading-[48px]
+        text-[2rem] sm:text-[2.5rem] md:text-[3rem]
+        leading-[2.375rem] sm:leading-[2.75rem] md:leading-[3rem]
         tracking-[-0.04em]
         text-center
       "
@@ -248,14 +248,14 @@ useEffect(() => {
   onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
     className="
       mt-8
-      w-[150px] sm:w-[170px] md:w-[190px]
-      h-[56px] sm:h-[64px] md:h-[70px]
+      w-[9.375rem] sm:w-[10.625rem] md:w-[11.875rem]
+      h-[3.5rem] sm:h-[4rem] md:h-[4.375rem]
       bg-black 
       text-white 
       font-[Manrope]
       font-semibold 
-      text-[16px] sm:text-[18px] md:text-[20px]
-      rounded-[12px] 
+      text-base sm:text-lg md:text-xl
+      rounded-xl 
       border-4 border-[#FFFFFF4D] 
       shadow-lg hover:shadow-xl 
       hover:bg-gray-800 

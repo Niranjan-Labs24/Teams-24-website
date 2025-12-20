@@ -44,7 +44,7 @@ const ScrollSection = ({
             <div 
               key={idx}
               className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
-                isMobile && index === 2 ? 'h-[250px] sm:h-[300px]' : ''
+                isMobile && index === 2 ? 'h-[15.625rem] sm:h-[18.75rem]' : ''
               }`}
             >
               {item.type === 'video' ? (
@@ -101,12 +101,12 @@ const ScrollSection = ({
         const isCompleted = indexVal < activeIndex;
 
         // Width logic:
-        const widthClass = isCurrent ? "w-8 sm:w-12" : "w-1.5";
+        const widthClass = isCurrent ? "w-10 sm:w-16" : "w-2";
         
         return (
           <div
             key={i}
-            className={`h-1.5 rounded-full bg-white/30 overflow-hidden transition-all duration-300 ${widthClass}`}
+            className={`h-2 rounded-full bg-white/30 overflow-hidden transition-all duration-300 ${widthClass}`}
           >
              {/* Fill part */}
             {(isCurrent || isCompleted) && (
@@ -125,7 +125,7 @@ const ScrollSection = ({
 
   return (
     <section
-      className="relative h-screen w-screen flex-shrink-0 flex flex-col items-center justify-center overflow-hidden pt-44 lg:pt-64"
+      className="relative h-screen w-screen flex-shrink-0 flex flex-col items-center justify-center overflow-hidden pt-40 md:pt-48 lg:pt-56"
     >
       {/* Background Gradient */}
       <div
@@ -137,8 +137,8 @@ const ScrollSection = ({
         {/* Left Content - Desktop */}
         <div className="hidden lg:block space-y-6 lg:space-y-8">
           <div className="space-y-4">
-            <div className="space-y-2">
-              <div className="text-white text-muted-foreground text-sm sm:text-lg font-mono">
+            <div className="space-y-4">
+              <div className="text-white text-muted-foreground text-lg sm:text-xl font-mono">
                 [{index.toString().padStart(2, "0")}]
               </div>
               <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
@@ -147,7 +147,7 @@ const ScrollSection = ({
             </div>
             
              {/* Progress Indicator */}
-             <div className="pt-2">
+             <div className="pt-4 pb-4">
                {renderProgressIndicator()}
             </div>
           </div>
@@ -171,8 +171,8 @@ const ScrollSection = ({
         <div className="lg:hidden space-y-6 w-full">
           {/* Title Section */}
           <div className="space-y-4">
-            <div className="space-y-2">
-              <div className="text-white text-muted-foreground text-sm sm:text-lg font-mono">
+            <div className="space-y-4">
+              <div className="text-white text-muted-foreground text-lg sm:text-xl font-mono">
                 [{index.toString().padStart(2, "0")}]
               </div>
               <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight">
@@ -180,7 +180,7 @@ const ScrollSection = ({
               </h2>
             </div>
              {/* Progress Indicator */}
-             <div className="pt-1">
+             <div className="pt-2 pb-2">
                {renderProgressIndicator()}
             </div>
           </div>
