@@ -36,15 +36,15 @@ const ScrollSection = ({
   const renderVisual = (mediaItems: MediaAsset[], isMobile: boolean = false) => {
     if (!mediaItems || mediaItems.length === 0) return null;
 
-    // Grid layout for 2 items
+    
     if (mediaItems.length === 2) {
       return (
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4">
           {mediaItems.map((item, idx) => (
             <div 
               key={idx}
               className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
-                isMobile && index === 2 ? 'h-[15.625rem] sm:h-[18.75rem]' : ''
+                isMobile ? 'max-h-[12rem] sm:max-h-[16rem]' : ''
               }`}
             >
               {item.type === 'video' ? (
@@ -72,7 +72,9 @@ const ScrollSection = ({
     // Single item
     const item = mediaItems[0];
     return (
-      <div className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2`}>
+      <div className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
+        isMobile ? 'max-h-[16rem] sm:max-h-[20rem]' : ''
+      }`}>
         {item.type === 'video' ? (
           <video
             src={item.src as string}
@@ -111,7 +113,7 @@ const ScrollSection = ({
              {/* Fill part */}
             {(isCurrent || isCompleted) && (
                  <div 
-                    className="h-full bg-white transition-all duration-75 ease-linear"
+                    className="h-full bg-white transition-all duration-300 ease-linear"
                     style={{ 
                         width: isCompleted ? '100%' : (isCurrent ? `${sectionProgress * 100}%` : '0%') 
                     }}
@@ -125,7 +127,7 @@ const ScrollSection = ({
 
   return (
     <section
-      className="relative h-screen w-screen flex-shrink-0 flex flex-col items-center justify-center overflow-hidden pt-40 md:pt-48 lg:pt-56"
+      className="relative h-screen w-screen flex-shrink-0 flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-24 lg:pt-36"
     >
       {/* Background Gradient */}
       <div
@@ -168,14 +170,14 @@ const ScrollSection = ({
         </div>
 
         {/* Mobile & Tablet Layout */}
-        <div className="lg:hidden space-y-6 w-full">
+        <div className="lg:hidden space-y-3 sm:space-y-4 w-full">
           {/* Title Section */}
-          <div className="space-y-4">
-            <div className="space-y-4">
-              <div className="text-white text-muted-foreground text-lg sm:text-xl font-mono">
+          <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="text-white text-muted-foreground text-base sm:text-lg font-mono">
                 [{index.toString().padStart(2, "0")}]
               </div>
-              <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight">
+              <h2 className="text-white text-2xl sm:text-3xl font-bold leading-tight">
                 {title}
               </h2>
             </div>
@@ -191,8 +193,8 @@ const ScrollSection = ({
           </div>
 
           {/* Stat Section */}
-          <div className="space-y-4">
-            <div className="space-y-2">
+          <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1 sm:space-y-2">
               <div className="flex flex-col">
                 <div className="text-white text-4xl sm:text-5xl font-bold">
                   {stat}
