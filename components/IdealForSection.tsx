@@ -12,7 +12,7 @@ const IdealForSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   
-  // State to track scroll progress for UI updates
+
   const [activeIndex, setActiveIndex] = useState(1);
   const [sectionProgress, setSectionProgress] = useState(0);
 
@@ -20,7 +20,10 @@ const IdealForSection = () => {
   const autoScrollTween = useRef<gsap.core.Tween | null>(null);
   const isUserScrolling = useRef(false);
   const userScrollTimeout = useRef<NodeJS.Timeout | null>(null);
-
+  
+  // Throttle state updates to reduce lag
+  const lastUpdateTime = useRef(0);
+  const UPDATE_THROTTLE = 100; 
   const sections = [
     {
       index: 1,
@@ -74,7 +77,7 @@ const IdealForSection = () => {
   const startAutoScroll = useCallback(() => {
     if (isUserScrolling.current) return;
     
-    // Check if ScrollTrigger instance exists
+    
     const st = ScrollTrigger.getById("ideal-for-scroll");
     if (!st) return;
 
@@ -82,17 +85,12 @@ const IdealForSection = () => {
     const endScroll = st.end;
     const startScroll = st.start;
 
-    // Check bounds
-    // We add a small buffer (50px) to ensure we don't start it if we are barely in
+    
     if (currentScroll < startScroll - 50 || currentScroll >= endScroll) return;
 
     const distanceRemaining = endScroll - currentScroll;
     const totalDistance = endScroll - startScroll;
-    const totalTime = sections.length * 10; // 10s per section
-    
-    // Calculate Speed (pixels per second)
-    // const speed = totalDistance / totalTime;
-    
+    const totalTime = sections.length * 5; 
     const duration = (distanceRemaining / totalDistance) * totalTime;
 
     if (duration <= 0.1) return;
@@ -120,10 +118,9 @@ const IdealForSection = () => {
     userScrollTimeout.current = setTimeout(() => {
         isUserScrolling.current = false;
         startAutoScroll();
-    }, 1500);
+    }, 4000); 
   }, [startAutoScroll]);
 
-  // Global event listeners
   useEffect(() => {
     const onInteraction = () => handleUserScroll();
     
@@ -154,20 +151,26 @@ const IdealForSection = () => {
       start: "top top",
       end: `+=${totalSections * 100}%`, 
       pin: true,
-      scrub: 1, 
+      scrub: true, // Removed delay for instant manual scroll response
       onUpdate: (self) => {
         const p = Math.min(0.9999, Math.max(0, self.progress));
         const totalProgress = p * totalSections;
         
         let currentIndex = Math.floor(totalProgress) + 1;
         const localProgress = (totalProgress % 1);
-
-        setActiveIndex(currentIndex);
-        setSectionProgress(localProgress);
+        
         
         if (track) {
             const xPos = -(currentIndex - 1) * 100;
             track.style.transform = `translateX(${xPos}vw)`; 
+        }
+        
+        
+        const now = Date.now();
+        if (isUserScrolling.current || now - lastUpdateTime.current >= UPDATE_THROTTLE) {
+          setActiveIndex(currentIndex);
+          setSectionProgress(localProgress);
+          lastUpdateTime.current = now;
         }
       },
       onEnter: () => startAutoScroll(),
@@ -189,8 +192,8 @@ const IdealForSection = () => {
   return (
     <section id="what-we-do" ref={containerRef} className="relative bg-black h-screen overflow-hidden">
         {/* Fixed Header - Overlay */}
-        <div className="absolute top-0 left-0 right-0 z-40 pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-6 pointer-events-none">
-            <div className="container mx-auto px-6 lg:px-12">
+        <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pointer-events-none">
+            <div className="container mx-auto">
             <div className="flex flex-col gap-4">
                 <div className="text-white text-sm font-medium tracking-wider">
                 Ideal for
