@@ -16,12 +16,7 @@ const IdealForSection = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [sectionProgress, setSectionProgress] = useState(0);
 
-  // Auto-scroll references
-  const autoScrollTween = useRef<gsap.core.Tween | null>(null);
-  const isUserScrolling = useRef(false);
-  const userScrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  
-  // Throttle state updates to reduce lag
+ 
   const lastUpdateTime = useRef(0);
   const UPDATE_THROTTLE = 100; 
   const sections = [
@@ -36,7 +31,7 @@ const IdealForSection = () => {
         { type: "video" as const, src: "/video/1stcard(L).mp4" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/1stcard(M).mp4" }
+        { type: "video" as const, src: "/video/1stcard(L).mp4" }
       ],
       gradient: "bg-gradient-blue-purple",
     },
@@ -52,8 +47,8 @@ const IdealForSection = () => {
         { type: "image" as const, src: "/video/SecondcardImage(L).png" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/secondCard(M).mp4" },
-        { type: "image" as const, src: "/video/SecondCardImage(m).png" }
+        { type: "video" as const, src: "/video/secondCard(L).mp4" },
+        { type: "image" as const, src: "/video/SecondcardImage(L).png" }
       ],
       gradient: "bg-gradient-cyan-yellow",
     },
@@ -68,74 +63,11 @@ const IdealForSection = () => {
         { type: "video" as const, src: "/video/ThirdCard(L).mp4" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/thirdCard(M).mp4" }
+        { type: "video" as const, src: "/video/ThirdCard(L).mp4" }
       ],
       gradient: "bg-gradient-orange-pink",
     },
   ];
-
-  const startAutoScroll = useCallback(() => {
-    if (isUserScrolling.current) return;
-    
-    
-    const st = ScrollTrigger.getById("ideal-for-scroll");
-    if (!st) return;
-
-    const currentScroll = window.scrollY;
-    const endScroll = st.end;
-    const startScroll = st.start;
-
-    
-    if (currentScroll < startScroll - 50 || currentScroll >= endScroll) return;
-
-    const distanceRemaining = endScroll - currentScroll;
-    const totalDistance = endScroll - startScroll;
-    const totalTime = sections.length * 5; 
-    const duration = (distanceRemaining / totalDistance) * totalTime;
-
-    if (duration <= 0.1) return;
-
-    autoScrollTween.current = gsap.to(window, {
-        scrollTo: endScroll,
-        duration: duration,
-        ease: "none",
-        overwrite: "auto"
-    });
-  }, [sections.length]);
-
-  const handleUserScroll = useCallback(() => {
-    if (autoScrollTween.current) {
-        autoScrollTween.current.kill();
-        autoScrollTween.current = null;
-    }
-    
-    isUserScrolling.current = true;
-
-    if (userScrollTimeout.current) {
-        clearTimeout(userScrollTimeout.current);
-    }
-
-    userScrollTimeout.current = setTimeout(() => {
-        isUserScrolling.current = false;
-        startAutoScroll();
-    }, 4000); 
-  }, [startAutoScroll]);
-
-  useEffect(() => {
-    const onInteraction = () => handleUserScroll();
-    
-    window.addEventListener("wheel", onInteraction, { passive: true });
-    window.addEventListener("touchmove", onInteraction, { passive: true });
-    window.addEventListener("keydown", onInteraction, { passive: true });
-    
-    return () => {
-        window.removeEventListener("wheel", onInteraction);
-        window.removeEventListener("touchmove", onInteraction);
-        window.removeEventListener("keydown", onInteraction);
-        if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current);
-        if (autoScrollTween.current) autoScrollTween.current.kill();
-    };
-  }, [handleUserScroll]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -151,7 +83,7 @@ const IdealForSection = () => {
       start: "top top",
       end: `+=${totalSections * 100}%`, 
       pin: true,
-      scrub: true, // Removed delay for instant manual scroll response
+      scrub: true, 
       onUpdate: (self) => {
         const p = Math.min(0.9999, Math.max(0, self.progress));
         const totalProgress = p * totalSections;
@@ -167,32 +99,23 @@ const IdealForSection = () => {
         
         
         const now = Date.now();
-        if (isUserScrolling.current || now - lastUpdateTime.current >= UPDATE_THROTTLE) {
+        if (now - lastUpdateTime.current >= UPDATE_THROTTLE) {
           setActiveIndex(currentIndex);
           setSectionProgress(localProgress);
           lastUpdateTime.current = now;
         }
       },
-      onEnter: () => startAutoScroll(),
-      onEnterBack: () => startAutoScroll(),
-      onLeave: () => {
-         if (autoScrollTween.current) autoScrollTween.current.kill();
-      },
-      onLeaveBack: () => {
-         if (autoScrollTween.current) autoScrollTween.current.kill();
-      }
     });
 
     return () => {
       scrollTrigger.kill();
-      if (autoScrollTween.current) autoScrollTween.current.kill();
     };
-  }, [sections.length, startAutoScroll]);
+  }, [sections.length]);
 
   return (
     <section id="what-we-do" ref={containerRef} className="relative bg-black h-screen overflow-hidden">
-        {/* Fixed Header - Overlay */}
-        <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pointer-events-none">
+
+        <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
             <div className="container mx-auto">
             <div className="flex flex-col gap-4">
                 <div className="text-white text-sm font-medium tracking-wider">
@@ -203,7 +126,7 @@ const IdealForSection = () => {
             </div>
         </div>
 
-        {/* Horizontal Track */}
+        
         <div 
             ref={trackRef}
             className="flex h-full transition-transform duration-700 ease-in-out will-change-transform"

@@ -87,12 +87,21 @@ export default function HeroSection(): JSX.Element {
                 Build your team
               </button>
               
-              {/* Discovery Call Text - Below Button */}
-              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-12">
-                Book a free discovery call
-              </p>
+              
+              <div className="flex items-center gap-2 mb-12">
+                <Image
+                  src="/logo5.png"
+                  alt="Logo"
+                  width={14}
+                  height={14}
+                  className="shrink-0"
+                />
+                <p className="font-manrope font-medium text-sm leading-[20px] text-gray-200 text-center">
+                  Book a free discovery call
+                </p>
+              </div>
 
-              {/* Mobile Carousel - Now clipped by parent overflow-hidden */}
+              
               <div className="relative w-full h-[380px] flex items-center justify-center overflow-visible">
                 {cards.map((card, i) => {
                   const circularIndex = getCircularIndex(currentIndex - i);
@@ -131,13 +140,15 @@ export default function HeroSection(): JSX.Element {
                         fill
                         className="object-cover"
                         priority
+                        quality={80}
+                        sizes="247px"
                       />
                     </motion.div>
                   );
                 })}
               </div>
 
-              {/* Horizontal Indicator (Mobile) */}
+         
               <div className="flex justify-center mt-8">
                 <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
                   {cards.map((_, i) => (
@@ -197,17 +208,25 @@ export default function HeroSection(): JSX.Element {
                 Build your team
               </button>
               
-             
-              <p className="font-manrope font-medium text-base leading-[1.5] text-gray-300">
-                Book a free discovery call
-              </p>
+              <div className="flex items-center gap-3 max-w-[18rem]">
+                <Image
+                  src="/logo5.png"
+                  alt="Logo"
+                  width={14}
+                  height={14}
+                  className="shrink-0"
+                />
+                <p className="font-manrope font-medium text-sm leading-[1.4] text-gray-300">
+                  Book a free discovery call
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* CAROUSEL */}
+        
           <div className="flex-1 flex justify-end relative">
            
-            {/* Vertical Indicator (Desktop) - Right Side */}
+         
             <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20">
                <div className="inline-flex flex-col items-center gap-2 px-2 py-3 rounded-full border border-white/10 bg-white/5 h-fit">
                 {cards.map((_, i) => (
@@ -222,7 +241,7 @@ export default function HeroSection(): JSX.Element {
             </div>
 
             
-            <div className="flex flex-col items-center justify-center relative h-[43.75rem] w-[22rem] overflow-visible mr-8">
+            <div className="flex flex-col items-center justify-center relative h-[43.75rem] w-[22rem] overflow-visible mr-24">
               {cards.map((card, i) => {
                 const circularIndex = getCircularIndex(currentIndex - i);
                 let y = 0,
@@ -260,6 +279,8 @@ export default function HeroSection(): JSX.Element {
                       fill
                       className="object-cover"
                       priority
+                      quality={80}
+                      sizes="384px"
                     />
                   </motion.div>
                 );
