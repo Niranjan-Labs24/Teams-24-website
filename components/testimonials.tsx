@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { LazyYouTube } from "./ui/lazy-youtube"
 
 const testimonials = [
   {
@@ -32,11 +33,6 @@ const testimonials = [
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0)
-  const [playerKey, setPlayerKey] = useState(0)
-
-  useEffect(() => {
-    setPlayerKey((k) => k + 1)
-  }, [current])
 
   const next = () => setCurrent((c) => (c + 1) % testimonials.length)
   const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length)
@@ -68,9 +64,9 @@ export default function Testimonials() {
           <div className="mt-4 border-t border-white/20 w-[12.5rem]" />
         </div>
 
-        {/* Main content */}
+        
         <div className="flex flex-col lg:flex-row justify-between items-start lg:mt-[6.25rem] gap-8 lg:gap-0 relative z-10">
-          {/* Quote box */}
+         
           <div
             className="bg-[rgba(255,255,255,0.02)] rounded-[2rem] p-8 relative order-2 lg:order-1"
             style={{
@@ -125,7 +121,7 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Video section */}
+        
           <div
             className="rounded-[2rem] overflow-hidden border border-white/10 bg-gray-900 order-1 lg:order-2"
             style={{
@@ -133,20 +129,18 @@ export default function Testimonials() {
               maxWidth: "42.875rem",
               height: "22.5rem",
             }}>
-            <iframe
-              key={playerKey}
+            <LazyYouTube
+              key={current}
+              videoId={t.videoId}
               title={`testimonial-video-${current}`}
               className="w-full h-full"
-              src={`https://www.youtube.com/embed/${t.videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
             />
           </div>
         </div>
 
-        {/* Indicators + Controls */}
+       
         <div className="flex flex-col lg:flex-row justify-between lg:items-center mt-10 relative z-30">
-          {/* Dots */}
+         
           <div
             className="flex gap-2 items-center justify-center absolute lg:static"
             style={{
@@ -170,7 +164,7 @@ export default function Testimonials() {
             ))}
           </div>
 
-          {/* Prev / Next */}
+       
           <div
             className="absolute lg:static flex gap-4 justify-center"
             style={{
@@ -193,8 +187,6 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
-
-      {/* Responsive Adjustments */}
       <style jsx>{`
         @media (max-width: 1024px) {
           section {
