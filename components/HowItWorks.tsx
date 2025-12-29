@@ -15,18 +15,21 @@ const steps = [
     title: "Define your vision",
     description: "Strategic session to blueprint your success",
     videoUrl: "/video/walter.mp4",
+    posterUrl: "/video/how it work poster/indx1.png",
   },
   {
     id: "02",
     title: "Evaluate from the curated",
     description: "Handpicked experts integrated and ready",
     videoUrl: "/video/how%20web.mp4",
+    posterUrl: "/video/how it work poster/indx2.png",
   },
   {
     id: "03",
     title: "Start building",
     description: "on a flexible subscription model",
     videoUrl: "/video/huddle.mp4",
+    posterUrl: "/video/how it work poster/indx3.png",
   },
 ];
 
@@ -239,6 +242,7 @@ export default function HowItWorks() {
                       <VideoPlayer
                         ref={(el) => { videoRefs.current[index] = el; }}
                         src={step.videoUrl}
+                        poster={step.posterUrl}
                         className="w-full h-full object-cover"
                         autoPlay
                         loop

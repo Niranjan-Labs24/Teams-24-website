@@ -28,10 +28,10 @@ const IdealForSection = () => {
       stat: "50+",
       statLabel: "startups hiring",
       desktopMedia: [
-        { type: "video" as const, src: "/video/1stcard(L).mp4" }
+        { type: "video" as const, src: "/video/1stcard(L).mp4", poster: "/video/idealposter/indx1.png" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/1stcard(L).mp4" }
+        { type: "video" as const, src: "/video/1stcard(L).mp4", poster: "/video/idealposter/indx1.png" }
       ],
       gradient: "bg-gradient-blue-purple",
     },
@@ -43,11 +43,11 @@ const IdealForSection = () => {
       stat: "70%",
       statLabel: "hiring success",
       desktopMedia: [
-        { type: "video" as const, src: "/video/secondCard(L).mp4" },
+        { type: "video" as const, src: "/video/secondCard(L).mp4", poster: "/video/idealposter/indx2.png" },
         { type: "image" as const, src: "/video/SecondcardImage(L).png" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/secondCard(L).mp4" },
+        { type: "video" as const, src: "/video/secondCard(L).mp4", poster: "/video/idealposter/indx2.png" },
         { type: "image" as const, src: "/video/SecondcardImage(L).png" }
       ],
       gradient: "bg-gradient-cyan-yellow",
@@ -60,10 +60,10 @@ const IdealForSection = () => {
       stat: "3x",
       statLabel: "faster to hire",
       desktopMedia: [
-        { type: "video" as const, src: "/video/ThirdCard(L).mp4" }
+        { type: "video" as const, src: "/video/ThirdCard(L).mp4", poster: "/video/idealposter/indx3.png" }
       ],
       mobileMedia: [
-        { type: "video" as const, src: "/video/ThirdCard(L).mp4" }
+        { type: "video" as const, src: "/video/ThirdCard(L).mp4", poster: "/video/idealposter/indx3.png" }
       ],
       gradient: "bg-gradient-orange-pink",
     },
