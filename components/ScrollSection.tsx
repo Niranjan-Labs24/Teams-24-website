@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { StaticImageData } from 'next/image';
 import { VideoPlayer } from './ui/video-player';
+import { cn } from "@/lib/utils";
 
 interface MediaAsset {
   type: 'video' | 'image';
   src: string | StaticImageData;
+  poster?: string;
 }
 
 interface ScrollSectionProps {
@@ -82,17 +84,16 @@ const ScrollSection = ({
 
     if (mediaItems.length === 2) {
       return (
-        <div className="grid grid-cols-2 gap-2 sm:gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 aspect-video w-full">
           {mediaItems.map((item, idx) => (
             <div 
               key={idx}
-              className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
-                isMobile ? 'max-h-[12rem] sm:max-h-[16rem]' : ''
-              }`}
+              className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden w-full h-full"
             >
               {item.type === 'video' ? (
                 <VideoPlayer
                   src={item.src as string}
+                  poster={item.poster}
                   className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
                   autoPlay
                   muted
@@ -114,12 +115,11 @@ const ScrollSection = ({
     
     const item = mediaItems[0];
     return (
-      <div className={`glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 ${
-        isMobile ? 'max-h-[16rem] sm:max-h-[20rem]' : ''
-      }`}>
+      <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden aspect-video w-full">
         {item.type === 'video' ? (
           <VideoPlayer
             src={item.src as string}
+            poster={item.poster}
             className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
             autoPlay
             muted
