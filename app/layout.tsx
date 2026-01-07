@@ -62,6 +62,10 @@ export const metadata: Metadata = {
     title: "Teams 24 | Hire Dedicated Developers & Consultants on Subscription",
     description: "Hire pre-vetted fullstack developers, SAP consultants, Salesforce experts, automation testers, UI/UX designers & customer support on flexible monthly subscription.",
   },
+  icons: {
+    icon: "/FebiconIcon.png",
+    apple: "/FebiconIcon.png",
+  },
   other: {
     "copyright": "Copyright 2025",
     "rating": "general",
