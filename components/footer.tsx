@@ -21,7 +21,7 @@ export function Footer() {
   const socialLinks = {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/teams24",
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/teams24",
-    twitter: process.env.NEXT_PUBLIC_TWITTER_URL || "https://x.com/teams24",
+    twitter: process.env.NEXT_PUBLIC_TWITTER_URL || "https://x.com/Teams_24?s=20",
     facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com/teams24"
   };
 
