@@ -83,7 +83,7 @@ export function Careers() {
             jobs.map((job, index) => (
               <a
                 key={job.id}
-                href={`https://careers.teams24.co/careers/${job.slug}`}
+                href={`https://careers.teams24.co/${job.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between h-auto md:h-[8.25rem] py-6 px-4 md:px-8 hover:bg-gray-50 transition group cursor-pointer"
