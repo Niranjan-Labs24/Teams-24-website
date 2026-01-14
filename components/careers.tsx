@@ -59,7 +59,7 @@ export function Careers() {
           </h2>
 
           <a
-            href="http://job-board-teams-24.vercel.app"
+            href="https://careers.teams24.co/"
             target="_blank"
             rel="noopener noreferrer"
             className="relative w-[14.1875rem] h-[4.5rem] bg-[#0F0F0F] rounded-xl border-4 border-[#0F0F0F]
@@ -83,7 +83,7 @@ export function Careers() {
             jobs.map((job, index) => (
               <a
                 key={job.id}
-                href={`http://job-board-teams-24.vercel.app/careers/${job.slug}`}
+                href={`https://careers.teams24.co/careers/${job.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between h-auto md:h-[8.25rem] py-6 px-4 md:px-8 hover:bg-gray-50 transition group cursor-pointer"
