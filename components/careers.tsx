@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 interface Job {
@@ -9,14 +10,17 @@ interface Job {
   location: string;
   type: string;
   slug: string;
+  color?: string; // Add color field (optional to prevent errors if column missing)
 }
 
-const colors = [
-  "from-pink-400 to-pink-500",
-  "from-blue-400 to-blue-600",
-  "from-orange-400 to-orange-500",
-  "from-rose-300 to-rose-400",
+const gradients = [
+  "--gradient-blue-purple",
+  "--gradient-cyan-yellow",
+  "--gradient-orange-pink",
+  "--gradient-purple-orange",
 ];
+
+const getGradientVar = (index: number) => gradients[index % gradients.length];
 
 export function Careers() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -27,7 +31,7 @@ export function Careers() {
       try {
         const { data, error } = await supabase
           .from("jobs")
-          .select("id, title, location, type, slug")
+          .select("id, title, location, type, slug, color") // Fetch color
           .eq("status", "published")
           .order("created_at", { ascending: false })
           .limit(4);
@@ -67,7 +71,7 @@ export function Careers() {
              hover:bg-black/80 transition"
           >
             <span
-              className="block w-[9.1875rem] h-8 text-white font-[Urbanist] font-semibold text-xl
+              className="block w-[9.1875rem] h-8 text-white font-[Urbanist] font-normal text-xl
               leading-8 tracking-[-0.03em] text-center overflow-hidden whitespace-nowrap"
             >
               View all openings
@@ -91,7 +95,13 @@ export function Careers() {
                 {/* Left side */}
                 <div className="flex items-start gap-4 sm:gap-6 flex-1">
                   <div
-                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br ${colors[index % colors.length]} flex-shrink-0 mt-1`}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 mt-1"
+                    style={{ 
+                        // Use backend color if available, otherwise fallback to index-based gradient
+                        background: job.color 
+                            ? (job.color.startsWith('--') ? `var(${job.color})` : job.color)
+                            : `var(${getGradientVar(index)})` 
+                    }}
                   />
                   <div>
                     <h3 className="text-base sm:text-lg font-semibold text-black mb-1 sm:mb-2">
@@ -104,12 +114,8 @@ export function Careers() {
                 </div>
 
                 {/* Right side - Arrow icon */}
-                <div className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-700 transition-all duration-300 flex-shrink-0 group-hover:bg-gray-800 group-hover:scale-110 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.4)]">
-                  <img
-                    src="/arrow-icon.png"
-                    alt="Navigate"
-                    className="w-[1.2rem] h-[1rem] transition-all duration-300 group-hover:brightness-150"
-                  />
+                <div className="w-12 h-12 bg-black rounded-full shadow-lg shadow-black/10 flex items-center justify-center transition-all duration-300 group-hover:rotate-45 flex-shrink-0">
+                  <ArrowUpRight className="text-white w-6 h-6" />
                 </div>
               </a>
             )
