@@ -1,7 +1,7 @@
 // 
-"use client"
 
-import { useEffect, useState } from "react"
+
+
 
 import WhatWeDeliver  from "@/components/what-we-deliver"
 import { ProblemWeSolve } from "@/components/problem-we-solve"
@@ -17,13 +17,7 @@ import HeroSection from "@/components/HeroSection"
 import GlassmorphicNavbar from "@/components/glassmorphic-navbar"
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
 
   return (
     <>
