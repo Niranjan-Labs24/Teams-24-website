@@ -10,10 +10,11 @@ interface VideoPlayerProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
   className?: string;
   containerClassName?: string;
   onLoaded?: () => void;
+  shouldLoad?: boolean;
 }
 
 const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
-  ({ src, poster, className, containerClassName, onLoaded, ...props }, ref) => {
+  ({ src, poster, className, containerClassName, onLoaded, shouldLoad = true, ...props }, ref) => {
     const [isInView, setIsInView] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,6 +23,8 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     useImperativeHandle(ref, () => videoRef.current as HTMLVideoElement);
 
     useEffect(() => {
+      if (!shouldLoad) return;
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -30,7 +33,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           }
         },
         {
-          rootMargin: "200px",
+          rootMargin: "100px",
           threshold: 0.01,
         }
       );
@@ -44,7 +47,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           observer.unobserve(containerRef.current);
         }
       };
-    }, []);
+    }, [shouldLoad, src]);
 
     const handleLoadedData = (e: React.SyntheticEvent<HTMLVideoElement>) => {
       setIsLoading(false);
@@ -58,7 +61,6 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
         className={cn("relative w-full h-full overflow-hidden bg-cover bg-center", containerClassName)}
         style={poster ? { backgroundImage: `url(${poster})` } : undefined}
       >
-      
         {isInView && (
           <video
             ref={videoRef}
@@ -66,7 +68,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
             poster={poster}
             className={cn("w-full h-full object-cover relative z-10", className)}
             onLoadedData={handleLoadedData}
-            preload="auto"
+            preload="metadata"
             loop
             muted
             playsInline

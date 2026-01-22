@@ -1,11 +1,7 @@
-
-
 "use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-
-  
+import { loadGSAP } from "@/lib/animation-loaders";
 
 export function CTASection() {
   const logosRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -134,21 +130,48 @@ export function CTASection() {
   },
 ];
 
-useEffect(() => {
-  logosRef.current.forEach((el) => {
-    if (!el) return;
-    gsap.to(el, {
-      x: "random(-10, 10)",
-      y: "random(-8, 8)",
-      rotation: "random(-5, 5)",
-      scale: "random(0.95, 1.05)",
-      duration: "random(2, 3)",
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-    });
-  });
-}, []);
+  useEffect(() => {
+    const section = logosRef.current[0]?.parentElement?.parentElement;
+    let ctx: any = null;
+    let observer: IntersectionObserver | null = null;
+
+    const initLogoAnimations = async () => {
+      const { gsap } = await loadGSAP();
+      ctx = gsap.context(() => {
+        logosRef.current.forEach((el) => {
+          if (!el) return;
+          gsap.to(el, {
+            x: "random(-10, 10)",
+            y: "random(-8, 8)",
+            rotation: "random(-5, 5)",
+            scale: "random(0.95, 1.05)",
+            duration: "random(2, 3)",
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+          });
+        });
+      });
+    };
+
+    if (section) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            initLogoAnimations();
+            observer?.disconnect();
+          }
+        },
+        { rootMargin: "200px" }
+      );
+      observer.observe(section);
+    }
+
+    return () => {
+      if (ctx) ctx.revert();
+      if (observer) observer.disconnect();
+    };
+  }, []);
 
 
   return (
@@ -175,7 +198,7 @@ useEffect(() => {
             key={index}
             ref={(el) => {
            logosRef.current[index] = el;
-          }}  // store ref
+          }}
             className="absolute opacity-70 hover:opacity-100"
             style={{
               ...logo.style,
@@ -192,10 +215,8 @@ useEffect(() => {
           </div>
         ))}
       </div>
-      {/* Content Section (unchanged except comment marks) */}
   <div className="relative z-10 text-center flex flex-col items-center justify-center gap-10 px-4 sm:px-6 md:px-8">
 
-  {/* ====== SECTION 1 ====== */}
   <div className="max-w-[18.25rem] w-full">
     <p
       className="
@@ -211,13 +232,10 @@ useEffect(() => {
       Ready to Transform Your Startup?
     </p>
 
-    {/* Decorative line below text */}
     <div className="flex justify-center mt-4">
       <div className="h-1 w-1/3 bg-black rounded-full"></div>
     </div>
   </div>
-
-  {/* ====== SECTION 2 ====== */}
   <div
     className="
       max-w-[61rem] 
@@ -242,8 +260,6 @@ useEffect(() => {
       Your complete team awaits.
     </h2>
   </div>
-
-  {/* ====== SECTION 3 (Button) ====== */}
   <button 
   onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
     className="

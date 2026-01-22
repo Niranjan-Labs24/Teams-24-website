@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import ScrollSection from "./ScrollSection";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+import { loadGSAP } from "@/lib/animation-loaders";
 
 const IdealForSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,40 +71,59 @@ const IdealForSection = () => {
 
     if (!container || !track) return;
 
-    const totalSections = sections.length;
-    
-    const scrollTrigger = ScrollTrigger.create({
-      id: "ideal-for-scroll",
-      trigger: container,
-      start: "top top",
-      end: `+=${totalSections * 100}%`, 
-      pin: true,
-      scrub: true, 
-      onUpdate: (self) => {
-        const p = Math.min(0.9999, Math.max(0, self.progress));
-        const totalProgress = p * totalSections;
-        
-        let currentIndex = Math.floor(totalProgress) + 1;
-        const localProgress = (totalProgress % 1);
-        
-        
-        if (track) {
-            const xPos = -(currentIndex - 1) * 100;
-            track.style.transform = `translateX(${xPos}vw)`; 
-        }
-        
-        
-        const now = Date.now();
-        if (now - lastUpdateTime.current >= UPDATE_THROTTLE) {
-          setActiveIndex(currentIndex);
-          setSectionProgress(localProgress);
-          lastUpdateTime.current = now;
+    let scrollTrigger: ReturnType<typeof import("gsap/ScrollTrigger").ScrollTrigger.create> | null = null;
+    let observer: IntersectionObserver | null = null;
+
+    const initScrollTrigger = async () => {
+      const { ScrollTrigger } = await loadGSAP({ scrollTrigger: true, scrollToPlugin: true });
+      if (!ScrollTrigger || !container || !track) return;
+
+      const totalSections = sections.length;
+      
+      scrollTrigger = ScrollTrigger.create({
+        id: "ideal-for-scroll",
+        trigger: container,
+        start: "top top",
+        end: `+=${totalSections * 100}%`, 
+        pin: true,
+        scrub: true, 
+        onUpdate: (self) => {
+          const p = Math.min(0.9999, Math.max(0, self.progress));
+          const totalProgress = p * totalSections;
+          
+          let currentIndex = Math.floor(totalProgress) + 1;
+          const localProgress = (totalProgress % 1);
+          
+          if (track) {
+              const xPos = -(currentIndex - 1) * 100;
+              track.style.transform = `translateX(${xPos}vw)`; 
+          }
+          
+          const now = Date.now();
+          if (now - lastUpdateTime.current >= UPDATE_THROTTLE) {
+            setActiveIndex(currentIndex);
+            setSectionProgress(localProgress);
+            lastUpdateTime.current = now;
+          }
+        },
+      });
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          initScrollTrigger();
+          observer?.disconnect();
         }
       },
-    });
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(container);
 
     return () => {
-      scrollTrigger.kill();
+      if (scrollTrigger) scrollTrigger.kill();
+      if (observer) observer.disconnect();
     };
   }, [sections.length]);
 

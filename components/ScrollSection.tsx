@@ -47,7 +47,6 @@ const Counter = ({ value, active }: { value: string, active: boolean }) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Power2 easeOut
       const easeProgress = 1 - Math.pow(1 - progress, 2);
       
       const currentCount = Math.floor(easeProgress * end);
@@ -95,6 +94,7 @@ const ScrollSection = ({
                   src={item.src as string}
                   poster={item.poster}
                   className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+                  shouldLoad={Math.abs(index - activeIndex) <= 1}
                   autoPlay
                   muted
                   loop
@@ -121,6 +121,7 @@ const ScrollSection = ({
             src={item.src as string}
             poster={item.poster}
             className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+            shouldLoad={Math.abs(index - activeIndex) <= 1}
             autoPlay
             muted
             loop
@@ -209,9 +210,7 @@ const ScrollSection = ({
           </div>
         </div>
 
-        {/* Mobile & Tablet Layout */}
         <div className="lg:hidden space-y-3 sm:space-y-4 w-full">
-          {/* Title Section */}
           <div className="space-y-2 sm:space-y-3">
             <div className="space-y-2 sm:space-y-3">
               <div className="text-white text-muted-foreground text-base sm:text-lg font-mono">

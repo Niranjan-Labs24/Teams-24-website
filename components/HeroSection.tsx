@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { loadFramerMotion } from "@/lib/animation-loaders";
 
 interface Card {
   img: string;
@@ -34,6 +34,15 @@ const cards: Card[] = [
 
 export default function HeroSection(): JSX.Element {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [MotionComponent, setMotionComponent] = useState<typeof import("framer-motion").motion.div | null>(null);
+
+  useEffect(() => {
+    const loadMotion = async () => {
+      const { motion } = await loadFramerMotion();
+      setMotionComponent(() => motion.div);
+    };
+    loadMotion();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,7 +56,6 @@ export default function HeroSection(): JSX.Element {
 
   return (
     <section className="bg-white w-full flex justify-center lg:px-6 2xl:px-0">
-      {/* Mobile Layout: White background with fixed-size background image */}
       <div className="md:hidden w-full min-h-screen bg-white flex justify-center">
         <div className="w-full max-w-[393px] min-h-[852px] relative">
           
@@ -127,11 +135,36 @@ export default function HeroSection(): JSX.Element {
                     zIndex = 1;
                   }
 
+                  if (MotionComponent) {
+                    return (
+                      <MotionComponent
+                        key={i}
+                        animate={{ x, scale, opacity, zIndex }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="absolute w-[247.5px] h-[307.84px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
+                      >
+                        <Image
+                          src={card.img}
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          priority={i === 0}
+                          quality={80}
+                          sizes="247px"
+                        />
+                      </MotionComponent>
+                    );
+                  }
+
                   return (
-                    <motion.div
+                    <div
                       key={i}
-                      animate={{ x, scale, opacity, zIndex }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      style={{
+                        transform: `translateX(${x}px) scale(${scale})`,
+                        opacity,
+                        zIndex,
+                        transition: "all 0.8s ease-in-out",
+                      }}
                       className="absolute w-[247.5px] h-[307.84px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
                     >
                       <Image
@@ -139,16 +172,15 @@ export default function HeroSection(): JSX.Element {
                         alt={card.title}
                         fill
                         className="object-cover"
-                        priority
+                        priority={i === 0}
                         quality={80}
                         sizes="247px"
                       />
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
 
-         
               <div className="flex justify-center mt-8">
                 <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
                   {cards.map((_, i) => (
@@ -166,11 +198,9 @@ export default function HeroSection(): JSX.Element {
         </div>
       </div>
 
-      {/* Desktop/Tablet Layout: Original design with white space */}
       <div 
         className="hidden lg:block relative w-full lg:max-w-[86rem] lg:h-[57rem] lg:mt-7 lg:rounded-[2rem] overflow-hidden"
       >
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/background-image.png"
@@ -182,14 +212,8 @@ export default function HeroSection(): JSX.Element {
           />
         </div>
 
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
-        
-        {/* Content Container */}
         <div className="relative z-10 h-full flex items-center justify-between px-20">
-          {/* LEFT TEXT CONTENT */}
           <div className="flex-1 max-w-[44rem] space-y-8">
-            {/* Main Heading */}
             <h1 className="text-[4rem] font-manrope font-bold leading-[1.125] tracking-[-0.02em] text-white">
               Flexibility of a freelancer <br /> with commitment of an employee
             </h1>
@@ -266,11 +290,36 @@ export default function HeroSection(): JSX.Element {
                   zIndex = 1;
                 }
 
+                if (MotionComponent) {
+                  return (
+                    <MotionComponent
+                      key={i}
+                      animate={{ y, scale, opacity, zIndex }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute w-[24rem] h-[30rem] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
+                    >
+                      <Image
+                        src={card.img}
+                        alt={card.title}
+                        fill
+                        className="object-cover"
+                        priority={i === 0}
+                        quality={80}
+                        sizes="384px"
+                      />
+                    </MotionComponent>
+                  );
+                }
+
                 return (
-                  <motion.div
+                  <div
                     key={i}
-                    animate={{ y, scale, opacity, zIndex }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    style={{
+                      transform: `translateY(${y}px) scale(${scale})`,
+                      opacity,
+                      zIndex,
+                      transition: "all 0.8s ease-in-out",
+                    }}
                     className="absolute w-[24rem] h-[30rem] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
                   >
                     <Image
@@ -278,11 +327,11 @@ export default function HeroSection(): JSX.Element {
                       alt={card.title}
                       fill
                       className="object-cover"
-                      priority
+                      priority={i === 0}
                       quality={80}
                       sizes="384px"
                     />
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>

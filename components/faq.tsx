@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { loadFramerMotion } from "@/lib/animation-loaders";
 
 const faqItems = [
   {
@@ -29,13 +29,27 @@ const faqItems = [
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [MotionComponents, setMotionComponents] = useState<{
+    motion: typeof import("framer-motion").motion;
+    AnimatePresence: typeof import("framer-motion").AnimatePresence;
+  } | null>(null);
+
+  const handleToggle = async (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+    
+    if (!MotionComponents) {
+      const modules = await loadFramerMotion({ includeAnimatePresence: true });
+      setMotionComponents({
+        motion: modules.motion,
+        AnimatePresence: modules.AnimatePresence!,
+      });
+    }
+  };
 
   return (
     <section className="w-full bg-black text-white py-20 px-4 sm:px-6 lg:px-8" id="faq">
       <div className="max-w-[90rem] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
-        {/* LEFT SIDE */}
         <div className="flex flex-col lg:w-[26rem]">
-          {/* Top small header */}
           <div className="mb-4 lg:mb-6">
             <p
               className="text-gray-400"
@@ -51,10 +65,7 @@ export function FAQ() {
             </p>
           </div>
 
-          {/* Horizontal line */}
           <div className="border-t border-gray-600 mb-6 lg:mb-8 w-full"></div>
-
-          {/* Main heading */}
           <h2
             className="text-white"
             style={{
@@ -70,8 +81,6 @@ export function FAQ() {
             questions
           </h2>
         </div>
-
-        {/* RIGHT SIDE */}
         <div className="w-full lg:w-[38rem] flex flex-col gap-5">
           {faqItems.map((item, index) => (
             <div
@@ -79,9 +88,7 @@ export function FAQ() {
               className="w-full bg-[#0F0F0F] border border-[#FFFFFF14] rounded-[1.25rem] hover:border-gray-600 transition-all duration-300 overflow-hidden"
             >
               <button
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
+                onClick={() => handleToggle(index)}
                 className="w-full flex justify-between items-center text-left px-6 py-6 hover:bg-gray-900/30 transition-all duration-300"
               >
                 <h3
@@ -105,15 +112,34 @@ export function FAQ() {
                 </div>
               </button>
 
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
+              {MotionComponents ? (
+                <MotionComponents.AnimatePresence>
+                  {openIndex === index && (
+                    <MotionComponents.motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 border-t border-gray-800 bg-gray-900/20">
+                        <p
+                          className="text-gray-300 leading-relaxed pt-4"
+                          style={{
+                            fontFamily: "Manrope",
+                            fontSize: "1rem",
+                            lineHeight: "1.75rem",
+                          }}
+                        >
+                          {item.answer}
+                        </p>
+                      </div>
+                    </MotionComponents.motion.div>
+                  )}
+                </MotionComponents.AnimatePresence>
+              ) : (
+                openIndex === index && (
+                  <div className="overflow-hidden">
                     <div className="px-6 pb-6 border-t border-gray-800 bg-gray-900/20">
                       <p
                         className="text-gray-300 leading-relaxed pt-4"
@@ -126,9 +152,9 @@ export function FAQ() {
                         {item.answer}
                       </p>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+                )
+              )}
             </div>
           ))}
         </div>

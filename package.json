@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:assets": "node scripts/optimize-images.js ./assets ./public/optimized"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

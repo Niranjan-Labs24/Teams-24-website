@@ -1,13 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
+import { loadGSAP } from "@/lib/animation-loaders";
 import { VideoPlayer } from "./ui/video-player";
-
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const steps = [
   {
@@ -124,7 +119,10 @@ export default function HowItWorks() {
   const prevStepRef = useRef(0);
 
 
-  const handleStepClick = (index: number) => {
+  const handleStepClick = async (index: number) => {
+    const { gsap, ScrollTrigger } = await loadGSAP({ scrollTrigger: true, scrollToPlugin: true });
+    if (!ScrollTrigger) return;
+
     const trigger = ScrollTrigger.getById("how-it-works-trigger");
     if (!trigger) return;
 
@@ -141,62 +139,83 @@ export default function HowItWorks() {
   useEffect(() => {
     if (!sectionRef.current || !cardsWrapperRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const stepScrollHeight = window.innerHeight * (steps.length - 1) * 1.5;
+    let ctx: ReturnType<typeof import("gsap").gsap.context> | null = null;
+    let observer: IntersectionObserver | null = null;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          id: "how-it-works-trigger",
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${stepScrollHeight}`,
-          scrub: 0.5,
-          pin: true,
-          anticipatePin: 1,
-          snap: {
-            snapTo: [0, 0.5, 1],
-            duration: 0.6,
-            ease: "power1.inOut"
-          },
-          onUpdate: (self) => {
-            const p = self.progress;
-            const threshold = 0.75; 
-            
-            let currentStep = 0;
-            if (p < 0.375) currentStep = 0;
-            else if (p < 0.875) currentStep = 1;
-            else currentStep = 2;
+    const initScrollTrigger = async () => {
+      const { gsap, ScrollTrigger } = await loadGSAP({ scrollTrigger: true, scrollToPlugin: true });
+      if (!ScrollTrigger || !sectionRef.current || !cardsWrapperRef.current) return;
 
-            if (currentStep !== prevStepRef.current) {
-              const oldStep = prevStepRef.current;
-              prevStepRef.current = currentStep;
-              setActiveStep(currentStep);
+      ctx = gsap.context(() => {
+        const stepScrollHeight = window.innerHeight * (steps.length - 1) * 1.5;
 
-              videoRefs.current[oldStep]?.pause();
-              if (videoRefs.current[currentStep]) {
-                videoRefs.current[currentStep]!.currentTime = 0;
-                videoRefs.current[currentStep]!.play().catch(() => {});
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            id: "how-it-works-trigger",
+            trigger: sectionRef.current,
+            start: "top top",
+            end: `+=${stepScrollHeight}`,
+            scrub: 0.5,
+            pin: true,
+            anticipatePin: 1,
+            snap: {
+              snapTo: [0, 0.5, 1],
+              duration: 0.6,
+              ease: "power1.inOut"
+            },
+            onUpdate: (self) => {
+              const p = self.progress;
+              
+              let currentStep = 0;
+              if (p < 0.375) currentStep = 0;
+              else if (p < 0.875) currentStep = 1;
+              else currentStep = 2;
+
+              if (currentStep !== prevStepRef.current) {
+                const oldStep = prevStepRef.current;
+                prevStepRef.current = currentStep;
+                setActiveStep(currentStep);
+
+                videoRefs.current[oldStep]?.pause();
+                if (videoRefs.current[currentStep]) {
+                  videoRefs.current[currentStep]!.currentTime = 0;
+                  videoRefs.current[currentStep]!.play().catch(() => {});
+                }
               }
             }
           }
+        });
+
+        tl.to(cardsWrapperRef.current, {
+          yPercent: -((steps.length - 1) * 100),
+          duration: 1,
+          ease: "none"
+        });
+
+      }, sectionRef);
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          initScrollTrigger();
+          observer?.disconnect();
         }
-      });
+      },
+      { rootMargin: "200px" }
+    );
 
-      tl.to(cardsWrapperRef.current, {
-        yPercent: -((steps.length - 1) * 100),
-        duration: 1,
-        ease: "none"
-      });
+    observer.observe(sectionRef.current);
 
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => {
+      if (ctx) ctx.revert();
+      if (observer) observer.disconnect();
+    };
   }, []);
 
 
   return (
     <div id="how-it-works" ref={sectionRef} className="relative bg-black text-white font-manrope">
-      {/* Absolute Header - The line acts as the visual track baseline */}
       <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
         <div className="container mx-auto">
             <div className="flex flex-col gap-4 md:gap-6">
@@ -244,6 +263,7 @@ export default function HowItWorks() {
                         src={step.videoUrl}
                         poster={step.posterUrl}
                         className="w-full h-full object-cover"
+                        shouldLoad={Math.abs(index - activeStep) <= 1}
                         autoPlay
                         loop
                         playsInline
