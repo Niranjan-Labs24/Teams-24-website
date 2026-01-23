@@ -58,17 +58,17 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     return (
       <div
         ref={containerRef}
-        className={cn("relative w-full h-full overflow-hidden bg-cover bg-center", containerClassName)}
-        style={poster ? { backgroundImage: `url(${poster})` } : undefined}
+        className={cn("relative w-full overflow-hidden bg-contain bg-no-repeat bg-center transition-opacity duration-300 bg-black", !containerClassName?.includes('h-') && "h-full", containerClassName)}
+        style={{ backgroundImage: (poster && isLoading) ? `url(${poster})` : 'none' }}
       >
         {isInView && (
           <video
             ref={videoRef}
             src={src}
             poster={poster}
-            className={cn("w-full h-full object-cover relative z-10", className)}
+            className={cn("w-full object-contain relative z-10 transition-opacity duration-500", !className?.includes('h-') && "h-full", className, isLoading ? "opacity-0" : "opacity-100")}
             onLoadedData={handleLoadedData}
-            preload="metadata"
+            preload="auto"
             loop
             muted
             playsInline

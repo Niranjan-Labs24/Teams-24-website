@@ -54,7 +54,7 @@ export function WhatWeOffer() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="services" className="py-24 px-12 bg-white font-sans">
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-12 bg-white font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <div className="mb-16">

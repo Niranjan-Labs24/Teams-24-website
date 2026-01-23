@@ -83,29 +83,32 @@ const ScrollSection = ({
 
     if (mediaItems.length === 2) {
       return (
-        <div className="grid grid-cols-2 gap-2 sm:gap-4 aspect-video w-full">
+        <div className="flex gap-2 sm:gap-4 w-full items-start justify-center">
           {mediaItems.map((item, idx) => (
             <div 
               key={idx}
-              className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden w-full h-full"
+              className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden flex-1 max-w-[50%] flex items-center justify-center bg-black/20"
             >
-              {item.type === 'video' ? (
-                <VideoPlayer
-                  src={item.src as string}
-                  poster={item.poster}
-                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-                  shouldLoad={Math.abs(index - activeIndex) <= 1}
-                  autoPlay
-                  muted
-                  loop
-                />
-              ) : (
-                <img
-                  src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
-                  alt={title}
-                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-                />
-              )}
+              <div className="w-full h-auto relative bg-black/40 rounded-xl sm:rounded-2xl">
+                {item.type === 'video' ? (
+                  <VideoPlayer
+                    src={item.src as string}
+                    poster={item.poster}
+                    className="w-full h-auto object-contain rounded-xl sm:rounded-2xl"
+                    containerClassName="!h-auto"
+                    shouldLoad={Math.abs(index - activeIndex) <= 1}
+                    autoPlay
+                    muted
+                    loop
+                  />
+                ) : (
+                  <img
+                    src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
+                    alt={title}
+                    className="w-full h-auto object-contain rounded-xl sm:rounded-2xl"
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -115,24 +118,27 @@ const ScrollSection = ({
     
     const item = mediaItems[0];
     return (
-      <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden aspect-video w-full">
-        {item.type === 'video' ? (
-          <VideoPlayer
-            src={item.src as string}
-            poster={item.poster}
-            className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
-            shouldLoad={Math.abs(index - activeIndex) <= 1}
-            autoPlay
-            muted
-            loop
-          />
-        ) : (
-          <img
-            src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
-            alt={title}
-            className="w-full h-auto rounded-xl sm:rounded-2xl"
-          />
-        )}
+      <div className="glass-card rounded-2xl sm:rounded-3xl p-1 sm:p-2 overflow-hidden w-full max-h-[60vh] flex items-center justify-center bg-black/20">
+        <div className="w-full h-auto relative max-h-full">
+          {item.type === 'video' ? (
+            <VideoPlayer
+              src={item.src as string}
+              poster={item.poster}
+              className="w-full h-auto object-contain rounded-xl sm:rounded-2xl"
+              containerClassName="!h-auto"
+              shouldLoad={Math.abs(index - activeIndex) <= 1}
+              autoPlay
+              muted
+              loop
+            />
+          ) : (
+            <img
+              src={typeof item.src === 'string' ? item.src : (item.src as StaticImageData).src}
+              alt={title}
+              className="w-full h-auto object-contain rounded-xl sm:rounded-2xl"
+            />
+          )}
+        </div>
       </div>
     );
   };
@@ -157,7 +163,7 @@ const ScrollSection = ({
                  <div 
                     className="h-full bg-white transition-all duration-300 ease-linear"
                     style={{ 
-                        width: isCompleted ? '100%' : (isCurrent ? `${sectionProgress * 100}%` : '0%') 
+                        width: isCompleted ? '100%' : (isCurrent ? `${Math.max(sectionProgress, 1) * 100}%` : '0%') 
                     }}
                  />
             )}

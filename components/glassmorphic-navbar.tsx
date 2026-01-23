@@ -120,7 +120,7 @@ export default function GlassmorphicNavbar() {
           height={18}
           className="object-contain"
         />
-        <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
+        <div className="hidden lg:flex items-baseline text-white font-[Dyson Sans Modern]">
           <span
             className="text-lg tracking-[-0.05em] leading-[10px] font-normal"
             style={{ marginRight: "2px" }}
@@ -133,7 +133,7 @@ export default function GlassmorphicNavbar() {
         </div>
       </div>
 
-      <div className="hidden md:flex items-center gap-14 text-white">
+      <div className="hidden md:flex items-center md:gap-6 lg:gap-8 xl:gap-14 text-white">
         {navigationLinks.map((link, i) => (
           <button
             key={i}
@@ -152,7 +152,7 @@ export default function GlassmorphicNavbar() {
           hidden md:block
           bg-[#FFFFFF] text-black
           rounded-[3.875rem]
-          px-12 py-3.5
+          md:px-6 lg:px-8 xl:px-12 py-3.5
           font-[Manrope] font-semibold text-[0.9375rem] tracking-[-0.03em]
           border border-transparent
           hover:bg-[#f5f5f5]
@@ -178,8 +178,9 @@ export default function GlassmorphicNavbar() {
               exit={{ opacity: 0, scale: 0.9, y: -10 }}
               transition={{ duration: 0.25 }}
               className="
-                absolute top-[4.375rem] right-5
-                w-[13.75rem]
+                absolute top-[4.375rem] right-4
+                left-4 md:left-auto md:right-5
+                sm:w-[13.75rem]
                 bg-[#000000cc] backdrop-blur-[20px]
                 flex flex-col items-start
                 py-3 px-4 gap-3
@@ -219,8 +220,9 @@ export default function GlassmorphicNavbar() {
         isOpen && (
           <div
             className="
-              absolute top-[4.375rem] right-5
-              w-[13.75rem]
+              absolute top-[4.375rem] right-4
+              left-4 md:left-auto md:right-5
+              sm:w-[13.75rem]
               bg-[#000000cc] backdrop-blur-[20px]
               flex flex-col items-start
               py-3 px-4 gap-3

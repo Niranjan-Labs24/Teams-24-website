@@ -252,7 +252,7 @@ export function ProblemWeSolve() {
   const sliderPercentage = calculatePercentageFromValue(sliderValue, isWithTeams24)
 
   return (
-    <section id="problem-we-solve" ref={sectionRef} className="relative w-full bg-white pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '62.875rem' }}>
+    <section id="problem-we-solve" ref={sectionRef} className="relative w-full bg-white pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 lg:min-h-[62.875rem]">
      
       <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
         <div className="max-w-7xl mx-auto">

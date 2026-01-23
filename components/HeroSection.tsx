@@ -56,11 +56,11 @@ export default function HeroSection(): JSX.Element {
 
   return (
     <section className="bg-white w-full flex justify-center lg:px-6 2xl:px-0">
-      <div className="md:hidden w-full min-h-screen bg-white flex justify-center">
-        <div className="w-full max-w-[393px] min-h-[852px] relative">
+      <div className="lg:hidden w-full min-h-screen bg-white flex justify-center">
+        <div className="w-full relative min-h-screen flex flex-col">
           
           <div 
-            className="absolute top-[24px] left-[12px] w-[369px] h-[804px] rounded-[32px] overflow-hidden"
+            className="absolute inset-0 overflow-hidden"
             style={{ zIndex: 0 }}
           >
             <Image
@@ -74,29 +74,28 @@ export default function HeroSection(): JSX.Element {
           
             <div className="absolute inset-0 bg-black/40"></div>
             
-           
-            <div className="relative z-10 flex flex-col items-center px-6 pt-20 pb-12 h-full">
+            <div className="relative z-10 flex flex-col items-center px-6 pt-24 pb-8 h-full">
           
               <h1 
-                className="font-manrope font-bold text-[28px] leading-[28px] tracking-[-0.06em] text-white text-center w-[330px] mb-6"
+                className="font-manrope font-bold text-[28px] leading-[28px] tracking-[-0.06em] text-white text-center w-[330px] mb-4"
               >
                 Flexibility of a freelancer with commitment of an employee
               </h1>
               
           
-              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-12">
+              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-6">
                 Hiring can be as easier as shopping
               </p>
             
               <button 
                 onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg mb-4"
+                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg mb-3"
               >
                 Build your team
               </button>
               
               
-              <div className="flex items-center gap-2 mb-12">
+              <div className="flex items-center gap-2 mb-6">
                 <Image
                   src="/logo5.png"
                   alt="Logo"
@@ -108,20 +107,19 @@ export default function HeroSection(): JSX.Element {
                   Book a free discovery call
                 </p>
               </div>
-
-              
-              <div className="relative w-full h-[380px] flex items-center justify-center overflow-visible">
+ 
+              <div className="relative w-full h-[300px] flex items-center justify-center overflow-visible">
                 {cards.map((card, i) => {
                   const circularIndex = getCircularIndex(currentIndex - i);
                   let x = 0,
                     scale = 1,
                     opacity = 1,
                     zIndex = 10;
-
+ 
                   if (circularIndex === 0) {
-                    x = -250; 
-                    scale = 0.85;
-                    opacity = 0.7;
+                    x = -200; 
+                    scale = 0.8;
+                    opacity = 0.6;
                     zIndex = 1;
                   } else if (circularIndex === 1) {
                     x = 0;
@@ -129,19 +127,19 @@ export default function HeroSection(): JSX.Element {
                     opacity = 1;
                     zIndex = 10;
                   } else if (circularIndex === 2) {
-                    x = 250; 
-                    scale = 0.85;
-                    opacity = 0.7;
+                    x = 200; 
+                    scale = 0.8;
+                    opacity = 0.6;
                     zIndex = 1;
                   }
-
+ 
                   if (MotionComponent) {
                     return (
                       <MotionComponent
                         key={i}
                         animate={{ x, scale, opacity, zIndex }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
-                        className="absolute w-[247.5px] h-[307.84px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
+                        className="absolute w-[200px] h-[250px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
                       >
                         <Image
                           src={card.img}
@@ -150,12 +148,12 @@ export default function HeroSection(): JSX.Element {
                           className="object-cover"
                           priority={i === 0}
                           quality={80}
-                          sizes="247px"
+                          sizes="200px"
                         />
                       </MotionComponent>
                     );
                   }
-
+ 
                   return (
                     <div
                       key={i}
@@ -165,7 +163,7 @@ export default function HeroSection(): JSX.Element {
                         zIndex,
                         transition: "all 0.8s ease-in-out",
                       }}
-                      className="absolute w-[247.5px] h-[307.84px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
+                      className="absolute w-[200px] h-[250px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
                     >
                       <Image
                         src={card.img}
@@ -174,7 +172,7 @@ export default function HeroSection(): JSX.Element {
                         className="object-cover"
                         priority={i === 0}
                         quality={80}
-                        sizes="247px"
+                        sizes="200px"
                       />
                     </div>
                   );
