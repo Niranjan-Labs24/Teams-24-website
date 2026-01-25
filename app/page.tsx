@@ -1,7 +1,7 @@
 // 
-"use client"
 
-import { useEffect, useState } from "react"
+
+
 
 import WhatWeDeliver  from "@/components/what-we-deliver"
 import { ProblemWeSolve } from "@/components/problem-we-solve"
@@ -14,16 +14,11 @@ import { CTASection } from "@/components/cta-section"
 import  IdealForSection from "@/components/IdealForSection"
 import HowItWorks from "@/components/HowItWorks"
 import HeroSection from "@/components/HeroSection"
+import HeroTablet from "@/components/hero-tablet"
 import GlassmorphicNavbar from "@/components/glassmorphic-navbar"
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
 
   return (
     <>
@@ -31,7 +26,15 @@ export default function Home() {
       <GlassmorphicNavbar />
       
       {/* Main container */}
-      <HeroSection/>
+      <div className="lg:block hidden">
+        <HeroSection/>
+      </div>
+      <div className="md:block lg:hidden hidden">
+        <HeroTablet />
+      </div>
+      <div className="md:hidden block">
+        <HeroSection />
+      </div>
 
       {/* Scroll sections */}
       

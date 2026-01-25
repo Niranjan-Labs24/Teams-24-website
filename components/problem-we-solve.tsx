@@ -19,12 +19,10 @@ export function ProblemWeSolve() {
   const isDraggingRef = useRef(false)
   const isWithTeams24Ref = useRef(isWithTeams24)
 
-  
   useEffect(() => {
     isWithTeams24Ref.current = isWithTeams24
   }, [isWithTeams24])
 
- 
   const initialPositions = {
     without: 65,  
     with: 25      
@@ -38,7 +36,6 @@ export function ProblemWeSolve() {
     setAnimatedValues(initialMetrics)
   }
 
-  // Handle manual click on track
   const handleTrackClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!trackRef.current) return
     
@@ -49,16 +46,10 @@ export function ProblemWeSolve() {
   }
 
  
-  const startDragging = (e: React.MouseEvent | React.TouchEvent) => {
-    
-    isDraggingRef.current = true
-    setIsDragging(true)
-  }
-
   const handleMove = (e: MouseEvent | TouchEvent) => {
     if (!isDraggingRef.current || !trackRef.current) return
     
-    
+    // Use non-passive for blocking if needed, but we apply it during drag
     if (e.cancelable) e.preventDefault()
     
     const trackRect = trackRef.current.getBoundingClientRect()
@@ -71,9 +62,21 @@ export function ProblemWeSolve() {
   const stopDragging = () => {
     isDraggingRef.current = false
     setIsDragging(false)
+    window.removeEventListener('mousemove', handleMove)
+    window.removeEventListener('mouseup', stopDragging)
+    window.removeEventListener('touchmove', handleMove)
+    window.removeEventListener('touchend', stopDragging)
   }
 
- 
+  const startDragging = (e: React.MouseEvent | React.TouchEvent) => {
+    isDraggingRef.current = true
+    setIsDragging(true)
+    window.addEventListener('mousemove', handleMove, { passive: false })
+    window.addEventListener('mouseup', stopDragging)
+    window.addEventListener('touchmove', handleMove, { passive: false })
+    window.addEventListener('touchend', stopDragging)
+  }
+
   const updateSliderPosition = (percentage: number) => {
     const clampedPercentage = Math.max(0, Math.min(100, percentage))
     const newValue = calculateValueFromPercentage(clampedPercentage, isWithTeams24Ref.current)
@@ -100,7 +103,6 @@ export function ProblemWeSolve() {
         metric3: Math.round(90 + (value / 48) * 4)
       }
     } else {
-      
       const baseCost = 10000 
       const growthPerMonth = 8500 
       const annualCost = baseCost + (value - 1) * growthPerMonth
@@ -113,13 +115,7 @@ export function ProblemWeSolve() {
     }
   }
 
- 
   useEffect(() => {
-    window.addEventListener('mousemove', handleMove, { passive: false })
-    window.addEventListener('mouseup', stopDragging)
-    window.addEventListener('touchmove', handleMove, { passive: false })
-    window.addEventListener('touchend', stopDragging)
-
     return () => {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('mouseup', stopDragging)
@@ -134,7 +130,6 @@ export function ProblemWeSolve() {
       ([entry]) => {
         if (entry.isIntersecting && !isInView) {
           setIsInView(true)
-       
           const initialValue = calculateValueFromPercentage(initialPositions.without, false)
           setSliderValue(initialValue)
           const initialMetrics = calculateMetricsFromValue(initialValue, false)
@@ -257,7 +252,7 @@ export function ProblemWeSolve() {
   const sliderPercentage = calculatePercentageFromValue(sliderValue, isWithTeams24)
 
   return (
-    <section id="problem-we-solve" ref={sectionRef} className="relative w-full bg-white pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12" style={{ minHeight: '62.875rem' }}>
+    <section id="problem-we-solve" ref={sectionRef} className="relative w-full bg-white pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 lg:min-h-[62.875rem]">
      
       <div className="absolute top-0 left-0 right-0 z-40 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
         <div className="max-w-7xl mx-auto">
@@ -278,9 +273,7 @@ export function ProblemWeSolve() {
           </h3>
         </div>
 
-        {/* Slider Section */}
         <div className="bg-white rounded-3xl border border-[#22222233] p-4 sm:p-6 mb-12 lg:mb-16 mx-auto relative overflow-hidden" style={{ maxWidth: '77.75rem', minHeight: '8rem' }}>
-          
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
             background: `linear-gradient(135deg, transparent 0%, white 50%, transparent 100%)`,
             mixBlendMode: 'overlay'

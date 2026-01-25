@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,7 +31,7 @@ export function Footer() {
     <footer className="w-full max-w-[90rem] mx-auto h-auto min-h-[40.5rem] bg-white font-[Manrope]  relative overflow-hidden">
       <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[6.75rem] px-4 sm:px-6 md:px-8 lg:px-[5.875rem] pb-32">
         {/* ✅ Responsive Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-0 items-start">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-16 items-start">
           {/* ✅ Logo */}
           <div className="col-span-2 lg:col-span-1 mb-8 lg:mb-0">
             <div className="flex items-center gap-2">
@@ -55,7 +57,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Company Section */}
-          <div className="lg:ml-[3.625rem]">
+          <div>
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Company</p>
             <ul className="space-y-2 md:space-y-3">
               <li>
@@ -94,7 +96,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Legal Section */}
-          <div className="lg:ml-[5.5rem]">
+          <div>
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Legal</p>
             <ul className="space-y-2 md:space-y-3">
               <li>
@@ -117,7 +119,7 @@ export function Footer() {
           </div>
 
           {/* ✅ Contact Section */}
-          <div className="col-span-2 lg:col-span-1 lg:ml-[5.5rem] mt-8 lg:mt-0">
+          <div className="col-span-2 lg:col-span-1 mt-8 lg:mt-0">
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Contact</p>
             <p className="text-gray-600 mb-4 md:mb-6 font-semibold text-base">
               <Link
@@ -134,7 +136,7 @@ export function Footer() {
                 flex gap-[11px]
                 sm:justify-center
                 lg:justify-start
-                w-[201px] h-[42px]
+                w-fit h-auto
                 mx-auto lg:mx-0
               "
             >

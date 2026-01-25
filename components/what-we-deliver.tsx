@@ -2,13 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { loadGSAP } from "@/lib/animation-loaders";
 const icons = [
   { id: 1, src: "/icon1.png", className: "top-[10%] left-[5%] sm:top-[10%] sm:left-[8%] md:top-[8%] md:left-[12%]" },
   { id: 2, src: "/icon2.png", className: "top-[14%] right-[6%] sm:top-[12%] sm:right-[10%] md:top-[10%] md:right-[14%]" },
@@ -34,61 +28,68 @@ export default function WhatWeDeliver() {
 
 
   useEffect(() => {
-    iconsRef.current.forEach((icon, index) => {
-      if (icon) {
-        gsap.to(icon, {
-          y: -15,
-          duration: 2 + (index * 0.3),
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.2
-        });
-      }
-    });
-  }, []);
-
-  
-  useEffect(() => {
     if (!sectionRef.current) return;
 
-    const ctx = gsap.context(() => {
-      
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          
-        
-          if (self.direction === 1) { 
-            if (progress < 0.25) {
-              setActiveLines(1);
-            } else if (progress < 0.5) {
-              setActiveLines(2);
-            } else if (progress < 0.75) {
-              setActiveLines(3);
-            } else {
-              setActiveLines(4);
-            }
-          } else { 
-            if (progress > 0.75) {
-              setActiveLines(4);
-            } else if (progress > 0.5) {
-              setActiveLines(3);
-            } else if (progress > 0.25) {
-              setActiveLines(2);
-            } else {
-              setActiveLines(1);
-            }
-          }
-        },
-      });
-    }, sectionRef);
+    let ctx: ReturnType<typeof import("gsap").gsap.context> | null = null;
+    let observer: IntersectionObserver | null = null;
 
-    return () => ctx.revert();
+    const initAnimations = async () => {
+      const { gsap, ScrollTrigger } = await loadGSAP({ scrollTrigger: true });
+      if (!ScrollTrigger || !sectionRef.current) return;
+
+      ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            if (self.direction === 1) {
+              if (progress < 0.25) setActiveLines(1);
+              else if (progress < 0.5) setActiveLines(2);
+              else if (progress < 0.75) setActiveLines(3);
+              else setActiveLines(4);
+            } else {
+              if (progress > 0.75) setActiveLines(4);
+              else if (progress > 0.5) setActiveLines(3);
+              else if (progress > 0.25) setActiveLines(2);
+              else setActiveLines(1);
+            }
+          },
+        });
+
+        iconsRef.current.forEach((icon, index) => {
+          if (icon) {
+            gsap.to(icon, {
+              y: -15,
+              duration: 2 + index * 0.3,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+              delay: index * 0.2,
+            });
+          }
+        });
+      }, sectionRef);
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          initAnimations();
+          observer?.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (ctx) ctx.revert();
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const setIconRef = (index: number) => (el: HTMLDivElement | null) => {

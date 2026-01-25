@@ -10,10 +10,11 @@ interface VideoPlayerProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
   className?: string;
   containerClassName?: string;
   onLoaded?: () => void;
+  shouldLoad?: boolean;
 }
 
 const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
-  ({ src, poster, className, containerClassName, onLoaded, ...props }, ref) => {
+  ({ src, poster, className, containerClassName, onLoaded, shouldLoad = true, ...props }, ref) => {
     const [isInView, setIsInView] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,6 +23,8 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     useImperativeHandle(ref, () => videoRef.current as HTMLVideoElement);
 
     useEffect(() => {
+      if (!shouldLoad) return;
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -30,7 +33,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           }
         },
         {
-          rootMargin: "200px",
+          rootMargin: "100px",
           threshold: 0.01,
         }
       );
@@ -44,7 +47,7 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
           observer.unobserve(containerRef.current);
         }
       };
-    }, []);
+    }, [shouldLoad, src]);
 
     const handleLoadedData = (e: React.SyntheticEvent<HTMLVideoElement>) => {
       setIsLoading(false);
@@ -55,16 +58,15 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
     return (
       <div
         ref={containerRef}
-        className={cn("relative w-full h-full overflow-hidden bg-cover bg-center", containerClassName)}
-        style={poster ? { backgroundImage: `url(${poster})` } : undefined}
+        className={cn("relative w-full overflow-hidden bg-contain bg-no-repeat bg-center transition-opacity duration-300 bg-black", !containerClassName?.includes('h-') && "h-full", containerClassName)}
+        style={{ backgroundImage: (poster && isLoading) ? `url(${poster})` : 'none' }}
       >
-      
         {isInView && (
           <video
             ref={videoRef}
             src={src}
             poster={poster}
-            className={cn("w-full h-full object-cover relative z-10", className)}
+            className={cn("w-full object-contain relative z-10 transition-opacity duration-500", !className?.includes('h-') && "h-full", className, isLoading ? "opacity-0" : "opacity-100")}
             onLoadedData={handleLoadedData}
             preload="auto"
             loop

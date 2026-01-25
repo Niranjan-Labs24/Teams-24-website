@@ -2,18 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { loadFramerMotion } from "@/lib/animation-loaders";
 import { Menu, X } from "lucide-react";
 
 export default function GlassmorphicNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [MotionComponents, setMotionComponents] = useState<{
+    motion: typeof import("framer-motion").motion;
+    AnimatePresence: typeof import("framer-motion").AnimatePresence;
+  } | null>(null);
 
   
   const hiddenSections = ["what-we-do", "how-it-works", "problem-we-solve"];
 
   useEffect(() => {
-   
     const visibilityMap = new Map<string, boolean>();
     
     const updateVisibility = () => {
@@ -31,7 +34,6 @@ export default function GlassmorphicNavbar() {
       rootMargin: "-80px 0px 0px 0px"
     });
 
-    
     const observeElements = () => {
       const sectionElements = hiddenSections.map(id => document.getElementById(id)).filter(Boolean);
       sectionElements.forEach(el => observer.observe(el!));
@@ -39,7 +41,6 @@ export default function GlassmorphicNavbar() {
     };
 
     const count = observeElements();
-    
     
     if (count < hiddenSections.length) {
       setTimeout(observeElements, 500);
@@ -50,7 +51,19 @@ export default function GlassmorphicNavbar() {
     };
   }, []);
 
-  // Navigation links with their respective section IDs
+  const toggleMenu = async () => {
+    const nextState = !isOpen;
+    setIsOpen(nextState);
+    
+    if (nextState && !MotionComponents) {
+      const modules = await loadFramerMotion({ includeAnimatePresence: true });
+      setMotionComponents({
+        motion: modules.motion,
+        AnimatePresence: modules.AnimatePresence!,
+      });
+    }
+  };
+
   const navigationLinks = [
     { name: "What we do", id: "what-we-do" },
     { name: "How it works", id: "how-it-works" },
@@ -58,11 +71,10 @@ export default function GlassmorphicNavbar() {
     { name: "Careers", id: "careers" }
   ];
 
-  // Smooth scroll function
   const handleSmoothScroll = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Adjust this based on your navbar height
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -108,7 +120,7 @@ export default function GlassmorphicNavbar() {
           height={18}
           className="object-contain"
         />
-        <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
+        <div className="hidden lg:flex items-baseline text-white font-[Dyson Sans Modern]">
           <span
             className="text-lg tracking-[-0.05em] leading-[10px] font-normal"
             style={{ marginRight: "2px" }}
@@ -121,8 +133,7 @@ export default function GlassmorphicNavbar() {
         </div>
       </div>
 
-      {/* Center Nav Links (Desktop Only) */}
-      <div className="hidden md:flex items-center gap-14 text-white">
+      <div className="hidden md:flex items-center md:gap-6 lg:gap-8 xl:gap-14 text-white">
         {navigationLinks.map((link, i) => (
           <button
             key={i}
@@ -141,7 +152,7 @@ export default function GlassmorphicNavbar() {
           hidden md:block
           bg-[#FFFFFF] text-black
           rounded-[3.875rem]
-          px-12 py-3.5
+          md:px-6 lg:px-8 xl:px-12 py-3.5
           font-[Manrope] font-semibold text-[0.9375rem] tracking-[-0.03em]
           border border-transparent
           hover:bg-[#f5f5f5]
@@ -153,21 +164,65 @@ export default function GlassmorphicNavbar() {
       </button>
 
       <div className="md:hidden flex items-center">
-        <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+        <button onClick={toggleMenu} className="text-white">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: -10 }}
-            transition={{ duration: 0.25 }}
+      {MotionComponents ? (
+        <MotionComponents.AnimatePresence>
+          {isOpen && (
+            <MotionComponents.motion.div
+              initial={{ opacity: 0, scale: 0.9, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="
+                absolute top-[4.375rem] right-4
+                left-4 md:left-auto md:right-5
+                sm:w-[13.75rem]
+                bg-[#000000cc] backdrop-blur-[20px]
+                flex flex-col items-start
+                py-3 px-4 gap-3
+                rounded-3xl
+                border border-white/10
+                md:hidden
+              "
+            >
+              {navigationLinks.map((link, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleSmoothScroll(link.id)}
+                  className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left"
+                >
+                  {link.name}
+                </button>
+              ))}
+              <button
+                onClick={handleGetInTouch}
+                className="
+                  bg-[#FFFFFF] text-black
+                  rounded-[3.875rem] px-7 py-2
+                  font-[Manrope] font-semibold text-[13px]
+                  hover:bg-[#f5f5f5]
+                  transition-all duration-300
+                  w-full
+                  text-center
+                  cursor-pointer
+                "
+              >
+                Get in touch
+              </button>
+            </MotionComponents.motion.div>
+          )}
+        </MotionComponents.AnimatePresence>
+      ) : (
+        isOpen && (
+          <div
             className="
-              absolute top-[4.375rem] right-5
-              w-[13.75rem]
+              absolute top-[4.375rem] right-4
+              left-4 md:left-auto md:right-5
+              sm:w-[13.75rem]
               bg-[#000000cc] backdrop-blur-[20px]
               flex flex-col items-start
               py-3 px-4 gap-3
@@ -200,9 +255,9 @@ export default function GlassmorphicNavbar() {
             >
               Get in touch
             </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        )
+      )}
     </nav>
   );
 }
