@@ -138,17 +138,24 @@ export function CTASection() {
     const initLogoAnimations = async () => {
       const { gsap } = await loadGSAP();
       ctx = gsap.context(() => {
-        logosRef.current.forEach((el) => {
+        logosRef.current.forEach((el, index) => {
           if (!el) return;
+          
+          // Set initial rotation through GSAP to avoid conflict with CSS transform
+          const initialRotate = parseInt(logos[index].style.rotate) || 0;
+          gsap.set(el, { rotation: initialRotate });
+
           gsap.to(el, {
             x: "random(-10, 10)",
             y: "random(-8, 8)",
-            rotation: "random(-5, 5)",
+            rotation: `${initialRotate} + random(-5, 5)`,
             scale: "random(0.95, 1.05)",
             duration: "random(2, 3)",
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
+            force3D: true,
+            autoRound: false,
           });
         });
       });
@@ -191,25 +198,41 @@ export function CTASection() {
         mt-20
       "
     >
-      <div className="absolute inset-0 pointer-events-none">
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+      >
         {logos.map((logo, index) => (
           <div
             key={index}
             ref={(el) => {
               logosRef.current[index] = el;
             }}
-            className="absolute opacity-30 md:opacity-70 hover:opacity-100 transition-opacity duration-300"
+            className="absolute opacity-70 md:opacity-70 hover:opacity-100 transition-opacity duration-300 will-change-transform"
             style={{
-              ...logo.style,
-              transform: `rotate(${logo.style.rotate})`,
+              width: logo.style.width,
+              height: logo.style.height,
+              top: logo.style.top,
+              left: logo.style.left,
+              transform: "translate3d(0, 0, 1px)", // Force 3D Layer
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              filter: "blur(0px)",
+              WebkitFontSmoothing: "antialiased",
             }}
           >
             <Image
               src={logo.src}
               alt={logo.name}
-              width={100}
-              height={100}
+              width={250}
+              height={250}
+              quality={90}
+              unoptimized={true}
               className="w-full h-full object-contain"
+              style={{
+                imageRendering: "crisp-edges",
+              }}
+              priority
             />
           </div>
         ))}
