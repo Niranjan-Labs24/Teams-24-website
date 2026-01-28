@@ -6,51 +6,51 @@ import { loadGSAP } from "@/lib/animation-loaders";
 export function CTASection() {
   const logosRef = useRef<(HTMLDivElement | null)[]>([]);
 
- const logos = [
-  {
-    name: "Salesforce",
-    src: "/logos/salesforce.png",
-    style: {
-      width: "clamp(40px, 4.8vw, 68px)",
-      height: "clamp(28px, 3.3vw, 48px)",
-      top: "9%",
-      left: "10%",
-      rotate: "15deg",
+  const logos = [
+    {
+      name: "Salesforce",
+      src: "/logos/salesforce.png",
+      style: {
+        width: "clamp(40px, 4.8vw, 68px)",
+        height: "clamp(28px, 3.3vw, 48px)",
+        top: "9%",
+        left: "10%",
+        rotate: "15deg",
+      },
     },
-  },
-  {
-    name: "Microsoft",
-    src: "/logos/microsoft.png",
-    style: {
-      width: "clamp(24px, 2.8vw, 34px)",
-      height: "clamp(24px, 2.8vw, 34px)",
-      top: "8%",
-      left: "30%",
-      rotate: "-15deg",
+    {
+      name: "Microsoft",
+      src: "/logos/microsoft.png",
+      style: {
+        width: "clamp(24px, 2.8vw, 34px)",
+        height: "clamp(24px, 2.8vw, 34px)",
+        top: "8%",
+        left: "30%",
+        rotate: "-15deg",
+      },
     },
-  },
-  {
-    name: "Adobe",
-    src: "/logos/adobe.png",
-    style: {
-      width: "clamp(26px, 3vw, 34px)",
-      height: "clamp(36px, 4.4vw, 47px)",
-      top: "12%",
-      left: "68%",
-      rotate: "15deg",
+    {
+      name: "Adobe",
+      src: "/logos/adobe.png",
+      style: {
+        width: "clamp(26px, 3vw, 34px)",
+        height: "clamp(36px, 4.4vw, 47px)",
+        top: "12%",
+        left: "68%",
+        rotate: "15deg",
+      },
     },
-  },
-  {
-    name: "SAP",
-    src: "/logos/sap.png",
-    style: {
-      width: "clamp(48px, 5vw, 66px)",
-      height: "clamp(24px, 3vw, 33px)",
-      top: "20%",
-      left: "91%",
-      rotate: "-15deg",
+    {
+      name: "SAP",
+      src: "/logos/sap.png",
+      style: {
+        width: "clamp(48px, 5vw, 66px)",
+        height: "clamp(24px, 3vw, 33px)",
+        top: "20%",
+        left: "91%",
+        rotate: "-15deg",
+      },
     },
-  },
   {
     name: "Figma",
     src: "/logos/figma.png",
@@ -181,7 +181,7 @@ export function CTASection() {
         w-full 
         max-w-[79rem] 
         mx-auto 
-        h-[33rem] 
+        h-[40rem] md:h-[33rem] 
         bg-white 
         overflow-hidden 
         rounded-[2rem] 
@@ -191,15 +191,14 @@ export function CTASection() {
         mt-20
       "
     >
-     {/* ✅ Each logo has its own ref and rotation */}
       <div className="absolute inset-0 pointer-events-none">
         {logos.map((logo, index) => (
           <div
             key={index}
             ref={(el) => {
-           logosRef.current[index] = el;
-          }}
-            className="absolute opacity-70 hover:opacity-100"
+              logosRef.current[index] = el;
+            }}
+            className="absolute opacity-30 md:opacity-70 hover:opacity-100 transition-opacity duration-300"
             style={{
               ...logo.style,
               transform: `rotate(${logo.style.rotate})`,

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
-  // Smooth scroll function
+ 
   const handleSmoothScroll = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -19,7 +19,7 @@ export function Footer() {
     }
   };
 
-  // Social media links from environment variables
+
   const socialLinks = {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/teams24",
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/teams24",
@@ -31,7 +31,7 @@ export function Footer() {
     <footer className="w-full max-w-[90rem] mx-auto h-auto min-h-[40.5rem] bg-white font-[Manrope]  relative overflow-hidden">
       <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[6.75rem] px-4 sm:px-6 md:px-8 lg:px-[5.875rem] pb-32">
         {/* ✅ Responsive Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
           {/* ✅ Logo */}
           <div className="col-span-2 lg:col-span-1 mb-8 lg:mb-0">
             <div className="flex items-center gap-2">
