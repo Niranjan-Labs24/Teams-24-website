@@ -74,7 +74,7 @@ export default function HeroSection(): JSX.Element {
           
             <div className="absolute inset-0 bg-black/40"></div>
             
-            <div className="relative z-10 flex flex-col items-center px-6 pt-24 pb-8 h-full">
+            <div className="relative z-10 flex flex-col items-center px-6 pt-36 pb-8 h-full">
           
               <h1 
                 className="font-manrope font-bold text-[28px] leading-[28px] tracking-[-0.06em] text-white text-center w-[330px] mb-4"
