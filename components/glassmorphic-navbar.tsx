@@ -94,17 +94,16 @@ export default function GlassmorphicNavbar() {
   return (
     <nav
       className={`
-        fixed top-11 left-1/2 -translate-x-1/2
+        fixed top-6 md:top-11 left-1/2 -translate-x-1/2
         z-[9999]
         flex items-center justify-between
         rounded-[3.75rem]
         border border-white/20
         bg-[#13131333]
         backdrop-blur-[44px]
-        px-6 py-2.5
-        md:py-3
+        px-6 py-4 md:py-3
         transition-all duration-500 ease-in-out
-        w-[85%] md:w-[calc(100%-7.5rem)] max-w-7xl
+        w-[90%] md:w-[calc(100%-7.5rem)] max-w-7xl
         ${isHidden ? "opacity-0 pointer-events-none translate-y-[-20px]" : "opacity-100 translate-y-0"}
       `}
       style={{

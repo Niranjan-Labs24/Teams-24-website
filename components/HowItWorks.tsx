@@ -295,7 +295,7 @@ export default function HowItWorks() {
           </div>
 
        
-          <div className="lg:hidden absolute bottom-8 left-0 right-0 px-6 z-50">
+          <div className="lg:hidden absolute bottom-12 md:bottom-16 left-0 right-0 px-6 z-50">
             <div className="max-w-[280px] mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-2xl">
               <MobileStepIndicators activeStep={activeStep} onStepClick={handleStepClick} />
             </div>
