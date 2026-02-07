@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Manrope } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import "./globals.css"
 
 
@@ -84,6 +85,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.className} font-sans antialiased`}>
       
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-W5600BXJZT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-W5600BXJZT');
+          `}
+        </Script>
         {children}
         <Analytics />
       </body>
