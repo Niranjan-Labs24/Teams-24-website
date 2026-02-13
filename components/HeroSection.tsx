@@ -1,338 +1,153 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { loadFramerMotion } from "@/lib/animation-loaders";
+import { Sparkle, CheckCircle2, ChevronDown } from "lucide-react";
 
-interface Card {
-  img: string;
-  subtitle: string;
-  title: string;
-  tag: string;
-}
-
-const cards: Card[] = [
-  {
-    img: "/engineer.png",
-    subtitle: "Specflicks",
-    title: "Hire a Full-Stack Engineer in 2 weeks",
-    tag: "5X Faster to hire",
-  },
-  {
-    img: "/designer.png",
-    subtitle: "PixelWorld",
-    title: "UI/UX Designers ready in 10 days",
-    tag: "80% Interview rate",
-  },
-  {
-    img: "/marketer.png",
-    subtitle: "Brandify",
-    title: "Hire Digital Marketers instantly",
-    tag: "Top Rated Talent",
-  },
-];
+import Link from "next/link";
 
 export default function HeroSection(): JSX.Element {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [MotionComponent, setMotionComponent] = useState<typeof import("framer-motion").motion.div | null>(null);
-
-  useEffect(() => {
-    const loadMotion = async () => {
-      const { motion } = await loadFramerMotion();
-      setMotionComponent(() => motion.div);
-    };
-    loadMotion();
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % cards.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getCircularIndex = (index: number): number =>
-    (index + cards.length) % cards.length;
+  const handleGetInTouch = () => {
+    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
+  };
 
   return (
-    <section className="bg-white w-full flex justify-center lg:px-6 2xl:px-0">
-      <div className="lg:hidden w-full min-h-screen bg-white flex justify-center">
-        <div className="w-full relative min-h-screen flex flex-col">
-          
-          <div 
-            className="absolute inset-0 overflow-hidden"
-            style={{ zIndex: 0 }}
+    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center">
+      {/* Static Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/back/background.png"
+          alt="Background Gradient"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-[#0A0B1A]/20" />
+      </div>
+      
+      {/* Content Container */}
+      <div className="relative z-20 h-full w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 pt-28 pb-12 max-w-[1440px] mx-auto gap-12 lg:gap-20">
+        
+        {/* Left Content */}
+        <div className="flex-1 flex flex-col items-start gap-8 lg:max-w-[650px]">
+          <div className="flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-sm transition-transform hover:scale-105">
+            <Sparkle className="w-4 h-4 text-white" />
+            <span className="text-white text-sm font-medium tracking-tight">
+              Hiring can be as easier as shopping
+            </span>
+          </div>
+
+          <h1 
+            className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] font-normal text-white leading-[1.2] sm:leading-[50px] tracking-[-0.07em]"
+            style={{ 
+              fontFamily: "'Space Grotesk', sans-serif",
+            }}
           >
-            <Image
-              src="/background-image.png"
-              alt="Background"
-              fill
-              priority
-              quality={90}
-              className="object-cover"
-            />
-          
-            <div className="absolute inset-0 bg-black/40"></div>
-            
-            <div className="relative z-10 flex flex-col items-center px-6 pt-36 pb-8 h-full">
-          
-              <h1 
-                className="font-manrope font-bold text-[28px] leading-[28px] tracking-[-0.06em] text-white text-center w-[330px] mb-4"
-              >
-                Flexibility of a freelancer with commitment of an employee
-              </h1>
-              
-          
-              <p className="font-manrope font-medium text-[16px] leading-[24px] text-gray-200 text-center mb-6">
-                Hiring can be as easier as shopping
-              </p>
-            
+            Flexibility of a freelancer<br className="hidden sm:block" />
+            with commitment of<br className="hidden sm:block" />
+            an employee
+          </h1>
+
+          <div className="flex flex-col items-start gap-5">
+            <Link href="/hire/full-stack-developer">
               <button 
-                onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-[18px] leading-[28px] hover:bg-gray-200 transition-all duration-300 shadow-lg mb-3"
+                className="px-12 py-4 bg-white text-black rounded-full font-bold text-xl transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
               >
-                Build your team
+                Hire your dream team
               </button>
-              
-              
-              <div className="flex items-center gap-2 mb-6">
-                <Image
-                  src="/logo5.png"
-                  alt="Logo"
-                  width={14}
-                  height={14}
-                  className="shrink-0"
-                />
-                <p className="font-manrope font-medium text-sm leading-[20px] text-gray-200 text-center">
-                  Book a free discovery call
-                </p>
+            </Link>
+            
+            <button 
+              onClick={handleGetInTouch}
+              className="flex items-center gap-3 group px-1"
+            >
+              <div className="p-1 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm">
+                <CheckCircle2 size={16} className="text-white/80" />
               </div>
- 
-              <div className="relative w-full h-[300px] flex items-center justify-center overflow-visible">
-                {cards.map((card, i) => {
-                  const circularIndex = getCircularIndex(currentIndex - i);
-                  let x = 0,
-                    scale = 1,
-                    opacity = 1,
-                    zIndex = 10;
- 
-                  if (circularIndex === 0) {
-                    x = -200; 
-                    scale = 0.8;
-                    opacity = 0.6;
-                    zIndex = 1;
-                  } else if (circularIndex === 1) {
-                    x = 0;
-                    scale = 1;
-                    opacity = 1;
-                    zIndex = 10;
-                  } else if (circularIndex === 2) {
-                    x = 200; 
-                    scale = 0.8;
-                    opacity = 0.6;
-                    zIndex = 1;
-                  }
- 
-                  if (MotionComponent) {
-                    return (
-                      <MotionComponent
-                        key={i}
-                        animate={{ x, scale, opacity, zIndex }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                        className="absolute w-[200px] h-[250px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
-                      >
-                        <Image
-                          src={card.img}
-                          alt={card.title}
-                          fill
-                          className="object-cover"
-                          priority={i === 0}
-                          quality={80}
-                          sizes="200px"
-                        />
-                      </MotionComponent>
-                    );
-                  }
- 
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        transform: `translateX(${x}px) scale(${scale})`,
-                        opacity,
-                        zIndex,
-                        transition: "all 0.8s ease-in-out",
-                      }}
-                      className="absolute w-[200px] h-[250px] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
-                    >
-                      <Image
-                        src={card.img}
-                        alt={card.title}
-                        fill
-                        className="object-cover"
-                        priority={i === 0}
-                        quality={80}
-                        sizes="200px"
-                      />
-                    </div>
-                  );
-                })}
+              <p className="font-medium text-base tracking-tight text-white/80 group-hover:text-white transition-colors">
+                Book a free discovery call
+              </p>
+            </button>
+          </div>
+        </div>
+
+        <div className="w-full max-w-[598px] flex justify-center lg:justify-end">
+          <div 
+            className="w-full bg-white/5 backdrop-blur-[40px] rounded-[28px] border-[0.81px] border-white/10 p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center"
+            style={{
+                height: '522px'
+            }}
+          >
+            <div className="relative z-10 text-center mb-6">
+              <h2 className="text-white text-2xl md:text-3xl font-bold font-manrope mb-1">
+                Book a free 30 min call
+              </h2>
+              <p className="text-white/60 text-base">
+                Get all your questions answered by our experts.
+              </p>
+            </div>
+
+            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="First name"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                />
+                <input
+                  type="text"
+                  placeholder="Last name"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                />
               </div>
 
-              <div className="flex justify-center mt-8">
-                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
-                  {cards.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`rounded-full transition-all duration-300 ${
-                        currentIndex === i ? "w-8 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/30"
-                      }`}
-                    />
-                  ))}
+              <input
+                type="email"
+                placeholder="Work email"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+              />
+
+              <div className="grid grid-cols-1 gap-3">
+                <div className="relative">
+                  <select 
+                    defaultValue=""
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/80 outline-none appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Company size</option>
+                    <option value="1-10">1-10 employees</option>
+                    <option value="11-50">11-50 employees</option>
+                    <option value="51-200">51-200 employees</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                </div>
+
+                <div className="relative">
+                  <select 
+                    defaultValue=""
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/80 outline-none appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Location</option>
+                    <option value="usa">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="india">India</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div 
-        className="hidden lg:block relative w-full lg:max-w-[86rem] lg:h-[57rem] lg:mt-7 lg:rounded-[2rem] overflow-hidden"
-      >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/background-image.png"
-            alt="Background"
-            fill
-            priority
-            quality={90}
-            className="object-cover"
-          />
-        </div>
-
-        <div className="relative z-10 h-full flex items-center justify-between px-20">
-          <div className="flex-1 max-w-[44rem] space-y-8">
-            <h1 className="text-[4rem] font-manrope font-bold leading-[1.125] tracking-[-0.02em] text-white">
-              Flexibility of a freelancer <br /> with commitment of an employee
-            </h1>
-            
-          
-            <p className="font-manrope font-medium text-base leading-[1.5] text-gray-300">
-              Hiring can be as easier as shopping
-            </p>
-
-
-            <div className="flex flex-col items-start gap-4 pt-8">
-              <button 
-                onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-                className="px-8 py-4 bg-white text-black rounded-2xl font-manrope font-medium text-lg leading-[1.55] hover:bg-gray-200 transition-all duration-300 shadow-lg"
-              >
-                Build your team
-              </button>
-              
-              <div className="flex items-center gap-3 max-w-[18rem]">
-                <Image
-                  src="/logo5.png"
-                  alt="Logo"
-                  width={14}
-                  height={14}
-                  className="shrink-0"
-                />
-                <p className="font-manrope font-medium text-sm leading-[1.4] text-gray-300">
-                  Book a free discovery call
+              <div className="py-1">
+                <p className="text-[11px] text-white/40 leading-relaxed text-center">
+                  We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our privacy policy.
                 </p>
               </div>
-            </div>
-          </div>
 
-        
-          <div className="flex-1 flex justify-end relative">
-           
-         
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20">
-               <div className="inline-flex flex-col items-center gap-2 px-2 py-3 rounded-full border border-white/10 bg-white/5 h-fit">
-                {cards.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`rounded-full transition-all duration-300 ${
-                      currentIndex === i ? "h-8 w-1.5 bg-white" : "h-1.5 w-1.5 bg-white/30"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            
-            <div className="flex flex-col items-center justify-center relative h-[43.75rem] w-[22rem] overflow-visible mr-24">
-              {cards.map((card, i) => {
-                const circularIndex = getCircularIndex(currentIndex - i);
-                let y = 0,
-                  scale = 1,
-                  opacity = 1,
-                  zIndex = 10;
-
-                if (circularIndex === 0) {
-                  y = 460;
-                  scale = 0.85;
-                  opacity = 0.7;
-                  zIndex = 1;
-                } else if (circularIndex === 1) {
-                  y = 0; 
-                  scale = 1;
-                  opacity = 1;
-                  zIndex = 10;
-                } else if (circularIndex === 2) {
-                  y = -460;
-                  scale = 0.85;
-                  opacity = 0.7;
-                  zIndex = 1;
-                }
-
-                if (MotionComponent) {
-                  return (
-                    <MotionComponent
-                      key={i}
-                      animate={{ y, scale, opacity, zIndex }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="absolute w-[24rem] h-[30rem] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
-                    >
-                      <Image
-                        src={card.img}
-                        alt={card.title}
-                        fill
-                        className="object-cover"
-                        priority={i === 0}
-                        quality={80}
-                        sizes="384px"
-                      />
-                    </MotionComponent>
-                  );
-                }
-
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      transform: `translateY(${y}px) scale(${scale})`,
-                      opacity,
-                      zIndex,
-                      transition: "all 0.8s ease-in-out",
-                    }}
-                    className="absolute w-[24rem] h-[30rem] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-2xl"
-                  >
-                    <Image
-                      src={card.img}
-                      alt={card.title}
-                      fill
-                      className="object-cover"
-                      priority={i === 0}
-                      quality={80}
-                      sizes="384px"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+              <button
+                type="submit"
+                className="w-full bg-white text-black py-3.5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg shadow-white/5"
+              >
+                Book a demo call
+              </button>
+            </form>
           </div>
         </div>
       </div>

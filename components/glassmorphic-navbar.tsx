@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { loadFramerMotion } from "@/lib/animation-loaders";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function GlassmorphicNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,10 +66,8 @@ export default function GlassmorphicNavbar() {
   };
 
   const navigationLinks = [
-    { name: "What we do", id: "what-we-do" },
-    { name: "How it works", id: "how-it-works" },
-    { name: "Services", id: "services" },
-    { name: "Careers", id: "careers" }
+    { name: "For companies", id: "for-companies" },
+    { name: "For talent", id: "for-talent" }
   ];
 
   const handleSmoothScroll = (sectionId: string) => {
@@ -94,20 +93,21 @@ export default function GlassmorphicNavbar() {
   return (
     <nav
       className={`
-        fixed top-6 md:top-11 left-1/2 -translate-x-1/2
+        fixed top-4 md:top-6 left-1/2 -translate-x-1/2
         z-[9999]
         flex items-center justify-between
-        rounded-[3.75rem]
-        border border-white/20
-        bg-[#13131333]
-        backdrop-blur-[44px]
-        px-6 py-4 md:py-3
+        rounded-[100px]
+        border border-white/10
+        backdrop-blur-[20px]
+        px-4 md:px-6 lg:px-7 py-2.5
         transition-all duration-500 ease-in-out
-        w-[90%] md:w-[calc(100%-7.5rem)] max-w-7xl
-        ${isHidden ? "opacity-0 pointer-events-none translate-y-[-20px]" : "opacity-100 translate-y-0"}
+        w-[95%] md:w-[92%] max-w-7xl
+        opacity-100 translate-y-0
       `}
       style={{
-        WebkitBackdropFilter: "blur(44px)",
+        background: "rgba(0, 0, 0, 0.4)",
+        WebkitBackdropFilter: "blur(40px)",
+        backdropFilter: "blur(40px)",
       }}
     >
       {/* Left Section - Logo + Name */}
@@ -132,15 +132,57 @@ export default function GlassmorphicNavbar() {
         </div>
       </div>
 
-      <div className="hidden md:flex items-center md:gap-6 lg:gap-8 xl:gap-14 text-white">
+      <div className="hidden md:flex items-center md:gap-6 lg:gap-12 text-white">
         {navigationLinks.map((link, i) => (
-          <button
-            key={i}
-            onClick={() => handleSmoothScroll(link.id)}
-            className="text-[0.9375rem] font-[500] font-[Manrope] tracking-[-0.02em] leading-[15px] opacity-90 hover:opacity-100 transition cursor-pointer"
-          >
-            {link.name}
-          </button>
+          <div key={i} className="relative group">
+            <button
+              onClick={() => handleSmoothScroll(link.id)}
+              className="flex items-center gap-1.5 whitespace-nowrap text-[0.9375rem] font-medium font-[Manrope] tracking-tight hover:opacity-80 transition cursor-pointer py-2"
+            >
+              {link.name}
+              <ChevronDown size={14} className="opacity-70 group-hover:rotate-180 transition-transform duration-300" />
+            </button>
+            
+            {/* Dropdown Content */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+              <div className="bg-[#0A0B1A] border border-white/10 rounded-2xl p-4 min-w-[220px] shadow-2xl backdrop-blur-xl">
+                {link.id === "for-companies" ? (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider px-2 mb-1">Hire</p>
+                    <div className="grid grid-cols-1 gap-1">
+                      {[
+                        "Full Stack Developer",
+                        "Frontend Developer",
+                        "Backend Developer",
+                        "Mobile App Developer",
+                        "UI/UX Designer",
+                        "DevOps Engineer",
+                        "Data Scientist",
+                        "Product Manager"
+                      ].map((role, index) => (
+                        <Link
+                          key={index}
+                          href={`/hire/${role.toLowerCase().replace(/ /g, "-")}`}
+                          className="flex items-center px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-[14px] text-white/90 font-medium text-left whitespace-nowrap"
+                        >
+                          {role}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    href="https://careers.teams24.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center px-4 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-[14px] text-white/90 font-medium whitespace-nowrap"
+                  >
+                    Careers
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
@@ -151,15 +193,16 @@ export default function GlassmorphicNavbar() {
           hidden md:block
           bg-[#FFFFFF] text-black
           rounded-[3.875rem]
-          md:px-6 lg:px-8 xl:px-12 py-3.5
-          font-[Manrope] font-semibold text-[0.9375rem] tracking-[-0.03em]
+          md:px-8 lg:px-12 py-3.5
+          font-[Manrope] font-semibold text-[0.9375rem] tracking-tight
+          whitespace-nowrap
           border border-transparent
           hover:bg-[#f5f5f5]
           transition-all duration-300
           cursor-pointer
         "
       >
-        Get in touch
+        Hire your dream team
       </button>
 
       <div className="md:hidden flex items-center">
@@ -177,25 +220,59 @@ export default function GlassmorphicNavbar() {
               exit={{ opacity: 0, scale: 0.9, y: -10 }}
               transition={{ duration: 0.25 }}
               className="
-                absolute top-[4.375rem] right-4
-                left-4 md:left-auto md:right-5
-                sm:w-[13.75rem]
-                bg-[#000000cc] backdrop-blur-[20px]
+                absolute top-[5rem] right-0
+                w-[min(90vw,320px)]
                 flex flex-col items-start
-                py-3 px-4 gap-3
-                rounded-3xl
+                py-6 px-6 gap-6
+                rounded-[32px]
                 border border-white/10
                 md:hidden
+                max-h-[80vh] overflow-y-auto
               "
+              style={{
+                background: "linear-gradient(135deg, #1d3372 0%, #252b57 100%)",
+                backdropFilter: "blur(20px)",
+              }}
             >
               {navigationLinks.map((link, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleSmoothScroll(link.id)}
-                  className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left"
-                >
-                  {link.name}
-                </button>
+                <div key={i} className="w-full">
+                  {link.id === "for-companies" ? (
+                    <div className="flex flex-col gap-2 w-full">
+                      <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider px-2">Hire</p>
+                      <div className="flex flex-col gap-1 pl-2">
+                        {[
+                          "Full Stack Developer",
+                          "Frontend Developer",
+                          "Backend Developer",
+                          "Mobile App Developer",
+                          "UI/UX Designer",
+                          "DevOps Engineer",
+                          "Data Scientist",
+                          "Product Manager"
+                        ].map((role, index) => (
+                          <Link
+                            key={index}
+                            href={`/hire/${role.toLowerCase().replace(/ /g, "-")}`}
+                            onClick={() => setIsOpen(false)}
+                            className="text-white/80 text-[14px] py-1 hover:text-white transition-colors"
+                          >
+                            {role}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleSmoothScroll(link.id);
+                        setIsOpen(false);
+                      }}
+                      className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left py-2"
+                    >
+                      {link.name}
+                    </button>
+                  )}
+                </div>
               ))}
               <button
                 onClick={handleGetInTouch}
@@ -210,7 +287,7 @@ export default function GlassmorphicNavbar() {
                   cursor-pointer
                 "
               >
-                Get in touch
+                Hire your dream team
               </button>
             </MotionComponents.motion.div>
           )}
@@ -219,25 +296,59 @@ export default function GlassmorphicNavbar() {
         isOpen && (
           <div
             className="
-              absolute top-[4.375rem] right-4
-              left-4 md:left-auto md:right-5
-              sm:w-[13.75rem]
-              bg-[#000000cc] backdrop-blur-[20px]
+              absolute top-[5rem] right-0
+              w-[min(90vw,320px)]
               flex flex-col items-start
-              py-3 px-4 gap-3
-              rounded-3xl
+              py-6 px-6 gap-6
+              rounded-[32px]
               border border-white/10
               md:hidden
+              max-h-[80vh] overflow-y-auto
             "
+            style={{
+              background: "linear-gradient(135deg, #1d3372 0%, #252b57 100%)",
+              backdropFilter: "blur(20px)",
+            }}
           >
             {navigationLinks.map((link, i) => (
-              <button
-                key={i}
-                onClick={() => handleSmoothScroll(link.id)}
-                className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left"
-              >
-                {link.name}
-              </button>
+              <div key={i} className="w-full">
+                {link.id === "for-companies" ? (
+                  <div className="flex flex-col gap-2 w-full">
+                    <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider px-2">Hire</p>
+                    <div className="flex flex-col gap-1 pl-2">
+                      {[
+                        "Full Stack Developer",
+                        "Frontend Developer",
+                        "Backend Developer",
+                        "Mobile App Developer",
+                        "UI/UX Designer",
+                        "DevOps Engineer",
+                        "Data Scientist",
+                        "Product Manager"
+                      ].map((role, index) => (
+                        <Link
+                          key={index}
+                          href={`/hire/${role.toLowerCase().replace(/ /g, "-")}`}
+                          onClick={() => setIsOpen(false)}
+                          className="text-white/80 text-[14px] py-1 hover:text-white transition-colors"
+                        >
+                          {role}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleSmoothScroll(link.id);
+                      setIsOpen(false);
+                    }}
+                    className="text-white text-[15px] font-[Manrope] tracking-[-0.02em] hover:opacity-80 transition cursor-pointer w-full text-left py-2"
+                  >
+                    {link.name}
+                  </button>
+                )}
+              </div>
             ))}
             <button
               onClick={handleGetInTouch}
@@ -252,7 +363,7 @@ export default function GlassmorphicNavbar() {
                 cursor-pointer
               "
             >
-              Get in touch
+              Hire your dream team
             </button>
           </div>
         )

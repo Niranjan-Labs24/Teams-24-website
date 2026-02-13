@@ -188,16 +188,25 @@ export function CTASection() {
         w-full 
         max-w-[79rem] 
         mx-auto 
-        h-[40rem] md:h-[33rem] 
-        bg-white 
+        h-[42rem] md:h-[35rem] 
         overflow-hidden 
-        rounded-[2rem] 
-        border border-[#00000014]
+        rounded-[2.5rem] 
+        border border-[#0000000A]
         px-4 sm:px-6 md:px-8 
         flex items-center justify-center
-        mt-20
+        mt-10
+        shadow-sm
       "
+      style={{
+        background: `
+          radial-gradient(circle at 85% 10%, rgba(191, 219, 254, 0.5) 0%, transparent 50%),
+          radial-gradient(circle at 10% 15%, rgba(251, 207, 232, 0.3) 0%, transparent 40%),
+          radial-gradient(circle at 50% 75%, rgba(255, 237, 213, 0.6) 0%, transparent 45%),
+          linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)
+        `
+      }}
     >
+
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
@@ -208,13 +217,13 @@ export function CTASection() {
             ref={(el) => {
               logosRef.current[index] = el;
             }}
-            className="absolute opacity-70 md:opacity-70 hover:opacity-100 transition-opacity duration-300 will-change-transform"
+            className="absolute opacity-80 md:opacity-90 hover:opacity-100 transition-opacity duration-300 will-change-transform"
             style={{
               width: logo.style.width,
               height: logo.style.height,
               top: logo.style.top,
               left: logo.style.left,
-              transform: "translate3d(0, 0, 1px)", // Force 3D Layer
+              transform: "translate3d(0, 0, 1px)",
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               filter: "blur(0px)",
@@ -224,86 +233,83 @@ export function CTASection() {
             <Image
               src={logo.src}
               alt={logo.name}
-              width={250}
-              height={250}
-              quality={90}
+              width={200}
+              height={200}
+              quality={100}
               unoptimized={true}
               className="w-full h-full object-contain"
               style={{
-                imageRendering: "crisp-edges",
+                imageRendering: "auto",
               }}
               priority
             />
           </div>
         ))}
       </div>
-  <div className="relative z-10 text-center flex flex-col items-center justify-center gap-10 px-4 sm:px-6 md:px-8">
 
-  <div className="max-w-[18.25rem] w-full">
-    <p
-      className="
-        text-gray-700
-        font-[600]
-        text-[1.1875rem]
-        leading-[2rem]
-        tracking-[-0.02em]
-        text-center
-        font-[Manrope]
-      "
-    >
-      Ready to Transform Your Startup?
-    </p>
+      <div className="relative z-10 text-center flex flex-col items-center justify-center gap-6 px-4 sm:px-6 md:px-8">
+        <div className="flex flex-col items-center">
+          <p
+            className="
+              text-[#1A1A1A]/60
+              font-semibold
+              text-base sm:text-lg
+              tracking-tight
+              text-center
+              font-manrope
+            "
+          >
+            Ready to Transform Your Startup?
+          </p>
+        </div>
 
-    <div className="flex justify-center mt-4">
-      <div className="h-1 w-1/3 bg-black rounded-full"></div>
-    </div>
-  </div>
-  <div
-    className="
-      max-w-[61rem] 
-      w-full
-      mt-6
-      px-2
-    "
-  >
-    <h2
-      className="
-        text-black
-        font-[700]
-        font-[Manrope]
-        text-[2rem] sm:text-[2.5rem] md:text-[3rem]
-        leading-[2.375rem] sm:leading-[2.75rem] md:leading-[3rem]
-        tracking-[-0.04em]
-        text-center
-      "
-    >
-      Empowerment begins with a single decision.
-      <br />
-      Your complete team awaits.
-    </h2>
-  </div>
-  <button 
-  onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-    className="
-      mt-8
-      w-[9.375rem] sm:w-[10.625rem] md:w-[11.875rem]
-      h-[3.5rem] sm:h-[4rem] md:h-[4.375rem]
-      bg-black 
-      text-white 
-      font-[Manrope]
-      font-semibold 
-      text-base sm:text-lg md:text-xl
-      rounded-xl 
-      border-4 border-[#FFFFFF4D] 
-      shadow-lg hover:shadow-xl 
-      hover:bg-gray-800 
-      transition-all duration-300
-    "
-  >
-    Book a call
-  </button>
-</div>
+        <div
+          className="
+            max-w-[58rem] 
+            w-full
+            px-2
+          "
+        >
+          <h2
+            className="
+              text-[#1A1A1A]
+              font-extrabold
+              font-manrope
+              text-[2.25rem] sm:text-[3rem] md:text-[3.5rem]
+              leading-[1.05]
+              tracking-tighter
+              text-center
+            "
+          >
+            Empowerment begins with a single decision.
+            <br className="hidden md:block" />
+            Your complete team awaits.
+          </h2>
+        </div>
 
+        <button 
+          onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
+          className="
+            mt-8
+            px-10 sm:px-12
+            h-[3.75rem] sm:h-[4.25rem]
+            bg-[#0F0F0F] 
+            text-white 
+            font-manrope
+            font-semibold 
+            text-lg sm:text-xl
+            rounded-full 
+            border-[3px] border-[#FFFFFF1A] 
+            shadow-[0_20px_50px_rgba(0,0,0,0.15)] 
+            hover:shadow-[0_25px_60px_rgba(0,0,0,0.2)] 
+            hover:bg-black
+            hover:scale-[1.03]
+            transition-all duration-300
+          "
+        >
+          Hire your dream team
+        </button>
+      </div>
     </section>
   );
 }
