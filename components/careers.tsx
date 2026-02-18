@@ -31,7 +31,7 @@ export function Careers() {
       try {
         const { data, error } = await supabase
           .from("jobs")
-          .select("id, title, location, type, slug, color") // Fetch color
+          .select("id, title, location, type, slug, color")
           .eq("status", "published")
           .order("created_at", { ascending: false })
           .limit(4);
@@ -52,75 +52,72 @@ export function Careers() {
   }, []);
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-12 bg-white" id="careers">
-      <div className="max-w-7xl mx-auto w-full">
-        {/* Header */}
-        <p className="text-sm font-medium text-gray-600 mb-4">Careers</p>
+    <section className="relative pt-20 pb-10 px-4 sm:px-8 lg:px-12 bg-white overflow-hidden" id="careers">
+      {/* Background Mesh Gradients - Subtler than FAQ */}
+      <div className="absolute inset-0 pointer-events-none opacity-40">
+        <div className="absolute -left-[10%] top-[20%] w-[40%] h-[60%] bg-blue-100/50 rounded-full blur-[120px]" />
+        <div className="absolute -right-[10%] bottom-[20%] w-[40%] h-[60%] bg-pink-100/40 rounded-full blur-[120px]" />
+      </div>
 
-        <div className="border-t border-black pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <h2 className="font-[Manrope] font-semibold text-[2.25rem] sm:text-[2.75rem] leading-[3rem] tracking-[-0.04em] text-black">
-            Open positions
-          </h2>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div className="max-w-2xl">
+            <h2 
+              className="text-[#1A1A1A] font-normal text-[2.5rem] md:text-[3.5rem] leading-[1.1] tracking-[-0.04em]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              We&apos;re always looking for
+              <br />
+              great talent
+            </h2>
+          </div>
 
           <a
             href="https://careers.teams24.co/"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-[14.1875rem] h-[4.5rem] bg-[#0F0F0F] rounded-xl border-4 border-[#0F0F0F]
-             flex items-center justify-center px-10 py-5
-             hover:bg-black/80 transition"
+            className="inline-flex items-center justify-center px-8 h-14 bg-[#111111] text-white rounded-full font-manrope font-semibold text-lg hover:bg-black transition-all active:scale-95 shadow-md"
           >
-            <span
-              className="block w-[9.1875rem] h-8 text-white font-[Urbanist] font-normal text-xl
-              leading-8 tracking-[-0.03em] text-center overflow-hidden whitespace-nowrap"
-            >
-              View all openings
-            </span>
+            View all openings
           </a>
         </div>
 
-        {/* Jobs list */}
-        <div className="mt-16 w-full max-w-[81rem] divide-y divide-gray-300">
+        {/* Jobs List */}
+        <div className="w-full border-t border-[#0000000F]">
           {loading ? (
-            <p className="py-8 text-gray-500">Loading openings...</p>
+            <p className="py-12 text-gray-400 font-manrope">Loading openings...</p>
           ) : jobs.length > 0 ? (
-            jobs.map((job, index) => (
+            jobs.map((job) => (
               <a
                 key={job.id}
                 href={`https://careers.teams24.co/${job.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between h-auto md:h-[8.25rem] py-6 px-4 md:px-8 hover:bg-gray-50 transition group cursor-pointer"
+                className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
               >
-                {/* Left side */}
-                <div className="flex items-start gap-4 sm:gap-6 flex-1">
-                  <div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 mt-1"
-                    style={{ 
-                        // Use backend color if available, otherwise fallback to index-based gradient
-                        background: job.color 
-                            ? (job.color.startsWith('--') ? `var(${job.color})` : job.color)
-                            : `var(${getGradientVar(index)})` 
-                    }}
-                  />
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold text-black mb-1 sm:mb-2">
+                <div className="flex items-center justify-between py-10 px-2 sm:px-4">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
                       {job.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
-                      {job.type} • {job.location}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
+                      <span>{job.type}</span>
+                      <span className="opacity-30">•</span>
+                      <span>$120k - $200k</span> {/* Placeholder if salary not in DB */}
+                      <span className="opacity-30">•</span>
+                      <span>{job.location}</span>
+                    </div>
+                  </div>
+
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <ArrowUpRight className="text-white w-6 h-6" />
                   </div>
                 </div>
-
-                {/* Right side - Arrow icon */}
-                <div className="w-12 h-12 bg-black rounded-full shadow-lg shadow-black/10 flex items-center justify-center transition-all duration-300 group-hover:rotate-45 flex-shrink-0">
-                  <ArrowUpRight className="text-white w-6 h-6" />
-                </div>
               </a>
-            )
-          )) : (
-            <p className="py-8 text-gray-500">No current openings available. Check back soon!</p>
+            ))
+          ) : (
+            <p className="py-12 text-gray-400 font-manrope">No current openings. Check back soon!</p>
           )}
         </div>
       </div>

@@ -1,12 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Manrope } from "next/font/google"
+import { Manrope, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 
 
 const manrope = Manrope({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
   title: "Teams 24 | Hire Dedicated Developers & Consultants on Subscription",
@@ -83,7 +84,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.className} font-sans antialiased`}>
+      <body className={`${manrope.className} ${spaceGrotesk.className} font-sans antialiased`}>
       
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-W5600BXJZT"
