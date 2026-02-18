@@ -30,52 +30,25 @@ export default function HeroSection(): JSX.Element {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
-    const formId = process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
-    const region = process.env.NEXT_PUBLIC_HUBSPOT_REGION || "na1";
-    
-    if (!portalId || !formId) {
-      console.error("HubSpot configuration is missing in environment variables.");
-      alert("Form configuration error. Please contact support.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
-
-    const payload = {
-      fields: [
-        { name: "firstname", value: formData.firstname },
-        { name: "lastname", value: formData.lastname },
-        { name: "email", value: formData.email },
-        { name: "company_size_dropdown", value: formData.company_size_dropdown },
-        { name: "location", value: formData.location },
-      ],
-      context: {
-        pageUri: typeof window !== "undefined" ? window.location.href : "",
-        pageName: typeof document !== "undefined" ? document.title : "",
-      },
-    };
-
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
       } else {
         const errorData = await response.json();
-        console.error("HubSpot submission failed:", errorData);
+        console.error("Submission failed:", errorData);
         alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      console.error("Error submitting to HubSpot:", error);
-      alert("Error connecting to HubSpot. Please check your connection.");
+      console.error("Error submitting form:", error);
+      alert("Error connecting to server. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
