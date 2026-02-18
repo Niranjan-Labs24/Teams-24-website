@@ -21,11 +21,27 @@ const roleMap: Record<string, string> = {
   "ui-ux-designer": "UI/UX",
   "devops-engineer": "DevOps",
   "data-scientist": "Data Scientist",
-  "product-manager": "Product Manager"
+  "product-manager": "Product Manager",
+  "full-stack-development": "Full Stack",
+  "programmers": "Programmer",
+  "it": "IT",
+  "software": "Software",
+  "app": "App",
+  "django": "Django",
+  "data-analyst": "Data Analyst",
+  "automation": "Automation"
+};
+
+const formatRole = (slug: string) => {
+  if (roleMap[slug]) return roleMap[slug];
+  return slug
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 export default function HireRolePage({ params }: PageProps) {
-  const roleName = roleMap[params.slug] || "Fullstack";
+  const roleName = formatRole(params.slug);
 
   return (
     <main className="min-h-screen bg-white">

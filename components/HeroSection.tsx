@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Sparkle, CheckCircle2, ChevronDown } from "lucide-react";
+import { Sparkle, CheckCircle2, ChevronDown, Star } from "lucide-react";
 
 import Link from "next/link";
 
@@ -82,7 +82,7 @@ export default function HeroSection(): JSX.Element {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center">
+    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center rounded-b-[48px] md:rounded-b-[80px]">
       {/* Static Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -96,19 +96,26 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 pt-28 pb-12 max-w-[1440px] mx-auto gap-12 lg:gap-20">
+      <div className="relative z-20 h-full w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-16 pt-28 pb-12 max-w-[1550px] mx-auto gap-12 lg:gap-[160px]">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col items-start gap-8 lg:max-w-[650px]">
-          <div className="flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-sm transition-transform hover:scale-105">
-            <Sparkle className="w-4 h-4 text-white" />
-            <span className="text-white text-sm font-medium tracking-tight">
-              Hiring can be as easier as shopping
+        <div className="flex-1 flex flex-col items-center lg:items-start gap-8 lg:max-w-[600px] w-full">
+          <div className="flex items-center justify-start lg:justify-start gap-4 transition-transform hover:scale-105 whitespace-nowrap">
+            <div className="relative w-7 h-7 sm:w-10 sm:h-10 flex-shrink-0">
+              <Image
+                src="/icons/Frame 1171276677.png"
+                alt="Badge Icon"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="text-white text-base sm:text-2xl font-medium tracking-tight text-left">
+              Hiring can be as easy as shopping
             </span>
           </div>
 
           <h1 
-            className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] font-normal text-white leading-[1.2] sm:leading-[50px] tracking-[-0.07em]"
+            className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] font-normal text-white leading-[1.2] sm:leading-[50px] tracking-[-0.07em] text-center lg:text-left w-full"
             style={{ 
               fontFamily: "'Space Grotesk', sans-serif",
             }}
@@ -118,7 +125,41 @@ export default function HeroSection(): JSX.Element {
             an employee
           </h1>
 
-          <div className="flex flex-col items-start gap-5">
+          {/* Trust Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mt-2 w-full">
+            <div className="flex -space-x-3 flex-shrink-0">
+              {[
+                "/rating/Frame 2147225664.png",
+                "/rating/Frame 2147225665.png",
+                "/rating/Frame 2147225666.png",
+                "/rating/Frame 2147225667.png"
+              ].map((src, i) => (
+                <div 
+                  key={i} 
+                  className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 overflow-hidden bg-gray-800"
+                >
+                  <Image
+                    src={src}
+                    alt={`Trusted User ${i + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col items-center sm:items-start gap-1 sm:whitespace-nowrap">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-[#F59E0B] text-[#F59E0B]" />
+                ))}
+              </div>
+              <p className="text-white/70 text-sm sm:text-base font-medium tracking-tight text-center sm:text-left">
+                Trusted by 20+ CEO&apos;s and CXO&apos;s
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center lg:items-start gap-5 mt-10">
             <Link href="/hire/full-stack-developer">
               <button 
                 className="px-12 py-4 bg-white text-black rounded-full font-bold text-xl transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
@@ -143,9 +184,10 @@ export default function HeroSection(): JSX.Element {
 
         <div className="w-full max-w-[598px] flex justify-center lg:justify-end">
           <div 
-            className="w-full bg-white/5 backdrop-blur-[40px] rounded-[28px] border-[0.81px] border-white/10 p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center"
+            className="w-full lg:w-[598px] bg-white/5 backdrop-blur-[40px] rounded-[28px] border-[0.81px] border-white/10 p-5 xs:p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{
-                height: '522px'
+                minHeight: '522px',
+                height: 'auto'
             }}
           >
             {isSubmitted ? (
@@ -167,16 +209,16 @@ export default function HeroSection(): JSX.Element {
             ) : (
                 <>
                 <div className="relative z-10 text-center mb-6">
-                  <h2 className="text-white text-2xl md:text-3xl font-bold font-manrope mb-1">
+                  <h2 className="text-white text-xl xs:text-2xl md:text-3xl font-bold font-manrope mb-1">
                     Book a free 30 min call
                   </h2>
-                  <p className="text-white/60 text-base">
+                  <p className="text-white/60 text-sm xs:text-base">
                     Get all your questions answered by our experts.
                   </p>
                 </div>
     
                 <form className="space-y-3" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
                     <input
                       required
                       name="firstname"

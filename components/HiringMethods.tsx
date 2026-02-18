@@ -44,21 +44,21 @@ export default function HiringMethods() {
         <div className="relative isolate">
           
           {/* Header Row */}
-          <div className="hidden md:grid md:grid-cols-12 items-end mb-0 h-24">
+          <div className="grid grid-cols-12 items-end mb-0 h-16 md:h-24">
             {/* Empty Spacer (Matches Label Col) */}
             <div className="col-span-4"></div>
             
             {/* Traditional Header */}
-            <div className="col-span-4 pb-6 text-center">
-              <span className="text-slate-600 font-medium text-lg leading-tight block">
+            <div className="col-span-4 pb-2 md:pb-6 text-center">
+              <span className="text-slate-600 font-medium text-[10px] md:text-lg leading-tight block">
                 Traditional hiring methods
               </span>
             </div>
             
             {/* Teams24 Header - Blue Card Top */}
             <div className="col-span-4 relative h-full">
-               <div className="absolute inset-x-0 bottom-0 top-2 bg-gradient-to-r from-[#5EA5FF] to-[#98C6FF] rounded-t-[1.75rem] shadow-sm z-10 flex items-center justify-center gap-3">
-                  <div className="relative w-8 h-8">
+               <div className="absolute inset-x-0 bottom-0 top-1 md:top-2 bg-gradient-to-r from-[#5EA5FF] to-[#98C6FF] rounded-t-lg md:rounded-t-[1.75rem] shadow-sm z-10 flex items-center justify-center gap-1 md:gap-3">
+                  <div className="relative w-4 h-4 md:w-8 md:h-8">
                     <Image 
                       src="/logo.png" 
                       alt="Teams24" 
@@ -67,8 +67,8 @@ export default function HiringMethods() {
                     />
                   </div>
                   <div className="flex items-start">
-                    <span className="text-white font-bold text-2xl tracking-tight">Teams24</span>
-                    <span className="text-white text-[10px] font-medium mt-1">®</span>
+                    <span className="text-white font-bold text-xs md:text-2xl tracking-tight">Teams24</span>
+                    <span className="text-white text-[6px] md:text-[10px] font-medium mt-0.5 md:mt-1">®</span>
                   </div>
                </div>
             </div>
@@ -79,31 +79,29 @@ export default function HiringMethods() {
             {rows.map((row, idx) => (
               <div 
                 key={idx} 
-                className={`grid grid-cols-1 md:grid-cols-12 items-stretch group ${
+                className={`grid grid-cols-12 items-stretch group ${
                   idx !== rows.length - 1 ? 'border-b border-gray-50' : ''
                 }`}
               >
                 {/* Mobile Label (Hidden on Desktop usually, but here distinct) */}
-                <div className="md:col-span-4 p-6 md:p-8 md:pl-10 flex items-center bg-white border-b md:border-b-0 border-gray-50 md:border-r">
-                  <span className="text-slate-500 font-medium text-lg">
+                <div className="col-span-4 p-3 md:p-8 md:pl-10 flex items-center bg-white border-b md:border-b-0 border-gray-50 md:border-r">
+                  <span className="text-slate-500 font-medium text-xs md:text-lg">
                     {row.label}
                   </span>
                 </div>
 
                 {/* Traditional Value */}
-                <div className="md:col-span-4 p-6 md:p-8 flex items-center justify-between md:justify-center bg-gray-50/50 md:bg-transparent md:border-r border-gray-50">
-                  <span className="md:hidden text-slate-400 text-sm font-medium">Traditional</span>
-                  <span className="text-slate-900 font-bold text-lg md:text-xl tracking-tight text-center w-full md:w-auto">
+                <div className="col-span-4 p-3 md:p-8 flex items-center justify-center bg-gray-50/50 md:bg-transparent md:border-r border-gray-50">
+                  <span className="text-slate-900 font-bold text-sm md:text-xl tracking-tight text-center w-full">
                     {row.traditional}
                   </span>
                 </div>
 
                 {/* Teams24 Value */}
-                <div className="md:col-span-4 p-6 md:p-8 md:pl-12 flex items-center justify-between md:justify-start bg-blue-50/10 md:bg-white transition-colors">
-                   <span className="md:hidden text-blue-500 text-sm font-bold">Teams24</span>
-                   <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-white fill-[#00C065] flex-shrink-0" />
-                      <span className="text-slate-900 font-bold text-lg md:text-xl tracking-tight">
+                <div className="col-span-4 p-3 md:p-8 md:pl-12 flex items-center justify-start bg-blue-50/10 md:bg-white transition-colors">
+                   <div className="flex items-center gap-1.5 md:gap-3">
+                      <CheckCircle2 className="w-4 h-4 md:w-6 md:h-6 text-white fill-[#00C065] flex-shrink-0" />
+                      <span className="text-slate-900 font-bold text-sm md:text-xl tracking-tight">
                         {row.teams24}
                       </span>
                    </div>
