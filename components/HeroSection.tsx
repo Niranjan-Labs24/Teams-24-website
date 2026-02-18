@@ -7,8 +7,78 @@ import { Sparkle, CheckCircle2, ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroSection(): JSX.Element {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    company_size_dropdown: "",
+    location: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleGetInTouch = () => {
     window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
+    const formId = process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
+    const region = process.env.NEXT_PUBLIC_HUBSPOT_REGION || "na1";
+    
+    if (!portalId || !formId) {
+      console.error("HubSpot configuration is missing in environment variables.");
+      alert("Form configuration error. Please contact support.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+    const payload = {
+      fields: [
+        { name: "firstname", value: formData.firstname },
+        { name: "lastname", value: formData.lastname },
+        { name: "email", value: formData.email },
+        { name: "company_size_dropdown", value: formData.company_size_dropdown },
+        { name: "location", value: formData.location },
+      ],
+      context: {
+        pageUri: typeof window !== "undefined" ? window.location.href : "",
+        pageName: typeof document !== "undefined" ? document.title : "",
+      },
+    };
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const errorData = await response.json();
+        console.error("HubSpot submission failed:", errorData);
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting to HubSpot:", error);
+      alert("Error connecting to HubSpot. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -78,76 +148,115 @@ export default function HeroSection(): JSX.Element {
                 height: '522px'
             }}
           >
-            <div className="relative z-10 text-center mb-6">
-              <h2 className="text-white text-2xl md:text-3xl font-bold font-manrope mb-1">
-                Book a free 30 min call
-              </h2>
-              <p className="text-white/60 text-base">
-                Get all your questions answered by our experts.
-              </p>
-            </div>
-
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  placeholder="First name"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
-                />
-                <input
-                  type="text"
-                  placeholder="Last name"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
-                />
-              </div>
-
-              <input
-                type="email"
-                placeholder="Work email"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
-              />
-
-              <div className="grid grid-cols-1 gap-3">
-                <div className="relative">
-                  <select 
-                    defaultValue=""
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/80 outline-none appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled>Company size</option>
-                    <option value="1-10">1-10 employees</option>
-                    <option value="11-50">11-50 employees</option>
-                    <option value="51-200">51-200 employees</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+            {isSubmitted ? (
+               <div className="relative z-10 text-center py-12">
+               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <CheckCircle2 className="text-white w-10 h-10" />
+               </div>
+               <h2 className="text-white text-3xl font-bold mb-4">Thank You!</h2>
+               <p className="text-white/70 text-lg">
+                 Your request has been received. Our team will contact you shortly.
+               </p>
+               <button 
+                 onClick={() => setIsSubmitted(false)}
+                 className="mt-8 text-white/50 hover:text-white text-sm underline underline-offset-4"
+               >
+                 Submit another response
+               </button>
+             </div>
+            ) : (
+                <>
+                <div className="relative z-10 text-center mb-6">
+                  <h2 className="text-white text-2xl md:text-3xl font-bold font-manrope mb-1">
+                    Book a free 30 min call
+                  </h2>
+                  <p className="text-white/60 text-base">
+                    Get all your questions answered by our experts.
+                  </p>
                 </div>
-
-                <div className="relative">
-                  <select 
-                    defaultValue=""
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/80 outline-none appearance-none cursor-pointer"
+    
+                <form className="space-y-3" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-2 gap-3">
+                    <input
+                      required
+                      name="firstname"
+                      value={formData.firstname}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="First name"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                    />
+                    <input
+                      required
+                      name="lastname"
+                      value={formData.lastname}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Last name"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                    />
+                  </div>
+    
+                  <input
+                    required
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="Work email"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                  />
+    
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="relative">
+                      <select 
+                        required
+                        name="company_size_dropdown"
+                        value={formData.company_size_dropdown}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none appearance-none cursor-pointer focus:bg-white/10"
+                      >
+                        <option value="" disabled className="bg-[#0A0B1A] text-white/50">Company size</option>
+                        <option value="1-10" className="bg-[#0A0B1A] text-white">1-10 employees</option>
+                        <option value="11-50" className="bg-[#0A0B1A] text-white">11-50 employees</option>
+                        <option value="51-200" className="bg-[#0A0B1A] text-white">51-200 employees</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                    </div>
+    
+                    <div className="relative">
+                      <select 
+                        required
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none appearance-none cursor-pointer focus:bg-white/10"
+                      >
+                        <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
+                        <option value="usa" className="bg-[#0A0B1A] text-white">United States</option>
+                        <option value="uk" className="bg-[#0A0B1A] text-white">United Kingdom</option>
+                        <option value="india" className="bg-[#0A0B1A] text-white">India</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                    </div>
+                  </div>
+    
+                  <div className="py-1">
+                    <p className="text-[11px] text-white/40 leading-relaxed text-center">
+                      We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our privacy policy.
+                    </p>
+                  </div>
+    
+                  <button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className="w-full bg-white text-black py-3.5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <option value="" disabled>Location</option>
-                    <option value="usa">United States</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="india">India</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
-                </div>
-              </div>
-
-              <div className="py-1">
-                <p className="text-[11px] text-white/40 leading-relaxed text-center">
-                  We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our privacy policy.
-                </p>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-white text-black py-3.5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg shadow-white/5"
-              >
-                Book a demo call
-              </button>
-            </form>
+                    {isSubmitting ? "Submitting..." : "Book a demo call"}
+                  </button>
+                </form>
+                </>
+            )}
           </div>
         </div>
       </div>
