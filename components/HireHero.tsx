@@ -41,11 +41,17 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
           </p>
           
           <div className="flex flex-col items-center gap-4">
-            <button className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg md:text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/10">
+            <button 
+              onClick={() => window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer')}
+              className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg md:text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/10"
+            >
               Hire your dream developers
             </button>
             
-            <button className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium">
+            <button 
+              onClick={() => window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer')}
+              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium"
+            >
               <Sparkle className="w-4 h-4 text-white/60" />
               Book a free discovery call
             </button>

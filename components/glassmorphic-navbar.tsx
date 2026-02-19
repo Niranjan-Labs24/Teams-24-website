@@ -86,7 +86,7 @@ export default function GlassmorphicNavbar() {
   };
 
   const handleGetInTouch = () => {
-    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
+    window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer');
     setIsOpen(false);
   };
 

@@ -6,13 +6,13 @@ export default function ComparisonSection() {
   const rows = [
     {
       label: "Annual team costs",
-      traditional: "$1.63M+",
-      teams24: "< $500k",
+      traditional: "$500k-750k",
+      teams24: "<$200k",
     },
     {
       label: "Recruitment period",
-      traditional: "6 - 12 months",
-      teams24: "48 - 72 hours",
+      traditional: "2-4 months",
+      teams24: "48-72hours",
     },
     {
       label: "Client success rate",
@@ -20,9 +20,9 @@ export default function ComparisonSection() {
       teams24: "94%",
     },
     {
-      label: "Future benefits",
+      label: "Future benefit",
       traditional: "NIL",
-      teams24: "Ongoing network",
+      teams24: "Ongoing Network",
     }
   ]
 
@@ -46,7 +46,7 @@ export default function ComparisonSection() {
             {/* Traditional Header */}
             <div className="p-4 md:p-10 bg-[#F9FAFB] flex items-center md:items-end justify-center">
               <span className="text-slate-600 font-medium text-xs md:text-lg text-center leading-tight">
-                Traditional hiring methods
+                Traditional vs teams 24
               </span>
             </div>
 
