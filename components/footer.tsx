@@ -126,7 +126,7 @@ export function Footer() {
                 href="mailto:support@teams24.in"
                 className="hover:text-black"
               >
-                support@teams24.in
+                support@teams24.co
               </Link>
             </p>
 

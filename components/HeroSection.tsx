@@ -17,8 +17,12 @@ export default function HeroSection(): JSX.Element {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const handleJoinCall = () => {
+    window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer');
+  };
+
   const handleGetInTouch = () => {
-    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
+    window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -133,13 +137,12 @@ export default function HeroSection(): JSX.Element {
           </div>
 
           <div className="flex flex-col items-center lg:items-start gap-5 mt-10">
-            <Link href="/hire/full-stack-developer">
-              <button 
-                className="px-12 py-4 bg-white text-black rounded-full font-bold text-xl transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
-              >
-                Hire your dream team
-              </button>
-            </Link>
+            <button 
+              onClick={handleJoinCall}
+              className="px-12 py-4 bg-white text-black rounded-full font-bold text-xl transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
+            >
+              Hire your dream team
+            </button>
             
             <button 
               onClick={handleGetInTouch}

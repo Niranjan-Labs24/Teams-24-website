@@ -288,7 +288,7 @@ export function CTASection() {
         </div>
 
         <button 
-          onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
+          onClick={() => window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer')}
           className="
             mt-8
             px-10 sm:px-12

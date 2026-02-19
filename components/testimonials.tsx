@@ -5,22 +5,22 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Anand",
-    title: "Founder, AuraGold",
+    name: "Niranjan Venugopal",
+    title: "Founder, Specflicks",
     quote:
-      "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team ...",
+      "Teams24 made it incredibly easy to scale our development. Their commitment and flexibility are exactly what an early-stage startup needs.",
+  },
+  {
+    name: "Sasha Ray",
+    title: "Product Lead",
+    quote:
+      "The discovery call was eye-opening. We had our core team set up in less than 72 hours, which is unheard of in traditional recruitment.",
   },
   {
     name: "Anand",
     title: "Founder, AuraGold",
     quote:
-      "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team ...",
-  },
-  {
-    name: "Anand",
-    title: "Founder, AuraGold",
-    quote:
-      "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team ...",
+      "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team.",
   },
 ]
 
