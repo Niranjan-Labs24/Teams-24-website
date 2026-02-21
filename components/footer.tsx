@@ -130,7 +130,6 @@ export function Footer() {
               </Link>
             </p>
 
-            {/* ✅ Social Icons Section */}
             <div
               className="
                 flex gap-[11px]
@@ -140,7 +139,6 @@ export function Footer() {
                 mx-auto lg:mx-0
               "
             >
-              {/* Instagram */}
               <Link
                 href={socialLinks.instagram}
                 target="_blank"

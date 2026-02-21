@@ -10,6 +10,9 @@ interface Job {
   location: string;
   type: string;
   slug: string;
+  salary_min: string;
+  salary_max: string;
+  currency: string;
   color?: string; // Add color field (optional to prevent errors if column missing)
 }
 
@@ -22,6 +25,16 @@ const gradients = [
 
 const getGradientVar = (index: number) => gradients[index % gradients.length];
 
+const getCurrencySymbol = (currency: string) => {
+  const symbols: { [key: string]: string } = {
+    USD: "$",
+    EUR: "€",
+    INR: "₹",
+    GBP: "£",
+  };
+  return symbols[currency?.toUpperCase()] || currency || "$";
+};
+
 export function Careers() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +44,7 @@ export function Careers() {
       try {
         const { data, error } = await supabase
           .from("jobs")
-          .select("id, title, location, type, slug, color")
+          .select("id, title, location, type, slug, salary_min, salary_max, currency, color")
           .eq("status", "published")
           .order("created_at", { ascending: false })
           .limit(4);
@@ -104,14 +117,18 @@ export function Careers() {
                     <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
                       <span>{job.type}</span>
                       <span className="opacity-30">•</span>
-                      <span>$120k - $200k</span> {/* Placeholder if salary not in DB */}
+                      <span>
+                        {job.salary_min && job.salary_max 
+                          ? `${getCurrencySymbol(job.currency)} ${job.salary_min} - ${job.salary_max}` 
+                          : "$120k - $200k"}
+                      </span>
                       <span className="opacity-30">•</span>
                       <span>{job.location}</span>
                     </div>
                   </div>
 
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                    <ArrowUpRight className="text-white w-6 h-6" />
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                    <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
                   </div>
                 </div>
               </a>
