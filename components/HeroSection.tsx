@@ -18,11 +18,11 @@ export default function HeroSection(): JSX.Element {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleJoinCall = () => {
-    window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer');
+    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
   };
 
   const handleGetInTouch = () => {
-    window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer');
+    window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -66,7 +66,7 @@ export default function HeroSection(): JSX.Element {
           src="/back/background.png"
           alt="Background Gradient"
           fill
-          className="object-cover"
+          className="object-cover object-top sm:object-center"
           priority
         />
         <div className="absolute inset-0 bg-[#0A0B1A]/20" />
@@ -77,8 +77,8 @@ export default function HeroSection(): JSX.Element {
         
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start gap-8 lg:max-w-[600px] w-full">
-          <div className="flex items-center justify-start lg:justify-start gap-4 transition-transform hover:scale-105 whitespace-nowrap">
-            <div className="relative w-7 h-7 sm:w-10 sm:h-10 flex-shrink-0">
+          <div className="flex items-center justify-start lg:justify-start gap-4 transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 sm:px-5 sm:py-2 cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+            <div className="relative w-6 h-6 sm:w-9 sm:h-9 flex-shrink-0">
               <Image
                 src="/icons/Frame 1171276677.png"
                 alt="Badge Icon"
@@ -86,19 +86,22 @@ export default function HeroSection(): JSX.Element {
                 className="object-contain"
               />
             </div>
-            <span className="text-white text-base sm:text-2xl font-medium tracking-tight text-left">
+            <span className="text-white text-base sm:text-xl font-medium tracking-tight text-left">
               Hiring can be as easy as shopping
             </span>
           </div>
 
           <h1 
-            className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] font-normal text-white leading-[1.2] sm:leading-[50px] tracking-[-0.07em] text-center lg:text-left w-full"
+            className="font-normal text-white text-center lg:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] leading-[1.2] sm:leading-[1.1] w-fit max-w-[700px] mx-auto lg:mx-0 h-auto"
             style={{ 
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "Space Grotesk, sans-serif",
+              letterSpacing: "-0.07em",
+              verticalAlign: "middle",
+              opacity: 1,
             }}
           >
-            Flexibility of a freelancer<br className="hidden sm:block" />
-            with commitment of<br className="hidden sm:block" />
+            <span className="whitespace-nowrap">Flexibility of a freelancer</span><br />
+            with commitment of<br />
             an employee
           </h1>
 
@@ -184,17 +187,17 @@ export default function HeroSection(): JSX.Element {
              </div>
             ) : (
                 <>
-                <div className="relative z-10 text-center mb-6">
-                  <h2 className="text-white text-xl xs:text-2xl md:text-3xl font-bold font-manrope mb-1">
+                <div className="relative z-10 text-center mb-8">
+                  <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold font-manrope mb-2">
                     Book a free 30 min call
                   </h2>
-                  <p className="text-white/60 text-sm xs:text-base">
+                  <p className="text-white/60 text-base sm:text-lg">
                     Get all your questions answered by our experts.
                   </p>
                 </div>
     
-                <form className="space-y-3" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-2 gap-4">
                     <input
                       required
                       name="firstname"
@@ -202,7 +205,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="First name"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
                     />
                     <input
                       required
@@ -211,28 +214,27 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="Last name"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
                     />
                   </div>
     
-                  <input
-                    required
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="Work email"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none focus:bg-white/10"
-                  />
-    
-                  <div className="grid grid-cols-1 gap-3">
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      required
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      type="email"
+                      placeholder="Work email"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
+                    />
                     <div className="relative">
                       <select 
                         required
                         name="company_size_dropdown"
                         value={formData.company_size_dropdown}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none appearance-none cursor-pointer focus:bg-white/10"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                       >
                         <option value="" disabled className="bg-[#0A0B1A] text-white/50">Company size</option>
                         <option value="1-10" className="bg-[#0A0B1A] text-white">1-10 employees</option>
@@ -241,34 +243,34 @@ export default function HeroSection(): JSX.Element {
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
                     </div>
-    
-                    <div className="relative">
-                      <select 
-                        required
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none appearance-none cursor-pointer focus:bg-white/10"
-                      >
-                        <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
-                        <option value="usa" className="bg-[#0A0B1A] text-white">United States</option>
-                        <option value="uk" className="bg-[#0A0B1A] text-white">United Kingdom</option>
-                        <option value="india" className="bg-[#0A0B1A] text-white">India</option>
-                      </select>
-                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
-                    </div>
                   </div>
     
-                  <div className="py-1">
-                    <p className="text-[11px] text-white/40 leading-relaxed text-center">
-                      We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our privacy policy.
+                  <div className="relative">
+                    <select 
+                      required
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                    >
+                      <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
+                      <option value="usa" className="bg-[#0A0B1A] text-white">United States</option>
+                      <option value="uk" className="bg-[#0A0B1A] text-white">United Kingdom</option>
+                      <option value="india" className="bg-[#0A0B1A] text-white">India</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                  </div>
+    
+                  <div className="py-2">
+                    <p className="text-[12px] text-white/40 leading-relaxed text-center">
+                      We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our <span className="underline cursor-pointer">privacy policy</span>.
                     </p>
                   </div>
     
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="w-full bg-white text-black py-3.5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-white text-black py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Submitting..." : "Book a demo call"}
                   </button>

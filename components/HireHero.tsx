@@ -16,7 +16,7 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
           src="/back/background.png"
           alt="Background"
           fill
-          className="object-cover"
+          className="object-cover object-top sm:object-center"
           priority
         />
         <div className="absolute inset-0 bg-[#0A0B1A]/20" />
@@ -42,14 +42,14 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
           
           <div className="flex flex-col items-center gap-4">
             <button 
-              onClick={() => window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer')}
+              onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
               className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg md:text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/10"
             >
               Hire your dream developers
             </button>
             
             <button 
-              onClick={() => window.open('https://cal.com/sasharay/30min', '_blank', 'noopener,noreferrer')}
+              onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
               className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium"
             >
               <Sparkle className="w-4 h-4 text-white/60" />
