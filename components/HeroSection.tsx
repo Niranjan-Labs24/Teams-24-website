@@ -77,8 +77,8 @@ export default function HeroSection(): JSX.Element {
         
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-center lg:items-start gap-8 lg:max-w-[600px] w-full">
-          <div className="flex items-center justify-start lg:justify-start gap-4 transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 sm:px-5 sm:py-2 cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
-            <div className="relative w-6 h-6 sm:w-9 sm:h-9 flex-shrink-0">
+          <div className="flex items-center justify-start lg:justify-start gap-3 transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+            <div className="relative w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0">
               <Image
                 src="/icons/Frame 1171276677.png"
                 alt="Badge Icon"
@@ -86,7 +86,7 @@ export default function HeroSection(): JSX.Element {
                 className="object-contain"
               />
             </div>
-            <span className="text-white text-base sm:text-xl font-medium tracking-tight text-left">
+            <span className="text-white text-xs sm:text-base font-medium tracking-tight text-left">
               Hiring can be as easy as shopping
             </span>
           </div>

@@ -112,7 +112,7 @@ export default function GlassmorphicNavbar() {
         }}
       >
         {/* Left Section - Logo + Name */}
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
           <Image
             src="/logo.png"
             alt="Teams24 Logo"
@@ -131,7 +131,7 @@ export default function GlassmorphicNavbar() {
               24
             </span>
           </div>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center md:gap-6 lg:gap-12 text-white">
           {navigationLinks.map((link, i) => (
@@ -272,7 +272,11 @@ export default function GlassmorphicNavbar() {
               <div className="relative z-[2] flex flex-col h-full">
                 {/* Header inside overlay */}
                 <div className="flex items-center justify-between mb-16 px-2">
-                  <div className="flex items-center gap-2">
+                  <Link 
+                    href="/" 
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+                  >
                     <Image
                       src="/logo.png"
                       alt="Teams24 Logo"
@@ -284,7 +288,7 @@ export default function GlassmorphicNavbar() {
                       <span className="text-xl tracking-[-0.05em] leading-[10px] font-normal" style={{ marginRight: "2px" }}>Teams</span>
                       <span className="text-xl tracking-[-0.05em] leading-[10px] font-normal">24</span>
                     </div>
-                  </div>
+                  </Link>
                   <button onClick={toggleMenu} className="text-white relative w-6 h-6 flex flex-col justify-center items-end gap-1.5 focus:outline-none">
                     <span className="h-[2px] bg-white transition-all duration-300 w-6 absolute rotate-45"></span>
                     <span className="h-[2px] bg-white transition-all duration-300 w-6 absolute -rotate-45"></span>
