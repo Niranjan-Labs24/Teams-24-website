@@ -54,6 +54,14 @@ export function Footer() {
                 Teams24
               </span>
             </div>
+            <a 
+              href="https://labs24.co" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-black/40 hover:text-black transition-all text-[10px] font-bold tracking-[0.1em] uppercase mt-[-8px] block pl-[26px]"
+            >
+              A part of Labs 24
+            </a>
           </div>
 
           {/* ✅ Company Section */}
