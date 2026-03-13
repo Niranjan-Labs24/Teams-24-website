@@ -73,10 +73,10 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-16 pt-28 pb-12 max-w-[1550px] mx-auto gap-12 lg:gap-[160px]">
+      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 pt-28 pb-12 max-w-[1550px] mx-auto gap-12 xl:gap-[118px] 2xl:gap-[142px]">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col items-center lg:items-start gap-8 lg:max-w-[600px] w-full">
+        <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] 2xl:gap-[37px] xl:max-w-[576px] 2xl:max-w-[691px] w-full">
           <div className="flex items-center justify-start lg:justify-start gap-3 transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
             <div className="relative w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0">
               <Image
@@ -92,7 +92,7 @@ export default function HeroSection(): JSX.Element {
           </div>
 
           <h1 
-            className="font-normal text-white text-center lg:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] leading-[1.2] sm:leading-[1.1] w-fit max-w-[700px] mx-auto lg:mx-0 h-auto"
+            className="font-normal text-white text-center xl:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] 2xl:text-[65px] leading-[1.2] lg:leading-[50px] 2xl:leading-[60px] w-fit max-w-[700px] mx-auto xl:mx-0 h-auto"
             style={{ 
               fontFamily: "Space Grotesk, sans-serif",
               letterSpacing: "-0.07em",
@@ -105,8 +105,8 @@ export default function HeroSection(): JSX.Element {
             an employee
           </h1>
 
-          {/* Trust Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mt-2 w-full">
+          {/* Trust Bar Section */}
+          <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] 2xl:gap-[16px] mt-2 xl:w-[357px] 2xl:w-[428px]">
             <div className="flex -space-x-3 flex-shrink-0">
               {[
                 "/rating/Frame 2147225664.png",
@@ -139,31 +139,47 @@ export default function HeroSection(): JSX.Element {
             </div>
           </div>
 
-          <div className="flex flex-col items-center lg:items-start gap-5 mt-10">
+          <div className="flex flex-col items-center xl:items-start gap-[10px] 2xl:gap-[12px] mt-10 xl:w-[285px] 2xl:w-[342px] xl:min-h-[114px] 2xl:min-h-[137px]">
             <button 
               onClick={handleJoinCall}
-              className="px-12 py-4 bg-white text-black rounded-full font-bold text-xl transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
+              className="w-full xl:w-[260px] 2xl:w-[312px] h-auto lg:h-[64px] 2xl:h-[77px] px-4 lg:px-[20px] 2xl:px-[24px] bg-white text-black rounded-full font-semibold text-xl lg:text-[18px] 2xl:text-[22px] leading-[32px] 2xl:leading-[38px] transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] border-[3px] 2xl:border-[4px] border-white/30 whitespace-nowrap overflow-hidden text-ellipsis"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                letterSpacing: "-0.03em",
+                textAlign: "center",
+              }}
             >
               Hire your dream team
             </button>
             
             <button 
               onClick={handleGetInTouch}
-              className="flex items-center gap-3 group px-1"
+              className="flex items-center gap-1.5 group xl:w-fit xl:h-[20px] 2xl:h-[24px] xl:ml-auto 2xl:ml-auto xl:mr-[100px] 2xl:mr-[120px]"
             >
-              <div className="p-1 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm">
-                <CheckCircle2 size={16} className="text-white/80" />
+              <div className="relative w-3.5 h-3.5 2xl:w-[16px] 2xl:h-[16px] flex-shrink-0">
+                <Image
+                  src="/icons/right.png"
+                  alt="Discovery Call Icon"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <p className="font-medium text-base tracking-tight text-white/80 group-hover:text-white transition-colors">
+              <p 
+                className="font-semibold text-white/70 group-hover:text-white transition-colors lg:text-[12px] 2xl:text-[14px] lg:leading-[20px] 2xl:leading-[24px] whitespace-nowrap"
+                style={{
+                    fontFamily: "Manrope, sans-serif",
+                    letterSpacing: "-0.01em",
+                }}
+              >
                 Book a free discovery call
               </p>
             </button>
           </div>
         </div>
 
-        <div className="w-full max-w-[598px] flex justify-center lg:justify-end">
+        <div className="w-full xl:max-w-[598px] 2xl:max-w-[718px] flex justify-center xl:justify-end">
           <div 
-            className="w-full lg:w-[598px] bg-white/5 backdrop-blur-[40px] rounded-[28px] border-[0.81px] border-white/10 p-5 xs:p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
+            className="w-full xl:w-[598px] 2xl:w-[718px] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] border-[0.81px] border-[#FFFFFF4D] p-5 xs:p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{
                 minHeight: '522px',
                 height: 'auto'
@@ -205,7 +221,8 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="First name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <input
                       required
@@ -214,7 +231,8 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="Last name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] xl:text-[17px] lg:leading-[16px] xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                   </div>
     
@@ -226,7 +244,8 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="email"
                       placeholder="Work email"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white/40 outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] xl:text-[17px] lg:leading-[16px] xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <div className="relative">
                       <select 
@@ -234,7 +253,8 @@ export default function HeroSection(): JSX.Element {
                         name="company_size_dropdown"
                         value={formData.company_size_dropdown}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                        style={{ fontFamily: 'Manrope, sans-serif' }}
                       >
                         <option value="" disabled className="bg-[#0A0B1A] text-white/50">Company size</option>
                         <option value="1-10" className="bg-[#0A0B1A] text-white">1-10 employees</option>
@@ -251,7 +271,8 @@ export default function HeroSection(): JSX.Element {
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                      style={{ fontFamily: 'Manrope, sans-serif' }}
                     >
                       <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
                       <option value="usa" className="bg-[#0A0B1A] text-white">United States</option>
@@ -261,18 +282,22 @@ export default function HeroSection(): JSX.Element {
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
                   </div>
     
-                  <div className="py-2">
-                    <p className="text-[12px] text-white/40 leading-relaxed text-center">
-                      We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our <span className="underline cursor-pointer">privacy policy</span>.
+                  <div className="py-2 flex justify-center">
+                    <p 
+                      className="text-white lg:text-[12px] 2xl:text-[14px] lg:leading-[20px] 2xl:leading-[24px] lg:w-[447px] 2xl:w-[536px] text-center font-medium"
+                      style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
+                    >
+                      We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our <span className="underline cursor-pointer font-medium">privacy policy</span>.
                     </p>
                   </div>
     
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="w-full bg-white text-black py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mx-auto lg:w-[502px] 2xl:w-[602px] h-[64px] 2xl:h-[77px] flex items-center justify-center bg-white text-black rounded-[62px] border-[3px] border-white/28 font-semibold lg:text-[14px] 2xl:text-[17px] lg:leading-[32px] 2xl:leading-[38px] px-8 lg:px-[30px] 2xl:px-[36px] py-4 lg:py-[16px] 2xl:py-[19px] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
-                    {isSubmitting ? "Submitting..." : "Book a demo call"}
+                    {isSubmitting ? "..." : "Book a demo call"}
                   </button>
                 </form>
                 </>

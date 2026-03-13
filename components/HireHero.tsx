@@ -5,9 +5,23 @@ import { Sparkle } from "lucide-react";
 
 interface HireHeroProps {
   role?: string;
+  headline?: string;
+  subheading?: string;
+  trustBadge?: string;
+  primaryCta?: string;
+  secondaryCta?: string;
 }
 
-export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
+export default function HireHero({ 
+  role = "Fullstack",
+  headline,
+  subheading,
+  trustBadge = "Trusted by 20+ CEO'S and CXO'S",
+  primaryCta = "Hire your dream developers",
+  secondaryCta = "Book a free discovery call"
+}: HireHeroProps) {
+  const displayHeadline = headline || `Hire ${role} Developers: Affordable, dedicated ${role.toLowerCase()} experts in 72 hours`;
+  const displaySubheading = subheading || `Access 100+ expert ${role} developers, engineers and architects from Teams24, handpicked through a 5-hour evaluation process.`;
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 overflow-hidden">
       {/* Background Image */}
@@ -28,16 +42,16 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
           className="text-white text-[32px] sm:text-[44px] md:text-[54px] lg:text-[74px] font-[400] leading-[1.1] sm:leading-[1.0] tracking-[-0.07em]"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          Hire {role} Developers: Affordable, dedicated {role.toLowerCase()} experts in 72 hours
+          {displayHeadline}
         </h1>
         
         <p className="text-white/80 text-lg md:text-xl max-w-[800px] font-medium opacity-90">
-          Access 100+ expert {role} developers, engineers and architects from Teams24, handpicked through a 5-hour evaluation process.
+          {displaySubheading}
         </p>
 
         <div className="flex flex-col items-center gap-6 mt-4">
           <p className="text-white/60 text-sm font-semibold tracking-wider uppercase">
-            Trusted by 20+ CEO'S and CXO'S
+            {trustBadge}
           </p>
           
           <div className="flex flex-col items-center gap-4">
@@ -45,7 +59,7 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
               onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
               className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg md:text-xl hover:bg-gray-100 transition-all shadow-xl shadow-white/10"
             >
-              Hire your dream developers
+              {primaryCta}
             </button>
             
             <button 
@@ -53,7 +67,7 @@ export default function HireHero({ role = "Fullstack" }: HireHeroProps) {
               className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium"
             >
               <Sparkle className="w-4 h-4 text-white/60" />
-              Book a free discovery call
+              {secondaryCta}
             </button>
           </div>
         </div>

@@ -1,6 +1,8 @@
 "use client";
 
-const skillsData = [
+import { SkillCategory } from "@/lib/data/hire-content";
+
+const defaultSkillsData: SkillCategory[] = [
   {
     category: "DevOps & Deployment",
     skills: ["Docker", "Kubernetes", "AWS", "Heroku", "Azure", "DigitalOcean"],
@@ -45,23 +47,35 @@ const skillsData = [
 
 interface HireSkillsProps {
   role?: string;
+  title?: string;
+  description?: string;
+  skills?: SkillCategory[];
 }
 
-export default function HireSkills({ role = "Fullstack" }: HireSkillsProps) {
+export default function HireSkills({ 
+  role = "Fullstack",
+  title,
+  description,
+  skills
+}: HireSkillsProps) {
+  const displayTitle = title || `10+ skills that ${role} Developers at Teams24 are skilled at`;
+  const displayDescription = description || `${role} developers at Teams24 are skilled at JavaScript, NodeJS among others.`;
+  const displaySkills = skills || defaultSkillsData;
+
   return (
     <section className="w-full bg-white py-20 px-6">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
-            10+ skills that {role} Developers at Teams24 are skilled at
+            {displayTitle}
           </h2>
           <p className="text-gray-600 text-base sm:text-lg md:text-xl px-4">
-            {role} developers at Teams24 are skilled at JavaScript, NodeJS among others.
+            {displayDescription}
           </p>
         </div>
 
         <div className="divide-y divide-gray-100">
-          {skillsData.map((category, idx) => (
+          {displaySkills.map((category, idx) => (
             <div key={idx} className="grid grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-4 md:gap-8 py-6 md:py-8 items-start md:items-center">
               <h3 className="text-lg md:text-xl font-semibold text-gray-800">
                 {category.category}

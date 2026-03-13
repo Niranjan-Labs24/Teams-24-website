@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { Plus, Minus } from "lucide-react";
 import { loadFramerMotion } from "@/lib/animation-loaders";
 
-const faqItems = [
+import { FAQItem } from "@/lib/data/hire-content";
+
+const defaultFaqItems: FAQItem[] = [
   {
     question: "How fast is deployment really?",
     answer:
@@ -27,7 +29,13 @@ const faqItems = [
   },
 ];
 
-export function FAQ() {
+interface FAQProps {
+  items?: FAQItem[];
+}
+
+export function FAQ({ items }: FAQProps = {}) {
+  const displayItems = items || defaultFaqItems;
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [MotionComponents, setMotionComponents] = useState<{
     motion: typeof import("framer-motion").motion;
@@ -67,7 +75,7 @@ export function FAQ() {
         </div>
         
         <div className="w-full md:w-[55%] flex flex-col gap-4">
-          {faqItems.map((item, index) => (
+          {displayItems.map((item, index) => (
             <div
               key={index}
               className="w-full bg-[#FFFFFF] border border-[#0000000F] rounded-[1.25rem] hover:border-gray-200 transition-all duration-300 overflow-hidden shadow-sm"

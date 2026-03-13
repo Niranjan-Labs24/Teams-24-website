@@ -4,26 +4,20 @@ import { useState, useEffect, useRef } from "react"
 
 const AnimatedNumber = ({ value, suffix = "", prefix = "", isInView }: { value: number, suffix?: string, prefix?: string, isInView: boolean }) => {
   const [display, setDisplay] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimatedRef = useRef(false);
   
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimatedRef.current) {
+        if (hasAnimatedRef.current && isInView) {
+            setDisplay(value);
+        }
+        return;
+    };
 
-    let start = display;
-    
-    
-    if (!hasAnimated) {
-      start = 0;
-      setHasAnimated(true);
-    }
-
+    hasAnimatedRef.current = true;
+    const start = 0;
     const end = value;
-    if (start === end) {
-      setDisplay(end);
-      return;
-    }
-
-    const duration = hasAnimated ? 150 : 800; 
+    const duration = 1200; 
     const startTime = performance.now();
 
     let animationFrame: number;
@@ -31,7 +25,7 @@ const AnimatedNumber = ({ value, suffix = "", prefix = "", isInView }: { value: 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3); 
+      const ease = 1 - Math.pow(1 - progress, 4); // Smoother easeOutQuart
       const current = Math.floor(start + (end - start) * ease);
       setDisplay(current);
 
@@ -59,23 +53,21 @@ export function ProblemWeSolve() {
   const sectionRef = useRef<HTMLDivElement>(null)
   
   const isWithTeams24Ref = useRef(isWithTeams24)
-  const percentageRef = useRef(65)
+  const lastScrollY = useRef(0);
+  const scrollThrottled = useRef(false);
 
   useEffect(() => {
     isWithTeams24Ref.current = isWithTeams24
   }, [isWithTeams24])
 
   useEffect(() => {
-    percentageRef.current = percentage
     setAnimatedValues(calculateMetricsFromPercentage(percentage, isWithTeams24))
   }, [percentage, isWithTeams24])
 
   const calculateMetricsFromPercentage = (pct: number, withTeams: boolean) => {
-   
     const normalized = (pct - 30) / (65 - 30) 
     
     if (withTeams) {
-      
       const value = Math.round(48 - normalized * 47) 
       return {
         metric1: Math.round((value / 48) * 60),
@@ -83,7 +75,6 @@ export function ProblemWeSolve() {
         metric3: Math.round(90 + (value / 48) * 4)
       }
     } else {
-      
       const value = Math.round(1 + normalized * 11) 
       const baseCost = 10000 
       const growthPerMonth = 8500 
@@ -105,75 +96,73 @@ export function ProblemWeSolve() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting)
+        if (entry.isIntersecting) {
+            setIsInView(true);
+            // We keep it visible once triggered to prevent "reloading" feel
+            observer.disconnect();
+        }
       },
       { threshold: 0.1 } 
     )
 
     if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current)
-    }
+    return () => observer.disconnect();
   }, [])
 
   useEffect(() => {
-    let lastScrollY = window.scrollY
-    let ticking = false
-
     const handleScroll = () => {
-      if (!sectionRef.current) return
+      if (!sectionRef.current || scrollThrottled.current) return;
       
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
+      scrollThrottled.current = true;
+      requestAnimationFrame(() => {
           const rect = sectionRef.current?.getBoundingClientRect()
           if (!rect) {
-            ticking = false
-            return
+            scrollThrottled.current = false;
+            return;
           }
 
-          const viewHeight = window.innerHeight
-          const sectionHeight = rect.height
+          const viewHeight = window.innerHeight;
+          const sectionHeight = rect.height;
           
-          
-          const totalTravel = viewHeight + sectionHeight
-          const distanceTraveled = viewHeight - rect.top
-          const rawProgress = Math.min(Math.max(distanceTraveled / totalTravel, 0), 1)
-          
-          
-          const ANIMATION_DURATION = 0.9 
-          let currentPct;
-          
-          if (rawProgress <= ANIMATION_DURATION) {
-            const phaseProgress = rawProgress / ANIMATION_DURATION
-            currentPct = 65 - (phaseProgress * (65 - 30))
-          } else {
-            currentPct = 30
+          // Calculate progress only when section is in or near viewport
+          if (rect.top < viewHeight && rect.bottom > 0) {
+              const totalTravel = viewHeight + sectionHeight;
+              const distanceTraveled = viewHeight - rect.top;
+              const rawProgress = Math.min(Math.max(distanceTraveled / totalTravel, 0), 1);
+              
+              const ANIMATION_DURATION = 0.85; 
+              let currentPct;
+              
+              if (rawProgress <= ANIMATION_DURATION) {
+                const phaseProgress = rawProgress / ANIMATION_DURATION;
+                currentPct = 65 - (phaseProgress * (65 - 30));
+              } else {
+                currentPct = 30;
+              }
+
+              // Only update if difference is meaningful to save on re-renders
+              setPercentage(prev => {
+                if (Math.abs(prev - currentPct) < 0.1) return prev;
+                return currentPct;
+              });
+              
+              const newIsWithTeams24 = currentPct <= 47.5;
+              if (newIsWithTeams24 !== isWithTeams24Ref.current) {
+                setIsWithTeams24(newIsWithTeams24);
+              }
           }
 
-          setPercentage(currentPct)
-          
-          
-          const newIsWithTeams24 = currentPct <= 47.5
-          if (newIsWithTeams24 !== isWithTeams24Ref.current) {
-            setIsWithTeams24(newIsWithTeams24)
-          }
-
-          ticking = false
-        })
-        ticking = true
-      }
+          scrollThrottled.current = false;
+      });
     }
 
-    
-    handleScroll()
-
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    window.addEventListener('resize', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [isInView])
+  }, [])
 
   const metrics = isWithTeams24 ? {
     sliderLabel: "Team deployed in 48 hours",
@@ -191,13 +180,16 @@ export function ProblemWeSolve() {
     <section 
       id="problem-we-solve" 
       ref={sectionRef} 
-      className="relative w-full bg-white pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 lg:min-h-[62.875rem] z-10 overflow-hidden"
+      className="relative w-full bg-[#222222] pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 lg:min-h-[62.875rem] z-10 overflow-hidden"
     >
      
       <div className="absolute top-0 left-0 right-0 z-30 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
-        <div className="max-w-7xl mx-auto border-t border-gray-300 pt-6">
-            <div className="text-gray-600 text-sm font-medium tracking-wider">
-              The problem we solve
+        <div className="max-w-7xl mx-auto border-t border-white/20 pt-6">
+            <div 
+              className="text-white/50 xl:text-[14px] 2xl:text-[17px] xl:leading-[20px] 2xl:leading-[24px] xl:w-[140px] 2xl:w-[168px] font-medium tracking-tight text-center sm:text-left"
+              style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.02em' }}
+            >
+              Problem and solutions
             </div>
         </div>
       </div>
@@ -205,9 +197,12 @@ export function ProblemWeSolve() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         <div className="text-center mb-12 lg:mb-16 min-h-[4rem] sm:min-h-[5rem] lg:min-h-[6rem] flex items-center justify-center">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight">
+          <h2 
+            className="text-white font-normal xl:text-[28px] 2xl:text-[34px] xl:leading-[40px] 2xl:leading-[48px] xl:max-w-[850px] 2xl:max-w-[1020px] mx-auto"
+            style={{ fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.06em' }}
+          >
             {isWithTeams24 ? "Our solution delivers results." : "Traditional hiring kills momentum."}
-          </h3>
+          </h2>
         </div>
 
         <div className="bg-white rounded-3xl border border-[#22222233] p-4 sm:p-6 mb-12 lg:mb-16 mx-auto relative overflow-hidden" style={{ maxWidth: '77.75rem', minHeight: '8rem' }}>
