@@ -183,10 +183,10 @@ export function ProblemWeSolve() {
       className="relative w-full bg-[#222222] pt-16 md:pt-24 lg:pt-36 pb-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 lg:min-h-[62.875rem] z-10 overflow-hidden"
     >
      
-      <div className="absolute top-0 left-0 right-0 z-30 px-6 lg:px-12 pt-10 lg:pt-14 pointer-events-none">
-        <div className="max-w-7xl mx-auto border-t border-white/20 pt-6">
+      <div className="absolute top-0 left-0 right-0 z-30 px-6 lg:px-12 xl:px-[5vw] pt-10 lg:pt-14 xl:pt-[3vw] pointer-events-none">
+        <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto border-t border-white/20 pt-6 xl:pt-[1.5vw]">
             <div 
-              className="text-white/50 xl:text-[14px] 2xl:text-[17px] xl:leading-[20px] 2xl:leading-[24px] xl:w-[140px] 2xl:w-[168px] font-medium tracking-tight text-center sm:text-left"
+              className="text-white/50 xl:text-[1.1vw] xl:leading-[1.5] xl:w-[12vw] font-medium tracking-tight text-center sm:text-left"
               style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.02em' }}
             >
               Problem and solutions
@@ -194,75 +194,70 @@ export function ProblemWeSolve() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto relative z-10">
         
-        <div className="text-center mb-12 lg:mb-16 min-h-[4rem] sm:min-h-[5rem] lg:min-h-[6rem] flex items-center justify-center">
+        <div className="text-center mb-12 lg:mb-16 xl:mb-[4vw] min-h-[4rem] sm:min-h-[5rem] lg:min-h-[6rem] xl:min-h-[5vw] flex items-center justify-center">
           <h2 
-            className="text-white font-normal xl:text-[28px] 2xl:text-[34px] xl:leading-[40px] 2xl:leading-[48px] xl:max-w-[850px] 2xl:max-w-[1020px] mx-auto"
+            className="text-white font-normal xl:text-[2.6vw] xl:leading-[1.4] xl:max-w-[75vw] mx-auto"
             style={{ fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.06em' }}
           >
             {isWithTeams24 ? "Our solution delivers results." : "Traditional hiring kills momentum."}
           </h2>
         </div>
 
-        <div className="bg-white rounded-3xl border border-[#22222233] p-4 sm:p-6 mb-12 lg:mb-16 mx-auto relative overflow-hidden" style={{ maxWidth: '77.75rem', minHeight: '8rem' }}>
+        <div className="bg-white rounded-3xl xl:rounded-[2vw] border border-[#22222233] p-4 sm:p-6 xl:p-[2vw] mb-12 lg:mb-16 xl:mb-[4vw] mx-auto relative overflow-hidden xl:w-[78vw] xl:min-h-[8vw] max-w-[77.75rem] xl:max-w-none min-h-[8rem]">
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
             background: `linear-gradient(135deg, transparent 0%, white 50%, transparent 100%)`,
             mixBlendMode: 'overlay'
           }} />
 
-          <div className="flex items-center justify-between mb-2 sm:mb-4 relative z-10">
-            <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-900">
+          <div className="flex items-center justify-between mb-2 sm:mb-4 xl:mb-[1vw] relative z-10">
+            <p className="text-base sm:text-lg md:text-xl xl:text-[1.4vw] font-semibold text-gray-900">
               {metrics.sliderLabel}
             </p>
           </div>
 
-          <div className="relative w-full py-4 sm:py-6">
+          <div className="relative w-full py-4 sm:py-6 xl:py-[1.5vw]">
             <div className="relative w-full">
               <div 
-                className="w-full rounded-xl bg-[#2222220F] relative z-0"
-                style={{ height: '1.25rem', borderRadius: '0.625rem' }}
+                className="w-full bg-[#2222220F] relative z-0 h-5 xl:h-[1.25vw] rounded-xl xl:rounded-[0.6vw]"
               >
                 <div 
-                  className="h-full rounded-xl absolute top-0 left-0 z-10 transition-all duration-75"
+                  className="h-full absolute top-0 left-0 z-10 transition-all duration-75 rounded-xl xl:rounded-[0.6vw]"
                   style={{
                     width: `${percentage}%`,
                     backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
-                    height: '1.25rem',
-                    borderRadius: '0.625rem',
                     boxShadow: 'inset 0 2px 4px rgba(255,255,255,0.3)'
                   }}
                 />
               </div>
 
               <div
-                className="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20 rounded-full border-4 border-white shadow-lg transition-all duration-75"
+                className="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20 rounded-full border-4 xl:border-[0.2vw] border-white shadow-lg transition-all duration-75 w-10 h-10 xl:w-[2.5vw] xl:h-[2.5vw]"
                 style={{
                   left: `${percentage}%`,
                   backgroundColor: isWithTeams24 ? '#0362D1' : '#FF413A',
-                  width: '2.5rem',
-                  height: '2.5rem',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.5)'
                 }}
               />
             </div>
 
-            <div className="flex justify-between text-xs sm:text-sm text-gray-600 mt-6">
+            <div className="flex justify-between text-xs sm:text-sm xl:text-[1vw] text-gray-600 mt-6 xl:mt-[1.5vw]">
               <span>Day 01</span>
               <span>Month 24</span>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16 max-w-7xl mx-auto">
-          <div className="border-l-4 pl-4 sm:pl-6 py-2 relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
-            <div className="absolute left-0 top-0 w-1 h-full opacity-30" style={{
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-[4vw] mb-12 lg:mb-16 xl:mb-[4vw] max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto">
+          <div className="border-l-4 xl:border-l-[0.3vw] pl-4 sm:pl-6 xl:pl-[1.5vw] py-2 xl:py-[0.5vw] relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
+            <div className="absolute left-0 top-0 w-1 xl:w-[0.3vw] h-full opacity-30" style={{
               background: 'linear-gradient(to bottom, transparent, white, transparent)'
             }} />
-            <p className="text-gray-600 text-sm sm:text-base mb-2 sm:mb-3 relative z-10">
+            <p className="text-gray-600 text-sm sm:text-base xl:text-[1.2vw] mb-2 sm:mb-3 xl:mb-[1vw] relative z-10">
               {metrics.metric1Label}
             </p>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black relative z-10">
+            <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5vw] font-bold text-black relative z-10 xl:leading-[1.1]">
               {isWithTeams24 ? (
                 <AnimatedNumber value={animatedValues.metric1} suffix="%" isInView={isInView} />
               ) : (
@@ -271,15 +266,15 @@ export function ProblemWeSolve() {
             </div>
           </div>
 
-          <div className="space-y-6 sm:space-y-8">
-            <div className="border-l-4 pl-4 sm:pl-6 py-2 relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
-              <div className="absolute left-0 top-0 w-1 h-full opacity-30" style={{
+          <div className="space-y-6 sm:space-y-8 xl:space-y-[2vw]">
+            <div className="border-l-4 xl:border-l-[0.3vw] pl-4 sm:pl-6 xl:pl-[1.5vw] py-2 xl:py-[0.5vw] relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
+              <div className="absolute left-0 top-0 w-1 xl:w-[0.3vw] h-full opacity-30" style={{
                 background: 'linear-gradient(to bottom, transparent, white, transparent)'
               }} />
-              <p className="text-gray-600 text-sm sm:text-base mb-2 relative z-10">
+              <p className="text-gray-600 text-sm sm:text-base xl:text-[1.2vw] mb-2 xl:mb-[0.5vw] relative z-10">
                 {metrics.metric2Label}
               </p>
-              <div className="text-xl sm:text-2xl font-bold text-black relative z-10">
+              <div className="text-xl sm:text-2xl xl:text-[2vw] font-bold text-black relative z-10 xl:leading-[1.2]">
                 {isWithTeams24 ? (
                   <AnimatedNumber value={animatedValues.metric2} prefix="2-" suffix=" hours" isInView={isInView} />
                 ) : (
@@ -287,22 +282,22 @@ export function ProblemWeSolve() {
                 )}
               </div>
             </div>
-            <div className="border-l-4 pl-4 sm:pl-6 py-2 relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
-              <div className="absolute left-0 top-0 w-1 h-full opacity-30" style={{
+            <div className="border-l-4 xl:border-l-[0.3vw] pl-4 sm:pl-6 xl:pl-[1.5vw] py-2 xl:py-[0.5vw] relative" style={{ borderColor: isWithTeams24 ? "#0362D1" : "#FF413A" }}>
+              <div className="absolute left-0 top-0 w-1 xl:w-[0.3vw] h-full opacity-30" style={{
                 background: 'linear-gradient(to bottom, transparent, white, transparent)'
               }} />
-              <p className="text-gray-600 text-sm sm:text-base mb-2 relative z-10">
+              <p className="text-gray-600 text-sm sm:text-base xl:text-[1.2vw] mb-2 xl:mb-[0.5vw] relative z-10">
                 {metrics.metric3Label}
               </p>
-              <div className="text-xl sm:text-2xl font-bold text-black relative z-10">
+              <div className="text-xl sm:text-2xl xl:text-[2vw] font-bold text-black relative z-10 xl:leading-[1.2]">
                 <AnimatedNumber value={animatedValues.metric3} suffix="%" isInView={isInView} />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-2xl mx-auto relative">
-          <div className="absolute inset-0 rounded-full opacity-20 pointer-events-none" style={{
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 xl:gap-[1vw] max-w-2xl xl:max-w-none xl:w-[45vw] mx-auto relative">
+          <div className="absolute inset-0 rounded-full opacity-20 pointer-events-none xl:top-[-0.8vw] xl:bottom-[-0.8vw] xl:left-[-0.8vw] xl:right-[-0.8vw]" style={{
             background: `linear-gradient(135deg, transparent 0%, white 50%, transparent 100%)`,
             mixBlendMode: 'overlay',
             top: '-10px', bottom: '-10px', left: '-10px', right: '-10px'
@@ -310,7 +305,7 @@ export function ProblemWeSolve() {
           
           <div
             onClick={() => handleToggle(false)}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10 text-center cursor-pointer hover:opacity-90 active:scale-95"
+            className="w-full sm:w-auto px-6 sm:px-8 xl:px-[2.5vw] py-3 xl:py-[1vw] rounded-full xl:rounded-[2vw] font-semibold transition-all duration-300 text-sm sm:text-base xl:text-[1.2vw] relative z-10 text-center cursor-pointer hover:opacity-90 active:scale-95 flex-1"
             style={{
               backgroundColor: isWithTeams24 ? "#f3f4f6" : "#FF413A",
               color: isWithTeams24 ? "#9ca3af" : "white",
@@ -321,7 +316,7 @@ export function ProblemWeSolve() {
           </div>
           <div
             onClick={() => handleToggle(true)}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base relative z-10 text-center cursor-pointer hover:opacity-90 active:scale-95"
+            className="w-full sm:w-auto px-6 sm:px-8 xl:px-[2.5vw] py-3 xl:py-[1vw] rounded-full xl:rounded-[2vw] font-semibold transition-all duration-300 text-sm sm:text-base xl:text-[1.2vw] relative z-10 text-center cursor-pointer hover:opacity-90 active:scale-95 flex-1"
             style={{
               backgroundColor: isWithTeams24 ? "#0362D1" : "#f3f4f6",
               color: isWithTeams24 ? "white" : "#9ca3af",

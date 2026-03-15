@@ -105,7 +105,7 @@ export default function GlassmorphicNavbar() {
 
   return (
     <>
-      {/* Dimmed background when mega menu is open */}
+     
       <AnimatePresence>
         {isMegaMenuOpen && (
           <motion.div 
@@ -119,28 +119,19 @@ export default function GlassmorphicNavbar() {
       
       {/* Main Navbar Wrapper - Responsive width for 13-inch to 16-inch+ screens */}
       <div 
-        className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-[95vw] lg:w-[90vw] xl:w-[85vw] max-w-[1287px]"
+        className="fixed top-4 md:top-6 xl:top-[1.5vw] left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-[95vw]"
         onMouseLeave={() => setIsMegaMenuOpen(false)}
       >
         {/* SHARED BACKGROUND CONTAINER */}
         <AnimatePresence>
           {isMegaMenuOpen && (
             <motion.div
-              initial={{ height: 64, opacity: 0 }}
-              animate={{ height: 321, opacity: 1 }}
-              exit={{ height: 64, opacity: 0 }}
+              initial={{ opacity: 0 }}
+            animate={{ height: isMegaMenuOpen ? "auto" : 0, opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-0 left-0 w-full rounded-[32px] overflow-hidden border border-white/20 z-0"
-            >
-              <Image 
-                src="/background Nav.png" 
-                alt="Shared Background" 
-                fill 
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-black/10" />
-            </motion.div>
+              className="absolute inset-0 rounded-[32px] xl:rounded-[2.5vw] overflow-hidden border border-white/20 z-0 bg-black/40 backdrop-blur-[40px]"
+            />
           )}
         </AnimatePresence>
 
@@ -157,23 +148,26 @@ export default function GlassmorphicNavbar() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={`
             relative z-10
-            w-full h-[64px]
+            w-full
             flex items-center justify-between
-            px-6 lg:px-8 xl:px-16
             border
+            h-[68px] lg:h-[84px] xl:h-[7vw]
+            gap-4 lg:gap-8 xl:gap-[2.5vw]
+            pl-4 lg:pl-6 xl:pl-[2.5vw]
+            pr-4 lg:pr-6 xl:pr-[2vw]
           `}
         >
           {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
-            <Image src="/logo.png" alt="Teams24 Logo" width={18} height={18} className="object-contain" />
+          <Link href="/" className="flex items-center gap-1.5 lg:gap-2 xl:gap-[0.5vw] hover:opacity-80 transition-opacity cursor-pointer shrink-0">
+            <Image src="/logo.png" alt="Teams24 Logo" width={48} height={48} className="object-contain w-[20px] lg:w-[26px] xl:w-[2.2vw] h-auto" />
             <div className="flex items-baseline text-white font-[Dyson Sans Modern]">
-              <span className="text-lg tracking-[-0.05em] leading-[10px] font-normal" style={{ marginRight: "2px" }}>Teams</span>
-              <span className="text-lg tracking-[-0.05em] leading-[10px] font-normal">24</span>
+              <span className="text-lg lg:text-xl xl:text-[1.8vw] tracking-[-0.05em] leading-[1] font-normal" style={{ marginRight: "0.1vw" }}>Teams </span>
+              <span className="text-lg lg:text-xl xl:text-[1.8vw] tracking-[-0.05em] leading-[1] font-normal">24</span>
             </div>
           </Link>
 
           {/* Nav Links - Hover trigger */}
-          <div className="flex items-center gap-6 lg:gap-12 text-white">
+          <div className="flex items-center justify-center flex-1 gap-4 lg:gap-8 xl:gap-[3vw] text-white shrink-0">
             {navigationLinks.map((link, i) => (
               <button
                 key={i}
@@ -190,12 +184,12 @@ export default function GlassmorphicNavbar() {
                   }
                 }}
                 className={`
-                  flex items-center gap-1.5 whitespace-nowrap text-[0.9375rem] font-medium font-[Manrope] tracking-tight hover:opacity-80 transition cursor-pointer py-2
+                  flex items-center gap-1.5 xl:gap-[0.4vw] whitespace-nowrap text-[0.875rem] lg:text-[1rem] xl:text-[1.2vw] font-medium font-[Manrope] tracking-tight hover:opacity-80 transition cursor-pointer py-2 xl:py-[0.5vw]
                   ${(isMegaMenuOpen && activeCategory === (link.id === "for-companies" ? "companies" : "talent")) ? "opacity-100" : "opacity-90"}
                 `}
               >
                 {link.name}
-                <ChevronDown size={14} className={`opacity-70 transition-transform duration-300 ${isMegaMenuOpen && activeCategory === (link.id === "for-companies" ? "companies" : "talent") ? "rotate-180" : ""}`} />
+                <ChevronDown size={16} className={`opacity-70 transition-transform duration-300 ${isMegaMenuOpen && activeCategory === (link.id === "for-companies" ? "companies" : "talent") ? "rotate-180" : ""} w-[12px] lg:w-[14px] xl:w-[1vw] xl:h-[1vw]`} />
               </button>
             ))}
           </div>
@@ -205,11 +199,13 @@ export default function GlassmorphicNavbar() {
             onClick={handleGetInTouch}
             className="
               bg-[#FFFFFF] text-black
-              rounded-[3.875rem]
-              px-8 lg:px-12 h-11
-              font-[Manrope] font-semibold text-[0.9375rem] tracking-tight
-              whitespace-nowrap border border-transparent
-              hover:bg-[#f5f5f5] transition-all duration-300 cursor-pointer
+              rounded-[3.875rem] xl:rounded-[3vw]
+              px-6 lg:px-9 xl:px-[2.5vw]
+              h-9 lg:h-11 xl:h-[3.3vw]
+              font-[Manrope] font-semibold 
+              text-[0.9375rem] lg:text-[1rem] xl:text-[1vw]
+              tracking-tight whitespace-nowrap border border-transparent
+              hover:bg-[#f5f5f5] transition-all duration-300 cursor-pointer shrink-0
             "
           >
             Hire your dream team
@@ -220,11 +216,11 @@ export default function GlassmorphicNavbar() {
         <AnimatePresence>
           {isMegaMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative z-10 w-full h-[257px] overflow-hidden"
+              className="relative z-10 w-full overflow-hidden"
             >
               {/* Divider Line */}
               <div 
@@ -239,36 +235,42 @@ export default function GlassmorphicNavbar() {
               />
 
               {/* Mega Menu Content */}
-              <div className="px-6 lg:px-8 xl:px-12 py-8 flex h-full items-start gap-8 lg:gap-12 pt-[15px]">
-                <div className="w-[35%] lg:w-[30%] shrink-0 pt-6">
-                  <h3 className="text-white text-[18px] lg:text-[22px] font-normal leading-[1.3] tracking-[-7%] mb-1" style={{ fontFamily: "Space Grotesk" }}>
+              <div className="px-6 lg:px-8 xl:px-[4vw] py-8 lg:py-10 xl:py-[3vw] flex items-start gap-8 lg:gap-12 xl:gap-[3vw] pt-[15px] lg:pt-[20px] xl:pt-[1.5vw] pb-[30px] lg:pb-[40px] xl:pb-[3vw]">
+                <div className="w-[35%] lg:w-[30%] shrink-0 pt-6 xl:pt-[1.5vw]">
+                  <h3 className="text-white text-[20px] lg:text-[24px] xl:text-[2vw] font-normal leading-[1.3] xl:leading-[1.2] tracking-[-7%] mb-1 lg:mb-2 xl:mb-[0.5vw]" style={{ fontFamily: "Space Grotesk" }}>
                     {NAV_CONTENT[activeCategory].heading}
                   </h3>
-                  <p className="text-[#FFFFFF4D] text-[11px] lg:text-[12px] font-normal leading-[1.4]" style={{ fontFamily: "Manrope" }}>
+                  <p className="text-[#FFFFFF4D] text-[12px] lg:text-[14px] xl:text-[1.1vw] font-normal leading-[1.4]" style={{ fontFamily: "Manrope" }}>
                     {NAV_CONTENT[activeCategory].subheading}
                   </p>
                 </div>
 
-                <div className="flex-1 pt-8 flex flex-wrap gap-y-3 gap-x-4">
-                  {NAV_CONTENT[activeCategory].tags.map((tag, idx) => (
-                    <Link
-                      key={idx}
-                      href={`/hire/${tag.toLowerCase().replace(/ /g, "-")}`}
-                      onClick={() => setIsMegaMenuOpen(false)}
-                      className="
-                        flex items-center justify-center
-                        px-5 h-[36.64px]
-                        rounded-[82.56px] border border-[#FFFFFF1C]
-                        bg-[#FFFFFF08]
-                        hover:bg-white/10 transition-all
-                        w-fit
-                      "
-                    >
-                      <span className="text-white text-[14.86px] font-semibold leading-[19.82px] tracking-[-2%]" style={{ fontFamily: "Manrope" }}>
-                        {tag}
-                      </span>
-                    </Link>
-                  ))}
+                <div className="flex-1 pt-8 xl:pt-[2.5vw] flex flex-wrap gap-y-3 lg:gap-y-4 xl:gap-y-[1vw] gap-x-4 lg:gap-x-5 xl:gap-x-[1.2vw]">
+                  {NAV_CONTENT[activeCategory].tags.map((tag, idx) => {
+                    const mappedRoute = tag === "Careers" 
+                      ? "/careers" 
+                      : `/hire/${tag.toLowerCase().replace(/ /g, "-")}`;
+                    
+                    return (
+                      <Link
+                        key={idx}
+                        href={mappedRoute}
+                        onClick={() => setIsMegaMenuOpen(false)}
+                        className="
+                          flex items-center justify-center
+                          px-5 lg:px-6 xl:px-[2vw] h-[36.64px] lg:h-[42px] xl:h-[3.5vw]
+                          rounded-[82.56px] xl:rounded-[4vw] border border-[#FFFFFF1C] xl:border-[0.1vw]
+                          bg-[#FFFFFF08]
+                          hover:border-[#184BB4] hover:bg-white/10 transition-all
+                          w-fit
+                        "
+                      >
+                        <span className="text-white text-[14.86px] lg:text-[16px] xl:text-[1.2vw] font-semibold leading-[19.82px] xl:leading-[1.5] tracking-[-2%]" style={{ fontFamily: "Manrope" }}>
+                          {tag}
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>
@@ -357,16 +359,22 @@ export default function GlassmorphicNavbar() {
                       For talent <ChevronDown size={28} />
                     </button>
                     <div className="flex flex-wrap gap-2">
-                      {NAV_CONTENT.talent.tags.map((tag, idx) => (
-                        <Link 
-                          key={idx} 
-                          href={`/hire/${tag.toLowerCase().replace(/ /g, "-")}`} 
-                          onClick={() => setIsOpen(false)} 
-                          className="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors"
-                        >
-                          {tag}
-                        </Link>
-                      ))}
+                      {NAV_CONTENT.talent.tags.map((tag, idx) => {
+                        const mappedRoute = tag === "Careers" 
+                          ? "/careers" 
+                          : `/hire/${tag.toLowerCase().replace(/ /g, "-")}`;
+                          
+                        return (
+                          <Link 
+                            key={idx} 
+                            href={mappedRoute} 
+                            onClick={() => setIsOpen(false)} 
+                            className="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors"
+                          >
+                            {tag}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

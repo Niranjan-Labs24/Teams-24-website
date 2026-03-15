@@ -27,53 +27,53 @@ const Solutions = () => {
     ]
 
     return (
-        <section className="w-full bg-white py-8 md:py-12 px-4">
-            <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <section className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 xl:px-[2vw]">
+            <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto flex flex-col items-center">
                 {/* Header */}
-                <div className="text-center mb-10 md:mb-12">
-                    <p className="text-[#8E8E93] text-sm md:text-base mb-2 font-medium">Problem and solutions</p>
+                <div className="text-center mb-10 md:mb-12 xl:mb-[3.5vw]">
+                    <p className="text-[#8E8E93] text-sm md:text-base xl:text-[1.2vw] mb-2 xl:mb-[0.5vw] font-medium">Problem and solutions</p>
                     <h2 
-                        className="text-[32px] md:text-[56px] font-normal tracking-[-0.04em] leading-[1.1] text-[#1A1A1A]"
+                        className="text-[32px] md:text-[56px] xl:text-[4vw] font-normal tracking-[-0.04em] leading-[1.1] xl:leading-[4.2vw] text-[#1A1A1A]"
                         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                         Your problem, our solution
                     </h2>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch justify-center w-full max-w-[1210px]">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-[3vw] items-stretch justify-center w-full max-w-[1210px] xl:max-w-none xl:w-[85vw]">
                     {/* Left Side - Solution Card */}
-                    <div className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-1 w-full xl:w-[444px] 2xl:w-[533px] xl:h-[482px] 2xl:h-[578px]">
-                        {/* Background Icons - Increased opacity and visibility */}
+                    <div className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-1 w-full lg:w-[40%] xl:w-[35vw] xl:min-h-[38vw]">
+                        {/* Background Icons - Fluid placement */}
                         <div 
-                            className="absolute z-10 pointer-events-none xl:w-[90.28px] xl:h-[90.07px] 2xl:w-[108.34px] 2xl:h-[108.08px] xl:top-[19px] xl:left-[-36.08px] 2xl:top-[22.8px] 2xl:left-[-43.3px] brightness-0 invert"
+                            className="absolute z-10 pointer-events-none xl:w-[7vw] xl:h-[7vw] xl:top-[1.5vw] xl:left-[-2.5vw] brightness-0 invert"
                             style={{ opacity: 1 }}
                         >
                             <Image
                                 src="/solutionicon.png"
                                 alt=""
                                 fill
-                                className="object-contain"
+                                className="object-contain hidden xl:block"
                             />
                         </div>
                         <div 
-                            className="absolute z-10 pointer-events-none xl:w-[117.34px] xl:h-[117.07px] 2xl:w-[140.81px] 2xl:h-[140.48px] xl:top-[379px] xl:left-[370.78px] 2xl:top-[454.8px] 2xl:left-[444.9px] brightness-0 invert"
+                            className="absolute z-10 pointer-events-none xl:w-[9vw] xl:h-[9vw] xl:bottom-[2vw] xl:right-[-2vw] brightness-0 invert"
                             style={{ opacity: 1 }}
                         >
                             <Image
                                 src="/solutionicon.png"
                                 alt=""
                                 fill
-                                className="object-contain"
+                                className="object-contain hidden xl:block"
                             />
                         </div>
 
                         <div 
-                            className="relative h-full w-full rounded-[31px] border-[1.01px] border-white/20 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)] overflow-hidden"
+                            className="relative h-full w-full rounded-[31px] xl:rounded-[2vw] border-[1.01px] xl:border-[0.1vw] border-white/20 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)] overflow-hidden"
                         >
-                            <div className="relative z-20 h-full w-full p-8 md:p-10 flex flex-col">
+                            <div className="relative z-20 h-full w-full p-8 md:p-10 xl:p-[3vw] flex flex-col justify-center">
                                 {/* Teams24 Logo */}
-                                <div className="flex items-center justify-center gap-2 mb-8">
-                                    <div className="relative w-5 h-5">
+                                <div className="flex items-center justify-center gap-2 xl:gap-[0.5vw] mb-8 xl:mb-[2.5vw]">
+                                    <div className="relative w-5 h-5 xl:w-[1.5vw] xl:h-[1.5vw]">
                                         <Image 
                                             src="/logo.png" 
                                             alt="Teams24" 
@@ -82,7 +82,7 @@ const Solutions = () => {
                                         />
                                     </div>
                                     <span 
-                                        className="text-white font-normal xl:text-[20px] 2xl:text-[24px] xl:leading-[24px] 2xl:leading-[29px]"
+                                        className="text-white font-normal xl:text-[1.8vw] xl:leading-[1.4]"
                                         style={{ 
                                             fontFamily: "'Dyson Sans Modern', sans-serif",
                                             letterSpacing: '-0.05em'
@@ -94,14 +94,13 @@ const Solutions = () => {
 
                                 {/* Content Card Area */}
                                 <div 
-                                    className="relative xl:w-[380px] 2xl:w-[456px] xl:h-[352px] 2xl:h-[422px] rounded-[28px] border-[0.81px] border-white/30 backdrop-blur-[2.9px] flex flex-col mx-auto"
+                                    className="relative w-full rounded-[28px] xl:rounded-[1.8vw] border-[0.81px] xl:border-[0.1vw] border-white/30 backdrop-blur-[2.9px] flex flex-col mx-auto"
                                     style={{ 
-                                        backgroundColor: '#043A7952',
-                                        marginTop: 'auto' 
+                                        backgroundColor: '#043A7952'
                                     }}
                                 >
                                     <h3 
-                                        className="text-white font-normal xl:text-[22px] 2xl:text-[26px] xl:leading-[24px] 2xl:leading-[29px] xl:w-[307px] 2xl:w-[368px] xl:mt-[31px] xl:ml-[34px] 2xl:mt-[37px] 2xl:ml-[41px]"
+                                        className="text-white font-normal text-[22px] md:text-[26px] xl:text-[2vw] xl:leading-[1.2] px-6 xl:px-[2.5vw] mt-10 xl:mt-[3vw] mb-6 xl:mb-[2vw]"
                                         style={{ 
                                             fontFamily: "'Space Grotesk', sans-serif",
                                             letterSpacing: '-0.05em'
@@ -110,15 +109,15 @@ const Solutions = () => {
                                         Your only personal hiring partner !
                                     </h3>
 
-                                    <div className="space-y-4 flex-grow justify-center flex flex-col xl:pl-[34px] 2xl:pl-[41px] xl:pb-[31px] 2xl:pb-[37px]">
+                                    <div className="space-y-4 xl:space-y-[1.2vw] flex-grow justify-center flex flex-col px-6 xl:px-[2.5vw] pb-10 xl:pb-[3.5vw]">
                                         {solutions.map((item, idx) => (
-                                            <div key={idx} className="flex items-center gap-3">
-                                                <div className="flex-shrink-0">
-                                                    <div className="bg-[#00C065] rounded-full p-0.5 shadow-sm flex items-center justify-center">
-                                                        <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
+                                            <div key={idx} className="flex items-start gap-3 xl:gap-[0.8vw]">
+                                                <div className="flex-shrink-0 mt-1 xl:mt-[0.3vw]">
+                                                    <div className="bg-[#00C065] rounded-full p-0.5 xl:p-[0.1vw] shadow-sm flex items-center justify-center">
+                                                        <Check className="w-3.5 h-3.5 xl:w-[1.2vw] xl:h-[1.2vw] text-white stroke-[3]" />
                                                     </div>
                                                 </div>
-                                                <p className="text-white/95 text-base md:text-[18px] font-medium tracking-tight leading-tight">
+                                                <p className="text-white/95 text-base md:text-[18px] xl:text-[1.3vw] font-medium tracking-tight leading-tight">
                                                     {item}
                                                 </p>
                                             </div>
@@ -129,31 +128,34 @@ const Solutions = () => {
                         </div>
                     </div>
 
-                    {/* Right Side - Problem List */}
+                    {/* Right Side - Problem List Container */}
                     <div 
-                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-2 w-full xl:w-[725px] 2xl:w-[870px] xl:h-[482px] 2xl:h-[578px] relative overflow-hidden"
+                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2vw] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-2 w-full lg:w-[60%] xl:w-[50vw] xl:min-h-[38vw] relative overflow-hidden flex flex-col justify-center p-6 md:p-10 xl:p-[4vw]"
                     >
-                        <div className="absolute xl:top-[40px] 2xl:top-[48px] xl:left-[50px] 2xl:left-[60px] xl:w-[625px] 2xl:w-[750px] flex flex-col xl:gap-[32px] 2xl:gap-[38px]">
+                        {/* We use relative positioning for the full timeline container mapping the absolute circle overlaps cleanly */}
+                        <div className="flex flex-col gap-8 md:gap-10 xl:gap-[3vw] w-full relative">
                             {problems.map((problem) => (
-                                <div key={problem.id} className="relative xl:w-[625px] 2xl:w-[750px] xl:h-[113px] 2xl:h-[136px]">
-                                    {/* Number Circle - Positioned higher with less distance from top */}
-                                    <div className="absolute xl:top-[10px] 2xl:top-[12px] xl:left-0 2xl:left-0 xl:w-[50px] 2xl:w-[60px] xl:h-[50px] 2xl:h-[60px] rounded-full bg-gradient-to-br from-[#FF6B6B] to-[#FF413A] flex items-center justify-center text-white text-lg md:text-xl font-bold border border-[#0000000F] shadow-sm">
+                                <div key={problem.id} className="relative w-full group isolate">
+                                    {/* Number Circle positioned exactly atop the upper-left corner overlap - increased size */}
+                                    <div 
+                                        className="absolute z-20 w-[50px] h-[50px] md:w-[64px] md:h-[64px] xl:w-[4.5vw] xl:h-[4.5vw] rounded-full bg-gradient-to-br from-[#FF6B6B] to-[#FF413A] flex items-center justify-center text-white text-xl md:text-2xl xl:text-[1.8vw] font-bold border-4 xl:border-[0.3vw] border-[#FDFDFD] shadow-sm transform -translate-x-1/2 -translate-y-1/2 left-0 top-0"
+                                    >
                                         {problem.id}
                                     </div>
-
-                                    {/* Text Box - Positioned lower with more distance from top, sharp top-left "edge" */}
+                                    
+                                    {/* Content Wrapper naturally padding around the overlapping badge natively */}
                                     <div 
-                                        className="xl:w-[566px] 2xl:w-[679px] xl:h-[88px] 2xl:h-[106px] bg-[#FDFDFD] border border-[#00000014] rounded-tr-[26px] rounded-br-[26px] rounded-bl-[26px] absolute xl:left-[59px] 2xl:left-[71px] xl:top-[25px] 2xl:top-[30px] flex items-center px-8"
+                                        className="w-full min-h-[88px] md:min-h-[106px] xl:min-h-[8vw] bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2vw] rounded-tl-sm xl:rounded-tl-[0.5vw] flex items-center px-6 md:px-10 xl:px-[4vw] py-5 xl:py-[2.5vw] relative z-10 hover:shadow-md transition-shadow"
                                     >
                                         <p 
-                                            className="text-[#3A3A3C] font-normal xl:text-[18px] 2xl:text-[22px] xl:leading-[24px] 2xl:leading-[29px]"
+                                            className="text-[#3A3A3C] font-normal text-base md:text-[18px] xl:text-[1.5vw] xl:leading-[1.5] ml-4 md:ml-6 xl:ml-[1vw]"
                                             style={{ 
                                                 fontFamily: "'Space Grotesk', sans-serif",
                                                 letterSpacing: '-0.05em'
                                             }}
                                         >
                                             {problem.text}
-                                            <span className="text-[#FF413A]">{problem.highlight}</span>
+                                            <span className="text-[#FF413A] ml-1 xl:ml-[0.5vw]">{problem.highlight}</span>
                                         </p>
                                     </div>
                                 </div>

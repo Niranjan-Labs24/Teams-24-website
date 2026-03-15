@@ -51,7 +51,7 @@ export function Footer() {
                   lineHeight: "40px",
                 }}
               >
-                Teams24
+                Teams 24
               </span>
             </div>
             <a 
@@ -225,7 +225,7 @@ export function Footer() {
               minWidth: "max-content",
             }}
           >
-            Teams24
+            Teams 24
           </p>
         </div>
       </div>

@@ -63,28 +63,28 @@ export default function HireSkills({
   const displaySkills = skills || defaultSkillsData;
 
   return (
-    <section className="w-full bg-white py-20 px-6">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
+    <section className="w-full bg-white py-20 xl:py-[6vw] px-6 xl:px-[2vw]">
+      <div className="max-w-[1200px] xl:max-w-none xl:w-[85vw] mx-auto">
+        <div className="text-center mb-10 md:mb-16 xl:mb-[4vw]">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl xl:text-[3.5vw] font-bold text-gray-900 mb-4 sm:mb-6 xl:mb-[1.5vw] px-4 xl:px-0">
             {displayTitle}
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl px-4">
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl xl:text-[1.4vw] px-4 xl:px-0">
             {displayDescription}
           </p>
         </div>
 
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-gray-100 xl:divide-y-[0.1vw]">
           {displaySkills.map((category, idx) => (
-            <div key={idx} className="grid grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-4 md:gap-8 py-6 md:py-8 items-start md:items-center">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+            <div key={idx} className="grid grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] xl:grid-cols-[22vw_1fr] gap-4 md:gap-8 xl:gap-[3vw] py-6 md:py-8 xl:py-[2.5vw] items-start md:items-center">
+              <h3 className="text-lg md:text-xl xl:text-[1.6vw] font-semibold text-gray-800">
                 {category.category}
               </h3>
-              <div className="flex flex-wrap gap-2 md:gap-3 md:justify-end">
+              <div className="flex flex-wrap gap-2 md:gap-3 xl:gap-[1vw] md:justify-end">
                 {category.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${category.colors[sIdx] || 'bg-gray-100 text-gray-700'}`}
+                    className={`px-4 py-2 xl:px-[1.5vw] xl:py-[0.8vw] rounded-full xl:rounded-[2vw] text-sm xl:text-[1.1vw] font-medium ${category.colors[sIdx] || 'bg-gray-100 text-gray-700'}`}
                   >
                     {skill}
                   </span>

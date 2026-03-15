@@ -32,60 +32,58 @@ export default function Testimonials() {
 
   return (
     <section 
-      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 px-6 lg:px-12 flex items-center justify-center"
-      style={{ minHeight: "632px" }}
+      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 px-6 lg:px-12 xl:px-[2vw] flex items-center justify-center min-h-[632px] xl:min-h-[44vw]"
     >
-      <div className="w-full max-w-[1438px] mx-auto flex flex-col items-center">
+      <div className="w-full max-w-[1438px] xl:max-w-none xl:w-[95vw] mx-auto flex flex-col items-center">
         {/* Adjusted Heading based on dimensions */}
         <div 
-          className="flex items-center justify-center mb-10 md:mb-16 px-4 md:px-8"
-          style={{ width: "100%", maxWidth: "1251px" }}
+          className="flex items-center justify-center mb-10 md:mb-16 xl:mb-[4vw] px-4 md:px-8 xl:px-[2vw] w-full max-w-[1251px] xl:max-w-none xl:w-[85vw]"
         >
           <h2 
-            className="text-[32px] sm:text-[40px] md:text-[56px] font-normal text-center tracking-[-0.06em] leading-[1.1] md:leading-[57px]"
+            className="text-[32px] sm:text-[40px] md:text-[56px] xl:text-[4vw] font-normal text-center tracking-[-0.06em] leading-[1.1] md:leading-[57px] xl:leading-[4.2vw]"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             What our clients say
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[2vw] mb-12 xl:mb-[4vw] w-full">
           {testimonials.map((t, idx) => (
             <div 
               key={idx} 
-              className="relative bg-[#FAFAFA] rounded-[1.5rem] p-6 sm:p-8 md:p-10 flex flex-col gap-4 sm:gap-6 border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px]"
+              className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px] xl:min-h-[22vw]"
             >
               {/* Top Left Quote */}
-              <Quote className="w-6 h-6 md:w-8 md:h-8 text-[#1A1A1A]/10 fill-[#1A1A1A]/5" />
+              <Quote className="w-6 h-6 md:w-8 md:h-8 xl:w-[2.5vw] xl:h-[2.5vw] text-[#1A1A1A]/10 fill-[#1A1A1A]/5" />
               
-              <p className="text-[#1A1A1A] text-base sm:text-lg leading-relaxed font-medium pr-2 md:pr-4">
+              <p className="text-[#1A1A1A] text-base sm:text-lg xl:text-[1.2vw] leading-relaxed xl:leading-[1.8] font-medium pr-2 md:pr-4 xl:pr-[1vw]">
                 {t.quote}
               </p>
 
               {/* Bottom Right Quote (Opposite) */}
-              <Quote className="absolute bottom-16 right-8 w-8 h-8 text-[#1A1A1A]/10 fill-[#1A1A1A]/5 rotate-180" />
+              <Quote className="absolute bottom-16 xl:bottom-[4vw] right-8 xl:right-[2vw] w-8 h-8 xl:w-[2.5vw] xl:h-[2.5vw] text-[#1A1A1A]/10 fill-[#1A1A1A]/5 rotate-180" />
               
-              <div className="flex items-center gap-2 mt-auto">
-                <span className="text-[#1A1A1A] font-bold">- {t.name}</span>
-                <span className="text-[#1A1A1A]/40 text-sm font-medium">{t.title}</span>
+              <div className="flex items-center gap-2 xl:gap-[0.8vw] mt-auto">
+                <span className="text-[#1A1A1A] font-bold xl:text-[1.1vw]">- {t.name}</span>
+                <span className="text-[#1A1A1A]/40 text-sm xl:text-[0.9vw] font-medium">{t.title}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Navigation Arrows */}
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 xl:gap-[1.5vw]">
           <button
             onClick={prev}
-            className="w-12 h-12 rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
+            className="w-12 h-12 xl:w-[3.5vw] xl:h-[3.5vw] rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-6 h-6 xl:w-[1.5vw] xl:h-[1.5vw]" />
           </button>
           <button
             onClick={next}
-            className="w-12 h-12 rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
+            className="w-12 h-12 xl:w-[3.5vw] xl:h-[3.5vw] rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-6 h-6 xl:w-[1.5vw] xl:h-[1.5vw]" />
           </button>
         </div>
       </div>

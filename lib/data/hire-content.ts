@@ -110,11 +110,11 @@ export const defaultContent: HirePageContent = {
 export const fullStackDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
-    description: "Hire dedicated full stack developers from Teams24 in 72 hours. Expert engineers skilled in React, Node.js, Python, AWS & more. 5-hour vetting process. Scale your team on demand."
+    description: "Hire dedicated full stack developers from Teams 24 in 72 hours. Expert engineers skilled in React, Node.js, Python, AWS & more. 5-hour vetting process. Scale your team on demand."
   },
   hero: {
     headline: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
-    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams24, handpicked through a rigorous 5-hour evaluation process. From React and Node.js to Python, Django, and AWS — get the full stack talent you need, deployed within 72 hours.",
+    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams24, handpicked through a rigorous 5-hour evaluation process. Deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Developers",
     secondaryCta: "Book a Free Discovery Call"
@@ -219,9 +219,9 @@ export const customerSupportContent: HirePageContent = {
     description: "Hire dedicated customer support specialists from Teams24 in 72 hours. Experts in Zendesk, Intercom, Freshdesk, live chat, email, phone & omnichannel CX. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Customer Support Specialists: Dedicated, AI-Ready Support Teams in 72 Hours",
-    subheading: "Access 50+ expert customer support specialists from Teams24, handpicked through a rigorous 5-hour evaluation process. From Zendesk and Intercom ticket management to live chat, phone support, email handling, and AI-augmented omnichannel CX — get the customer support talent you need, deployed within 72 hours.",
-    trustBadge: "Your Expert Customer Support Team Is One Call Away. Deploy in 72 Hours.",
+    headline: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
+    subheading: "Access 50+ expert customer support specialists from Teams24, handpicked through a rigorous 5-hour evaluation process,Your Expert Customer Support Team Is One Call Away. Deploy in 72 Hours.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Support Team",
     secondaryCta: "Book a Free Discovery Call"
   },
@@ -314,13 +314,13 @@ export const customerSupportContent: HirePageContent = {
 
 export const pythonDeveloperContent: HirePageContent = {
   seo: {
-    title: "Hire Python Developers: Dedicated Python Engineers for AI, Web & Data in 72 Hours",
+    title: "Hire Python Developers: Dedicated Python Engineers  in 72 Hours",
     description: "Hire dedicated Python developers from Teams24 in 72 hours. Expert engineers skilled in Django, FastAPI, AI/ML, data science, automation & cloud deployment. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Python Developers: Dedicated Python Engineers for AI, Web & Data in 72 Hours",
-    subheading: "Access 150+ expert Python developers from Teams24, handpicked through a rigorous 5-hour evaluation process. From Django and FastAPI web applications to AI/ML model development, data engineering, and automation — get the Python talent you need, deployed within 72 hours.",
-    trustBadge: "Your Expert Python Engineering Team Is One Call Away. Deploy in 72 Hours.",
+    headline: "Hire Python Developers:  Python Engineers for AI, Web & Data in 72 Hours",
+    subheading: "Access 120+ expert Python developers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Python Team",
     secondaryCta: "Book a Free Discovery Call"
   },
@@ -418,7 +418,7 @@ export const expressJsContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
-    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. From REST API development and microservices architecture to real-time applications, GraphQL, and MERN stack — get the Express.js talent you need, deployed within 72 hours.",
+    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Express.js Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -519,12 +519,12 @@ export const expressJsContent: HirePageContent = {
 
 export const automationTestingContent: HirePageContent = {
   seo: {
-    title: "Hire Automation Testers: Dedicated, Expert QA Automation Engineers in 72 Hours",
+    title: "Hire Automation Testers: Dedicated, QA Automation Experts in 72 Hours",
     description: "Hire dedicated automation testers from Teams24 in 72 hours. Expert QA engineers skilled in Selenium, Playwright, Cypress, API testing & CI/CD pipelines. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Automation Testers: Dedicated, Expert QA Automation Engineers in 72 Hours",
-    subheading: "Access 75+ expert automation testers and QA engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. From Selenium and Playwright to API testing, performance testing, and CI/CD pipeline integration — get the QA automation talent you need, deployed within 72 hours.",
+    headline: "Hire Automation Testers: Expert QA Automation Engineers in 72 Hours",
+    subheading: "Access 75+ expert automation testers and QA engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream QA Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -621,8 +621,8 @@ export const salesforceDeveloperContent: HirePageContent = {
     description: "Hire certified Salesforce developers, admins & consultants from Teams24 in 72 hours. Dedicated Salesforce experts for CRM customisation, Apex development & Lightning components. 5-hour vetting process."
   },
   hero: {
-    headline: "Hire Salesforce Developers: Certified, Dedicated Salesforce Experts in 72 Hours",
-    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams24, handpicked through a rigorous 5-hour evaluation process. From Apex development and Lightning components to Sales Cloud, Service Cloud, and Agent force. Get the Salesforce talent you need, deployed within 72 hours.",
+    headline: "Hire Salesforce Developers: Certified Salesforce Experts in 72 Hours",
+    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams24, handpicked through a rigorous 5-hour evaluation process.deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Salesforce Team",
     secondaryCta: "Book a Free Discovery Call"

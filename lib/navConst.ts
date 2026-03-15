@@ -18,19 +18,9 @@ export const NAV_CONTENT = {
   },
   talent: {
     heading: "Explore dream job",
-    subheading: "Find openings across 30+ technologies",
+    subheading: "Find your dream job at Teams24.",
     tags: [
-      "Full Stack Developer",
-      "Customer Support Specialist",
-      "Python Developer",
-      "Express.js Developer",
-      "Automation Tester",
-      "Salesforce Developer",
-      "Django",
-      "Data Analyst",
-      "Mobile App Developer",
-      "UI UX Designer",
-      "DevOps Engineer"
+      "Careers"
     ]
   }
 };

@@ -73,26 +73,26 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 pt-28 pb-12 max-w-[1550px] mx-auto gap-12 xl:gap-[118px] 2xl:gap-[142px]">
+      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] 2xl:gap-[37px] xl:max-w-[576px] 2xl:max-w-[691px] w-full">
-          <div className="flex items-center justify-start lg:justify-start gap-3 transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
-            <div className="relative w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0">
+        <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] xl:gap-[2.4vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
+          <div className="flex items-center justify-start lg:justify-start gap-3 xl:gap-[1vw] transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 xl:px-[1vw] xl:py-[0.4vw] cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+            <div className="relative w-4 h-4 sm:w-6 sm:h-6 xl:w-[1.8vw] xl:h-[1.8vw] flex-shrink-0">
               <Image
-                src="/icons/Frame 1171276677.png"
+                src="/icons/Group 1362789195@4x.png"
                 alt="Badge Icon"
                 fill
                 className="object-contain"
               />
             </div>
-            <span className="text-white text-xs sm:text-base font-medium tracking-tight text-left">
+            <span className="text-white text-xs sm:text-base xl:text-[1.25vw] font-medium tracking-tight text-left">
               Hiring can be as easy as shopping
             </span>
           </div>
 
           <h1 
-            className="font-normal text-white text-center xl:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] 2xl:text-[65px] leading-[1.2] lg:leading-[50px] 2xl:leading-[60px] w-fit max-w-[700px] mx-auto xl:mx-0 h-auto"
+            className="font-normal text-white text-center xl:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] xl:text-[4.2vw] leading-[1.2] lg:leading-[50px] xl:leading-[1.1] w-fit max-w-[700px] xl:max-w-[55vw] mx-auto xl:mx-0 h-auto"
             style={{ 
               fontFamily: "Space Grotesk, sans-serif",
               letterSpacing: "-0.07em",
@@ -106,7 +106,7 @@ export default function HeroSection(): JSX.Element {
           </h1>
 
           {/* Trust Bar Section */}
-          <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] 2xl:gap-[16px] mt-2 xl:w-[357px] 2xl:w-[428px]">
+          <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] xl:gap-[1vw] mt-2 xl:mt-[0.5vw] xl:w-[28vw]">
             <div className="flex -space-x-3 flex-shrink-0">
               {[
                 "/rating/Frame 2147225664.png",
@@ -116,7 +116,7 @@ export default function HeroSection(): JSX.Element {
               ].map((src, i) => (
                 <div 
                   key={i} 
-                  className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white/30 overflow-hidden bg-gray-800"
+                  className="relative w-8 h-8 sm:w-10 sm:h-10 xl:w-[3vw] xl:h-[3vw] rounded-full border-2 xl:border-[0.15vw] border-white/30 overflow-hidden bg-gray-800"
                 >
                   <Image
                     src={src}
@@ -128,21 +128,21 @@ export default function HeroSection(): JSX.Element {
               ))}
             </div>
             <div className="flex flex-col items-center sm:items-start gap-1 sm:whitespace-nowrap">
-              <div className="flex gap-0.5">
+              <div className="flex gap-0.5 xl:gap-[0.1vw]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-[#F59E0B] text-[#F59E0B]" />
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 xl:w-[1.5vw] xl:h-[1.5vw] fill-[#F59E0B] text-[#F59E0B]" />
                 ))}
               </div>
-              <p className="text-white/70 text-sm sm:text-base font-medium tracking-tight text-center sm:text-left">
+              <p className="text-white/70 text-sm sm:text-base xl:text-[1.2vw] font-medium tracking-tight text-center sm:text-left mt-1 xl:mt-[0.2vw]">
                 Trusted by 20+ CEO&apos;s and CXO&apos;s
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col items-center xl:items-start gap-[10px] 2xl:gap-[12px] mt-10 xl:w-[285px] 2xl:w-[342px] xl:min-h-[114px] 2xl:min-h-[137px]">
+          <div className="flex flex-col items-center xl:items-start gap-[10px] xl:gap-[1vw] mt-10 xl:mt-[3vw] xl:w-[26vw] xl:min-h-[9vw]">
             <button 
               onClick={handleJoinCall}
-              className="w-full xl:w-[260px] 2xl:w-[312px] h-auto lg:h-[64px] 2xl:h-[77px] px-4 lg:px-[20px] 2xl:px-[24px] bg-white text-black rounded-full font-semibold text-xl lg:text-[18px] 2xl:text-[22px] leading-[32px] 2xl:leading-[38px] transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] border-[3px] 2xl:border-[4px] border-white/30 whitespace-nowrap overflow-hidden text-ellipsis"
+              className="w-full xl:w-[24vw] h-auto lg:h-[64px] xl:h-[5vw] px-4 lg:px-[20px] xl:px-[1.5vw] bg-white text-black rounded-full font-semibold text-xl lg:text-[18px] xl:text-[1.5vw] leading-[32px] xl:leading-[1.2] transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] border-[3px] xl:border-[0.25vw] border-white/30 whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
                 fontFamily: "Manrope, sans-serif",
                 letterSpacing: "-0.03em",
@@ -154,9 +154,9 @@ export default function HeroSection(): JSX.Element {
             
             <button 
               onClick={handleGetInTouch}
-              className="flex items-center gap-1.5 group xl:w-fit xl:h-[20px] 2xl:h-[24px] xl:ml-auto 2xl:ml-auto xl:mr-[100px] 2xl:mr-[120px]"
+              className="flex items-center gap-1.5 xl:gap-[0.5vw] group xl:w-fit xl:h-[2vw] xl:ml-auto xl:mr-[8vw]"
             >
-              <div className="relative w-3.5 h-3.5 2xl:w-[16px] 2xl:h-[16px] flex-shrink-0">
+              <div className="relative w-3.5 h-3.5 xl:w-[1vw] xl:h-[1vw] flex-shrink-0">
                 <Image
                   src="/icons/right.png"
                   alt="Discovery Call Icon"
@@ -165,7 +165,7 @@ export default function HeroSection(): JSX.Element {
                 />
               </div>
               <p 
-                className="font-semibold text-white/70 group-hover:text-white transition-colors lg:text-[12px] 2xl:text-[14px] lg:leading-[20px] 2xl:leading-[24px] whitespace-nowrap"
+                className="font-semibold text-white/70 group-hover:text-white transition-colors lg:text-[12px] xl:text-[1vw] lg:leading-[20px] xl:leading-[1.5] whitespace-nowrap"
                 style={{
                     fontFamily: "Manrope, sans-serif",
                     letterSpacing: "-0.01em",
@@ -177,43 +177,43 @@ export default function HeroSection(): JSX.Element {
           </div>
         </div>
 
-        <div className="w-full xl:max-w-[598px] 2xl:max-w-[718px] flex justify-center xl:justify-end">
+        <div className="w-full xl:w-[40vw] xl:max-w-[40vw] flex justify-center xl:justify-end">
           <div 
-            className="w-full xl:w-[598px] 2xl:w-[718px] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] border-[0.81px] border-[#FFFFFF4D] p-5 xs:p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
+            className="w-full xl:w-[40vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-5 xs:p-6 md:p-8 xl:p-[2.5vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{
-                minHeight: '522px',
+                minHeight: 'max(522px, 40vw)',
                 height: 'auto'
             }}
           >
             {isSubmitted ? (
-               <div className="relative z-10 text-center py-12">
-               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                 <CheckCircle2 className="text-white w-10 h-10" />
+               <div className="relative z-10 text-center py-12 xl:py-[3vw]">
+               <div className="w-16 h-16 xl:w-[5vw] xl:h-[5vw] bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-[1.5vw]">
+                 <CheckCircle2 className="text-white w-10 h-10 xl:w-[3vw] xl:h-[3vw]" />
                </div>
-               <h2 className="text-white text-3xl font-bold mb-4">Thank You!</h2>
-               <p className="text-white/70 text-lg">
+               <h2 className="text-white text-3xl xl:text-[2.2vw] font-bold mb-4 xl:mb-[1vw]">Thank You!</h2>
+               <p className="text-white/70 text-lg xl:text-[1.2vw]">
                  Your request has been received. Our team will contact you shortly.
                </p>
                <button 
                  onClick={() => setIsSubmitted(false)}
-                 className="mt-8 text-white/50 hover:text-white text-sm underline underline-offset-4"
+                 className="mt-8 xl:mt-[2vw] text-white/50 hover:text-white text-sm xl:text-[1vw] underline underline-offset-4"
                >
                  Submit another response
                </button>
              </div>
             ) : (
                 <>
-                <div className="relative z-10 text-center mb-8">
-                  <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold font-manrope mb-2">
+                <div className="relative z-10 text-center mb-8 xl:mb-[2vw]">
+                  <h2 className="text-white text-2xl sm:text-3xl md:text-4xl xl:text-[2.2vw] font-bold font-manrope mb-2 xl:mb-[0.5vw]">
                     Book a free 30 min call
                   </h2>
-                  <p className="text-white/60 text-base sm:text-lg">
+                  <p className="text-white/60 text-base sm:text-lg xl:text-[1.2vw]">
                     Get all your questions answered by our experts.
                   </p>
                 </div>
     
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-4">
+                <form className="space-y-4 xl:space-y-[1vw]" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
                     <input
                       required
                       name="firstname"
@@ -221,7 +221,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="First name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <input
@@ -231,12 +231,12 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="Last name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] xl:text-[17px] lg:leading-[16px] xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                   </div>
     
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
                     <input
                       required
                       name="email"
@@ -244,7 +244,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="email"
                       placeholder="Work email"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white placeholder:text-white lg:text-[14px] xl:text-[17px] lg:leading-[16px] xl:leading-[19px] placeholder:text-white placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <div className="relative">
@@ -253,7 +253,7 @@ export default function HeroSection(): JSX.Element {
                         name="company_size_dropdown"
                         value={formData.company_size_dropdown}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                         style={{ fontFamily: 'Manrope, sans-serif' }}
                       >
                         <option value="" disabled className="bg-[#0A0B1A] text-white/50">Company size</option>
@@ -261,7 +261,7 @@ export default function HeroSection(): JSX.Element {
                         <option value="11-50" className="bg-[#0A0B1A] text-white">11-50 employees</option>
                         <option value="51-200" className="bg-[#0A0B1A] text-white">51-200 employees</option>
                       </select>
-                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                      <ChevronDown className="absolute right-4 xl:right-[1vw] top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 xl:w-[1.2vw] xl:h-[1.2vw] pointer-events-none" />
                     </div>
                   </div>
     
@@ -271,7 +271,7 @@ export default function HeroSection(): JSX.Element {
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-4 text-white lg:text-[14px] 2xl:text-[17px] lg:leading-[16px] 2xl:leading-[19px] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     >
                       <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
@@ -279,12 +279,12 @@ export default function HeroSection(): JSX.Element {
                       <option value="uk" className="bg-[#0A0B1A] text-white">United Kingdom</option>
                       <option value="india" className="bg-[#0A0B1A] text-white">India</option>
                     </select>
-                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 pointer-events-none" />
+                    <ChevronDown className="absolute right-4 xl:right-[1vw] top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 xl:w-[1.2vw] xl:h-[1.2vw] pointer-events-none" />
                   </div>
     
-                  <div className="py-2 flex justify-center">
+                  <div className="py-2 xl:py-[0.5vw] flex justify-center">
                     <p 
-                      className="text-white lg:text-[12px] 2xl:text-[14px] lg:leading-[20px] 2xl:leading-[24px] lg:w-[447px] 2xl:w-[536px] text-center font-medium"
+                      className="text-white lg:text-[12px] xl:text-[0.9vw] lg:leading-[20px] xl:leading-[1.5] lg:w-[447px] xl:w-[35vw] text-center font-medium"
                       style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                     >
                       We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our <span className="underline cursor-pointer font-medium">privacy policy</span>.
@@ -294,7 +294,7 @@ export default function HeroSection(): JSX.Element {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="mx-auto lg:w-[502px] 2xl:w-[602px] h-[64px] 2xl:h-[77px] flex items-center justify-center bg-white text-black rounded-[62px] border-[3px] border-white/28 font-semibold lg:text-[14px] 2xl:text-[17px] lg:leading-[32px] 2xl:leading-[38px] px-8 lg:px-[30px] 2xl:px-[36px] py-4 lg:py-[16px] 2xl:py-[19px] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mx-auto w-full h-[64px] xl:h-[5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-white/28 font-semibold lg:text-[14px] xl:text-[1.2vw] lg:leading-[32px] xl:leading-[1.5] px-8 xl:px-[2vw] py-4 xl:py-[1vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
                     {isSubmitting ? "..." : "Book a demo call"}

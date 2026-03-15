@@ -15,14 +15,14 @@ const logos: Logo[] = [
 
 export default function TrustBar() {
   return (
-    <div className="w-full bg-white py-4 select-none overflow-hidden">
+    <div className="w-full bg-white py-4 xl:py-[1.25vw] select-none overflow-hidden">
       <div 
-        className="mx-auto px-4 flex items-center justify-center xl:max-w-[1160px] 2xl:max-w-[1392px] xl:h-[56px] 2xl:h-[67px]"
+        className="mx-auto px-4 xl:px-[2vw] flex items-center justify-center xl:w-[90vw] xl:max-w-none xl:h-[4.4vw]"
       >
-        <div className="flex items-center xl:gap-[48px] 2xl:gap-[58px]">
+        <div className="flex items-center xl:gap-[3.75vw]">
           {logos.map((logo, index) => (
-            <div key={index} className="flex items-center xl:gap-[48px] 2xl:gap-[58px]">
-              <div className="relative h-10 w-32 md:w-40 xl:w-[218px] 2xl:w-[262px] xl:h-[56px] 2xl:h-[67px]">
+            <div key={index} className="flex items-center xl:gap-[3.75vw]">
+              <div className="relative h-10 w-32 md:w-40 xl:w-[17vw] xl:h-[4.4vw]">
                 <Image
                   src={logo.src}
                   alt={`Partner Logo ${index + 1}`}
@@ -32,7 +32,7 @@ export default function TrustBar() {
               </div>
               {/* Separator - Vertical line */}
               {index < logos.length - 1 && (
-                <div className="h-6 w-[1px] bg-[#E5E5EA] xl:h-[32px]" />
+                <div className="h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw]" />
               )}
             </div>
           ))}
