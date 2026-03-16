@@ -33,18 +33,18 @@ export interface HirePageContent {
 
 export const defaultContent: HirePageContent = {
   seo: {
-    title: "Hire Expert Developers | Teams24",
-    description: "Hire dedicated developers from Teams24 in 72 hours. Scale your team on demand with expert engineers.",
+    title: "Hire Expert Developers | Teams 24",
+    description: "Hire dedicated developers from Teams 24 in 72 hours. Scale your team on demand with expert engineers.",
   },
   hero: {
     headline: "Hire {role} Developers: Affordable, dedicated {roleStr} experts in 72 hours",
-    subheading: "Access 100+ expert {role} developers, engineers and architects from Teams24, handpicked through a 5-hour evaluation process.",
+    subheading: "Access 100+ expert {role} developers, engineers and architects from Teams 24, handpicked through a 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEO'S and CXO'S",
     primaryCta: "Hire your dream developers",
     secondaryCta: "Book a free discovery call",
   },
-  skillsTitle: "10+ skills that {role} Developers at Teams24 are skilled at",
-  skillsDescription: "{role} developers at Teams24 are skilled at JavaScript, NodeJS among others.",
+  skillsTitle: "10+ skills that {role} Developers at Teams 24 are skilled at",
+  skillsDescription: "{role} developers at Teams 24 are skilled at JavaScript, NodeJS among others.",
   skills: [
     {
       category: "DevOps & Deployment",
@@ -114,13 +114,13 @@ export const fullStackDeveloperContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
-    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams24, handpicked through a rigorous 5-hour evaluation process. Deployed within 72 hours.",
+    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams 24, handpicked through a rigorous 5-hour evaluation process. Deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Developers",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Full Stack Developers at Teams24 Are Skilled At",
-  skillsDescription: "Full stack developers at Teams24 are skilled at JavaScript, React, Node.js, Python, and more — delivering end-to-end expertise across frontend, backend, databases, and cloud infrastructure.",
+  skillsTitle: "10+ Skills That Full Stack Developers at Teams 24 Are Skilled At",
+  skillsDescription: "Full stack developers at Teams 24 are skilled at JavaScript, React, Node.js, Python, and more — delivering end-to-end expertise across frontend, backend, databases, and cloud infrastructure.",
   skills: [
     {
       category: "Frontend Frameworks & Libraries",
@@ -180,15 +180,15 @@ export const fullStackDeveloperContent: HirePageContent = {
     },
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated full stack developer is fully onboarded and writing code within 72 hours of selection. This includes repository access, development environment setup, tool configuration, and a kickoff sync with your team. Traditional full stack hiring takes 2–4 months with recruiters, technical interviews, and onboarding. Teams24 compresses that to 3 business days."
+      answer: "Your dedicated full stack developer is fully onboarded and writing code within 72 hours of selection. This includes repository access, development environment setup, tool configuration, and a kickoff sync with your team. Traditional full stack hiring takes 2–4 months with recruiters, technical interviews, and onboarding. Teams 24 compresses that to 3 business days."
     },
     {
       question: "What about team chemistry?",
-      answer: "Every full stack developer at Teams24 is evaluated not just for technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside other developers, handle code reviews, participate in standups, and adapt to different project management styles like Agile and Scrum. You also get to interview candidates before making your decision."
+      answer: "Every full stack developer at Teams 24 is evaluated not just for technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside other developers, handle code reviews, participate in standups, and adapt to different project management styles like Agile and Scrum. You also get to interview candidates before making your decision."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more full stack developers, frontend specialists, or backend engineers as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your development team adapts to your business needs."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more full stack developers, frontend specialists, or backend engineers as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your development team adapts to your business needs."
     },
     {
       question: "How do you ensure quality?",
@@ -200,7 +200,7 @@ export const fullStackDeveloperContent: HirePageContent = {
     },
     {
       question: "Can I hire a frontend-only or backend-only developer instead?",
-      answer: "Yes. While our full stack developers work across the entire application layer, Teams24 also provides dedicated frontend developers (React, Vue.js, Angular), backend developers (Node.js, Python, Java), and DevOps engineers. If you need specialists rather than generalists, we can match you with the right talent for your specific requirements."
+      answer: "Yes. While our full stack developers work across the entire application layer, Teams 24 also provides dedicated frontend developers (React, Vue.js, Angular), backend developers (Node.js, Python, Java), and DevOps engineers. If you need specialists rather than generalists, we can match you with the right talent for your specific requirements."
     },
     {
       question: "Can your developers work with our existing codebase?",
@@ -208,7 +208,7 @@ export const fullStackDeveloperContent: HirePageContent = {
     },
     {
       question: "How is this different from hiring a freelance developer?",
-      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams24 provides dedicated full stack professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your delivery timelines — just like a full-time hire, but without the overhead of traditional employment."
+      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated full stack professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your delivery timelines — just like a full-time hire, but without the overhead of traditional employment."
     }
   ]
 };
@@ -216,17 +216,17 @@ export const fullStackDeveloperContent: HirePageContent = {
 export const customerSupportContent: HirePageContent = {
   seo: {
     title: "Hire Customer Support Specialists: Dedicated, AI-Ready Support Teams in 72 Hours",
-    description: "Hire dedicated customer support specialists from Teams24 in 72 hours. Experts in Zendesk, Intercom, Freshdesk, live chat, email, phone & omnichannel CX. 5-hour vetting. Scale on demand."
+    description: "Hire dedicated customer support specialists from Teams 24 in 72 hours. Experts in Zendesk, Intercom, Freshdesk, live chat, email, phone & omnichannel CX. 5-hour vetting. Scale on demand."
   },
   hero: {
     headline: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
-    subheading: "Access 50+ expert customer support specialists from Teams24, handpicked through a rigorous 5-hour evaluation process,Your Expert Customer Support Team Is One Call Away. Deploy in 72 Hours.",
+    subheading: "Access 50+ expert customer support specialists from Teams 24, handpicked through a rigorous 5-hour evaluation process,Your Expert Customer Support Team Is One Call Away. Deploy in 72 Hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Support Team",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Customer Support Specialists at Teams24 Are Skilled At",
-  skillsDescription: "Customer support specialists at Teams24 are skilled in Zendesk, Intercom, Freshdesk, live chat, phone, email, and more — delivering professional, empathetic, and AI-augmented customer experiences across every channel.",
+  skillsTitle: "10+ Skills That Customer Support Specialists at Teams 24 Are Skilled At",
+  skillsDescription: "Customer support specialists at Teams 24 are skilled in Zendesk, Intercom, Freshdesk, live chat, phone, email, and more — delivering professional, empathetic, and AI-augmented customer experiences across every channel.",
   skills: [
     {
       category: "Helpdesk & Ticketing Platforms",
@@ -287,15 +287,15 @@ export const customerSupportContent: HirePageContent = {
   faqs: [
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated customer support specialist is fully onboarded and handling tickets within 72 hours of selection. This includes helpdesk platform access, internal documentation review, product training kickoff, and a sync with your CX team. Traditional support hiring and training takes 4–8 weeks. Teams24 compresses that to 3 days because our specialists arrive platform-proficient and support-ready."
+      answer: "Your dedicated customer support specialist is fully onboarded and handling tickets within 72 hours of selection. This includes helpdesk platform access, internal documentation review, product training kickoff, and a sync with your CX team. Traditional support hiring and training takes 4–8 weeks. Teams 24 compresses that to 3 days because our specialists arrive platform-proficient and support-ready."
     },
     {
       question: "What about team chemistry and brand voice?",
-      answer: "Every customer support specialist at Teams24 is evaluated not just for technical CX skills, but for communication quality, empathy, cultural fit, and adaptability. During our 5-hour vetting process, we assess written and verbal tone, how candidates handle frustrated customers, de-escalation techniques, and their ability to match different brand voices. You also interview candidates before making your decision, so you can evaluate fit firsthand."
+      answer: "Every customer support specialist at Teams 24 is evaluated not just for technical CX skills, but for communication quality, empathy, cultural fit, and adaptability. During our 5-hour vetting process, we assess written and verbal tone, how candidates handle frustrated customers, de-escalation techniques, and their ability to match different brand voices. You also interview candidates before making your decision, so you can evaluate fit firsthand."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more support agents for product launches, seasonal peaks (Black Friday, holiday rushes), or marketing campaigns — and scale down during quieter periods. No long-term BPO contracts. No minimum headcount commitments. Your support team adapts to your business cycle."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more support agents for product launches, seasonal peaks (Black Friday, holiday rushes), or marketing campaigns — and scale down during quieter periods. No long-term BPO contracts. No minimum headcount commitments. Your support team adapts to your business cycle."
     },
     {
       question: "How do you ensure quality?",
@@ -315,17 +315,17 @@ export const customerSupportContent: HirePageContent = {
 export const pythonDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Python Developers: Dedicated Python Engineers  in 72 Hours",
-    description: "Hire dedicated Python developers from Teams24 in 72 hours. Expert engineers skilled in Django, FastAPI, AI/ML, data science, automation & cloud deployment. 5-hour vetting. Scale on demand."
+    description: "Hire dedicated Python developers from Teams 24 in 72 hours. Expert engineers skilled in Django, FastAPI, AI/ML, data science, automation & cloud deployment. 5-hour vetting. Scale on demand."
   },
   hero: {
     headline: "Hire Python Developers:  Python Engineers for AI, Web & Data in 72 Hours",
-    subheading: "Access 120+ expert Python developers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 120+ expert Python developers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Python Team",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Python Developers at Teams24 Are Skilled At",
-  skillsDescription: "Python developers at Teams24 are skilled in Django, FastAPI, AI/ML frameworks, data science, and more — delivering production-grade Python expertise across web development, artificial intelligence, and data engineering.",
+  skillsTitle: "10+ Skills That Python Developers at Teams 24 Are Skilled At",
+  skillsDescription: "Python developers at Teams 24 are skilled in Django, FastAPI, AI/ML frameworks, data science, and more — delivering production-grade Python expertise across web development, artificial intelligence, and data engineering.",
   skills: [
     {
       category: "Web Frameworks",
@@ -386,15 +386,15 @@ export const pythonDeveloperContent: HirePageContent = {
   faqs: [
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated Python developer is fully onboarded and shipping code within 72 hours of selection. This includes repository access, virtual environment setup, CI/CD pipeline integration, and a kickoff sync with your engineering team. Traditional Python hiring takes 2–4 months. Teams24 compresses that to 3 days."
+      answer: "Your dedicated Python developer is fully onboarded and shipping code within 72 hours of selection. This includes repository access, virtual environment setup, CI/CD pipeline integration, and a kickoff sync with your engineering team. Traditional Python hiring takes 2–4 months. Teams 24 compresses that to 3 days."
     },
     {
       question: "What about team chemistry?",
-      answer: "Every Python developer at Teams24 is evaluated not just for technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside frontend developers, participate in code reviews, handle production incidents, and adapt to Agile and Scrum workflows. You also get to interview candidates before making your decision."
+      answer: "Every Python developer at Teams 24 is evaluated not just for technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside frontend developers, participate in code reviews, handle production incidents, and adapt to Agile and Scrum workflows. You also get to interview candidates before making your decision."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more Python developers, data engineers, ML specialists, or DevOps engineers as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your Python team adapts to your product roadmap."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more Python developers, data engineers, ML specialists, or DevOps engineers as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your Python team adapts to your product roadmap."
     },
     {
       question: "How do you ensure quality?",
@@ -414,16 +414,16 @@ export const pythonDeveloperContent: HirePageContent = {
 export const expressJsContent: HirePageContent = {
   seo: {
     title: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
-    description: "Hire dedicated Express.js developers from Teams24 in 72 hours. Expert backend engineers skilled in Node.js, REST APIs, MongoDB, microservices & real-time apps. 5-hour vetting. Scale on demand."
+    description: "Hire dedicated Express.js developers from Teams 24 in 72 hours. Expert backend engineers skilled in Node.js, REST APIs, MongoDB, microservices & real-time apps. 5-hour vetting. Scale on demand."
   },
   hero: {
     headline: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
-    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Express.js Team",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Express.js Developers at Teams24 Are Skilled At",
+  skillsTitle: "10+ Skills That Express.js Developers at Teams 24 Are Skilled At",
   skillsDescription: "Express.js developers at Teams 24 are skilled at Node.js, REST APIs, MongoDB, and more — delivering production-grade backend expertise for scalable web applications and microservices.",
   skills: [
     {
@@ -480,15 +480,15 @@ export const expressJsContent: HirePageContent = {
   faqs: [
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated Express.js developer is fully onboarded and shipping code within 72 hours of selection. This includes repository access, environment setup, CI/CD pipeline integration, and a kickoff sync with your engineering team. Traditional backend hiring takes 2–4 months. Teams24 compresses that to 3 days."
+      answer: "Your dedicated Express.js developer is fully onboarded and shipping code within 72 hours of selection. This includes repository access, environment setup, CI/CD pipeline integration, and a kickoff sync with your engineering team. Traditional backend hiring takes 2–4 months. Teams 24 compresses that to 3 days."
     },
     {
       question: "What about team chemistry?",
-      answer: "Every Express.js developer at Teams24 is evaluated not just for backend technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside frontend developers, participate in code reviews, handle production incidents, and adapt to Agile and Scrum workflows. You also get to interview candidates before making your decision."
+      answer: "Every Express.js developer at Teams 24 is evaluated not just for backend technical skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside frontend developers, participate in code reviews, handle production incidents, and adapt to Agile and Scrum workflows. You also get to interview candidates before making your decision."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more Express.js developers, frontend engineers, or DevOps specialists as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your backend team adapts to your product roadmap."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more Express.js developers, frontend engineers, or DevOps specialists as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your backend team adapts to your product roadmap."
     },
     {
       question: "How do you ensure quality?",
@@ -508,7 +508,7 @@ export const expressJsContent: HirePageContent = {
     },
     {
       question: "How is this different from hiring a freelance Express.js developer?",
-      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams24 provides dedicated Express.js professionals who work exclusively on your project. They are fully embedded into your team’s codebase, attend your daily standups, and are accountable to your deployment schedules — just like a full-time backend hire, but without the overhead of traditional employment."
+      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated Express.js professionals who work exclusively on your project. They are fully embedded into your team’s codebase, attend your daily standups, and are accountable to your deployment schedules — just like a full-time backend hire, but without the overhead of traditional employment."
     },
     {
       question: "Can your developers help migrate our backend to Express.js?",
@@ -520,17 +520,17 @@ export const expressJsContent: HirePageContent = {
 export const automationTestingContent: HirePageContent = {
   seo: {
     title: "Hire Automation Testers: Dedicated, QA Automation Experts in 72 Hours",
-    description: "Hire dedicated automation testers from Teams24 in 72 hours. Expert QA engineers skilled in Selenium, Playwright, Cypress, API testing & CI/CD pipelines. 5-hour vetting. Scale on demand."
+    description: "Hire dedicated automation testers from Teams 24 in 72 hours. Expert QA engineers skilled in Selenium, Playwright, Cypress, API testing & CI/CD pipelines. 5-hour vetting. Scale on demand."
   },
   hero: {
     headline: "Hire Automation Testers: Expert QA Automation Engineers in 72 Hours",
-    subheading: "Access 75+ expert automation testers and QA engineers from Teams24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 75+ expert automation testers and QA engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream QA Team",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Automation Testers at Teams24 Are Skilled At",
-  skillsDescription: "Automation testers at Teams24 are skilled at Selenium, Playwright, Cypress, and more — delivering battle-tested QA expertise across web, mobile, API, and performance testing.",
+  skillsTitle: "10+ Skills That Automation Testers at Teams 24 Are Skilled At",
+  skillsDescription: "Automation testers at Teams 24 are skilled at Selenium, Playwright, Cypress, and more — delivering battle-tested QA expertise across web, mobile, API, and performance testing.",
   skills: [
     {
       category: "Web UI Automation Frameworks",
@@ -586,15 +586,15 @@ export const automationTestingContent: HirePageContent = {
   faqs: [
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated automation tester is fully onboarded and writing test scripts within 72 hours of selection. This includes repository access, CI/CD pipeline setup, tool configuration, and a kickoff sync with your development team. Traditional QA hiring takes 2–4 months. Teams24 compresses that to 3 days."
+      answer: "Your dedicated automation tester is fully onboarded and writing test scripts within 72 hours of selection. This includes repository access, CI/CD pipeline setup, tool configuration, and a kickoff sync with your development team. Traditional QA hiring takes 2–4 months. Teams 24 compresses that to 3 days."
     },
     {
       question: "What about team chemistry?",
-      answer: "Every automation tester at Teams24 is evaluated not just for technical QA skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside developers, handle feedback loops, and adapt to different project management styles like Agile and Scrum. You also get to interview candidates before making your decision."
+      answer: "Every automation tester at Teams 24 is evaluated not just for technical QA skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work alongside developers, handle feedback loops, and adapt to different project management styles like Agile and Scrum. You also get to interview candidates before making your decision."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more automation testers, manual QA engineers, or performance specialists as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your QA team adapts to your sprint cycle."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more automation testers, manual QA engineers, or performance specialists as your project grows — or scale down after a major release. No long-term contracts, no rigid headcount commitments. Your QA team adapts to your sprint cycle."
     },
     {
       question: "How do you ensure quality?",
@@ -606,11 +606,11 @@ export const automationTestingContent: HirePageContent = {
     },
     {
       question: "Can I hire a manual tester instead of an automation tester?",
-      answer: "Yes. Teams24 provides dedicated manual testers, automation testers, performance engineers, security testers, and QA leads. Whether you need someone for exploratory testing, usability testing, regression testing, or building an entire automation suite from scratch — we have the right QA resource for your needs."
+      answer: "Yes. Teams 24 provides dedicated manual testers, automation testers, performance engineers, security testers, and QA leads. Whether you need someone for exploratory testing, usability testing, regression testing, or building an entire automation suite from scratch — we have the right QA resource for your needs."
     },
     {
       question: "How is this different from hiring a freelance QA tester?",
-      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams24 provides dedicated QA automation professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your release timelines — just like a full-time QA hire, but without the overhead of traditional employment."
+      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated QA automation professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your release timelines — just like a full-time QA hire, but without the overhead of traditional employment."
     }
   ]
 };
@@ -618,17 +618,17 @@ export const automationTestingContent: HirePageContent = {
 export const salesforceDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Salesforce Developers: Certified, Dedicated Salesforce Experts in 72 Hours",
-    description: "Hire certified Salesforce developers, admins & consultants from Teams24 in 72 hours. Dedicated Salesforce experts for CRM customisation, Apex development & Lightning components. 5-hour vetting process."
+    description: "Hire certified Salesforce developers, admins & consultants from Teams 24 in 72 hours. Dedicated Salesforce experts for CRM customisation, Apex development & Lightning components. 5-hour vetting process."
   },
   hero: {
     headline: "Hire Salesforce Developers: Certified Salesforce Experts in 72 Hours",
-    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams24, handpicked through a rigorous 5-hour evaluation process.deployed within 72 hours.",
+    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams 24, handpicked through a rigorous 5-hour evaluation process.deployed within 72 hours.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Salesforce Team",
     secondaryCta: "Book a Free Discovery Call"
   },
-  skillsTitle: "10+ Skills That Salesforce Developers at Teams24 Are Skilled At",
-  skillsDescription: "Salesforce developers at Teams24 are skilled at Apex, Lightning Web Components, Salesforce Flows, and more — delivering certified CRM expertise across every Salesforce Cloud.",
+  skillsTitle: "10+ Skills That Salesforce Developers at Teams 24 Are Skilled At",
+  skillsDescription: "Salesforce developers at Teams 24 are skilled at Apex, Lightning Web Components, Salesforce Flows, and more — delivering certified CRM expertise across every Salesforce Cloud.",
   skills: [
     {
       category: "Salesforce Development",
@@ -674,15 +674,15 @@ export const salesforceDeveloperContent: HirePageContent = {
   faqs: [
     {
       question: "How fast is deployment really?",
-      answer: "Your dedicated Salesforce developer is fully onboarded and embedded into your team within 72 hours of selection. This includes access setup, tool integration, workflow orientation, and a kickoff sync. Traditional Salesforce hiring takes 2–6 months. Teams24 compresses that to 3-4 days."
+      answer: "Your dedicated Salesforce developer is fully onboarded and embedded into your team within 72 hours of selection. This includes access setup, tool integration, workflow orientation, and a kickoff sync. Traditional Salesforce hiring takes 2–6 months. Teams 24 compresses that to 3-4 days."
     },
     {
       question: "What about team chemistry?",
-      answer: "Every Salesforce developer at Teams24 is evaluated not just for technical Salesforce skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work in team environments, handle feedback, and adapt to different project management styles. You also get to interview candidates before making your decision."
+      answer: "Every Salesforce developer at Teams 24 is evaluated not just for technical Salesforce skills, but for communication, collaboration, and cultural fit. During our 5-hour vetting process, we assess how candidates work in team environments, handle feedback, and adapt to different project management styles. You also get to interview candidates before making your decision."
     },
     {
       question: "Can we scale dynamically?",
-      answer: "Absolutely. Teams24 operates on a subscription-based model, which means you can add more Salesforce developers, admins, or consultants as your project grows — or scale down when the sprint is complete. No long-term contracts, no rigid headcount commitments. Your Salesforce team adapts to your business needs."
+      answer: "Absolutely. Teams 24 operates on a subscription-based model, which means you can add more Salesforce developers, admins, or consultants as your project grows — or scale down when the sprint is complete. No long-term contracts, no rigid headcount commitments. Your Salesforce team adapts to your business needs."
     },
     {
       question: "How do you ensure quality?",
@@ -690,7 +690,7 @@ export const salesforceDeveloperContent: HirePageContent = {
     },
     {
       question: "Can I hire a Salesforce admin instead of a developer?",
-      answer: "Yes. Teams24 provides dedicated Salesforce administrators, consultants, architects, and developers. Whether you need someone to manage user permissions, build reports, configure automations with Flow Builder, or develop custom Apex applications. We have the right Salesforce resource for your needs."
+      answer: "Yes. Teams 24 provides dedicated Salesforce administrators, consultants, architects, and developers. Whether you need someone to manage user permissions, build reports, configure automations with Flow Builder, or develop custom Apex applications. We have the right Salesforce resource for your needs."
     },
     {
       question: "Do your Salesforce developers work in my time zone?",
@@ -702,7 +702,7 @@ export const salesforceDeveloperContent: HirePageContent = {
     },
     {
       question: "How is this different from hiring a Salesforce freelancer?",
-      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams24 provides dedicated Salesforce professionals who work exclusively on your project. They are fully embedded into your team’s tools, attend your stand ups, and are accountable to your delivery timelines just like a full-time hire, but without the overhead of traditional employment."
+      answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated Salesforce professionals who work exclusively on your project. They are fully embedded into your team’s tools, attend your stand ups, and are accountable to your delivery timelines just like a full-time hire, but without the overhead of traditional employment."
     },
     {
       question: "What if I need Salesforce integration with other systems?",

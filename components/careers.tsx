@@ -101,38 +101,42 @@ export function Careers() {
           {loading ? (
             <p className="py-12 text-gray-400 font-manrope">Loading openings...</p>
           ) : jobs.length > 0 ? (
-            jobs.map((job) => (
-              <a
-                key={job.id}
-                href={`https://careers.teams24.co/${job.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
-              >
-                <div className="flex items-center justify-between py-10 px-2 sm:px-4">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
-                      {job.title}
-                    </h3>
-                    <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
-                      <span>{job.type}</span>
-                      <span className="opacity-30">•</span>
-                      <span>
-                        {job.salary_min && job.salary_max 
-                          ? `${getCurrencySymbol(job.currency)} ${job.salary_min} - ${job.salary_max}` 
-                          : "$120k - $200k"}
-                      </span>
-                      <span className="opacity-30">•</span>
-                      <span>{job.location}</span>
+            jobs
+              .filter((job) => job.title && job.slug)
+              .map((job) => (
+                <a
+                  key={job.id}
+                  href={`https://careers.teams24.co/${job.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
+                >
+                  <div className="flex items-center justify-between py-6 px-2 sm:px-4">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
+                        {job.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
+                        <span>{job.type}</span>
+                        {job.salary_min && job.salary_max && (
+                          <>
+                            <span className="opacity-30">•</span>
+                            <span>
+                              {`${getCurrencySymbol(job.currency)} ${job.salary_min} - ${job.salary_max}`}
+                            </span>
+                          </>
+                        )}
+                        <span className="opacity-30">•</span>
+                        <span>{job.location}</span>
+                      </div>
+                    </div>
+
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                      <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
                     </div>
                   </div>
-
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
-                    <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
-                  </div>
-                </div>
-              </a>
-            ))
+                </a>
+              ))
           ) : (
             <p className="py-12 text-gray-400 font-manrope">No current openings. Check back soon!</p>
           )}

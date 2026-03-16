@@ -25,7 +25,7 @@ export default function HireHero({
   const displayTrustBadge = trustBadge || "Trusted by 20+ CEO's and CXO's";
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 xl:px-[2vw] pt-36 sm:pt-40 xl:pt-[10vw] pb-20 xl:pb-[5vw] overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 xl:px-[2vw] pt-24 sm:pt-28 xl:pt-[7.5vw] pb-20 xl:pb-[5vw] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -56,10 +56,10 @@ export default function HireHero({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-[13px] xl:gap-[1vw]">
             <div className="flex -space-x-3 flex-shrink-0">
               {[
-                "/rating/Frame 2147225664.png",
-                "/rating/Frame 2147225665.png",
-                "/rating/Frame 2147225666.png",
-                "/rating/Frame 2147225667.png"
+                "/testimonials/Frame 2147225466 (1).webp",
+                "/testimonials/Frame 2147225466 (2).webp",
+                "/testimonials/Frame 2147225466 (3).webp",
+                "/testimonials/Frame 2147225466 (4).webp"
               ].map((src, i) => (
                 <div 
                   key={i} 
@@ -89,7 +89,7 @@ export default function HireHero({
           <div className="flex flex-col items-center gap-4 xl:gap-[1.5vw]">
             <button 
               onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-              className="bg-white text-black px-8 py-4 xl:px-[2.5vw] xl:py-[1.2vw] rounded-full xl:rounded-[2vw] font-bold text-lg md:text-xl xl:text-[1.4vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/10"
+              className="bg-white text-black px-8 py-4 xl:px-[2.5vw] xl:py-[1.2vw] rounded-full xl:rounded-[2vw] font-semibold font-manrope text-lg md:text-xl xl:text-[1.4vw] tracking-[-0.03em] hover:bg-gray-100 transition-all shadow-xl shadow-white/10"
             >
               {primaryCta}
             </button>

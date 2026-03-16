@@ -27,7 +27,7 @@ const Solutions = () => {
     ]
 
     return (
-        <section className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 xl:px-[2vw]">
+        <section id="what-we-do" className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 xl:px-[2vw]">
             <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto flex flex-col items-center">
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-12 xl:mb-[3.5vw]">

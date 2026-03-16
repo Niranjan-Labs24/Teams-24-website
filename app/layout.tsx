@@ -77,6 +77,8 @@ export const metadata: Metadata = {
   },
 }
 
+import HashScrollHandler from "@/components/HashScrollHandler"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,7 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.className} ${spaceGrotesk.className} font-sans antialiased`}>
-      
+        <HashScrollHandler />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-W5600BXJZT"
           strategy="afterInteractive"

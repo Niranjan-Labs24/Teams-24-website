@@ -25,7 +25,7 @@ export default function HowWorks() {
   ]
 
   return (
-    <section className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 sm:px-6 lg:px-8 xl:px-[2vw] overflow-hidden">
+    <section id="how-it-works" className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 sm:px-6 lg:px-8 xl:px-[2vw] overflow-hidden">
       <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto">
         <div className="text-center mb-10 md:mb-16 xl:mb-[4vw]">
           <h2 

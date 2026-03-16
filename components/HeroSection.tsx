@@ -73,7 +73,7 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
+      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-24 sm:pt-28 xl:pt-[9vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
         
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] xl:gap-[2.4vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
@@ -109,10 +109,10 @@ export default function HeroSection(): JSX.Element {
           <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] xl:gap-[1vw] mt-2 xl:mt-[0.5vw] xl:w-[28vw]">
             <div className="flex -space-x-3 flex-shrink-0">
               {[
-                "/rating/Frame 2147225664.png",
-                "/rating/Frame 2147225665.png",
-                "/rating/Frame 2147225666.png",
-                "/rating/Frame 2147225667.png"
+                "/testimonials/Frame 2147225466 (1).webp",
+                "/testimonials/Frame 2147225466 (2).webp",
+                "/testimonials/Frame 2147225466 (3).webp",
+                "/testimonials/Frame 2147225466 (4).webp"
               ].map((src, i) => (
                 <div 
                   key={i} 

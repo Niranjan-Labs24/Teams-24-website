@@ -2,20 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { handleSmoothScroll as smoothScroll } from "@/lib/utils";
 
 export function Footer() {
  
   const handleSmoothScroll = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+    const success = smoothScroll(sectionId);
+    if (!success) {
+      window.location.href = `/#${sectionId}`;
     }
   };
 

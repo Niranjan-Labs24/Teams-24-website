@@ -4,52 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { handleSmoothScroll as smoothScroll } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import { NAV_CONTENT } from "@/lib/navConst";
 
 export default function GlassmorphicNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<"companies" | "talent">("companies");
   const megaMenuRef = useRef<HTMLDivElement>(null);
-
-  const hiddenSections = ["what-we-do", "how-it-works", "problem-we-solve"];
-
-  useEffect(() => {
-    const visibilityMap = new Map<string, boolean>();
-    
-    const updateVisibility = () => {
-      const isAnyVisible = Array.from(visibilityMap.values()).some(v => v);
-      setIsHidden(isAnyVisible);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        visibilityMap.set(entry.target.id, entry.isIntersecting);
-      });
-      updateVisibility();
-    }, {
-      threshold: 0.1,
-      rootMargin: "-80px 0px 0px 0px"
-    });
-
-    const observeElements = () => {
-      const sectionElements = hiddenSections.map(id => document.getElementById(id)).filter(Boolean);
-      sectionElements.forEach(el => observer.observe(el!));
-      return sectionElements.length;
-    };
-
-    const count = observeElements();
-    
-    if (count < hiddenSections.length) {
-      setTimeout(observeElements, 500);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   // Close mega menu on scroll or click outside
   useEffect(() => {
@@ -82,16 +45,9 @@ export default function GlassmorphicNavbar() {
   ];
 
   const handleSmoothScroll = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+    const success = smoothScroll(sectionId);
+    if (!success) {
+      window.location.href = `/#${sectionId}`;
     }
     setIsOpen(false); 
     setIsMegaMenuOpen(false);
@@ -138,8 +94,6 @@ export default function GlassmorphicNavbar() {
         <motion.nav
           initial={false}
           animate={{
-            y: isHidden ? -100 : 0,
-            opacity: isHidden ? 0 : 1,
             backgroundColor: isMegaMenuOpen ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0.4)",
             backdropFilter: isMegaMenuOpen ? "blur(0px)" : "blur(40px)",
             borderColor: isMegaMenuOpen ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.1)",
@@ -151,7 +105,7 @@ export default function GlassmorphicNavbar() {
             w-full
             flex items-center justify-between
             border
-            h-[68px] lg:h-[84px] xl:h-[7vw]
+            h-[60px] lg:h-[72px] xl:h-[5.5vw]
             gap-4 lg:gap-8 xl:gap-[2.5vw]
             pl-4 lg:pl-6 xl:pl-[2.5vw]
             pr-4 lg:pr-6 xl:pr-[2vw]
@@ -201,10 +155,10 @@ export default function GlassmorphicNavbar() {
               bg-[#FFFFFF] text-black
               rounded-[3.875rem] xl:rounded-[3vw]
               px-6 lg:px-9 xl:px-[2.5vw]
-              h-9 lg:h-11 xl:h-[3.3vw]
+              h-8 lg:h-10 xl:h-[2.8vw]
               font-[Manrope] font-semibold 
               text-[0.9375rem] lg:text-[1rem] xl:text-[1vw]
-              tracking-tight whitespace-nowrap border border-transparent
+              tracking-[-0.03em] whitespace-nowrap border border-transparent
               hover:bg-[#f5f5f5] transition-all duration-300 cursor-pointer shrink-0
             "
           >
@@ -285,7 +239,7 @@ export default function GlassmorphicNavbar() {
           z-[9999] flex items-center justify-between
           rounded-[100px] border border-white/10 backdrop-blur-[20px]
           px-4 py-2.5 w-[92%] transition-all duration-500
-          ${isHidden ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"}
+          opacity-100 translate-y-0
         `}
         style={{ background: "rgba(0, 0, 0, 0.4)" }}
       >

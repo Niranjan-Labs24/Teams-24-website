@@ -5,13 +5,15 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 const profiles = [
-  { name: "Jack Davies", company: "Amazon", exp: "7+ years exp", image: "/testimonials/memoji1.png" },
-  { name: "Anna Lewis", company: "Airbnb", exp: "5+ years exp", image: "/testimonials/memoji2.png" },
-  { name: "Brendon Charles", company: "Apple", exp: "10+ years exp", image: "/testimonials/memoji3.png" },
-  { name: "Emma thomson", company: "IBM", exp: "5+ years exp", image: "/testimonials/memoji1.png" },
-  { name: "Spencer Johnson", company: "Microsoft", exp: "5+ years exp", image: "/testimonials/memoji2.png" },
-  { name: "Ashley Vance", company: "Meta", exp: "8+ years exp", image: "/testimonials/memoji3.png" },
-  { name: "Jake Thomson", company: "IBM", exp: "5+ years exp", image: "/testimonials/memoji1.png" },
+  { name: "Jack Davies", company: "Amazon", exp: "7+ years exp", image: "/testimonials/Frame 2147225466 (1).webp" },
+  { name: "Anna Lewis", company: "Airbnb", exp: "5+ years exp", image: "/testimonials/Frame 2147225466 (2).webp" },
+  { name: "Brendon Charles", company: "Apple", exp: "10+ years exp", image: "/testimonials/Frame 2147225466 (3).webp" },
+  { name: "Emma thomson", company: "IBM", exp: "5+ years exp", image: "/testimonials/Frame 2147225466 (4).webp" },
+  { name: "Spencer Johnson", company: "Microsoft", exp: "5+ years exp", image: "/testimonials/Frame 2147225466 (5).webp" },
+  { name: "Ashley Vance", company: "Meta", exp: "8+ years exp", image: "/testimonials/Frame 2147225466 (6).webp" },
+  { name: "Jake Thomson", company: "IBM", exp: "5+ years exp", image: "/testimonials/Frame 2147225466 (7).webp" },
+  { name: "Sarah Jenkins", company: "Google", exp: "6+ years exp", image: "/testimonials/Frame 2147225466 (8).webp" },
+  { name: "Michael Chen", company: "Netflix", exp: "9+ years exp", image: "/testimonials/Frame 2147225466 (9).webp" },
 ]
 
 const ProfileCard = ({ profile }: { profile: typeof profiles[0] }) => (

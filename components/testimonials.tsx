@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 const testimonials = [
   {
     name: "Niranjan Venugopal",
-    title: "Founder, Specflicks",
+    title: "Founder, Specflicks", 
     quote:
-      "Teams24 made it incredibly easy to scale our development. Their commitment and flexibility are exactly what an early-stage startup needs.",
+      "Teams 24 made it incredibly easy to scale our development. Their commitment and flexibility are exactly what an early-stage startup needs.",
   },
   {
     name: "Sasha Ray",
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Anand",
     title: "Founder, AuraGold",
     quote:
-      "We've tried multiple agencies and it didn't work. With teams24 we had no timeline constraints or boundaries in setting up our core team.",
+      "We've tried multiple agencies and it didn't work. With Teams 24 we had no timeline constraints or boundaries in setting up our core team.",
   },
 ]
 
@@ -51,19 +51,17 @@ export default function Testimonials() {
           {testimonials.map((t, idx) => (
             <div 
               key={idx} 
-              className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px] xl:min-h-[22vw]"
+              className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px] xl:min-h-[22vw]
+                before:content-['“'] before:absolute before:top-2 before:left-4 before:text-[60px] md:before:text-[80px] xl:before:text-[5vw] before:leading-none before:text-[#1A1A1A]/10 before:font-serif
+                after:content-['”'] after:absolute after:bottom-12 md:after:bottom-16 xl:after:bottom-[5vw] after:right-4 md:after:right-8 xl:after:right-[2vw] after:text-[60px] md:after:text-[80px] xl:after:text-[5vw] after:leading-none after:text-[#1A1A1A]/10 after:font-serif"
             >
-              {/* Top Left Quote */}
-              <Quote className="w-6 h-6 md:w-8 md:h-8 xl:w-[2.5vw] xl:h-[2.5vw] text-[#1A1A1A]/10 fill-[#1A1A1A]/5" />
               
-              <p className="text-[#1A1A1A] text-base sm:text-lg xl:text-[1.2vw] leading-relaxed xl:leading-[1.8] font-medium pr-2 md:pr-4 xl:pr-[1vw]">
+              <p className="text-[#1A1A1A] text-base sm:text-lg xl:text-[1.2vw] leading-relaxed xl:leading-[1.8] font-medium pr-2 md:pr-4 xl:pr-[1vw] relative z-10">
                 {t.quote}
               </p>
 
-              {/* Bottom Right Quote (Opposite) */}
-              <Quote className="absolute bottom-16 xl:bottom-[4vw] right-8 xl:right-[2vw] w-8 h-8 xl:w-[2.5vw] xl:h-[2.5vw] text-[#1A1A1A]/10 fill-[#1A1A1A]/5 rotate-180" />
               
-              <div className="flex items-center gap-2 xl:gap-[0.8vw] mt-auto">
+              <div className="flex items-center gap-2 xl:gap-[0.8vw] mt-auto relative z-10">
                 <span className="text-[#1A1A1A] font-bold xl:text-[1.1vw]">- {t.name}</span>
                 <span className="text-[#1A1A1A]/40 text-sm xl:text-[0.9vw] font-medium">{t.title}</span>
               </div>
