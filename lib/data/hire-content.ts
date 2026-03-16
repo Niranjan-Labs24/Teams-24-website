@@ -114,7 +114,7 @@ export const fullStackDeveloperContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
-    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams 24, handpicked through a rigorous 5-hour evaluation process. Deployed within 72 hours.",
+    subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Developers",
     secondaryCta: "Book a Free Discovery Call"
@@ -220,7 +220,7 @@ export const customerSupportContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
-    subheading: "Access 50+ expert customer support specialists from Teams 24, handpicked through a rigorous 5-hour evaluation process,Your Expert Customer Support Team Is One Call Away. Deploy in 72 Hours.",
+    subheading: "Access 50+ expert customer support specialists from Teams 24, handpicked through a rigorous 5-hour evaluation process,Your Expert Customer Support Team Is One Call Away.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Support Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -319,7 +319,7 @@ export const pythonDeveloperContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Python Developers:  Python Engineers for AI, Web & Data in 72 Hours",
-    subheading: "Access 120+ expert Python developers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 120+ expert Python developers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Python Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -418,7 +418,7 @@ export const expressJsContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
-    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 100+ expert Express.js developers and backend engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Express.js Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -524,7 +524,7 @@ export const automationTestingContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Automation Testers: Expert QA Automation Engineers in 72 Hours",
-    subheading: "Access 75+ expert automation testers and QA engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process. deployed within 72 hours.",
+    subheading: "Access 75+ expert automation testers and QA engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream QA Team",
     secondaryCta: "Book a Free Discovery Call"
@@ -622,7 +622,7 @@ export const salesforceDeveloperContent: HirePageContent = {
   },
   hero: {
     headline: "Hire Salesforce Developers: Certified Salesforce Experts in 72 Hours",
-    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams 24, handpicked through a rigorous 5-hour evaluation process.deployed within 72 hours.",
+    subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Salesforce Team",
     secondaryCta: "Book a Free Discovery Call"
