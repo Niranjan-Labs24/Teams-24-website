@@ -28,8 +28,8 @@ export default function HiringMethods() {
   ]
 
   return (
-    <section className="w-full bg-white py-24 xl:py-[6vw] px-4 md:px-8 xl:px-[2vw] font-manrope selection:bg-blue-100" id="hiring-methods">
-      <div className="max-w-5xl xl:max-w-none xl:w-[80vw] mx-auto">
+    <section className="w-full bg-white py-24 xl:py-[6vw] font-manrope selection:bg-blue-100" id="hiring-methods">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Headline */}
         <div className="text-center mb-16 md:mb-20 xl:mb-[5vw]">
           <h2 

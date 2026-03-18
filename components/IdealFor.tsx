@@ -34,7 +34,8 @@ export default function IdealFor() {
   ]
 
   return (
-    <section className="w-full flex flex-col items-center py-10 md:py-16 xl:py-[4vw] bg-white px-4 xl:px-[2vw]">
+    <section className="w-full flex flex-col items-center py-10 md:py-16 xl:py-[4vw] bg-white">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex flex-col items-center">
       <div className="text-center mb-10 md:mb-12 xl:mb-[3.5vw]">
         <h2 
           className="font-normal tracking-[-0.04em] text-[#1A1A1A]"
@@ -49,7 +50,7 @@ export default function IdealFor() {
       </div>
       
       <div 
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 xl:gap-[2.5vw] w-full max-w-[1219px] xl:max-w-none xl:w-[90vw] mx-auto"
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 xl:gap-[2.5vw] w-full max-w-[1219px] xl:max-w-none xl:w-full mx-auto"
       >
         {cards.map((card, index) => (
           <div 
@@ -115,6 +116,7 @@ export default function IdealFor() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
   )
 }

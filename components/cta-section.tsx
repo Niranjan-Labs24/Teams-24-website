@@ -186,13 +186,13 @@ export function CTASection() {
       className="
         relative 
         w-full 
-        max-w-[79rem] 
+        max-w-[1240px] xl:max-w-none xl:w-[85vw]
         mx-auto 
         h-[42rem] md:h-[35rem] 
         overflow-hidden 
         rounded-[2.5rem] 
         border border-[#0000000A]
-        px-4 sm:px-6 md:px-8 
+        px-6 md:px-12 lg:px-16 xl:px-0
         flex items-center justify-center
         mt-10
         shadow-sm

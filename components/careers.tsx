@@ -65,14 +65,14 @@ export function Careers() {
   }, []);
 
   return (
-    <section className="relative pt-20 pb-10 px-4 sm:px-8 lg:px-12 bg-white overflow-hidden" id="careers">
+    <section className="relative pt-20 pb-10 bg-white overflow-hidden" id="careers">
       {/* Background Mesh Gradients - Subtler than FAQ */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute -left-[10%] top-[20%] w-[40%] h-[60%] bg-blue-100/50 rounded-full blur-[120px]" />
         <div className="absolute -right-[10%] bottom-[20%] w-[40%] h-[60%] bg-pink-100/40 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto relative z-10 px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div className="max-w-2xl">

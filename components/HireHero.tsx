@@ -25,7 +25,7 @@ export default function HireHero({
   const displayTrustBadge = trustBadge || "Trusted by 20+ CEO's and CXO's";
 
   return (
-    <section className="relative w-full min-h-[70vh] lg:min-h-[45rem] flex flex-col items-center justify-start text-center px-6 xl:px-[2vw] pt-[160px] sm:pt-[200px] xl:pt-[18vw] pb-20 xl:pb-[5vw] overflow-hidden rounded-b-[48px] md:rounded-b-[80px] bg-[#0A0B1A]">
+    <section className="relative w-full min-h-[70vh] lg:min-h-[45rem] flex flex-col items-center justify-start text-center pt-[160px] sm:pt-[200px] xl:pt-[18vw] pb-20 xl:pb-[5vw] overflow-hidden rounded-b-[clamp(40px,6.25vw,100px)] bg-[#0A0B1A]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -39,7 +39,7 @@ export default function HireHero({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1200px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center gap-8 md:gap-12 xl:gap-[3.5vw]">
+      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center gap-8 md:gap-12 xl:gap-[3.5vw] px-6 md:px-12 lg:px-16 xl:px-0">
         <h1 
           className="text-[#FFFFFF] font-[400] tracking-[-0.07em] mx-auto overflow-visible"
           style={{ 

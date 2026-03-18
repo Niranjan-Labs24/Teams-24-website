@@ -27,8 +27,8 @@ export default function ComparisonSection() {
   ]
 
   return (
-    <section className="w-full bg-white py-24 px-4 md:px-8 font-manrope" id="comparison">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full bg-white py-24 font-manrope" id="comparison">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Headline */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">

@@ -32,12 +32,12 @@ export default function Testimonials() {
 
   return (
     <section 
-      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 px-6 lg:px-12 xl:px-[2vw] flex items-center justify-center min-h-[632px] xl:min-h-[44vw]"
+      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 flex items-center justify-center min-h-[632px] xl:min-h-[44vw]"
     >
-      <div className="w-full max-w-[1438px] xl:max-w-none xl:w-[95vw] mx-auto flex flex-col items-center">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Adjusted Heading based on dimensions */}
         <div 
-          className="flex items-center justify-center mb-10 md:mb-16 xl:mb-[4vw] px-4 md:px-8 xl:px-[2vw] w-full max-w-[1251px] xl:max-w-none xl:w-[85vw]"
+          className="flex items-center justify-center mb-10 md:mb-16 xl:mb-[4vw] w-full"
         >
           <h2 
             className="text-[32px] sm:text-[40px] md:text-[56px] xl:text-[4vw] font-normal text-center tracking-[-0.06em] leading-[1.1] md:leading-[57px] xl:leading-[4.2vw]"

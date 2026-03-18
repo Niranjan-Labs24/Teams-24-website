@@ -17,7 +17,7 @@ export default function TrustBar() {
   return (
     <div className="w-full bg-white py-4 xl:py-[1.25vw] select-none overflow-hidden">
       <div 
-        className="mx-auto px-4 xl:px-[2vw] flex items-center justify-center xl:w-[90vw] xl:max-w-none xl:h-[4.4vw]"
+        className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex items-center justify-center xl:h-[4.4vw]"
       >
         <div className="flex items-center xl:gap-[3.75vw]">
           {logos.map((logo, index) => (

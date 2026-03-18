@@ -22,37 +22,27 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-[90rem] mx-auto h-auto min-h-[40.5rem] bg-white font-[Manrope]  relative overflow-hidden">
-      <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[6.75rem] px-4 sm:px-6 md:px-8 lg:px-[5.875rem] pb-32">
+    <footer className="w-full bg-white font-[Manrope] relative overflow-hidden">
+      <div className="relative z-10 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto pt-8 md:pt-16 lg:pt-[6.75rem] px-6 md:px-12 lg:px-16 xl:px-0 pb-32">
         {/* ✅ Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
           {/* ✅ Logo */}
           <div className="col-span-2 lg:col-span-1 mb-8 lg:mb-0">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/Mask group (1).png"
-                alt="Teams24 Logo"
-                width={18}
-                height={18}
-                className="object-contain"
-              />
-              <span
-                className="font-bold text-black"
-                style={{
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
-                  lineHeight: "40px",
-                }}
-              >
-                Teams 24
-              </span>
+            <div className="flex items-center">
+              <div className="relative w-32 md:w-40 xl:w-[12vw] h-8 md:h-10 xl:h-[3vw]">
+                <Image
+                  src="/logos/NavLogo.webp"
+                  alt="Teams24 Logo"
+                  fill
+                  className="object-contain brightness-0"
+                />
+              </div>
             </div>
             <a 
               href="https://labs24.co" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-black/40 hover:text-black transition-all text-[10px] font-bold tracking-[0.1em] uppercase mt-[-8px] block pl-[26px]"
+              className="text-black/40 hover:text-black transition-all text-[10px] font-bold tracking-[0.1em] uppercase mt-[-8px] block pl-[42px]"
             >
               A part of Labs 24
             </a>

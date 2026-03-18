@@ -27,8 +27,8 @@ const Solutions = () => {
     ]
 
     return (
-        <section id="what-we-do" className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 xl:px-[2vw]">
-            <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto flex flex-col items-center">
+        <section id="what-we-do" className="w-full bg-white py-8 md:py-12 xl:py-[3vw]">
+            <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center px-6 md:px-12 lg:px-16 xl:px-0">
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-12 xl:mb-[3.5vw]">
                     <p className="text-[#8E8E93] text-sm md:text-base xl:text-[1.2vw] mb-2 xl:mb-[0.5vw] font-medium">Problem and solutions</p>

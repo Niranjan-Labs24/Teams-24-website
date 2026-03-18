@@ -55,14 +55,14 @@ export function FAQ({ items }: FAQProps = {}) {
   };
 
   return (
-    <section className="relative w-full bg-white text-black pt-10 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" id="faq">
+    <section className="relative w-full bg-white text-black pt-10 pb-20 overflow-hidden" id="faq">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -left-[15%] top-[10%] w-[50%] h-[80%] bg-blue-200/40 rounded-full blur-[130px] opacity-80" />
         <div className="absolute -right-[15%] bottom-[10%] w-[50%] h-[80%] bg-pink-200/30 rounded-full blur-[130px] opacity-70" />
       </div>
 
-      <div className="relative z-10 max-w-[85rem] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col">
+      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex flex-col">
         {/* Centered Heading */}
         <div className="text-center mb-10 md:mb-16 xl:mb-[5vw]">
           <h2

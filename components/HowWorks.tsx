@@ -25,8 +25,8 @@ export default function HowWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="w-full bg-white py-8 md:py-12 xl:py-[3vw] px-4 sm:px-6 lg:px-8 xl:px-[2vw] overflow-hidden">
-      <div className="max-w-7xl xl:max-w-none xl:w-[90vw] mx-auto">
+    <section id="how-it-works" className="w-full bg-white py-8 md:py-12 xl:py-[3vw] overflow-hidden">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0">
         <div className="text-center mb-10 md:mb-16 xl:mb-[4vw]">
           <h2 
             className="font-normal tracking-[-0.04em] text-[#1A1A1A] mb-4 xl:mb-[1vw]"

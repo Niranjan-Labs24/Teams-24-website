@@ -75,7 +75,7 @@ export default function GlassmorphicNavbar() {
       
       {/* Main Navbar Wrapper - Responsive width for 13-inch to 16-inch+ screens */}
       <div 
-        className="fixed top-[clamp(32px,3.125vw,80px)] left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-[clamp(1100px,89vw,2200px)] max-w-[95vw]"
+        className="fixed top-[clamp(32px,3.125vw,80px)] left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] px-6 md:px-12 lg:px-16 xl:px-0"
         onMouseLeave={() => setIsMegaMenuOpen(false)}
       >
         {/* SHARED BACKGROUND CONTAINER */}
@@ -236,7 +236,7 @@ export default function GlassmorphicNavbar() {
           md:hidden fixed top-4 left-1/2 -translate-x-1/2
           z-[9999] flex items-center justify-between
           rounded-[100px] border border-white/10 backdrop-blur-[20px]
-          px-4 py-2.5 w-[92%] transition-all duration-500
+          px-6 w-full transition-all duration-500
           opacity-100 translate-y-0
         `}
         style={{ background: "rgba(0, 0, 0, 0.4)" }}

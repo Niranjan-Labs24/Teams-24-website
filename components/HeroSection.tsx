@@ -59,7 +59,7 @@ export default function HeroSection(): JSX.Element {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center rounded-b-[48px] md:rounded-b-[80px]">
+    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center rounded-b-[clamp(40px,6.25vw,100px)]">
       {/* Static Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -73,7 +73,7 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
+      <div className="relative z-20 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0 pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] gap-12 xl:gap-[8vw]">
         
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] xl:gap-[2.4vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
@@ -190,7 +190,7 @@ export default function HeroSection(): JSX.Element {
           </div>
         </div>
 
-        <div className="w-full xl:w-[36vw] xl:max-w-[36vw] flex justify-center xl:justify-end">
+        <div className="w-full xl:w-[36vw] xl:max-w-[36vw] flex justify-center xl:justify-end xl:-translate-x-[5vw]">
           <div 
             className="w-full xl:w-[36vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-4 xs:p-5 md:p-6 xl:p-[2vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{

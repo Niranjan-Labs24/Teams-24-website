@@ -54,14 +54,14 @@ export function FAQHome({ items }: FAQHomeProps = {}) {
   };
 
   return (
-    <section className="relative w-full bg-white text-black pt-10 pb-20 md:py-16 xl:py-[6vw] px-4 sm:px-6 lg:px-8 xl:px-[5vw] overflow-hidden" id="faq">
+    <section className="relative w-full bg-white text-black py-24 xl:py-[6vw] border-b border-gray-100/50 overflow-hidden" id="faq">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -left-[15%] top-[10%] w-[50%] h-[80%] bg-blue-200/40 rounded-full blur-[130px] opacity-80" />
         <div className="absolute -right-[15%] bottom-[10%] w-[50%] h-[80%] bg-pink-200/30 rounded-full blur-[130px] opacity-70" />
       </div>
 
-      <div className="relative z-10 max-w-[85rem] xl:max-w-none xl:w-[90vw] mx-auto flex flex-col md:flex-row items-start justify-between gap-12 lg:gap-20 xl:gap-[5vw]">
+      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex flex-col lg:flex-row lg:items-start items-center gap-12 lg:gap-24 xl:gap-[8vw]">
         <div className="flex flex-col md:w-1/3">
           <h2
             className="text-[#1A1A1A] font-normal leading-[1.2] tracking-[-0.06em]"
