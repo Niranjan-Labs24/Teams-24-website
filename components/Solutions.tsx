@@ -33,8 +33,12 @@ const Solutions = () => {
                 <div className="text-center mb-10 md:mb-12 xl:mb-[3.5vw]">
                     <p className="text-[#8E8E93] text-sm md:text-base xl:text-[1.2vw] mb-2 xl:mb-[0.5vw] font-medium">Problem and solutions</p>
                     <h2 
-                        className="text-[32px] md:text-[56px] xl:text-[4vw] font-normal tracking-[-0.04em] leading-[1.1] xl:leading-[4.2vw] text-[#1A1A1A]"
-                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                        className="font-normal tracking-[-0.04em] text-[#1A1A1A]"
+                        style={{ 
+                            fontFamily: "'Space Grotesk', sans-serif",
+                            fontSize: "clamp(28px, 2.8vw, 80px)",
+                            lineHeight: "1.1"
+                        }}
                     >
                         Your problem, our solution
                     </h2>
@@ -42,7 +46,9 @@ const Solutions = () => {
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-[3vw] items-stretch justify-center w-full max-w-[1210px] xl:max-w-none xl:w-[85vw]">
                     {/* Left Side - Solution Card */}
-                    <div className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-1 w-full lg:w-[40%] xl:w-[35vw] xl:min-h-[38vw]">
+                    <div 
+                        className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-1 flex flex-col items-center overflow-hidden w-[95%] sm:w-full max-w-[444px] xl:max-w-none xl:w-[34.68vw] h-auto md:h-[482px] xl:h-[37.65vw] rounded-[31px] xl:rounded-[2.42vw] border-[1.01px] xl:border-[0.08vw] border-[#FFFFFF33] pb-6 md:pb-0 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)]"
+                    >
                         {/* Background Icons - Fluid placement */}
                         <div 
                             className="absolute z-10 pointer-events-none xl:w-[7vw] xl:h-[7vw] xl:top-[1.5vw] xl:left-[-2.5vw] brightness-0 invert"
@@ -56,7 +62,7 @@ const Solutions = () => {
                             />
                         </div>
                         <div 
-                            className="absolute z-10 pointer-events-none xl:w-[9vw] xl:h-[9vw] xl:bottom-[2vw] xl:right-[-2vw] brightness-0 invert"
+                            className="absolute z-10 pointer-events-none xl:w-[7vw] xl:h-[7vw] xl:-bottom-[1vw] xl:-right-[2vw] brightness-0 invert"
                             style={{ opacity: 1 }}
                         >
                             <Image
@@ -67,95 +73,86 @@ const Solutions = () => {
                             />
                         </div>
 
+                        {/* Top Logo */}
+                        <div className="relative mt-[24px] md:mt-[34px] xl:mt-[2.65vw] w-[120px] md:w-[144px] xl:w-[11.25vw] h-[24px] md:h-[28.37px] xl:h-[2.21vw] flex-shrink-0">
+                            <Image 
+                                src="/logos/NavLogo.webp" 
+                                alt="Teams24" 
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+
+                        {/* Inner Content Card */}
                         <div 
-                            className="relative h-full w-full rounded-[31px] xl:rounded-[2vw] border-[1.01px] xl:border-[0.1vw] border-white/20 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)] overflow-hidden"
+                            className="relative mt-[24px] md:mt-[35.63px] xl:mt-[2.78vw] w-[90%] md:w-[380px] xl:w-[29.68vw] h-auto md:h-[352px] xl:h-[27.5vw] rounded-[28px] xl:rounded-[2.18vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] backdrop-blur-[2.9px] flex flex-col flex-shrink-0 pb-6 md:pb-0"
+                            style={{ backgroundColor: '#043A7952' }}
                         >
-                            <div className="relative z-20 h-full w-full p-8 md:p-10 xl:p-[3vw] flex flex-col justify-center">
-                                {/* Teams24 Logo */}
-                                <div className="flex items-center justify-center gap-2 xl:gap-[0.5vw] mb-8 xl:mb-[2.5vw]">
-                                    <div className="relative w-5 h-5 xl:w-[1.5vw] xl:h-[1.5vw]">
-                                        <Image 
-                                            src="/logo.png" 
-                                            alt="Teams24" 
-                                            fill
-                                            className="object-contain brightness-0 invert"
-                                        />
-                                    </div>
-                                    <span 
-                                        className="text-white font-normal xl:text-[1.8vw] xl:leading-[1.4]"
-                                        style={{ 
-                                            fontFamily: "'Dyson Sans Modern', sans-serif",
-                                            letterSpacing: '-0.05em'
-                                        }}
-                                    >
-                                        Teams24
-                                    </span>
-                                </div>
+                            <h3 
+                                className="text-white font-normal text-[20px] md:text-[22px] xl:text-[1.71vw] leading-[22px] md:leading-[24px] xl:leading-[1.87vw] mt-[24px] md:mt-[31px] xl:mt-[2.42vw] mx-auto md:mx-[34px] xl:mx-[2.65vw] w-[90%] md:w-[307px] xl:w-[23.98vw]"
+                                style={{ 
+                                    fontFamily: "'Space Grotesk', sans-serif",
+                                    letterSpacing: '-0.05em'
+                                }}
+                            >
+                                Your only personal hiring partner !
+                            </h3>
 
-                                {/* Content Card Area */}
-                                <div 
-                                    className="relative w-full rounded-[28px] xl:rounded-[1.8vw] border-[0.81px] xl:border-[0.1vw] border-white/30 backdrop-blur-[2.9px] flex flex-col mx-auto"
-                                    style={{ 
-                                        backgroundColor: '#043A7952'
-                                    }}
-                                >
-                                    <h3 
-                                        className="text-white font-normal text-[22px] md:text-[26px] xl:text-[2vw] xl:leading-[1.2] px-6 xl:px-[2.5vw] mt-10 xl:mt-[3vw] mb-6 xl:mb-[2vw]"
-                                        style={{ 
-                                            fontFamily: "'Space Grotesk', sans-serif",
-                                            letterSpacing: '-0.05em'
-                                        }}
-                                    >
-                                        Your only personal hiring partner !
-                                    </h3>
-
-                                    <div className="space-y-4 xl:space-y-[1.2vw] flex-grow justify-center flex flex-col px-6 xl:px-[2.5vw] pb-10 xl:pb-[3.5vw]">
-                                        {solutions.map((item, idx) => (
-                                            <div key={idx} className="flex items-start gap-3 xl:gap-[0.8vw]">
-                                                <div className="flex-shrink-0 mt-1 xl:mt-[0.3vw]">
-                                                    <div className="bg-[#00C065] rounded-full p-0.5 xl:p-[0.1vw] shadow-sm flex items-center justify-center">
-                                                        <Check className="w-3.5 h-3.5 xl:w-[1.2vw] xl:h-[1.2vw] text-white stroke-[3]" />
-                                                    </div>
-                                                </div>
-                                                <p className="text-white/95 text-base md:text-[18px] xl:text-[1.3vw] font-medium tracking-tight leading-tight">
-                                                    {item}
-                                                </p>
+                            <div className="flex-grow flex flex-col justify-center px-[5%] md:px-[34px] xl:px-[2.65vw] mt-[20px] md:mt-0 space-y-[12px] md:space-y-[16px] xl:space-y-[1.25vw]">
+                                {solutions.map((item, idx) => (
+                                    <div key={idx} className="flex items-start gap-[10px] md:gap-[12px] xl:gap-[0.93vw]">
+                                        <div className="flex-shrink-0 mt-[2px] xl:mt-[0.15vw]">
+                                            <div className="bg-[#00C065] rounded-full p-[2px] xl:p-[0.15vw] shadow-sm flex items-center justify-center">
+                                                <Check className="w-[12px] h-[12px] md:w-[14px] md:h-[14px] xl:w-[1.09vw] xl:h-[1.09vw] text-white stroke-[3]" />
                                             </div>
-                                        ))}
+                                        </div>
+                                        <p 
+                                            className="text-white/95 text-[16px] md:text-[18px] xl:text-[1.4vw] leading-[20px] md:leading-[24px] xl:leading-[1.87vw] font-normal"
+                                            style={{ 
+                                                fontFamily: "'Space Grotesk', sans-serif",
+                                                letterSpacing: '-0.05em'
+                                            }}
+                                        >
+                                            {item}
+                                        </p>
                                     </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
 
                     {/* Right Side - Problem List Container */}
                     <div 
-                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2vw] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-2 w-full lg:w-[60%] xl:w-[50vw] xl:min-h-[38vw] relative overflow-hidden flex flex-col justify-center p-6 md:p-10 xl:p-[4vw]"
+                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2.03vw] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-2 w-[95%] sm:w-full max-w-[580px] xl:max-w-none xl:w-[45vw] h-auto md:h-[482px] xl:h-[37.65vw] relative flex flex-col justify-center py-[60px] md:py-0"
                     >
-                        {/* We use relative positioning for the full timeline container mapping the absolute circle overlaps cleanly */}
-                        <div className="flex flex-col gap-8 md:gap-10 xl:gap-[3vw] w-full relative">
+                        <div className="flex flex-col justify-center gap-[60px] md:gap-[40px] xl:gap-[3.12vw] w-full items-end pr-[5%] md:pr-[40px] xl:pr-[3.12vw]">
                             {problems.map((problem) => (
-                                <div key={problem.id} className="relative w-full group isolate">
-                                    {/* Number Circle positioned exactly atop the upper-left corner overlap - increased size */}
+                                <div key={problem.id} className="relative w-[80%] sm:w-auto sm:max-w-[450px] xl:max-w-none xl:w-[35vw] group">
+                                    
+                                    {/* Number Circle positioned above and to the left of the sharp corner */}
                                     <div 
-                                        className="absolute z-20 w-[50px] h-[50px] md:w-[64px] md:h-[64px] xl:w-[4.5vw] xl:h-[4.5vw] rounded-full bg-gradient-to-br from-[#FF6B6B] to-[#FF413A] flex items-center justify-center text-white text-xl md:text-2xl xl:text-[1.8vw] font-bold border-4 xl:border-[0.3vw] border-[#FDFDFD] shadow-sm transform -translate-x-1/2 -translate-y-1/2 left-0 top-0"
+                                        className="absolute z-20 w-[40px] h-[40px] xl:w-[3.12vw] xl:h-[3.12vw] rounded-full flex items-center justify-center text-white text-[14px] xl:text-[1.09vw] font-medium left-0 top-0 transform -translate-x-[calc(100%+12px)] md:-translate-x-[calc(100%+20px)] xl:-translate-x-[calc(100%+1.56vw)] -translate-y-[15px] md:-translate-y-[22px] xl:-translate-y-[1.7vw]"
+                                        style={{
+                                            background: "linear-gradient(145deg, #FF6B6B 0%, #FF413A 70%)",
+                                            boxShadow: "inset 0px -8px 10px -2px rgba(255, 255, 255, 0.8), inset 0px 0px 10px rgba(255, 255, 255, 0.35), 0 2px 4px rgba(0,0,0,0.1)"
+                                        }}
                                     >
-                                        {problem.id}
+                                        <span className="relative z-10 drop-shadow-sm">{problem.id}</span>
                                     </div>
                                     
-                                    {/* Content Wrapper naturally padding around the overlapping badge natively */}
+                                    {/* Content Strip with SHARP top-left corner */}
                                     <div 
-                                        className="w-full min-h-[88px] md:min-h-[106px] xl:min-h-[8vw] bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2vw] rounded-tl-sm xl:rounded-tl-[0.5vw] flex items-center px-6 md:px-10 xl:px-[4vw] py-5 xl:py-[2.5vw] relative z-10 hover:shadow-md transition-shadow"
+                                        className="w-full flex items-center min-h-[70px] xl:min-h-[5.47vw] bg-[#FDFDFD] border border-[#00000014] rounded-tr-[20px] xl:rounded-tr-[1.56vw] rounded-br-[20px] xl:rounded-br-[1.56vw] rounded-bl-[20px] xl:rounded-bl-[1.56vw] rounded-tl-none px-[20px] md:px-[30px] xl:px-[2.34vw] py-3 xl:py-[1vw] hover:shadow-sm shadow-sm transition-shadow"
                                     >
                                         <p 
-                                            className="text-[#3A3A3C] font-normal text-base md:text-[18px] xl:text-[1.5vw] xl:leading-[1.5] ml-4 md:ml-6 xl:ml-[1vw]"
+                                            className="text-[#3A3A3C] font-normal text-[14px] md:text-[16px] xl:text-[1.25vw] leading-[20px] md:leading-[24px] xl:leading-[1.87vw]"
                                             style={{ 
                                                 fontFamily: "'Space Grotesk', sans-serif",
                                                 letterSpacing: '-0.05em'
                                             }}
                                         >
                                             {problem.text}
-                                            <span className="text-[#FF413A] ml-1 xl:ml-[0.5vw]">{problem.highlight}</span>
+                                            <span className="text-[#FF413A] ml-[4px] xl:ml-[0.31vw]">{problem.highlight}</span>
                                         </p>
                                     </div>
                                 </div>

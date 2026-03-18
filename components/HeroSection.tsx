@@ -73,12 +73,12 @@ export default function HeroSection(): JSX.Element {
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-24 sm:pt-28 xl:pt-[9vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
+      <div className="relative z-20 h-full w-full flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-[6vw] pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] mx-auto gap-12 xl:gap-[8vw]">
         
         {/* Left Content */}
         <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] xl:gap-[2.4vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
-          <div className="flex items-center justify-start lg:justify-start gap-3 xl:gap-[1vw] transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 xl:px-[1vw] xl:py-[0.4vw] cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
-            <div className="relative w-4 h-4 sm:w-6 sm:h-6 xl:w-[1.8vw] xl:h-[1.8vw] flex-shrink-0">
+          <div className="flex items-center justify-start lg:justify-start gap-2 xl:gap-[0.8vw] transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-2 py-0.5 sm:px-3 sm:py-1 xl:px-[0.8vw] xl:py-[0.3vw] cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+            <div className="relative w-3.5 h-3.5 sm:w-5 sm:h-5 xl:w-[1.4vw] xl:h-[1.4vw] flex-shrink-0">
               <Image
                 src="/icons/Group 1362789195@4x.png"
                 alt="Badge Icon"
@@ -86,18 +86,22 @@ export default function HeroSection(): JSX.Element {
                 className="object-contain"
               />
             </div>
-            <span className="text-white text-xs sm:text-base xl:text-[1.25vw] font-medium tracking-tight text-left">
+            <span className="text-white text-[10px] sm:text-sm xl:text-[1vw] font-medium tracking-tight text-left">
               Hiring can be as easy as shopping
             </span>
           </div>
 
           <h1 
-            className="font-normal text-white text-center xl:text-left text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] xl:text-[4.2vw] leading-[1.2] lg:leading-[50px] xl:leading-[1.1] w-fit max-w-[700px] xl:max-w-[55vw] mx-auto xl:mx-0 h-auto"
+            className="font-normal text-white text-center xl:text-left mx-auto xl:mx-0 opacity-100"
             style={{ 
               fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "clamp(32px, 4.218vw, 140px)",
+              lineHeight: "clamp(34px, 3.906vw, 130px)",
               letterSpacing: "-0.07em",
+              width: "clamp(300px, 45vw, 1200px)",
+              maxWidth: "100%",
+              height: "clamp(100px, 11.718vw, 300px)",
               verticalAlign: "middle",
-              opacity: 1,
             }}
           >
             <span className="whitespace-nowrap">Flexibility of a freelancer</span><br />
@@ -142,11 +146,20 @@ export default function HeroSection(): JSX.Element {
           <div className="flex flex-col items-center xl:items-start gap-[10px] xl:gap-[1vw] mt-10 xl:mt-[3vw] xl:w-[26vw] xl:min-h-[9vw]">
             <button 
               onClick={handleJoinCall}
-              className="w-full xl:w-[24vw] h-auto lg:h-[64px] xl:h-[5vw] px-4 lg:px-[20px] xl:px-[1.5vw] bg-white text-black rounded-full font-semibold text-xl lg:text-[18px] xl:text-[1.5vw] leading-[32px] xl:leading-[1.2] transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] border-[3px] xl:border-[0.25vw] border-white/30 whitespace-nowrap overflow-hidden text-ellipsis"
+              className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center"
               style={{
+                width: "clamp(180px, 22.26vw, 450px)",
+                height: "clamp(50px, 6.25vw, 120px)",
+                padding: "clamp(12px, 1.875vw, 36px) clamp(28px, 4.375vw, 84px)",
+                borderRadius: "62px",
+                border: "clamp(1px, 0.234vw, 5px) solid #13131326",
                 fontFamily: "Manrope, sans-serif",
+                fontWeight: 600,
+                fontSize: "clamp(14px, 1.406vw, 28px)",
+                lineHeight: "clamp(24px, 2.5vw, 48px)",
                 letterSpacing: "-0.03em",
                 textAlign: "center",
+                opacity: 1,
               }}
             >
               Hire your dream team
@@ -177,11 +190,11 @@ export default function HeroSection(): JSX.Element {
           </div>
         </div>
 
-        <div className="w-full xl:w-[40vw] xl:max-w-[40vw] flex justify-center xl:justify-end">
+        <div className="w-full xl:w-[36vw] xl:max-w-[36vw] flex justify-center xl:justify-end">
           <div 
-            className="w-full xl:w-[40vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-5 xs:p-6 md:p-8 xl:p-[2.5vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
+            className="w-full xl:w-[36vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-4 xs:p-5 md:p-6 xl:p-[2vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{
-                minHeight: 'max(522px, 40vw)',
+                minHeight: 'max(470px, 36vw)',
                 height: 'auto'
             }}
           >
@@ -294,7 +307,7 @@ export default function HeroSection(): JSX.Element {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="mx-auto w-full h-[64px] xl:h-[5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-white/28 font-semibold lg:text-[14px] xl:text-[1.2vw] lg:leading-[32px] xl:leading-[1.5] px-8 xl:px-[2vw] py-4 xl:py-[1vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mx-auto w-full h-[64px] xl:h-[5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold lg:text-[14px] xl:text-[1.2vw] lg:leading-[32px] xl:leading-[1.5] px-8 xl:px-[2vw] py-4 xl:py-[1vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
                     {isSubmitting ? "..." : "Book a demo call"}
