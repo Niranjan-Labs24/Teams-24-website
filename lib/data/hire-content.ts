@@ -113,7 +113,7 @@ export const fullStackDeveloperContent: HirePageContent = {
     description: "Hire dedicated full stack developers from Teams 24 in 72 hours. Expert engineers skilled in React, Node.js, Python, AWS & more. 5-hour vetting process. Scale your team on demand."
   },
   hero: {
-    headline: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
+    headline: "Hire Full Stack Developers:Affordable, Dedicated Full Stack Engineers in 72 Hours",
     subheading: "Access 100+ expert full stack developers, engineers, and architects from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Developers",
@@ -215,7 +215,7 @@ export const fullStackDeveloperContent: HirePageContent = {
 
 export const customerSupportContent: HirePageContent = {
   seo: {
-    title: "Hire Customer Support Specialists: Dedicated, AI-Ready Support Teams in 72 Hours",
+    title: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
     description: "Hire dedicated customer support specialists from Teams 24 in 72 hours. Experts in Zendesk, Intercom, Freshdesk, live chat, email, phone & omnichannel CX. 5-hour vetting. Scale on demand."
   },
   hero: {
@@ -318,7 +318,7 @@ export const pythonDeveloperContent: HirePageContent = {
     description: "Hire dedicated Python developers from Teams 24 in 72 hours. Expert engineers skilled in Django, FastAPI, AI/ML, data science, automation & cloud deployment. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Python Developers:  Python Engineers for AI, Web & Data in 72 Hours",
+    headline: "Hire Python Developers: Dedicated, Python Engineers for AI, Web & Data in 72 Hours",
     subheading: "Access 120+ expert Python developers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Python Team",
@@ -417,7 +417,7 @@ export const expressJsContent: HirePageContent = {
     description: "Hire dedicated Express.js developers from Teams 24 in 72 hours. Expert backend engineers skilled in Node.js, REST APIs, MongoDB, microservices & real-time apps. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
+    headline: "Hire Express.js Developers:Affordable, Dedicated Node.js & Express Experts in 72 Hours",
     subheading: "Access 100+ expert Express.js developers and backend engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Express.js Team",
@@ -523,7 +523,7 @@ export const automationTestingContent: HirePageContent = {
     description: "Hire dedicated automation testers from Teams 24 in 72 hours. Expert QA engineers skilled in Selenium, Playwright, Cypress, API testing & CI/CD pipelines. 5-hour vetting. Scale on demand."
   },
   hero: {
-    headline: "Hire Automation Testers: Expert QA Automation Engineers in 72 Hours",
+    headline: "Hire Automation Testers: Dedicated, Expert QA Automation Engineers in 72 Hours",
     subheading: "Access 75+ expert automation testers and QA engineers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream QA Team",
@@ -621,7 +621,7 @@ export const salesforceDeveloperContent: HirePageContent = {
     description: "Hire certified Salesforce developers, admins & consultants from Teams 24 in 72 hours. Dedicated Salesforce experts for CRM customisation, Apex development & Lightning components. 5-hour vetting process."
   },
   hero: {
-    headline: "Hire Salesforce Developers: Certified Salesforce Experts in 72 Hours",
+    headline: "Hire Salesforce Developers: Certified, Dedicated Salesforce Experts in 72 Hours",
     subheading: "Access 50+ certified Salesforce developers, administrators, and consultants from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
     trustBadge: "Trusted by 20+ CEOs and CXOs",
     primaryCta: "Hire Your Dream Salesforce Team",

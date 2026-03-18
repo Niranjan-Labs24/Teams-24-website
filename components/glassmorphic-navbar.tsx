@@ -75,7 +75,7 @@ export default function GlassmorphicNavbar() {
       
       {/* Main Navbar Wrapper - Responsive width for 13-inch to 16-inch+ screens */}
       <div 
-        className="absolute top-[clamp(32px,3.125vw,80px)] left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-[clamp(1100px,89vw,2200px)] max-w-[95vw]"
+        className="fixed top-[clamp(32px,3.125vw,80px)] left-1/2 -translate-x-1/2 z-[9999] hidden md:block w-[clamp(1100px,89vw,2200px)] max-w-[95vw]"
         onMouseLeave={() => setIsMegaMenuOpen(false)}
       >
         {/* SHARED BACKGROUND CONTAINER */}
