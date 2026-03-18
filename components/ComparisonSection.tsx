@@ -31,7 +31,7 @@ export default function ComparisonSection() {
       <div className="max-w-6xl mx-auto">
         {/* Headline */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-slate-900 mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">
             A radically better way to build your team
           </h2>
         </div>

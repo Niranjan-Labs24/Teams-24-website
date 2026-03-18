@@ -6,7 +6,7 @@ import { HiringMethods, ProfileMarquee } from "@/components/ClientWrappers"
 
 import  Testimonials  from "@/components/testimonials"
 import { Careers } from "@/components/careers"
-import { FAQ } from "@/components/faq"
+import { FAQHome } from "@/components/FaqHome"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/cta-section"
 import HeroSection from "@/components/HeroSection"
@@ -29,7 +29,7 @@ export default function Home() {
       <ProfileMarquee />
       <Careers />
       <Testimonials /> 
-      <FAQ />
+      <FAQHome />
       <CTASection />
       <Footer />
     </main>

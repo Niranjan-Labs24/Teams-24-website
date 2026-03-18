@@ -86,7 +86,7 @@ export function FAQ({ items }: FAQProps = {}) {
                 >
                   <button
                     onClick={() => handleToggle(originalIndex)}
-                    className="w-full flex justify-between items-center text-left px-6 md:px-8 xl:px-[2vw] py-5 md:py-7 xl:py-[1.8vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[80px] md:min-h-[100px] xl:min-h-[7.5vw]"
+                    className="w-full flex justify-between items-center text-left px-5 md:px-6 xl:px-[1.5vw] py-4 md:py-5 xl:py-[1.2vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[60px] md:min-h-[80px] xl:min-h-[5.5vw]"
                   >
                     <h3 className="text-[#1A1A1A] font-manrope font-semibold text-lg md:text-xl xl:text-[1.3vw] leading-snug">
                       {item.question}
@@ -145,7 +145,7 @@ export function FAQ({ items }: FAQProps = {}) {
                 >
                   <button
                     onClick={() => handleToggle(originalIndex)}
-                    className="w-full flex justify-between items-center text-left px-6 md:px-8 xl:px-[2vw] py-5 md:py-7 xl:py-[1.8vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[80px] md:min-h-[100px] xl:min-h-[7.5vw]"
+                    className="w-full flex justify-between items-center text-left px-5 md:px-6 xl:px-[1.5vw] py-4 md:py-5 xl:py-[1.2vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[60px] md:min-h-[80px] xl:min-h-[5.5vw]"
                   >
                     <h3 className="text-[#1A1A1A] font-manrope font-semibold text-lg md:text-xl xl:text-[1.3vw] leading-snug">
                       {item.question}
