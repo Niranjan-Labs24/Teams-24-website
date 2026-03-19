@@ -21,7 +21,7 @@ export default function TrustBar() {
       >
         <div className="flex items-center xl:gap-[3.75vw]">
           {logos.map((logo, index) => (
-            <div key={index} className="flex items-center xl:gap-[3.75vw]">
+            <div key={index} className={`flex items-center xl:gap-[3.75vw] ${index >= 2 ? 'hidden sm:flex' : ''}`}>
               <div className="relative h-10 w-32 md:w-40 xl:w-[17vw] xl:h-[4.4vw]">
                 <Image
                   src={logo.src}
@@ -32,7 +32,7 @@ export default function TrustBar() {
               </div>
               {/* Separator - Vertical line */}
               {index < logos.length - 1 && (
-                <div className="h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw]" />
+                <div className={`h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw] ${index === 1 ? 'hidden sm:block' : ''}`} />
               )}
             </div>
           ))}

@@ -233,10 +233,10 @@ export default function GlassmorphicNavbar() {
       {/* Mobile Navbar */}
       <nav
         className={`
-          md:hidden fixed top-4 left-1/2 -translate-x-1/2
+          md:hidden fixed top-6 left-1/2 -translate-x-1/2
           z-[9999] flex items-center justify-between
-          rounded-[100px] border border-white/10 backdrop-blur-[20px]
-          px-6 w-full transition-all duration-500
+          rounded-full border border-white/10 backdrop-blur-[20px]
+          px-6 w-[92%] h-[64px] transition-all duration-500
           opacity-100 translate-y-0
         `}
         style={{ background: "rgba(0, 0, 0, 0.4)" }}
