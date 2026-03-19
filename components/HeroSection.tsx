@@ -120,7 +120,7 @@ export default function HeroSection(): JSX.Element {
               ].map((src, i) => (
                 <div 
                   key={i} 
-                  className={`relative w-8 h-8 sm:w-10 sm:h-10 xl:w-[3vw] xl:h-[3vw] rounded-full border-2 xl:border-[0.15vw] border-white/30 overflow-hidden bg-gray-800 ${i >= 2 ? 'hidden sm:block' : ''}`}
+                  className="relative w-8 h-8 sm:w-10 sm:h-10 xl:w-[3vw] xl:h-[3vw] rounded-full border-2 xl:border-[0.15vw] border-white/30 overflow-hidden bg-gray-800"
                 >
                   <Image
                     src={src}
@@ -226,7 +226,7 @@ export default function HeroSection(): JSX.Element {
                 </div>
     
                 <form className="space-y-4 xl:space-y-[1vw]" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-[1vw]">
                     <input
                       required
                       name="firstname"
@@ -249,7 +249,7 @@ export default function HeroSection(): JSX.Element {
                     />
                   </div>
     
-                  <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-[1vw]">
                     <input
                       required
                       name="email"

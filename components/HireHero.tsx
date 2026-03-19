@@ -88,7 +88,7 @@ export default function HireHero({
               ].map((src, i) => (
                 <div 
                   key={i} 
-                  className={`relative w-8 h-8 sm:w-10 sm:h-10 xl:w-[3vw] xl:h-[3vw] rounded-full border-2 xl:border-[0.15vw] border-white/30 overflow-hidden bg-gray-800 ${i >= 2 ? 'hidden sm:block' : ''}`}
+                  className="relative w-8 h-8 sm:w-10 sm:h-10 xl:w-[3vw] xl:h-[3vw] rounded-full border-2 xl:border-[0.15vw] border-white/30 overflow-hidden bg-gray-800"
                 >
                   <Image
                     src={src}
@@ -116,9 +116,9 @@ export default function HireHero({
               onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
               className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center opacity-100"
               style={{
-                width: "clamp(180px, 22.26vw, 450px)",
+                width: "clamp(240px, 22.26vw, 450px)",
                 height: "clamp(50px, 6.25vw, 120px)",
-                padding: "clamp(12px, 1.875vw, 36px) clamp(28px, 4.375vw, 84px)",
+                padding: "clamp(12px, 1.875vw, 36px) clamp(20px, 4.375vw, 84px)",
                 borderRadius: "62px",
                 border: "clamp(1px, 0.234vw, 5px) solid #13131326",
                 fontFamily: "Manrope, sans-serif",

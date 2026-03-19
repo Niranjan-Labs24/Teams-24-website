@@ -32,7 +32,7 @@ export default function TrustBar() {
               </div>
               {/* Separator - Vertical line */}
               {index < logos.length - 1 && (
-                <div className={`h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw] ${index === 1 ? 'hidden sm:block' : ''}`} />
+                <div className="h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw]" />
               )}
             </div>
           ))}
