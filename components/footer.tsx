@@ -23,7 +23,7 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-white font-[Manrope] relative overflow-hidden">
-      <div className="relative z-10 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto pt-8 md:pt-16 lg:pt-[6.75rem] px-6 md:px-12 lg:px-16 xl:px-0 pb-32">
+      <div className="relative z-10 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto pt-8 md:pt-16 lg:pt-[6.75rem] px-6 md:px-12 lg:px-16 xl:px-0 pb-40 md:pb-56 lg:pb-64 xl:pb-[15vw]">
         {/* ✅ Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
           {/* ✅ Logo */}
@@ -42,7 +42,7 @@ export function Footer() {
               href="https://labs24.co" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-black/40 hover:text-black transition-all text-[10px] font-bold tracking-[0.1em] uppercase mt-[-8px] block pl-[42px]"
+              className="text-black/40 hover:text-black transition-all text-[clamp(8px,0.7vw,10px)] font-bold tracking-[0.1em] uppercase mt-[-0.5rem] block pl-[clamp(31px,3.2vw,54px)] md:pl-[clamp(38px,4vw,64px)] xl:pl-[clamp(52px,4vw,84px)]"
             >
               A part of Labs 24
             </a>
