@@ -63,7 +63,7 @@ export default function HeroSection(): JSX.Element {
       {/* Static Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/back/background.png"
+          src="/back/Background.webp"
           alt="Background Gradient"
           fill
           className="object-cover object-top sm:object-center"

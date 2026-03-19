@@ -29,7 +29,7 @@ export default function HireHero({
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/back/background.png"
+          src="/back/BackgroundHire.webp"
           alt="Background"
           fill
           className="object-cover object-top sm:object-center"
