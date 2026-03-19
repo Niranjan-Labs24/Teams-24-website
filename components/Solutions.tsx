@@ -131,10 +131,10 @@ const Solutions = () => {
                                     
                                     {/* Number Circle positioned above and to the left of the sharp corner */}
                                     <div 
-                                        className="absolute z-20 w-[40px] h-[40px] xl:w-[3.12vw] xl:h-[3.12vw] rounded-full flex items-center justify-center text-white text-[14px] xl:text-[1.09vw] font-medium left-0 top-0 transform -translate-x-[calc(100%+12px)] md:-translate-x-[calc(100%+20px)] xl:-translate-x-[calc(100%+1.56vw)] -translate-y-[15px] md:-translate-y-[22px] xl:-translate-y-[1.7vw]"
+                                        className="absolute z-20 w-[56px] h-[56px] xl:w-[4.34vw] xl:h-[4.34vw] rounded-full flex items-center justify-center text-white text-[24px] xl:text-[1.86vw] font-medium left-0 top-0 transform -translate-x-[calc(100%+4px)] md:-translate-x-[calc(100%+8px)] xl:-translate-x-[calc(100%+0.6vw)] -translate-y-[28px] md:-translate-y-[32px] xl:-translate-y-[2.1vw]"
                                         style={{
-                                            background: "linear-gradient(145deg, #FF6B6B 0%, #FF413A 70%)",
-                                            boxShadow: "inset 0px -8px 10px -2px rgba(255, 255, 255, 0.8), inset 0px 0px 10px rgba(255, 255, 255, 0.35), 0 2px 4px rgba(0,0,0,0.1)"
+                                            background: "linear-gradient(145deg, #FF7B7B 0%, #FF413A 80%)",
+                                            boxShadow: "inset 0px -8px 12px -2px rgba(255, 255, 255, 0.5), inset 0px 6px 12px -2px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0,0,0,0.1)"
                                         }}
                                     >
                                         <span className="relative z-10 drop-shadow-sm">{problem.id}</span>
