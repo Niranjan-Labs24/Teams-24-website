@@ -6,24 +6,24 @@ const Solutions = () => {
         {
             id: 1,
             text: "Finding and building a perfect team to launch my early stage startup ",
-            highlight: "seems like a hectic task"
+            highlight: "seems like a hectic task."
         },
         {
             id: 2,
-            text: "Finding and building a perfect team to launch my early stage startup ",
-            highlight: "seems like a hectic task"
+            text: "My developers need more managing than my actual business",
+            highlight: "I need a team that takes ownership."
         },
         {
             id: 3,
-            text: "Finding and building a perfect team to launch my early stage startup ",
-            highlight: "seems like a hectic task"
+            text: "We spent months on hiring with zero results. We need a dedicated team",
+            highlight: "not more job postings."
         }
     ]
 
     const solutions = [
         "Team set in 48 - 72 hours",
-        "You spend <$50k in building your dream team",
-        "Team set in 48 - 72 hours"
+        "Devs who own the code, join standups & ship",
+        "Pre-vetted talent through 5-hour evaluation"
     ]
 
     return (

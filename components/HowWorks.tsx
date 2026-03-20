@@ -39,7 +39,7 @@ export default function HowWorks() {
             How Teams 24 Works
           </h2>
           <p className="text-[#8E8E93] text-lg md:text-xl xl:text-[1.3vw] font-medium">
-            Need content here....
+          We kept it simple. You talk to us, we find the right people, they start building.
           </p>
         </div>
         
