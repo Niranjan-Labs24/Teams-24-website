@@ -9,11 +9,6 @@ export const NAV_CONTENT = {
       "Express.js Developer",
       "Automation Tester",
       "Salesforce Developer",
-      "Django",
-      "Data Analyst",
-      "Mobile App Developer",
-      "UI UX Designer",
-      "DevOps Engineer"
     ]
   },
   talent: {

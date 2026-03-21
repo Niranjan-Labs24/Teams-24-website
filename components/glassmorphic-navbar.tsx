@@ -86,7 +86,7 @@ export default function GlassmorphicNavbar() {
               animate={{ height: isMegaMenuOpen ? "auto" : 0, opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute inset-0 rounded-[clamp(24px,3vw,48px)] overflow-hidden border border-white/20 z-0 bg-[#131313]/20 backdrop-blur-[54px]"
+              className="absolute inset-0 rounded-[clamp(32px,3.8vw,64px)] overflow-hidden border border-white/20 z-0 bg-[#131313]/20 backdrop-blur-[54px]"
             />
           )}
         </AnimatePresence>
@@ -97,7 +97,7 @@ export default function GlassmorphicNavbar() {
             backgroundColor: isMegaMenuOpen ? "rgba(0, 0, 0, 0)" : "rgba(19, 19, 19, 0.2)",
             backdropFilter: isMegaMenuOpen ? "blur(0px)" : "blur(54px)",
             borderColor: isMegaMenuOpen ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.1)",
-            borderRadius: isMegaMenuOpen ? "clamp(24px,3vw,48px) clamp(24px,3vw,48px) 0px 0px" : "clamp(24px,3vw,48px)",
+            borderRadius: isMegaMenuOpen ? "clamp(32px,3.8vw,64px) clamp(32px,3.8vw,64px) 0px 0px" : "clamp(32px,3.8vw,64px)",
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={`
@@ -105,7 +105,7 @@ export default function GlassmorphicNavbar() {
             w-full
             flex items-center justify-between
             border
-            h-[clamp(72px,6.66vw,140px)]
+            h-[clamp(64px,6vw,115px)]
             gap-[clamp(16px,2.2vw,48px)]
             pl-[clamp(24px,3.3vw,72px)]
             pr-[clamp(12px,1.4vw,30px)]
@@ -113,7 +113,7 @@ export default function GlassmorphicNavbar() {
         >
           {/* Logo Section */}
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity cursor-pointer shrink-0">
-            <Image src="/logos/NavLogo.webp" alt="Teams24 Logo" width={200} height={60} className="object-contain w-[clamp(120px,11vw,200px)] h-auto" />
+            <Image src="/logos/NavLogo.webp" alt="Teams24 Logo" width={200} height={60} className="object-contain w-[clamp(100px,9.5vw,160px)] h-auto" />
           </Link>
 
           {/* Nav Links - Hover trigger */}
@@ -150,11 +150,11 @@ export default function GlassmorphicNavbar() {
             className="
               bg-[#FFFFFF] text-[#131313]
               rounded-[clamp(30px,4.3vw,90px)]
-              w-[clamp(160px,13.5vw,280px)] h-[clamp(44px,3.88vw,80px)]
-              p-[clamp(10px,1.1vw,24px)_clamp(20px,2vw,44px)]
+              w-[clamp(150px,12.5vw,240px)] h-[clamp(42px,3.5vw,72px)]
+              p-[clamp(8px,0.9vw,20px)_clamp(18px,2vw,40px)]
               flex items-center justify-center gap-[0.5vw]
-              font-[Manrope] font-semibold 
-              text-[clamp(12px,0.97vw,20px)] leading-[clamp(20px,1.66vw,32px)]
+              font-[Manrope] font-bold 
+              text-[clamp(12px,0.9vw,19px)] leading-[clamp(18px,1.4vw,28px)]
               tracking-[-0.03em] whitespace-nowrap 
               border-[clamp(1px,0.2vw,4px)] border-[#131313]/15
               hover:bg-[#f5f5f5] transition-all duration-300 cursor-pointer shrink-0

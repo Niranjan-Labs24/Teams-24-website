@@ -143,20 +143,20 @@ export default function HeroSection(): JSX.Element {
             </div>
           </div>
 
-          <div className="flex flex-col items-center xl:items-start gap-[10px] xl:gap-[1vw] mt-10 xl:mt-[3vw] xl:w-[26vw] xl:min-h-[9vw]">
+          <div className="flex flex-col items-center xl:items-start gap-[8px] xl:gap-[0.6vw] mt-10 xl:mt-[3vw]">
             <button 
               onClick={handleJoinCall}
               className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center"
               style={{
-                width: "clamp(180px, 22.26vw, 450px)",
-                height: "clamp(50px, 6.25vw, 120px)",
-                padding: "clamp(12px, 1.875vw, 36px) clamp(28px, 4.375vw, 84px)",
+                width: "clamp(180px, 16.5vw, 320px)",
+                height: "clamp(48px, 4.5vw, 80px)",
+                padding: "clamp(10px, 1.2vw, 24px) clamp(22px, 3.2vw, 64px)",
                 borderRadius: "62px",
-                border: "clamp(1px, 0.234vw, 5px) solid #13131326",
+                border: "clamp(1px, 0.2vw, 3px) solid #13131326",
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 1.406vw, 28px)",
-                lineHeight: "clamp(24px, 2.5vw, 48px)",
+                fontSize: "clamp(14px, 1.1vw, 20px)",
+                lineHeight: "clamp(22px, 2vw, 36px)",
                 letterSpacing: "-0.03em",
                 textAlign: "center",
                 opacity: 1,
@@ -167,7 +167,7 @@ export default function HeroSection(): JSX.Element {
             
             <button 
               onClick={handleGetInTouch}
-              className="flex items-center gap-1.5 xl:gap-[0.5vw] group xl:w-fit xl:h-[2vw] xl:ml-auto xl:mr-[8vw]"
+              className="flex items-center gap-1.5 xl:gap-[0.5vw] group xl:w-fit xl:h-[1.8vw] xl:ml-[1.2vw]"
             >
               <div className="relative w-3.5 h-3.5 xl:w-[1vw] xl:h-[1vw] flex-shrink-0">
                 <Image
@@ -178,7 +178,7 @@ export default function HeroSection(): JSX.Element {
                 />
               </div>
               <p 
-                className="font-semibold text-white/70 group-hover:text-white transition-colors lg:text-[12px] xl:text-[1vw] lg:leading-[20px] xl:leading-[1.5] whitespace-nowrap"
+                className="font-semibold text-white/70 group-hover:text-white transition-colors text-[12px] xl:text-[1vw] leading-[20px] xl:leading-[1.3] whitespace-nowrap"
                 style={{
                     fontFamily: "Manrope, sans-serif",
                     letterSpacing: "-0.01em",
@@ -307,7 +307,7 @@ export default function HeroSection(): JSX.Element {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="mx-auto w-full h-[64px] xl:h-[5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold lg:text-[14px] xl:text-[1.2vw] lg:leading-[32px] xl:leading-[1.5] px-8 xl:px-[2vw] py-4 xl:py-[1vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mx-auto w-full h-[54px] xl:h-[4.2vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold text-[13px] xl:text-[1.05vw] leading-[28px] xl:leading-[1.3] px-6 xl:px-[1.5vw] py-3 xl:py-[0.8vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
                     {isSubmitting ? "..." : "Book a demo call"}
