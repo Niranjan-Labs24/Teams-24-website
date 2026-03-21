@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { Plus, Minus } from "lucide-react";
 import { loadFramerMotion } from "@/lib/animation-loaders";
 
-const faqItems = [
+import { FAQItem } from "@/lib/data/hire-content";
+
+const defaultFaqItems: FAQItem[] = [
   {
     question: "How fast is deployment really?",
     answer:
@@ -27,7 +29,13 @@ const faqItems = [
   },
 ];
 
-export function FAQ() {
+interface FAQProps {
+  items?: FAQItem[];
+}
+
+export function FAQ({ items }: FAQProps = {}) {
+  const displayItems = items || defaultFaqItems;
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [MotionComponents, setMotionComponents] = useState<{
     motion: typeof import("framer-motion").motion;
@@ -47,84 +55,143 @@ export function FAQ() {
   };
 
   return (
-    <section className="relative w-full bg-white text-black pt-10 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" id="faq">
+    <section className="relative w-full bg-white text-black pt-10 pb-20 overflow-hidden" id="faq">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -left-[15%] top-[10%] w-[50%] h-[80%] bg-blue-200/40 rounded-full blur-[130px] opacity-80" />
         <div className="absolute -right-[15%] bottom-[10%] w-[50%] h-[80%] bg-pink-200/30 rounded-full blur-[130px] opacity-70" />
       </div>
 
-      <div className="relative z-10 max-w-[79rem] mx-auto flex flex-col md:flex-row items-start justify-between gap-12 lg:gap-20">
-        <div className="flex flex-col md:w-1/3">
+      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex flex-col">
+        {/* Centered Heading */}
+        <div className="text-center mb-10 md:mb-16 xl:mb-[5vw]">
           <h2
-            className="text-[#1A1A1A] font-normal text-[40px] leading-[57px] tracking-[-0.06em]"
+            className="text-[#1A1A1A] font-normal text-[32px] md:text-[48px] xl:text-[4vw] leading-tight tracking-[-0.04em]"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Frequently asked
-            <br />
-            questions
+            Frequently asked questions
           </h2>
         </div>
         
-        <div className="w-full md:w-[55%] flex flex-col gap-4">
-          {faqItems.map((item, index) => (
-            <div
-              key={index}
-              className="w-full bg-[#FFFFFF] border border-[#0000000F] rounded-[1.25rem] hover:border-gray-200 transition-all duration-300 overflow-hidden shadow-sm"
-            >
-              <button
-                onClick={() => handleToggle(index)}
-                className="w-full flex justify-between items-center text-left px-8 py-7 hover:bg-gray-50/50 transition-all duration-300"
-              >
-                <h3
-                  className="text-[#1A1A1A] font-manrope font-semibold text-lg md:text-xl leading-snug"
+        {/* FAQ Independent Columns */}
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-6 xl:gap-[1.5vw]">
+          {/* Left Column */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6 xl:gap-[1.5vw]">
+            {displayItems.filter((_, i) => i % 2 === 0).map((item, index) => {
+              const originalIndex = index * 2;
+              return (
+                <div
+                  key={originalIndex}
+                  className="w-full bg-[#FFFFFF] border border-[#0000000F] rounded-[1.25rem] xl:rounded-[1.5vw] hover:border-gray-200 transition-all duration-300 overflow-hidden shadow-sm h-fit"
                 >
-                  {item.question}
-                </h3>
-                <div className="ml-4 flex-shrink-0">
-                  {openIndex === index ? (
-                    <Minus className="w-5 h-5 text-[#1A1A1A]" />
+                  <button
+                    onClick={() => handleToggle(originalIndex)}
+                    className="w-full flex justify-between items-center text-left px-5 md:px-6 xl:px-[1.5vw] py-4 md:py-5 xl:py-[1.2vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[60px] md:min-h-[80px] xl:min-h-[5.5vw]"
+                  >
+                    <h3 className="text-[#1A1A1A] font-manrope font-semibold text-lg md:text-xl xl:text-[1.3vw] leading-snug">
+                      {item.question}
+                    </h3>
+                    <div className="ml-4 flex-shrink-0">
+                      {openIndex === originalIndex ? (
+                        <Minus className="w-5 h-5 md:w-6 md:h-6 xl:w-[1.5vw] xl:h-[1.5vw] text-[#1A1A1A]" />
+                      ) : (
+                        <Plus className="w-5 h-5 md:w-6 md:h-6 xl:w-[1.5vw] xl:h-[1.5vw] text-[#1A1A1A]" />
+                      )}
+                    </div>
+                  </button>
+
+                  {MotionComponents ? (
+                    <MotionComponents.AnimatePresence>
+                      {openIndex === originalIndex && (
+                        <MotionComponents.motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 md:px-8 xl:px-[2vw] pb-6 md:pb-8 xl:pb-[2vw] bg-gray-50/30">
+                            <p className="text-gray-600 font-manrope text-base md:text-lg xl:text-[1.1vw] leading-relaxed">
+                              {item.answer}
+                            </p>
+                          </div>
+                        </MotionComponents.motion.div>
+                      )}
+                    </MotionComponents.AnimatePresence>
                   ) : (
-                    <Plus className="w-5 h-5 text-[#1A1A1A]" />
+                    openIndex === originalIndex && (
+                      <div className="overflow-hidden">
+                        <div className="px-6 md:px-8 xl:px-[2vw] pb-6 md:pb-8 xl:pb-[2vw] bg-gray-50/30">
+                          <p className="text-gray-600 font-manrope text-base md:text-lg xl:text-[1.1vw] leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </div>
+                    )
                   )}
                 </div>
-              </button>
+              );
+            })}
+          </div>
 
-              {MotionComponents ? (
-                <MotionComponents.AnimatePresence>
-                  {openIndex === index && (
-                    <MotionComponents.motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-8 pb-8 bg-gray-50/30">
-                        <p
-                          className="text-gray-600 font-manrope text-base leading-relaxed"
-                        >
-                          {item.answer}
-                        </p>
-                      </div>
-                    </MotionComponents.motion.div>
-                  )}
-                </MotionComponents.AnimatePresence>
-              ) : (
-                openIndex === index && (
-                  <div className="overflow-hidden">
-                    <div className="px-8 pb-8 bg-gray-50/30">
-                      <p
-                        className="text-gray-600 font-manrope text-base leading-relaxed"
-                      >
-                        {item.answer}
-                      </p>
+          {/* Right Column */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6 xl:gap-[1.5vw]">
+            {displayItems.filter((_, i) => i % 2 !== 0).map((item, index) => {
+              const originalIndex = index * 2 + 1;
+              return (
+                <div
+                  key={originalIndex}
+                  className="w-full bg-[#FFFFFF] border border-[#0000000F] rounded-[1.25rem] xl:rounded-[1.5vw] hover:border-gray-200 transition-all duration-300 overflow-hidden shadow-sm h-fit"
+                >
+                  <button
+                    onClick={() => handleToggle(originalIndex)}
+                    className="w-full flex justify-between items-center text-left px-5 md:px-6 xl:px-[1.5vw] py-4 md:py-5 xl:py-[1.2vw] hover:bg-gray-50/50 transition-all duration-300 min-h-[60px] md:min-h-[80px] xl:min-h-[5.5vw]"
+                  >
+                    <h3 className="text-[#1A1A1A] font-manrope font-semibold text-lg md:text-xl xl:text-[1.3vw] leading-snug">
+                      {item.question}
+                    </h3>
+                    <div className="ml-4 flex-shrink-0">
+                      {openIndex === originalIndex ? (
+                        <Minus className="w-5 h-5 md:w-6 md:h-6 xl:w-[1.5vw] xl:h-[1.5vw] text-[#1A1A1A]" />
+                      ) : (
+                        <Plus className="w-5 h-5 md:w-6 md:h-6 xl:w-[1.5vw] xl:h-[1.5vw] text-[#1A1A1A]" />
+                      )}
                     </div>
-                  </div>
-                )
-              )}
-            </div>
-          ))}
+                  </button>
+
+                  {MotionComponents ? (
+                    <MotionComponents.AnimatePresence>
+                      {openIndex === originalIndex && (
+                        <MotionComponents.motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 md:px-8 xl:px-[2vw] pb-6 md:pb-8 xl:pb-[2vw] bg-gray-50/30">
+                            <p className="text-gray-600 font-manrope text-base md:text-lg xl:text-[1.1vw] leading-relaxed">
+                              {item.answer}
+                            </p>
+                          </div>
+                        </MotionComponents.motion.div>
+                      )}
+                    </MotionComponents.AnimatePresence>
+                  ) : (
+                    openIndex === originalIndex && (
+                      <div className="overflow-hidden">
+                        <div className="px-6 md:px-8 xl:px-[2vw] pb-6 md:pb-8 xl:pb-[2vw] bg-gray-50/30">
+                          <p className="text-gray-600 font-manrope text-base md:text-lg xl:text-[1.1vw] leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

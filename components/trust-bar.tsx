@@ -15,18 +15,14 @@ const logos: Logo[] = [
 
 export default function TrustBar() {
   return (
-    <div className="w-full bg-white py-4 select-none overflow-hidden">
+    <div className="w-full bg-white py-4 xl:py-[1.25vw] select-none overflow-hidden">
       <div 
-        className="mx-auto px-4 flex items-center justify-center"
-        style={{
-            maxWidth: "1160px",
-            height: "56px"
-        }}
+        className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex items-center justify-center xl:h-[4.4vw]"
       >
-        <div className="flex items-center" style={{ gap: "48px" }}>
+        <div className="flex items-center xl:gap-[3.75vw]">
           {logos.map((logo, index) => (
-            <div key={index} className="flex items-center" style={{ gap: "48px" }}>
-              <div className="relative h-10 w-32 md:w-40">
+            <div key={index} className={`flex items-center xl:gap-[3.75vw] ${index >= 2 ? 'hidden sm:flex' : ''}`}>
+              <div className="relative h-10 w-32 md:w-40 xl:w-[17vw] xl:h-[4.4vw]">
                 <Image
                   src={logo.src}
                   alt={`Partner Logo ${index + 1}`}
@@ -36,7 +32,7 @@ export default function TrustBar() {
               </div>
               {/* Separator - Vertical line */}
               {index < logos.length - 1 && (
-                <div className="h-6 w-[1px] bg-[#E5E5EA]" />
+                <div className="h-6 w-[1px] bg-[#E5E5EA] xl:h-[2.5vw]" />
               )}
             </div>
           ))}

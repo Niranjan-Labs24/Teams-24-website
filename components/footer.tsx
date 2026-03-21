@@ -2,20 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { handleSmoothScroll as smoothScroll } from "@/lib/utils";
 
 export function Footer() {
  
   const handleSmoothScroll = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+    const success = smoothScroll(sectionId);
+    if (!success) {
+      window.location.href = `/#${sectionId}`;
     }
   };
 
@@ -28,37 +22,27 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-[90rem] mx-auto h-auto min-h-[40.5rem] bg-white font-[Manrope]  relative overflow-hidden">
-      <div className="relative z-10 h-full pt-8 md:pt-16 lg:pt-[6.75rem] px-4 sm:px-6 md:px-8 lg:px-[5.875rem] pb-32">
+    <footer className="w-full bg-white font-[Manrope] relative overflow-hidden">
+      <div className="relative z-10 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto pt-8 md:pt-16 lg:pt-[6.75rem] px-6 md:px-12 lg:px-16 xl:px-0 pb-40 md:pb-56 lg:pb-64 xl:pb-[15vw]">
         {/* ✅ Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
           {/* ✅ Logo */}
           <div className="col-span-2 lg:col-span-1 mb-8 lg:mb-0">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/Mask group (1).png"
-                alt="Teams24 Logo"
-                width={18}
-                height={18}
-                className="object-contain"
-              />
-              <span
-                className="font-bold text-black"
-                style={{
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
-                  lineHeight: "40px",
-                }}
-              >
-                Teams24
-              </span>
+            <div className="flex items-center">
+              <div className="relative w-32 md:w-40 xl:w-[12vw] h-8 md:h-10 xl:h-[3vw]">
+                <Image
+                  src="/logos/NavLogo.webp"
+                  alt="Teams24 Logo"
+                  fill
+                  className="object-contain brightness-0"
+                />
+              </div>
             </div>
             <a 
               href="https://labs24.co" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-black/40 hover:text-black transition-all text-[10px] font-bold tracking-[0.1em] uppercase mt-[-8px] block pl-[26px]"
+              className="text-black/40 hover:text-black transition-all text-[clamp(8px,0.7vw,10px)] font-bold tracking-[0.1em] uppercase mt-[-0.5rem] block pl-[clamp(31px,3.2vw,54px)] md:pl-[clamp(38px,4vw,64px)] xl:pl-[clamp(52px,4vw,84px)]"
             >
               A part of Labs 24
             </a>
@@ -225,7 +209,7 @@ export function Footer() {
               minWidth: "max-content",
             }}
           >
-            Teams24
+            Teams 24
           </p>
         </div>
       </div>

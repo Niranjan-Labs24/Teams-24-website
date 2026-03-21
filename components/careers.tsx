@@ -65,14 +65,14 @@ export function Careers() {
   }, []);
 
   return (
-    <section className="relative pt-20 pb-10 px-4 sm:px-8 lg:px-12 bg-white overflow-hidden" id="careers">
+    <section className="relative pt-20 pb-10 bg-white overflow-hidden" id="careers">
       {/* Background Mesh Gradients - Subtler than FAQ */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute -left-[10%] top-[20%] w-[40%] h-[60%] bg-blue-100/50 rounded-full blur-[120px]" />
         <div className="absolute -right-[10%] bottom-[20%] w-[40%] h-[60%] bg-pink-100/40 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto relative z-10 px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
@@ -101,38 +101,42 @@ export function Careers() {
           {loading ? (
             <p className="py-12 text-gray-400 font-manrope">Loading openings...</p>
           ) : jobs.length > 0 ? (
-            jobs.map((job) => (
-              <a
-                key={job.id}
-                href={`https://careers.teams24.co/${job.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
-              >
-                <div className="flex items-center justify-between py-10 px-2 sm:px-4">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
-                      {job.title}
-                    </h3>
-                    <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
-                      <span>{job.type}</span>
-                      <span className="opacity-30">•</span>
-                      <span>
-                        {job.salary_min && job.salary_max 
-                          ? `${getCurrencySymbol(job.currency)} ${job.salary_min} - ${job.salary_max}` 
-                          : "$120k - $200k"}
-                      </span>
-                      <span className="opacity-30">•</span>
-                      <span>{job.location}</span>
+            jobs
+              .filter((job) => job.title && job.slug)
+              .map((job) => (
+                <a
+                  key={job.id}
+                  href={`https://careers.teams24.co/${job.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
+                >
+                  <div className="flex items-center justify-between py-6 px-2 sm:px-4">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
+                        {job.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
+                        <span>{job.type}</span>
+                        {job.salary_min && job.salary_max && (
+                          <>
+                            <span className="opacity-30">•</span>
+                            <span>
+                              {`${getCurrencySymbol(job.currency)} ${job.salary_min} - ${job.salary_max}`}
+                            </span>
+                          </>
+                        )}
+                        <span className="opacity-30">•</span>
+                        <span>{job.location}</span>
+                      </div>
+                    </div>
+
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                      <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
                     </div>
                   </div>
-
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
-                    <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
-                  </div>
-                </div>
-              </a>
-            ))
+                </a>
+              ))
           ) : (
             <p className="py-12 text-gray-400 font-manrope">No current openings. Check back soon!</p>
           )}

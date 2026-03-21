@@ -6,11 +6,13 @@ import { ProfileMarquee } from "@/components/ProfileMarquee";
 import { FAQ } from "@/components/faq";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
+import { getContentBySlug } from "@/lib/data/hire-content";
+import type { Metadata } from 'next';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const roleMap: Record<string, string> = {
@@ -40,19 +42,48 @@ const formatRole = (slug: string) => {
     .join(" ");
 };
 
-export default function HireRolePage({ params }: PageProps) {
-  const roleName = formatRole(params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const content = getContentBySlug(slug);
+  return {
+    title: content.seo.title,
+    description: content.seo.description,
+  };
+}
+
+export default async function HireRolePage({ params }: PageProps) {
+  const { slug } = await params;
+  const roleName = formatRole(slug);
+  const content = getContentBySlug(slug);
+
+  const heroHeadline = content.hero.headline.replace('{role}', roleName).replace('{roleStr}', roleName.toLowerCase());
+  const heroSubheading = content.hero.subheading.replace('{role}', roleName).replace('{roleStr}', roleName.toLowerCase());
+  
+  const skillsTitle = content.skillsTitle.replace('{role}', roleName).replace('{roleStr}', roleName.toLowerCase());
+  const skillsDescription = content.skillsDescription.replace('{role}', roleName).replace('{roleStr}', roleName.toLowerCase());
 
   return (
     <main className="min-h-screen bg-white">
       <GlassmorphicNavbar />
-      <HireHero role={roleName} />
-      <HireSkills role={roleName} />
+      <HireHero 
+        role={roleName} 
+        headline={heroHeadline}
+        subheading={heroSubheading}
+        trustBadge={content.hero.trustBadge}
+        primaryCta={content.hero.primaryCta}
+        secondaryCta={content.hero.secondaryCta}
+      />
+      <HireSkills 
+        role={roleName} 
+        title={skillsTitle}
+        description={skillsDescription}
+        skills={content.skills}
+      />
       <Testimonials />
       <div className="py-10">
         <ProfileMarquee />
       </div>
-      <FAQ />
+      <FAQ items={content.faqs} />
       <CTASection />
       <Footer />
     </main>
