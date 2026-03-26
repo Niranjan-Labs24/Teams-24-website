@@ -200,7 +200,7 @@ export default function GlassmorphicNavbar() {
                 <div className="flex-1 pt-[clamp(16px,2.5vw,40px)] flex flex-wrap gap-y-[clamp(8px,1vw,16px)] gap-x-[clamp(12px,1.2vw,20px)]">
                   {NAV_CONTENT[activeCategory].tags.map((tag, idx) => {
                     const mappedRoute = tag === "Careers" 
-                      ? "/careers" 
+                      ? "https://careers.teams24.co" 
                       : `/hire/${tag.toLowerCase().replace(/ /g, "-")}`;
                     
                     return (
@@ -306,7 +306,7 @@ export default function GlassmorphicNavbar() {
                     <div className="flex flex-wrap gap-2">
                       {NAV_CONTENT.talent.tags.map((tag, idx) => {
                         const mappedRoute = tag === "Careers" 
-                          ? "/careers" 
+                          ? "https://careers.teams24.co" 
                           : `/hire/${tag.toLowerCase().replace(/ /g, "-")}`;
                           
                         return (
