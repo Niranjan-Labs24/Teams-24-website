@@ -131,13 +131,13 @@ export default function HeroSection(): JSX.Element {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center sm:items-start gap-1 sm:whitespace-nowrap">
-              <div className="flex gap-0.5 xl:gap-[0.1vw]">
+            <div className="flex flex-col items-center sm:items-start gap-1 sm:whitespace-nowrap" aria-label="5 out of 5 stars rating">
+              <div className="flex gap-0.5 xl:gap-[0.1vw]" aria-hidden="true">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 xl:w-[1.5vw] xl:h-[1.5vw] fill-[#F59E0B] text-[#F59E0B]" />
                 ))}
               </div>
-              <p className="text-white/70 text-sm sm:text-base xl:text-[1.2vw] font-medium tracking-tight text-center sm:text-left mt-1 xl:mt-[0.2vw]">
+              <p className="text-white/90 text-sm sm:text-base xl:text-[1.2vw] font-medium tracking-tight text-center sm:text-left mt-1 xl:mt-[0.2vw]">
                 Trusted by 20+ CEO&apos;s and CXO&apos;s
               </p>
             </div>
@@ -178,7 +178,7 @@ export default function HeroSection(): JSX.Element {
                 />
               </div>
               <p 
-                className="font-semibold text-white/70 group-hover:text-white transition-colors text-[12px] xl:text-[1vw] leading-[20px] xl:leading-[1.3] whitespace-nowrap"
+                className="font-semibold text-white/90 group-hover:text-white transition-colors text-[12px] xl:text-[1vw] leading-[20px] xl:leading-[1.3] whitespace-nowrap"
                 style={{
                     fontFamily: "Manrope, sans-serif",
                     letterSpacing: "-0.01em",
@@ -220,7 +220,7 @@ export default function HeroSection(): JSX.Element {
                   <h2 className="text-white text-2xl sm:text-3xl md:text-4xl xl:text-[2.2vw] font-bold font-manrope mb-2 xl:mb-[0.5vw]">
                     Book a free 30 min call
                   </h2>
-                  <p className="text-white/60 text-base sm:text-lg xl:text-[1.2vw]">
+                  <p className="text-white/85 text-base sm:text-lg xl:text-[1.2vw]">
                     Get all your questions answered by our experts.
                   </p>
                 </div>
@@ -234,6 +234,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="First name"
+                      aria-label="First name"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
@@ -244,6 +245,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="text"
                       placeholder="Last name"
+                      aria-label="Last name"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
@@ -257,6 +259,7 @@ export default function HeroSection(): JSX.Element {
                       onChange={handleChange}
                       type="email"
                       placeholder="Work email"
+                      aria-label="Work email"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
@@ -266,6 +269,7 @@ export default function HeroSection(): JSX.Element {
                         name="company_size_dropdown"
                         value={formData.company_size_dropdown}
                         onChange={handleChange}
+                        aria-label="Company size"
                         className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                         style={{ fontFamily: 'Manrope, sans-serif' }}
                       >
@@ -284,6 +288,7 @@ export default function HeroSection(): JSX.Element {
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
+                      aria-label="Location"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     >

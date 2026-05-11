@@ -18,6 +18,7 @@ import Solutions from "@/components/Solutions"
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <link rel="preconnect" href="https://fgelafnlezxfpptosovb.supabase.co" crossOrigin="anonymous" />
       <GlassmorphicNavbar />
 
       <HeroSection />
