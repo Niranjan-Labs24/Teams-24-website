@@ -7,16 +7,16 @@ interface Logo {
 }
 
 const logos: Logo[] = [
-  { src: "/logs2/Frame 1171275574.png" },
-  { src: "/logs2/Frame 1171275577.png" },
-  { src: "/logs2/Frame 1171275575.png" },
-  { src: "/logs2/Frame 1171275578.png" },
+  { src: "/pauket-logo.svg" },
+  { src: "/logo-11.png" },
+  { src: "/pauket-logo.svg" },
+  { src: "/logo-11.png" },
 ];
 
 export default function TrustBar() {
   return (
     <div className="w-full bg-white py-4 xl:py-[1.25vw] select-none overflow-hidden">
-      <div 
+      <div
         className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto px-6 md:px-12 lg:px-16 xl:px-0 flex items-center justify-center xl:h-[4.4vw]"
       >
         <div className="flex items-center xl:gap-[3.75vw]">

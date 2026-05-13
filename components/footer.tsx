@@ -92,20 +92,24 @@ export function Footer() {
             <p className="font-bold text-black mb-4 md:mb-6 text-lg">Legal</p>
             <ul className="space-y-2 md:space-y-3">
               <li>
-                <Link
-                  href="/terms"
+                <a
+                  href="https://labs24.notion.site/Terms-of-Use-2de67d98dfa98049b6dde33fcce2dc79"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 hover:text-black transition font-semibold text-base"
                 >
                   Terms and conditions
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="/privacy-policy"
+                <a
+                  href="https://labs24.notion.site/Privacy-Policy-2de67d98dfa980f4ad62d8d214939e2e"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 hover:text-black transition font-semibold text-base"
                 >
                   Privacy policy
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

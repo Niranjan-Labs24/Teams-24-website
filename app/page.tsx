@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 import { HiringMethods, ProfileMarquee } from "@/components/ClientWrappers"
 
 
-import  Testimonials  from "@/components/testimonials"
+import Testimonials from "@/components/testimonials"
 import { Careers } from "@/components/careers"
 import { FAQHome } from "@/components/FaqHome"
 import { Footer } from "@/components/footer"
@@ -22,14 +22,14 @@ export default function Home() {
       <GlassmorphicNavbar />
 
       <HeroSection />
-       <TrustBar />
+      <TrustBar />
+      <IdealFor />
       <Solutions />
       <HowWorks />
-      <IdealFor />
       <HiringMethods />
       <ProfileMarquee />
       <Careers />
-      <Testimonials /> 
+      <Testimonials />
       <FAQHome />
       <CTASection />
       <Footer />
