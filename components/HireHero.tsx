@@ -34,6 +34,7 @@ export default function HireHero({
           fill
           className="object-cover object-top sm:object-center"
           priority
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-[#0A0B1A]/20" />
       </div>
@@ -72,7 +73,7 @@ export default function HireHero({
           )}
         </h1>
         
-        <p className="text-white/80 text-lg md:text-xl xl:text-[1.3vw] max-w-[800px] xl:max-w-[55vw] font-medium opacity-90">
+        <p className="text-white/95 text-lg md:text-xl xl:text-[1.3vw] max-w-[800px] xl:max-w-[55vw] font-medium">
           {displaySubheading}
         </p>
 
@@ -105,7 +106,7 @@ export default function HireHero({
                   <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 xl:w-[1.5vw] xl:h-[1.5vw] fill-[#F59E0B] text-[#F59E0B]" />
                 ))}
               </div>
-              <p className="text-white/70 text-sm sm:text-base xl:text-[1.2vw] font-medium tracking-tight text-center sm:text-left mt-1 xl:mt-[0.2vw]">
+              <p className="text-white/90 text-sm sm:text-base xl:text-[1.2vw] font-medium tracking-tight text-center sm:text-left mt-1 xl:mt-[0.2vw]">
                 {displayTrustBadge}
               </p>
             </div>

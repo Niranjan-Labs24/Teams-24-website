@@ -45,9 +45,48 @@ const Solutions = () => {
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-[3vw] items-stretch justify-center w-full max-w-[1210px] xl:max-w-none xl:w-[85vw]">
-                    {/* Left Side - Solution Card */}
+                    {/* Left Side - Problem List Container */}
                     <div 
-                        className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-1 flex flex-col items-center overflow-hidden w-[95%] sm:w-full max-w-[444px] xl:max-w-none xl:w-[34.68vw] h-auto md:h-[482px] xl:h-[37.65vw] rounded-[31px] xl:rounded-[2.42vw] border-[1.01px] xl:border-[0.08vw] border-[#FFFFFF33] pb-6 md:pb-0 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)]"
+                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2.03vw] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-1 w-[95%] sm:w-full max-w-[580px] xl:max-w-none xl:w-[45vw] h-auto md:h-[482px] xl:h-[37.65vw] relative flex flex-col justify-center py-[60px] md:py-0"
+                    >
+                        <div className="flex flex-col justify-center gap-[60px] md:gap-[40px] xl:gap-[3.12vw] w-full items-end pr-[5%] md:pr-[40px] xl:pr-[3.12vw]">
+                            {problems.map((problem) => (
+                                <div key={problem.id} className="relative w-[80%] sm:w-auto sm:max-w-[450px] xl:max-w-none xl:w-[35vw] group">
+                                    
+                                    {/* Number Circle positioned above and to the left of the sharp corner */}
+                                    <div 
+                                        className="absolute z-20 w-[56px] h-[56px] xl:w-[4.34vw] xl:h-[4.34vw] rounded-full flex items-center justify-center text-white text-[24px] xl:text-[1.86vw] font-medium left-0 top-0 transform -translate-x-[calc(100%+4px)] md:-translate-x-[calc(100%+8px)] xl:-translate-x-[calc(100%+0.6vw)] -translate-y-[28px] md:-translate-y-[32px] xl:-translate-y-[2.1vw]"
+                                        style={{
+                                            background: "linear-gradient(145deg, #FF7B7B 0%, #FF413A 80%)",
+                                            boxShadow: "inset 0px -8px 12px -2px rgba(255, 255, 255, 0.5), inset 0px 6px 12px -2px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0,0,0,0.1)"
+                                        }}
+                                    >
+                                        <span className="relative z-10 drop-shadow-sm">{problem.id}</span>
+                                    </div>
+                                    
+                                    {/* Content Strip with SHARP top-left corner */}
+                                    <div 
+                                        className="w-full flex items-center min-h-[70px] xl:min-h-[5.47vw] bg-[#FDFDFD] border border-[#00000014] rounded-tr-[20px] xl:rounded-tr-[1.56vw] rounded-br-[20px] xl:rounded-br-[1.56vw] rounded-bl-[20px] xl:rounded-bl-[1.56vw] rounded-tl-none px-[20px] md:px-[30px] xl:px-[2.34vw] py-3 xl:py-[1vw] hover:shadow-sm shadow-sm transition-shadow"
+                                    >
+                                        <p 
+                                            className="text-[#3A3A3C] font-normal text-[14px] md:text-[16px] xl:text-[1.25vw] leading-[20px] md:leading-[24px] xl:leading-[1.87vw]"
+                                            style={{ 
+                                                fontFamily: "'Space Grotesk', sans-serif",
+                                                letterSpacing: '-0.05em'
+                                            }}
+                                        >
+                                            {problem.text}
+                                            <span className="text-[#FF413A] ml-[4px] xl:ml-[0.31vw]">{problem.highlight}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right Side - Solution Card */}
+                    <div 
+                        className="relative flex-shrink-0 mx-auto lg:mx-0 order-2 lg:order-2 flex flex-col items-center overflow-hidden w-[95%] sm:w-full max-w-[444px] xl:max-w-none xl:w-[34.68vw] h-auto md:h-[482px] xl:h-[37.65vw] rounded-[31px] xl:rounded-[2.42vw] border-[1.01px] xl:border-[0.08vw] border-[#FFFFFF33] pb-6 md:pb-0 bg-gradient-to-br from-[#2E8BFF] via-[#1E70F5] to-[#1255C9] shadow-[0_20px_50px_rgba(30,112,245,0.1)]"
                     >
                         {/* Background Icons - Fluid placement */}
                         <div 
@@ -118,45 +157,6 @@ const Solutions = () => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side - Problem List Container */}
-                    <div 
-                        className="bg-[#FDFDFD] border border-[#00000014] rounded-[26px] xl:rounded-[2.03vw] flex-shrink-0 mx-auto lg:mx-0 order-1 lg:order-2 w-[95%] sm:w-full max-w-[580px] xl:max-w-none xl:w-[45vw] h-auto md:h-[482px] xl:h-[37.65vw] relative flex flex-col justify-center py-[60px] md:py-0"
-                    >
-                        <div className="flex flex-col justify-center gap-[60px] md:gap-[40px] xl:gap-[3.12vw] w-full items-end pr-[5%] md:pr-[40px] xl:pr-[3.12vw]">
-                            {problems.map((problem) => (
-                                <div key={problem.id} className="relative w-[80%] sm:w-auto sm:max-w-[450px] xl:max-w-none xl:w-[35vw] group">
-                                    
-                                    {/* Number Circle positioned above and to the left of the sharp corner */}
-                                    <div 
-                                        className="absolute z-20 w-[56px] h-[56px] xl:w-[4.34vw] xl:h-[4.34vw] rounded-full flex items-center justify-center text-white text-[24px] xl:text-[1.86vw] font-medium left-0 top-0 transform -translate-x-[calc(100%+4px)] md:-translate-x-[calc(100%+8px)] xl:-translate-x-[calc(100%+0.6vw)] -translate-y-[28px] md:-translate-y-[32px] xl:-translate-y-[2.1vw]"
-                                        style={{
-                                            background: "linear-gradient(145deg, #FF7B7B 0%, #FF413A 80%)",
-                                            boxShadow: "inset 0px -8px 12px -2px rgba(255, 255, 255, 0.5), inset 0px 6px 12px -2px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0,0,0,0.1)"
-                                        }}
-                                    >
-                                        <span className="relative z-10 drop-shadow-sm">{problem.id}</span>
-                                    </div>
-                                    
-                                    {/* Content Strip with SHARP top-left corner */}
-                                    <div 
-                                        className="w-full flex items-center min-h-[70px] xl:min-h-[5.47vw] bg-[#FDFDFD] border border-[#00000014] rounded-tr-[20px] xl:rounded-tr-[1.56vw] rounded-br-[20px] xl:rounded-br-[1.56vw] rounded-bl-[20px] xl:rounded-bl-[1.56vw] rounded-tl-none px-[20px] md:px-[30px] xl:px-[2.34vw] py-3 xl:py-[1vw] hover:shadow-sm shadow-sm transition-shadow"
-                                    >
-                                        <p 
-                                            className="text-[#3A3A3C] font-normal text-[14px] md:text-[16px] xl:text-[1.25vw] leading-[20px] md:leading-[24px] xl:leading-[1.87vw]"
-                                            style={{ 
-                                                fontFamily: "'Space Grotesk', sans-serif",
-                                                letterSpacing: '-0.05em'
-                                            }}
-                                        >
-                                            {problem.text}
-                                            <span className="text-[#FF413A] ml-[4px] xl:ml-[0.31vw]">{problem.highlight}</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>

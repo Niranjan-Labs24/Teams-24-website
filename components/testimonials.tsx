@@ -74,12 +74,14 @@ export default function Testimonials() {
           <button
             onClick={prev}
             className="w-12 h-12 xl:w-[3.5vw] xl:h-[3.5vw] rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
+            aria-label="Previous Testimonial"
           >
             <ChevronLeft className="w-6 h-6 xl:w-[1.5vw] xl:h-[1.5vw]" />
           </button>
           <button
             onClick={next}
             className="w-12 h-12 xl:w-[3.5vw] xl:h-[3.5vw] rounded-full border border-[#0000001A] flex items-center justify-center hover:bg-gray-50 transition-colors active:scale-95"
+            aria-label="Next Testimonial"
           >
             <ChevronRight className="w-6 h-6 xl:w-[1.5vw] xl:h-[1.5vw]" />
           </button>

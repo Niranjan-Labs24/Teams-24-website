@@ -6,8 +6,8 @@ import Script from "next/script"
 import "./globals.css"
 
 
-const manrope = Manrope({ subsets: ["latin"] })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "700"] })
+const manrope = Manrope({ subsets: ["latin"], display: 'swap' })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "700"], display: 'swap' })
 
 export const metadata: Metadata = {
   title: "Teams 24 | Hire Dedicated Developers & Consultants on Subscription",
@@ -85,7 +85,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+      </head>
       <body className={`${manrope.className} ${spaceGrotesk.className} font-sans antialiased`}>
         <HashScrollHandler />
         <Script

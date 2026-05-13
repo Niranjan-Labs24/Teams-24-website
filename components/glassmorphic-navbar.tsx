@@ -112,7 +112,7 @@ export default function GlassmorphicNavbar() {
           `}
         >
           {/* Logo Section */}
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity cursor-pointer shrink-0">
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity cursor-pointer shrink-0" aria-label="Home">
             <Image src="/logos/NavLogo.webp" alt="Teams24 Logo" width={200} height={60} className="object-contain w-[clamp(100px,9.5vw,160px)] h-auto" />
           </Link>
 
@@ -244,7 +244,12 @@ export default function GlassmorphicNavbar() {
         <Link href="/" className="flex items-center">
           <Image src="/logos/NavLogo.webp" alt="Logo" width={100} height={30} className="w-[100px] h-auto" />
         </Link>
-        <button onClick={() => setIsOpen(!isOpen)} className="text-white relative w-6 h-6 flex flex-col justify-center items-end gap-1.5 focus:outline-none">
+        <button 
+          onClick={() => setIsOpen(!isOpen)} 
+          className="text-white relative w-6 h-6 flex flex-col justify-center items-end gap-1.5 focus:outline-none"
+          aria-label={isOpen ? "Close Menu" : "Open Menu"}
+          aria-expanded={isOpen}
+        >
           <span className={`h-[2px] bg-white transition-all duration-300 ${isOpen ? "w-6 absolute rotate-45" : "w-6"}`}></span>
           <span className={`h-[2px] bg-white transition-all duration-300 ${isOpen ? "w-6 absolute -rotate-45" : "w-4"}`}></span>
         </button>
