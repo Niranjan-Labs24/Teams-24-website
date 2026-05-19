@@ -23,9 +23,9 @@ export default function Home() {
 
       <HeroSection />
       <TrustBar />
-      <IdealFor />
-      <Solutions />
       <HowWorks />
+      <Solutions />
+      <IdealFor />
       <HiringMethods />
       <ProfileMarquee />
       <Careers />
