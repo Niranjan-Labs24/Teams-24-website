@@ -25,14 +25,14 @@ export default function HireHero({
   const displayTrustBadge = trustBadge || "Trusted by 20+ CEO's and CXO's";
 
   return (
-    <section className="relative w-full min-h-[70vh] lg:min-h-[45rem] flex flex-col items-center justify-start text-center pt-[160px] sm:pt-[200px] xl:pt-[18vw] pb-20 xl:pb-[5vw] overflow-hidden rounded-b-[clamp(40px,6.25vw,100px)] bg-[#0A0B1A]">
+    <section className="relative w-full min-h-[80vh] lg:min-h-[680px] flex flex-col items-center justify-center text-center pt-36 sm:pt-40 lg:pt-44 xl:pt-[9vw] pb-16 sm:pb-20 lg:pb-24 xl:pb-[5vw] overflow-hidden rounded-b-[clamp(40px,6.25vw,100px)] bg-[#0A0B1A]">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 rounded-b-[clamp(40px,6.25vw,100px)] overflow-hidden">
         <Image
           src="/back/BackgroundHire.webp"
           alt="Background"
           fill
-          className="object-cover object-top sm:object-center"
+          className="object-cover object-top sm:object-center rounded-b-[clamp(40px,6.25vw,100px)]"
           priority
           fetchPriority="high"
         />
@@ -40,7 +40,7 @@ export default function HireHero({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center gap-8 md:gap-12 xl:gap-[3.5vw] px-6 md:px-12 lg:px-16 xl:px-0">
+      <div className="relative z-10 w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center gap-5 md:gap-8 xl:gap-[2vw] px-6 md:px-12 lg:px-16 xl:px-0">
         <h1 
           className="text-[#FFFFFF] font-[400] tracking-[-0.07em] mx-auto overflow-visible"
           style={{ 
@@ -73,11 +73,11 @@ export default function HireHero({
           )}
         </h1>
         
-        <p className="text-white/95 text-lg md:text-xl xl:text-[1.3vw] max-w-[800px] xl:max-w-[55vw] font-medium">
+        <p className="text-white/95 text-base md:text-lg xl:text-[1.2vw] max-w-[800px] xl:max-w-[55vw] font-medium">
           {displaySubheading}
         </p>
 
-        <div className="flex flex-col items-center gap-8 xl:gap-[2.5vw] mt-6 xl:mt-[2vw]">
+        <div className="flex flex-col items-center gap-6 xl:gap-[1.8vw] mt-4 xl:mt-[1vw]">
           {/* Standardized Trust Bar */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-[13px] xl:gap-[1vw]">
             <div className="flex -space-x-3 flex-shrink-0">
@@ -112,20 +112,21 @@ export default function HireHero({
             </div>
           </div>
           
-          <div className="flex flex-col items-center gap-[8px] xl:gap-[0.6vw] mt-10 xl:mt-[3vw]">
+          <div className="flex flex-col items-center gap-[6px] xl:gap-[0.5vw] mt-6 xl:mt-[1.5vw]">
             <button 
               onClick={() => window.open('https://cal.com/niranjanvenugopal/teams-24-discovery-call', '_blank', 'noopener,noreferrer')}
-              className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center opacity-100"
+              className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap flex items-center justify-center opacity-100"
               style={{
-                width: "clamp(180px, 16.5vw, 320px)",
-                height: "clamp(48px, 4.5vw, 80px)",
-                padding: "clamp(10px, 1.2vw, 24px) clamp(22px, 3.2vw, 64px)",
+                width: "auto",
+                minWidth: "clamp(180px, 16.5vw, 240px)",
+                height: "clamp(44px, 3.8vw, 70px)",
+                padding: "clamp(8px, 1vw, 20px) clamp(28px, 2.8vw, 56px)",
                 borderRadius: "62px",
                 border: "clamp(1px, 0.2vw, 3px) solid #13131326",
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 1.1vw, 20px)",
-                lineHeight: "clamp(22px, 2vw, 36px)",
+                fontSize: "clamp(14px, 1.1vw, 18px)",
+                lineHeight: "clamp(20px, 1.8vw, 32px)",
                 letterSpacing: "-0.03em",
                 textAlign: "center",
               }}

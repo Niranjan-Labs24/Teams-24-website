@@ -59,24 +59,24 @@ export default function HeroSection(): JSX.Element {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-screen lg:min-h-[50rem] flex items-center rounded-b-[clamp(40px,6.25vw,100px)]">
+    <section className="relative w-full overflow-hidden bg-[#0A0B1A] min-h-[80vh] lg:min-h-[680px] flex items-center rounded-b-[clamp(40px,6.25vw,100px)]">
       {/* Static Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 rounded-b-[clamp(40px,6.25vw,100px)] overflow-hidden">
         <Image
           src="/back/Background.webp"
           alt="Background Gradient"
           fill
-          className="object-cover object-top sm:object-center"
+          className="object-cover object-top sm:object-center rounded-b-[clamp(40px,6.25vw,100px)]"
           priority
         />
         <div className="absolute inset-0 bg-[#0A0B1A]/20" />
       </div>
       
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0 pt-36 sm:pt-40 xl:pt-[12vw] pb-12 xl:pb-[4vw] gap-12 xl:gap-[8vw]">
+      <div className="relative z-20 h-full w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col xl:flex-row items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0 pt-36 sm:pt-40 lg:pt-44 xl:pt-[9vw] pb-16 sm:pb-20 lg:pb-24 xl:pb-[5vw] gap-8 xl:gap-[8vw]">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col items-center xl:items-start gap-[31px] xl:gap-[2.4vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
+        <div className="flex-1 flex flex-col items-center xl:items-start gap-[20px] xl:gap-[1.5vw] xl:w-[44vw] xl:max-w-[44vw] w-full">
           <div className="flex items-center justify-start lg:justify-start gap-2 xl:gap-[0.8vw] transition-transform hover:scale-105 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-2 py-0.5 sm:px-3 sm:py-1 xl:px-[0.8vw] xl:py-[0.3vw] cursor-default shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
             <div className="relative w-3.5 h-3.5 sm:w-5 sm:h-5 xl:w-[1.4vw] xl:h-[1.4vw] flex-shrink-0">
               <Image
@@ -100,7 +100,7 @@ export default function HeroSection(): JSX.Element {
               letterSpacing: "-0.07em",
               width: "clamp(300px, 45vw, 1200px)",
               maxWidth: "100%",
-              height: "clamp(100px, 11.718vw, 300px)",
+              height: "auto",
               verticalAlign: "middle",
             }}
           >
@@ -110,7 +110,7 @@ export default function HeroSection(): JSX.Element {
           </h1>
 
           {/* Trust Bar Section */}
-          <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] xl:gap-[1vw] mt-2 xl:mt-[0.5vw] xl:w-[28vw]">
+          <div className="flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-[13px] xl:gap-[1vw] mt-1 xl:mt-[0.2vw] xl:w-[28vw]">
             <div className="flex -space-x-3 flex-shrink-0">
               {[
                 "/testimonials/Frame 2147225466 (1).webp",
@@ -143,20 +143,21 @@ export default function HeroSection(): JSX.Element {
             </div>
           </div>
 
-          <div className="flex flex-col items-center xl:items-start gap-[8px] xl:gap-[0.6vw] mt-10 xl:mt-[3vw]">
+          <div className="flex flex-col items-center xl:items-start gap-[6px] xl:gap-[0.5vw] mt-4 xl:mt-[1.5vw]">
             <button 
               onClick={handleJoinCall}
-              className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center"
+              className="bg-white text-black transition-all duration-300 hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.2)] whitespace-nowrap flex items-center justify-center"
               style={{
-                width: "clamp(180px, 16.5vw, 320px)",
-                height: "clamp(48px, 4.5vw, 80px)",
-                padding: "clamp(10px, 1.2vw, 24px) clamp(22px, 3.2vw, 64px)",
+                width: "auto",
+                minWidth: "clamp(180px, 16.5vw, 240px)",
+                height: "clamp(44px, 3.8vw, 70px)",
+                padding: "clamp(8px, 1vw, 20px) clamp(28px, 2.8vw, 56px)",
                 borderRadius: "62px",
                 border: "clamp(1px, 0.2vw, 3px) solid #13131326",
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 1.1vw, 20px)",
-                lineHeight: "clamp(22px, 2vw, 36px)",
+                fontSize: "clamp(14px, 1.1vw, 18px)",
+                lineHeight: "clamp(20px, 1.8vw, 32px)",
                 letterSpacing: "-0.03em",
                 textAlign: "center",
                 opacity: 1,
@@ -192,41 +193,41 @@ export default function HeroSection(): JSX.Element {
 
         <div className="w-full xl:w-[36vw] xl:max-w-[36vw] flex justify-center xl:justify-end xl:-translate-x-[5vw]">
           <div 
-            className="w-full xl:w-[36vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-4 xs:p-5 md:p-6 xl:p-[2vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
+            className="w-full xl:w-[36vw] bg-[#043A7952] backdrop-blur-[2.93px] rounded-[28px] xl:rounded-[2vw] border-[0.81px] xl:border-[0.06vw] border-[#FFFFFF4D] p-4 xs:p-5 md:p-6 xl:p-[1.5vw] shadow-2xl relative overflow-hidden flex flex-col justify-center opacity-100"
             style={{
-                minHeight: 'max(470px, 36vw)',
+                minHeight: 'max(420px, 30vw)',
                 height: 'auto'
             }}
           >
             {isSubmitted ? (
-               <div className="relative z-10 text-center py-12 xl:py-[3vw]">
-               <div className="w-16 h-16 xl:w-[5vw] xl:h-[5vw] bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 xl:mb-[1.5vw]">
-                 <CheckCircle2 className="text-white w-10 h-10 xl:w-[3vw] xl:h-[3vw]" />
+               <div className="relative z-10 text-center py-10 xl:py-[2.5vw]">
+               <div className="w-14 h-14 xl:w-[4vw] xl:h-[4vw] bg-white/20 rounded-full flex items-center justify-center mx-auto mb-5 xl:mb-[1.2vw]">
+                 <CheckCircle2 className="text-white w-8 h-8 xl:w-[2.5vw] xl:h-[2.5vw]" />
                </div>
-               <h2 className="text-white text-3xl xl:text-[2.2vw] font-bold mb-4 xl:mb-[1vw]">Thank You!</h2>
-               <p className="text-white/70 text-lg xl:text-[1.2vw]">
+               <h2 className="text-white text-2xl xl:text-[2vw] font-bold mb-3 xl:mb-[0.8vw]">Thank You!</h2>
+               <p className="text-white/70 text-base xl:text-[1.1vw]">
                  Your request has been received. Our team will contact you shortly.
                </p>
                <button 
                  onClick={() => setIsSubmitted(false)}
-                 className="mt-8 xl:mt-[2vw] text-white/50 hover:text-white text-sm xl:text-[1vw] underline underline-offset-4"
+                 className="mt-6 xl:mt-[1.5vw] text-white/50 hover:text-white text-xs xl:text-[0.9vw] underline underline-offset-4"
                >
                  Submit another response
                </button>
              </div>
             ) : (
                 <>
-                <div className="relative z-10 text-center mb-8 xl:mb-[2vw]">
-                  <h2 className="text-white text-2xl sm:text-3xl md:text-4xl xl:text-[2.2vw] font-bold font-manrope mb-2 xl:mb-[0.5vw]">
+                <div className="relative z-10 text-center mb-6 xl:mb-[1.5vw]">
+                  <h2 className="text-white text-xl sm:text-2xl md:text-3xl xl:text-[1.8vw] font-bold font-manrope mb-1 xl:mb-[0.3vw]">
                     Book a free 30 min call
                   </h2>
-                  <p className="text-white/85 text-base sm:text-lg xl:text-[1.2vw]">
+                  <p className="text-white/85 text-sm sm:text-base xl:text-[1.1vw]">
                     Get all your questions answered by our experts.
                   </p>
                 </div>
     
-                <form className="space-y-4 xl:space-y-[1vw]" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-[1vw]">
+                <form className="space-y-3 xl:space-y-[0.7vw]" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xl:gap-[0.7vw]">
                     <input
                       required
                       name="firstname"
@@ -235,7 +236,7 @@ export default function HeroSection(): JSX.Element {
                       type="text"
                       placeholder="First name"
                       aria-label="First name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-3 xl:py-[0.7vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <input
@@ -246,12 +247,12 @@ export default function HeroSection(): JSX.Element {
                       type="text"
                       placeholder="Last name"
                       aria-label="Last name"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-3 xl:py-[0.7vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                   </div>
     
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-[1vw]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xl:gap-[0.7vw]">
                     <input
                       required
                       name="email"
@@ -260,7 +261,7 @@ export default function HeroSection(): JSX.Element {
                       type="email"
                       placeholder="Work email"
                       aria-label="Work email"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-3 xl:py-[0.7vw] text-white placeholder:text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] placeholder:font-medium outline-none focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     />
                     <div className="relative">
@@ -270,7 +271,7 @@ export default function HeroSection(): JSX.Element {
                         value={formData.company_size_dropdown}
                         onChange={handleChange}
                         aria-label="Company size"
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-3 xl:py-[0.7vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                         style={{ fontFamily: 'Manrope, sans-serif' }}
                       >
                         <option value="" disabled className="bg-[#0A0B1A] text-white/50">Company size</option>
@@ -289,7 +290,7 @@ export default function HeroSection(): JSX.Element {
                       value={formData.location}
                       onChange={handleChange}
                       aria-label="Location"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-4 xl:py-[1vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl xl:rounded-[1vw] px-4 xl:px-[1vw] py-3 xl:py-[0.7vw] text-white lg:text-[14px] xl:text-[1.1vw] lg:leading-[16px] xl:leading-[1.5] outline-none appearance-none cursor-pointer focus:bg-white/10 transition-colors"
                       style={{ fontFamily: 'Manrope, sans-serif' }}
                     >
                       <option value="" disabled className="bg-[#0A0B1A] text-white/50">Location</option>
@@ -300,9 +301,9 @@ export default function HeroSection(): JSX.Element {
                     <ChevronDown className="absolute right-4 xl:right-[1vw] top-1/2 -translate-y-1/2 text-white/30 w-5 h-5 xl:w-[1.2vw] xl:h-[1.2vw] pointer-events-none" />
                   </div>
     
-                  <div className="py-2 xl:py-[0.5vw] flex justify-center">
+                  <div className="py-1 xl:py-[0.3vw] flex justify-center">
                     <p 
-                      className="text-white lg:text-[12px] xl:text-[0.9vw] lg:leading-[20px] xl:leading-[1.5] lg:w-[447px] xl:w-[35vw] text-center font-medium"
+                      className="text-white lg:text-[11px] xl:text-[0.8vw] lg:leading-[16px] xl:leading-[1.4] lg:w-[447px] xl:w-[35vw] text-center font-medium opacity-90"
                       style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                     >
                       We respect your data. By submitting this form, you agree that we will contact you in relation to our products and services, in accordance with our <span className="underline cursor-pointer font-medium">privacy policy</span>.
@@ -312,7 +313,7 @@ export default function HeroSection(): JSX.Element {
                   <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="mx-auto w-full h-[54px] xl:h-[4.2vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold text-[13px] xl:text-[1.05vw] leading-[28px] xl:leading-[1.3] px-6 xl:px-[1.5vw] py-3 xl:py-[0.8vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mx-auto w-full h-[46px] xl:h-[3.5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold text-[13px] xl:text-[1.05vw] leading-[24px] xl:leading-[1.3] px-6 xl:px-[1.5vw] py-2.5 xl:py-[0.6vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
                     {isSubmitting ? "..." : "Book a demo call"}
