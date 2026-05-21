@@ -10,7 +10,7 @@ const logos: Logo[] = [
   { src: "/Avenue_logo.png" },
   { src: "/logo-11.png" },
   { src: "/pauket-logo.svg" },
-  { src: "/logo_spec.png" },
+  { src: "/spec.png" },
 ];
 
 export default function TrustBar() {
@@ -22,14 +22,11 @@ export default function TrustBar() {
         <div className="flex items-center gap-8 md:gap-12 xl:gap-[5.5vw]">
           {logos.map((logo, index) => {
             const isFirst = index === 0;
-            const isLast = index === logos.length - 1;
-            const isLargeDiv = isFirst || isLast;
+            const isLargeDiv = isFirst;
 
             let scaleClass = "";
             if (isFirst) {
               scaleClass = "scale-[1.7] md:scale-[1.9] xl:scale-[2.1]";
-            } else if (isLast) {
-              scaleClass = "scale-[1.0] md:scale-[1.05] xl:scale-[1.1]";
             }
 
             return (
