@@ -31,7 +31,9 @@ const roleMap: Record<string, string> = {
   "app": "App",
   "django": "Django",
   "data-analyst": "Data Analyst",
-  "automation": "Automation"
+  "automation": "Automation",
+  "power-bi": "Power BI",
+  "performance-marketing": "Performance Marketing"
 };
 
 const formatRole = (slug: string) => {

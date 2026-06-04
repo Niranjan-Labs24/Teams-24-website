@@ -711,6 +711,115 @@ export const salesforceDeveloperContent: HirePageContent = {
   ]
 };
 
+export const performanceMarketingContent: HirePageContent = {
+  seo: {
+    title: "Hire Performance Marketing Experts: Dedicated Marketers in 72 Hours",
+    description: "Hire dedicated performance marketing experts from Teams 24 in 72 hours. Specialists in paid search, social ads, programmatic, and conversion rate optimization. Scale on demand."
+  },
+  hero: {
+    headline: "Hire Performance Marketing Experts: Dedicated Growth Specialists in 72 Hours",
+    subheading: "Access expert performance marketers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
+    primaryCta: "Hire Your Dream Marketing Team",
+    secondaryCta: "Book a Free Discovery Call"
+  },
+  skillsTitle: "10+ Skills That Performance Marketing Experts at Teams 24 Are Skilled At",
+  skillsDescription: "Performance marketers at Teams 24 are skilled at Google Ads, Meta Ads, programmatic buying, CRO, and more — driving ROI-focused campaigns and growth.",
+  skills: [
+    {
+      category: "Paid Search & Display",
+      skills: ["Google Ads", "Bing Ads", "Google Display Network", "YouTube Ads", "Search Intent Optimization"],
+      colors: ["bg-blue-50 text-blue-700", "bg-emerald-50 text-emerald-700", "bg-blue-50 text-blue-700", "bg-red-50 text-red-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Paid Social",
+      skills: ["Meta Ads", "LinkedIn Ads", "TikTok Ads", "Twitter/X Ads", "Pinterest Ads"],
+      colors: ["bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700", "bg-black text-white", "bg-gray-100 text-gray-700", "bg-red-50 text-red-700"]
+    },
+    {
+      category: "Analytics & Tracking",
+      skills: ["Google Analytics 4 (GA4)", "Google Tag Manager", "Mixpanel", "Looker Studio", "Attribution Modeling"],
+      colors: ["bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700", "bg-green-50 text-green-700"]
+    },
+    {
+      category: "Conversion Rate Optimization",
+      skills: ["A/B Testing", "Landing Page Optimization", "Hotjar", "VWO", "Optimizely"],
+      colors: ["bg-red-50 text-red-700", "bg-emerald-50 text-emerald-700", "bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Marketing Automation",
+      skills: ["HubSpot", "Marketo", "ActiveCampaign", "Klaviyo", "Zapier"],
+      colors: ["bg-orange-50 text-orange-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700", "bg-green-50 text-green-700", "bg-orange-50 text-orange-700"]
+    }
+  ],
+  faqs: [
+    {
+      question: "How fast is deployment really?",
+      answer: "Your dedicated performance marketing expert is fully onboarded and launching campaigns within 72 hours of selection. Traditional hiring takes months; Teams 24 compresses that to 3 days."
+    },
+    {
+      question: "Can we scale dynamically?",
+      answer: "Absolutely. Add more specialists for product launches, peak seasons, or major campaigns, and scale down when needed. No rigid headcount commitments."
+    },
+    {
+      question: "How do you ensure quality?",
+      answer: "Every marketer goes through a 5-hour evaluation covering campaign strategy, analytics, platform proficiency, budget optimization, and real-world scenario testing."
+    }
+  ]
+};
+
+export const powerBIContent: HirePageContent = {
+  seo: {
+    title: "Hire Power BI Developers: Dedicated Data Experts in 72 Hours",
+    description: "Hire dedicated Power BI developers from Teams 24 in 72 hours. Expert engineers skilled in data modeling, DAX, visualizations, and dashboards. 5-hour vetting. Scale on demand."
+  },
+  hero: {
+    headline: "Hire Power BI Developers: Affordable, Dedicated Data Experts in 72 Hours",
+    subheading: "Access expert Power BI developers and data analysts from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
+    primaryCta: "Hire Your Dream Data Team",
+    secondaryCta: "Book a Free Discovery Call"
+  },
+  skillsTitle: "10+ Skills That Power BI Developers at Teams 24 Are Skilled At",
+  skillsDescription: "Power BI developers at Teams 24 are skilled at DAX, Power Query, Data Modeling, and more — transforming raw data into actionable, interactive insights.",
+  skills: [
+    {
+      category: "Data Visualization & Dashboards",
+      skills: ["Power BI Desktop", "Power BI Service", "Interactive Dashboards", "Custom Visuals", "Paginated Reports"],
+      colors: ["bg-yellow-50 text-yellow-700", "bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-green-50 text-green-700", "bg-purple-50 text-purple-700"]
+    },
+    {
+      category: "Data Modeling & Transformation",
+      skills: ["DAX (Data Analysis Expressions)", "Power Query (M)", "Star Schema Design", "Data Warehousing", "ETL Processes"],
+      colors: ["bg-blue-50 text-blue-700", "bg-gray-100 text-gray-700", "bg-emerald-50 text-emerald-700", "bg-red-50 text-red-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Database & Cloud Integration",
+      skills: ["SQL Server", "Azure Synapse", "Snowflake", "Google BigQuery", "AWS Redshift"],
+      colors: ["bg-red-50 text-red-700", "bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Analytics & Administration",
+      skills: ["Row-Level Security (RLS)", "Performance Tuning", "Data Governance", "Tenant Administration", "Gateway Configuration"],
+      colors: ["bg-gray-100 text-gray-700", "bg-emerald-50 text-emerald-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-purple-50 text-purple-700"]
+    }
+  ],
+  faqs: [
+    {
+      question: "How fast is deployment really?",
+      answer: "Your dedicated Power BI developer is fully onboarded and building reports within 72 hours of selection. Traditional data hiring takes months; Teams 24 compresses that to 3 days."
+    },
+    {
+      question: "Can we scale dynamically?",
+      answer: "Absolutely. Add more Power BI developers, data engineers, or analysts as your reporting needs grow, and scale down after major reporting overhauls."
+    },
+    {
+      question: "How do you ensure quality?",
+      answer: "Every developer goes through a 5-hour evaluation covering DAX proficiency, data modeling best practices, dashboard design, and performance tuning of large datasets."
+    }
+  ]
+};
+
 export const contentMap: Record<string, HirePageContent> = {
   "full-stack-developer": fullStackDeveloperContent,
   "customer-support-specialist": customerSupportContent,
@@ -718,6 +827,8 @@ export const contentMap: Record<string, HirePageContent> = {
   "express.js-developer": expressJsContent,
   "automation-tester": automationTestingContent,
   "salesforce-developer": salesforceDeveloperContent,
+  "performance-marketing": performanceMarketingContent,
+  "power-bi": powerBIContent,
 };
 
 export const getContentBySlug = (slug: string): HirePageContent => {

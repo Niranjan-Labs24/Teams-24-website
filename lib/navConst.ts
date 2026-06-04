@@ -9,6 +9,8 @@ export const NAV_CONTENT = {
       "Express.js Developer",
       "Automation Tester",
       "Salesforce Developer",
+      "Performance Marketing",
+      "Power BI",
     ]
   },
   talent: {
