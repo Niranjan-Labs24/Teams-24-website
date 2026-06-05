@@ -31,7 +31,10 @@ const roleMap: Record<string, string> = {
   "app": "App",
   "django": "Django",
   "data-analyst": "Data Analyst",
-  "automation": "Automation"
+  "automation": "Automation",
+  "power-bi": "Power BI",
+  "performance-marketing": "Performance Marketing",
+  "ai-engineer": "AI Engineer"
 };
 
 const formatRole = (slug: string) => {
@@ -45,10 +48,28 @@ const formatRole = (slug: string) => {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const content = getContentBySlug(slug);
-  return {
+  
+  const metadata: Metadata = {
     title: content.seo.title,
     description: content.seo.description,
   };
+
+  if (content.seo.primaryKeyword || content.seo.secondaryKeywords) {
+    const keywords: string[] = [];
+    if (content.seo.primaryKeyword) keywords.push(content.seo.primaryKeyword);
+    if (content.seo.secondaryKeywords) {
+      keywords.push(...content.seo.secondaryKeywords.split(',').map(k => k.trim()));
+    }
+    metadata.keywords = keywords;
+  }
+
+  if (content.seo.canonicalUrl) {
+    metadata.alternates = {
+      canonical: content.seo.canonicalUrl,
+    };
+  }
+
+  return metadata;
 }
 
 export default async function HireRolePage({ params }: PageProps) {
@@ -79,7 +100,7 @@ export default async function HireRolePage({ params }: PageProps) {
         description={skillsDescription}
         skills={content.skills}
       />
-      <Testimonials />
+      <Testimonials items={content.testimonials} />
       <div className="py-10">
         <ProfileMarquee />
       </div>

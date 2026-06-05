@@ -3,7 +3,13 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
-const testimonials = [
+export interface TestimonialItem {
+  name: string;
+  title: string;
+  quote: string;
+}
+
+const defaultTestimonials: TestimonialItem[] = [
   {
     name: "Niranjan Venugopal",
     title: "Founder, Specflicks", 
@@ -24,11 +30,13 @@ const testimonials = [
   },
 ]
 
-export default function Testimonials() {
+export default function Testimonials({ items }: { items?: TestimonialItem[] }) {
   const [current, setCurrent] = useState<number>(0)
+  
+  const displayData = items && items.length > 0 ? items : defaultTestimonials;
 
-  const next = () => setCurrent((c: number) => (c + 1) % testimonials.length)
-  const prev = () => setCurrent((c: number) => (c - 1 + testimonials.length) % testimonials.length)
+  const next = () => setCurrent((c: number) => (c + 1) % displayData.length)
+  const prev = () => setCurrent((c: number) => (c - 1 + displayData.length) % displayData.length)
 
   return (
     <section 
@@ -48,7 +56,7 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[2vw] mb-12 xl:mb-[4vw] w-full">
-          {testimonials.map((t, idx) => (
+          {displayData.map((t, idx) => (
             <div 
               key={idx} 
               className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px] xl:min-h-[22vw]

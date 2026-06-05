@@ -1,6 +1,9 @@
 export interface SEOContent {
   title: string;
   description: string;
+  primaryKeyword?: string;
+  secondaryKeywords?: string;
+  canonicalUrl?: string;
 }
 
 export interface HeroContent {
@@ -29,12 +32,16 @@ export interface HirePageContent {
   skillsDescription: string;
   skills: SkillCategory[];
   faqs: FAQItem[];
+  testimonials?: { name: string; title: string; quote: string; }[];
 }
 
 export const defaultContent: HirePageContent = {
   seo: {
     title: "Hire Expert Developers | Teams 24",
     description: "Hire dedicated developers from Teams 24 in 72 hours. Scale your team on demand with expert engineers.",
+    primaryKeyword: "Hire Expert Developers",
+    secondaryKeywords: "hire hire expert developers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co"
   },
   hero: {
     headline: "Hire {role} Developers: Affordable, dedicated {roleStr} experts in 72 hours",
@@ -104,6 +111,23 @@ export const defaultContent: HirePageContent = {
       question: "How do you ensure quality?",
       answer: "All team members go through rigorous vetting, have proven track records, and are backed by our quality guarantee. We maintain high standards across all engagements."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Teams 24 made it incredibly easy to scale our development. Their commitment and flexibility are exactly what an early-stage startup needs."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The discovery call was eye-opening. We had our core team set up in less than 72 hours, which is unheard of in traditional recruitment."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "We've tried multiple agencies and it didn't work. With Teams 24 we had no timeline constraints or boundaries in setting up our core team."
+    }
   ]
 };
 
@@ -111,6 +135,10 @@ export const fullStackDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Full Stack Developers: Dedicated Full Stack Engineers in 72 Hours",
     description: "Hire dedicated full stack developers from Teams 24 in 72 hours. Expert engineers skilled in React, Node.js, Python, AWS & more. 5-hour vetting process. Scale your team on demand."
+  ,
+    primaryKeyword: "Hire Full Stack Developers",
+    secondaryKeywords: "hire hire full stack developers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/full-stack-developer"
   },
   hero: {
     headline: "Hire Full Stack Developers:Affordable, Dedicated Full Stack Engineers in 72 Hours",
@@ -210,6 +238,23 @@ export const fullStackDeveloperContent: HirePageContent = {
       question: "How is this different from hiring a freelance developer?",
       answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated full stack professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your delivery timelines — just like a full-time hire, but without the overhead of traditional employment."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "We needed a senior full stack developer who could own our React/Node architecture. Teams 24 provided an expert in 48 hours who immediately started shipping features."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The vetting process is real. Our full stack developer from Teams 24 writes cleaner code and collaborates better than many of our in-house hires."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "Scaling our development team was a nightmare until we found Teams 24. We got a dedicated full stack engineer who treats our product like their own."
+    }
   ]
 };
 
@@ -217,6 +262,10 @@ export const customerSupportContent: HirePageContent = {
   seo: {
     title: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
     description: "Hire dedicated customer support specialists from Teams 24 in 72 hours. Experts in Zendesk, Intercom, Freshdesk, live chat, email, phone & omnichannel CX. 5-hour vetting. Scale on demand."
+  ,
+    primaryKeyword: "Hire Customer Support Specialists",
+    secondaryKeywords: "hire hire customer support specialists, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/customer-support-specialist"
   },
   hero: {
     headline: "Hire Customer Support Specialists: AI-Ready Support Teams in 72 Hours",
@@ -309,6 +358,23 @@ export const customerSupportContent: HirePageContent = {
       question: "Can your specialists work with AI support tools?",
       answer: "Yes. Our support specialists are trained to work alongside AI tools like Intercom Fin, Zendesk AI and Answer Bot, Freshdesk Freddy, and other AI-powered chatbot and automation platforms. They manage AI escalation workflows, step in when AI reaches its limits on complex issues, and help improve AI accuracy by refining knowledge base content and flagging response gaps. In 2026, the best support teams are human + AI hybrid operations, and our specialists are ready for that model."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Our CSAT scores jumped 20% within a month of bringing on our Teams 24 support specialist. They mastered our Zendesk setup instantly."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "We needed someone who understood AI support tools and human empathy. Teams 24 found us the perfect specialist who handles escalations flawlessly."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "During Q4, we scaled our support team with three specialists from Teams 24. They integrated into our Slack and Shopify workflow without missing a beat."
+    }
   ]
 };
 
@@ -316,6 +382,10 @@ export const pythonDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Python Developers: Dedicated Python Engineers  in 72 Hours",
     description: "Hire dedicated Python developers from Teams 24 in 72 hours. Expert engineers skilled in Django, FastAPI, AI/ML, data science, automation & cloud deployment. 5-hour vetting. Scale on demand."
+  ,
+    primaryKeyword: "Hire Python Developers",
+    secondaryKeywords: "hire hire python developers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/python-developer"
   },
   hero: {
     headline: "Hire Python Developers: Dedicated, Python Engineers for AI, Web & Data in 72 Hours",
@@ -408,6 +478,23 @@ export const pythonDeveloperContent: HirePageContent = {
       question: "Can your developers build LLM-powered applications and AI agents?",
       answer: "Yes. Building LLM applications is one of our fastest-growing specializations. Our Python developers build production-grade RAG (Retrieval-Augmented Generation) pipelines with vector databases like Pinecone and Weaviate, AI-powered document Q&A systems, conversational chatbots using LangChain and LlamaIndex, autonomous AI agents, and custom fine-tuning pipelines. They understand prompt engineering, embedding strategies, token optimization, and the full architecture behind shipping reliable AI products."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "We needed a Python developer to rebuild our ETL pipelines and optimize our Django backend. The expert from Teams 24 delivered beyond our expectations."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "Our Teams 24 Python engineer helped us transition to a RAG architecture using LangChain in record time. Their deep understanding of AI frameworks is unmatched."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "Finding a Python developer who writes secure, scalable code is hard. Finding one in 3 days who integrates perfectly into our CI/CD pipeline is incredible. Thanks Teams 24."
+    }
   ]
 };
 
@@ -415,6 +502,10 @@ export const expressJsContent: HirePageContent = {
   seo: {
     title: "Hire Express.js Developers: Dedicated Node.js & Express Experts in 72 Hours",
     description: "Hire dedicated Express.js developers from Teams 24 in 72 hours. Expert backend engineers skilled in Node.js, REST APIs, MongoDB, microservices & real-time apps. 5-hour vetting. Scale on demand."
+  ,
+    primaryKeyword: "Hire Express.js Developers",
+    secondaryKeywords: "hire hire express.js developers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/express.js-developer"
   },
   hero: {
     headline: "Hire Express.js Developers:Affordable, Dedicated Node.js & Express Experts in 72 Hours",
@@ -514,6 +605,23 @@ export const expressJsContent: HirePageContent = {
       question: "Can your developers help migrate our backend to Express.js?",
       answer: "Yes. Our Express.js developers handle backend migrations from legacy frameworks like PHP/Laravel, Ruby on Rails, Django, or monolithic Node.js setups to modern Express.js architectures. This includes API redesign, database migration, authentication system rebuild, and zero-downtime deployment strategies to ensure a smooth transition."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "We migrated our monolithic backend to Express.js microservices. Our Teams 24 developer drove the entire architecture redesign effortlessly."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The Node.js expertise we got from Teams 24 is top-tier. They set up our REST APIs, authentication, and caching layers flawlessly."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "We needed a backend that could scale to thousands of concurrent users. Our dedicated Express.js engineer built exactly that."
+    }
   ]
 };
 
@@ -521,6 +629,10 @@ export const automationTestingContent: HirePageContent = {
   seo: {
     title: "Hire Automation Testers: Dedicated, QA Automation Experts in 72 Hours",
     description: "Hire dedicated automation testers from Teams 24 in 72 hours. Expert QA engineers skilled in Selenium, Playwright, Cypress, API testing & CI/CD pipelines. 5-hour vetting. Scale on demand."
+  ,
+    primaryKeyword: "Hire Automation Testers",
+    secondaryKeywords: "hire hire automation testers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/automation-tester"
   },
   hero: {
     headline: "Hire Automation Testers: Dedicated, Expert QA Automation Engineers in 72 Hours",
@@ -612,6 +724,23 @@ export const automationTestingContent: HirePageContent = {
       question: "How is this different from hiring a freelance QA tester?",
       answer: "Freelancers juggle multiple clients and have inconsistent availability. Teams 24 provides dedicated QA automation professionals who work exclusively on your project. They are fully embedded into your team’s repositories, attend your daily standups, and are accountable to your release timelines — just like a full-time QA hire, but without the overhead of traditional employment."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Our Teams 24 automation tester built our entire Playwright suite from scratch. We've reduced regression testing time by 80%."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "Integrating automated tests into our CI/CD pipeline was a struggle until our QA engineer from Teams 24 stepped in and stabilized our releases."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "The level of detail in their test scenarios is amazing. They don't just automate tests; they improve our overall software quality."
+    }
   ]
 };
 
@@ -619,6 +748,10 @@ export const salesforceDeveloperContent: HirePageContent = {
   seo: {
     title: "Hire Salesforce Developers: Certified, Dedicated Salesforce Experts in 72 Hours",
     description: "Hire certified Salesforce developers, admins & consultants from Teams 24 in 72 hours. Dedicated Salesforce experts for CRM customisation, Apex development & Lightning components. 5-hour vetting process."
+  ,
+    primaryKeyword: "Hire Salesforce Developers",
+    secondaryKeywords: "hire hire salesforce developers, dedicated experts, Teams 24",
+    canonicalUrl: "https://teams24.co/hire/salesforce-developer"
   },
   hero: {
     headline: "Hire Salesforce Developers: Certified, Dedicated Salesforce Experts in 72 Hours",
@@ -708,6 +841,401 @@ export const salesforceDeveloperContent: HirePageContent = {
       question: "What if I need Salesforce integration with other systems?",
       answer: "Our Salesforce developers are proficient in connecting Salesforce to external systems using REST APIs, SOAP APIs, MuleSoft, Heroku, and middleware platforms. Whether you need ERP integration, marketing automation sync, custom API development, or data migration. Our team handles end-to-end Salesforce integration services."
     }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "We needed complex Apex triggers and LWC components built fast. Our Teams 24 Salesforce developer delivered clean, optimized code that transformed our CRM."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The expertise our developer has across Sales Cloud and Marketing Cloud is phenomenal. They automated workflows that saved our team hours every week."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "Integrating Salesforce with our legacy ERP was daunting. Our dedicated developer from Teams 24 handled the API integrations securely and efficiently."
+    }
+  ]
+};
+
+export const performanceMarketingContent: HirePageContent = {
+  seo: {
+    title: "Hire Performance Marketers | Dedicated Paid Media Experts",
+    description: "Hire performance marketers in 72 hours. Access 100+ vetted paid media & growth experts at Teams 24 — Google, Meta, TikTok & full-funnel ROAS specialists.",
+    primaryKeyword: "Hire Performance Marketer",
+    secondaryKeywords: "hire performance marketing expert, performance marketing specialist, paid media specialist, hire PPC expert, dedicated growth marketer, hire paid ads expert",
+    canonicalUrl: "https://teams24.co/hire/performance-marketer"
+  },
+  hero: {
+    headline: "Hire Performance Marketers: Affordable, Dedicated Paid Media & Growth Experts in 72 Hours",
+    subheading: "Access 100+ expert performance marketers, paid media specialists, and growth strategists from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
+    primaryCta: "Hire Your Dream Marketers",
+    secondaryCta: "Book a Free Discovery Call"
+  },
+  skillsTitle: "10+ Skills That Performance Marketers at Teams 24 Are Skilled At",
+  skillsDescription: "Performance marketers at Teams 24 are skilled at Google Ads, Meta Ads, GA4, conversion rate optimization, and more delivering full-funnel expertise across paid acquisition, analytics, creative testing, and revenue growth.",
+  skills: [
+    {
+      category: "Paid Search & PPC",
+      skills: ["Google Ads", "Microsoft (Bing) Ads", "Performance Max", "Google Shopping", "Search Ads 360", "Amazon Ads"],
+      colors: ["bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700", "bg-emerald-50 text-emerald-700", "bg-red-50 text-red-700", "bg-yellow-50 text-yellow-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Paid Social",
+      skills: ["Meta Ads", "TikTok Ads", "LinkedIn Ads", "Pinterest Ads", "Snapchat Ads", "X (Twitter) Ads"],
+      colors: ["bg-blue-50 text-blue-700", "bg-black text-white", "bg-blue-50 text-blue-700", "bg-red-50 text-red-700", "bg-yellow-50 text-yellow-700", "bg-gray-100 text-gray-700"]
+    },
+    {
+      category: "Analytics & Measurement",
+      skills: ["GA4", "Google Tag Manager", "Looker Studio", "Mixpanel", "Amplitude", "Hotjar"],
+      colors: ["bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-purple-50 text-purple-700", "bg-indigo-50 text-indigo-700", "bg-red-50 text-red-700"]
+    },
+    {
+      category: "Conversion Rate Optimization",
+      skills: ["A/B Testing", "Landing Page CRO", "Funnel Analysis", "VWO", "Optimizely", "Unbounce"],
+      colors: ["bg-gray-100 text-gray-700", "bg-emerald-50 text-emerald-700", "bg-blue-50 text-blue-700", "bg-red-50 text-red-700", "bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700"]
+    },
+    {
+      category: "Tracking & Attribution",
+      skills: ["Server-Side Tracking", "Meta CAPI", "Enhanced Conversions", "Triple Whale", "Northbeam", "UTM Strategy"],
+      colors: ["bg-indigo-50 text-indigo-700", "bg-blue-50 text-blue-700", "bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700", "bg-sky-50 text-sky-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Marketing Automation & CRM",
+      skills: ["HubSpot", "Klaviyo", "Mailchimp", "ActiveCampaign", "Salesforce", "Customer.io"],
+      colors: ["bg-orange-50 text-orange-700", "bg-green-50 text-green-700", "bg-yellow-50 text-yellow-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-emerald-50 text-emerald-700"]
+    },
+    {
+      category: "SEO & Content Distribution",
+      skills: ["Technical SEO", "Ahrefs", "Semrush", "Search Console", "Keyword Research", "Content Strategy"],
+      colors: ["bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-orange-50 text-orange-700", "bg-gray-100 text-gray-700", "bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700"]
+    },
+    {
+      category: "Creative & Ad Production",
+      skills: ["Ad Copywriting", "UGC Strategy", "Canva", "Figma", "CapCut", "Creative Testing"],
+      colors: ["bg-gray-100 text-gray-700", "bg-emerald-50 text-emerald-700", "bg-blue-50 text-blue-700", "bg-pink-50 text-pink-700", "bg-black text-white", "bg-purple-50 text-purple-700"]
+    },
+    {
+      category: "Ecommerce & DTC Growth",
+      skills: ["Shopify", "Amazon Seller Central", "Retention Marketing", "Subscription Growth", "ROAS Optimization", "Marketplace Ads"],
+      colors: ["bg-green-50 text-green-700", "bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-indigo-50 text-indigo-700", "bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700"]
+    },
+    {
+      category: "Reporting & Strategy",
+      skills: ["Budget Allocation", "Media Planning", "Media Mix Modeling", "Forecasting", "Cohort Analysis", "KPI Dashboards"],
+      colors: ["bg-emerald-50 text-emerald-700", "bg-blue-50 text-blue-700", "bg-purple-50 text-purple-700", "bg-orange-50 text-orange-700", "bg-indigo-50 text-indigo-700", "bg-gray-100 text-gray-700"]
+    }
+  ],
+  faqs: [
+    {
+      question: "Can your performance marketers manage our paid ad budgets end-to-end?",
+      answer: "Yes. Our marketers own the full cycle — account structure, audience and keyword strategy, creative testing, bid and budget management, tracking setup, and weekly reporting against your ROAS, CAC, and pipeline goals. You stay in control of spend; they drive the strategy and execution."
+    },
+    {
+      question: "What about fit with our existing marketing team?",
+      answer: "Every engagement starts with a discovery call to understand your funnel, tools, and team. We match you with a marketer whose channel strengths fill your gaps, and they slot into your Slack, standups, and reporting rhythm so it feels like an in-house hire, not an outside vendor."
+    },
+    {
+      question: "How do you ensure quality and results?",
+      answer: "Every marketer clears a rigorous 5-hour evaluation covering platform skills, analytics, and real campaign problem-solving — so you're hiring from the top of the pool. Performance is then tracked against agreed KPIs throughout the engagement, not just at the start."
+    },
+    {
+      question: "Can I hire a paid-search-only or paid-social-only specialist instead?",
+      answer: "Absolutely. If you only need a Google Ads / PPC specialist, a Meta and TikTok paid-social expert, or a CRO and analytics lead, we'll match a focused specialist rather than a generalist. You can also combine specialists into a small growth pod."
+    },
+    {
+      question: "How is this different from hiring a freelance performance marketer?",
+      answer: "Freelancers are transactional and often juggle many accounts. Teams 24 gives you a dedicated, vetted marketer backed by a team and process, accountable to your KPIs — with the reliability of an employee and roughly half the cost of traditional hiring."
+    },
+    {
+      question: "How fast is deployment really?",
+      answer: "Most clients have a performance marketer onboarded and working inside their accounts within 72 hours of the discovery call. There's no months-long recruitment cycle, job posts, or interview marathons to manage."
+    },
+    {
+      question: "Can we scale the team and scope as we grow?",
+      answer: "Yes. Teams 24 engagements run on annual contracts for stability, and within that engagement you can expand scope — add channels, bring on additional specialists, or grow into a full growth pod — as your spend and ambitions increase."
+    },
+    {
+      question: "What platforms and tools do your performance marketers work with?",
+      answer: "Across the network: Google Ads, Meta, TikTok, LinkedIn and Amazon Ads; GA4, GTM and Looker Studio; HubSpot, Klaviyo and Salesforce; plus CRO and attribution stacks like VWO, Optimizely, Triple Whale and server-side tracking. We match the marketer to your existing stack."
+    },
+    {
+      question: "Can your marketers work with our existing ad accounts and data?",
+      answer: "Yes. They plug into your current Google, Meta, and analytics accounts, audit historical performance and tracking, and build on what's working rather than forcing a teardown — so you keep your learnings, history, and pixels intact."
+    }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Teams 24 plugged a senior performance marketer into our growth team almost overnight. Their commitment and flexibility within the engagement are exactly what an early-stage startup needs to move on paid spend with confidence."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Growth Lead",
+      quote: "The discovery call was eye-opening — they mapped our entire funnel before we'd signed anything. We had a paid media specialist running our Meta and Google accounts in less than 72 hours, which is unheard of in traditional recruitment."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "We'd tried multiple agencies and it didn't work — budgets burned, no ownership. With Teams 24 we finally got a dedicated marketer who treats our ad spend like their own, with no timeline constraints in setting up our core team."
+    }
+  ]
+};
+
+export const powerBIContent: HirePageContent = {
+  seo: {
+    title: "Hire Power BI Developers | Dedicated BI & Dashboard Experts",
+    description: "Hire Power BI developers in 72 hours. Access 100+ vetted BI experts at Teams 24 — DAX, Power Query, dashboards, Microsoft Fabric & data modeling specialists.",
+    primaryKeyword: "Hire Power BI Developer",
+    secondaryKeywords: "hire Power BI expert, Power BI consultant, Power BI analyst, hire BI developer, dedicated Power BI specialist, hire data visualization expert",
+    canonicalUrl: "https://teams24.co/hire/power-bi-developer"
+  },
+  hero: {
+    headline: "Hire Power BI Developers: Affordable, Dedicated BI & Dashboard Experts in 72 Hours",
+    subheading: "Access 100+ expert Power BI developers, BI analysts, and data visualization specialists from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
+    primaryCta: "Hire Your Dream Developers",
+    secondaryCta: "Book a Free Discovery Call"
+  },
+  skillsTitle: "10+ Skills That Power BI Developers at Teams 24 Are Skilled At",
+  skillsDescription: "Power BI developers at Teams 24 are skilled at DAX, Power Query, data modeling, dashboard design, and more delivering end-to-end expertise across data transformation, modeling, visualization, and enterprise reporting.",
+  skills: [
+    {
+      category: "Power BI Core",
+      skills: ["Power BI Desktop", "Power BI Service", "Report Server", "Paginated Reports", "Dashboards", "Power BI Mobile"],
+      colors: ["bg-orange-50 text-orange-700", "bg-yellow-50 text-yellow-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-red-50 text-red-700", "bg-yellow-50 text-yellow-700"]
+    },
+    {
+      category: "Data Modeling & DAX",
+      skills: ["DAX", "Data Modeling", "Star Schema", "Measures", "Calculated Columns", "Row-Level Security"],
+      colors: ["bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-gray-100 text-gray-700"]
+    },
+    {
+      category: "Data Transformation (ETL)",
+      skills: ["Power Query", "M Language", "Dataflows", "Data Cleansing", "Merge & Append", "Incremental Refresh"],
+      colors: ["bg-blue-50 text-blue-700", "bg-purple-50 text-purple-700", "bg-indigo-50 text-indigo-700", "bg-stone-50 text-stone-700", "bg-yellow-50 text-yellow-700", "bg-emerald-50 text-emerald-700"]
+    },
+    {
+      category: "Data Sources & Connectivity",
+      skills: ["SQL Server", "Azure SQL", "Excel", "SharePoint", "REST APIs", "OData"],
+      colors: ["bg-stone-50 text-stone-700", "bg-green-50 text-green-700", "bg-red-50 text-red-700", "bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700"]
+    },
+    {
+      category: "Microsoft Data Stack",
+      skills: ["Microsoft Fabric", "Azure Synapse", "Azure Data Factory", "Databricks", "Dataverse", "SSAS"],
+      colors: ["bg-blue-50 text-blue-700", "bg-indigo-50 text-indigo-700", "bg-purple-50 text-purple-700", "bg-orange-50 text-orange-700", "bg-emerald-50 text-emerald-700", "bg-sky-50 text-sky-700"]
+    },
+    {
+      category: "Databases & SQL",
+      skills: ["T-SQL", "Stored Procedures", "PostgreSQL", "MySQL", "Snowflake", "BigQuery"],
+      colors: ["bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-yellow-50 text-yellow-700", "bg-red-50 text-red-700", "bg-emerald-50 text-emerald-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Visualization & UX Design",
+      skills: ["Custom Visuals", "Report Theming", "Bookmarks", "Drill-through", "Tooltips", "Conditional Formatting"],
+      colors: ["bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-sky-50 text-sky-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Advanced Analytics",
+      skills: ["Time Intelligence", "Forecasting", "Python in Power BI", "R Integration", "What-if Parameters", "AI Visuals"],
+      colors: ["bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-yellow-50 text-yellow-700", "bg-green-50 text-green-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Governance & Deployment",
+      skills: ["Workspaces", "Deployment Pipelines", "Data Gateways", "Workspace Roles", "Sensitivity Labels", "Power BI Admin"],
+      colors: ["bg-indigo-50 text-indigo-700", "bg-orange-50 text-orange-700", "bg-red-50 text-red-700", "bg-sky-50 text-sky-700", "bg-purple-50 text-purple-700", "bg-emerald-50 text-emerald-700"]
+    },
+    {
+      category: "Integration & Automation",
+      skills: ["Power Automate", "Power Apps", "Excel Integration", "Teams Embedding", "Power BI Embedded", "Embed API"],
+      colors: ["bg-pink-50 text-pink-700", "bg-cyan-50 text-cyan-700", "bg-violet-50 text-violet-700", "bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700"]
+    }
+  ],
+  faqs: [
+    {
+      question: "Can your Power BI developers build dashboards and reports from scratch?",
+      answer: "Yes. Our developers handle the full build, connecting to your data sources, cleaning and transforming data in Power Query, designing the data model and DAX measures, and delivering polished, interactive dashboards that ship to the Power BI Service for your team to use."
+    },
+    {
+      question: "What about fit with our existing data or analytics team?",
+      answer: "Every engagement starts with a discovery call to understand your data sources, stack, and reporting goals. We match you with a developer whose strengths fill your gaps, and they slot into your Slack, standups, and workspace governance so it feels like an in-house hire, not an outside vendor."
+    },
+    {
+      question: "How do you ensure quality?",
+      answer: "Every developer clears a rigorous 5-hour evaluation covering DAX, data modeling, Power Query, and real reporting problem-solving, so you're hiring from the top of the pool. Work is then reviewed against agreed standards for performance, accuracy, and governance throughout the engagement."
+    },
+    {
+      question: "Can I hire a report-building-only developer, or someone who also handles the SQL and data engineering side?",
+      answer: "Both. If you only need dashboard and DAX work, we'll match a reporting specialist. If you need the upstream layer too — SQL, data warehousing, Fabric or Azure pipelines — we'll match a developer who owns the full data-to-dashboard flow, or pair specialists into a small pod."
+    },
+    {
+      question: "How is this different from hiring a freelance Power BI developer?",
+      answer: "Freelancers are transactional and often juggle many clients. Teams 24 gives you a dedicated, vetted developer backed by a team and process, accountable to your reporting goals with the reliability of an employee and roughly half the cost of traditional hiring."
+    },
+    {
+      question: "How fast is deployment really?",
+      answer: "Most clients have a Power BI developer onboarded and working with their data within 72 hours of the discovery call. There's no months-long recruitment cycle, job posts, or interview marathons to manage."
+    },
+    {
+      question: "Can we scale the team and scope as our reporting needs grow?",
+      answer: "Yes. Teams 24 engagements run on annual contracts for stability, and within that engagement you can expand scope — add data sources, build more workspaces, or grow into a full BI pod with data engineering support — as your analytics needs increase."
+    },
+    {
+      question: "What data sources and tools do your Power BI developers work with?",
+      answer: "Across the network: SQL Server, Azure SQL, Snowflake, BigQuery, Excel, SharePoint, REST APIs and OData; the Microsoft data stack including Microsoft Fabric, Azure Synapse, Data Factory and Dataverse; plus Power Automate, Power Apps and Power BI Embedded. We match the developer to your existing stack."
+    },
+    {
+      question: "Can your developers work with our existing reports and data models?",
+      answer: "Yes. They plug into your current Power BI workspaces, audit existing data models, DAX, and refresh setups, and build on what's working rather than rebuilding from zero — so you keep your history, governance, and existing reports intact."
+    }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Teams 24 made it incredibly easy to scale our analytics. Their Power BI developer turned a mess of spreadsheets into dashboards leadership actually uses — exactly what an early-stage startup needs."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The discovery call was eye-opening. We had a developer connected to our data sources and shipping our first reporting workspace in less than 72 hours, which is unheard of in traditional recruitment."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "We'd tried multiple agencies and it didn't work. With Teams 24 we got a dedicated BI developer who understood our data model with no timeline constraints in setting up our reporting team."
+    }
+  ]
+};
+
+export const aiEngineerContent: HirePageContent = {
+  seo: {
+    title: "Hire AI Engineers | Dedicated AI, ML & LLM Experts",
+    description: "Hire AI engineers in 72 hours. Access 100+ vetted AI, ML & LLM experts at Teams 24 — RAG, agents, fine-tuning, PyTorch & MLOps specialists.",
+    primaryKeyword: "Hire AI Engineer",
+    secondaryKeywords: "hire AI/ML engineer, hire machine learning engineer, hire LLM engineer, hire generative AI engineer, AI developer, dedicated AI specialist",
+    canonicalUrl: "https://teams24.co/hire/ai-engineer"
+  },
+  hero: {
+    headline: "Hire AI Engineers: Affordable, Dedicated AI, ML & LLM Experts in 72 Hours",
+    subheading: "Access 100+ expert AI engineers, machine learning specialists, and LLM developers from Teams 24, handpicked through a rigorous 5-hour evaluation process.",
+    trustBadge: "Trusted by 20+ CEOs and CXOs",
+    primaryCta: "Hire Your Dream Engineers",
+    secondaryCta: "Book a Free Discovery Call"
+  },
+  skillsTitle: "10+ Skills That AI Engineers at Teams 24 Are Skilled At",
+  skillsDescription: "AI engineers at Teams 24 are skilled at Python, PyTorch, LLMs, RAG pipelines, and more — delivering end-to-end expertise across model development, agentic systems, MLOps, and production AI deployment.",
+  skills: [
+    {
+      category: "AI/ML Frameworks",
+      skills: ["PyTorch", "TensorFlow", "JAX", "scikit-learn", "Keras", "Hugging Face Transformers"],
+      colors: ["bg-orange-50 text-orange-700", "bg-yellow-50 text-yellow-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-red-50 text-red-700", "bg-yellow-50 text-yellow-700"]
+    },
+    {
+      category: "Large Language Models",
+      skills: ["GPT", "Claude", "Llama", "Gemini", "Mistral", "Fine-tuning"],
+      colors: ["bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-gray-100 text-gray-700"]
+    },
+    {
+      category: "LLM Application Frameworks",
+      skills: ["LangChain", "LlamaIndex", "LangGraph", "DSPy", "Haystack", "Semantic Kernel"],
+      colors: ["bg-blue-50 text-blue-700", "bg-purple-50 text-purple-700", "bg-indigo-50 text-indigo-700", "bg-stone-50 text-stone-700", "bg-yellow-50 text-yellow-700", "bg-emerald-50 text-emerald-700"]
+    },
+    {
+      category: "RAG & Vector Databases",
+      skills: ["Pinecone", "Weaviate", "Qdrant", "Chroma", "pgvector", "Milvus"],
+      colors: ["bg-stone-50 text-stone-700", "bg-green-50 text-green-700", "bg-red-50 text-red-700", "bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700"]
+    },
+    {
+      category: "Agentic & Orchestration",
+      skills: ["AI Agents", "Function Calling", "MCP", "CrewAI", "AutoGen", "Multi-agent Systems"],
+      colors: ["bg-blue-50 text-blue-700", "bg-indigo-50 text-indigo-700", "bg-purple-50 text-purple-700", "bg-orange-50 text-orange-700", "bg-emerald-50 text-emerald-700", "bg-sky-50 text-sky-700"]
+    },
+    {
+      category: "ML Engineering & MLOps",
+      skills: ["MLflow", "Kubeflow", "Weights & Biases", "BentoML", "Model Serving", "CI/CD for ML"],
+      colors: ["bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700", "bg-yellow-50 text-yellow-700", "bg-red-50 text-red-700", "bg-emerald-50 text-emerald-700", "bg-orange-50 text-orange-700"]
+    },
+    {
+      category: "Programming Languages",
+      skills: ["Python", "SQL", "TypeScript", "Rust", "Go", "C++"],
+      colors: ["bg-blue-50 text-blue-700", "bg-sky-50 text-sky-700", "bg-blue-50 text-blue-700", "bg-orange-50 text-orange-700", "bg-sky-50 text-sky-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Cloud & AI Infrastructure",
+      skills: ["AWS SageMaker", "Azure AI", "Vertex AI", "GPU / CUDA", "Docker", "Kubernetes"],
+      colors: ["bg-orange-50 text-orange-700", "bg-blue-50 text-blue-700", "bg-yellow-50 text-yellow-700", "bg-green-50 text-green-700", "bg-blue-50 text-blue-700", "bg-blue-50 text-blue-700"]
+    },
+    {
+      category: "Data Engineering for AI",
+      skills: ["Data Pipelines", "Spark", "Airflow", "Feature Stores", "Data Labeling", "ETL"],
+      colors: ["bg-indigo-50 text-indigo-700", "bg-orange-50 text-orange-700", "bg-red-50 text-red-700", "bg-sky-50 text-sky-700", "bg-purple-50 text-purple-700", "bg-emerald-50 text-emerald-700"]
+    },
+    {
+      category: "Deep Learning & Specializations",
+      skills: ["NLP", "Computer Vision", "Speech / ASR", "Embeddings", "Diffusion Models", "Reinforcement Learning"],
+      colors: ["bg-pink-50 text-pink-700", "bg-cyan-50 text-cyan-700", "bg-violet-50 text-violet-700", "bg-emerald-50 text-emerald-700", "bg-purple-50 text-purple-700", "bg-blue-50 text-blue-700"]
+    }
+  ],
+  faqs: [
+    {
+      question: "Can your AI engineers build an AI feature or product from scratch?",
+      answer: "Yes. Our engineers handle the full build — from problem framing and data prep to model selection, RAG or fine-tuning, agent design, evaluation, and shipping to production. Whether it's an LLM-powered feature or a custom ML model, they take it from prototype to a reliable, deployed system."
+    },
+    {
+      question: "What about fit with our existing engineering or product team?",
+      answer: "Every engagement starts with a discovery call to understand your stack, data, and roadmap. We match you with an engineer whose strengths fill your gaps, and they slot into your Slack, standups, and repos so it feels like an in-house hire, not an outside vendor."
+    },
+    {
+      question: "How do you ensure quality?",
+      answer: "Every engineer clears a rigorous 5-hour evaluation covering ML fundamentals, LLM/applied-AI problem-solving, and production engineering — so you're hiring from the top of the pool. Work is then held to agreed standards for evaluation, reliability, and cost throughout the engagement."
+    },
+    {
+      question: "Can I hire an applied-LLM engineer only, or someone who also handles ML infrastructure and MLOps?",
+      answer: "Both. If you only need LLM/RAG/agent work, we'll match an applied-AI specialist. If you need the full pipeline — data engineering, training, model serving, and MLOps. we'll match an engineer who owns it end-to-end, or pair specialists into a small AI pod."
+    },
+    {
+      question: "How is this different from hiring a freelance AI engineer?",
+      answer: "Freelancers are transactional and often juggle many clients. Teams 24 gives you a dedicated, vetted AI engineer backed by a team and process, accountable to your roadmap with the reliability of an employee and roughly half the cost of traditional hiring."
+    },
+    {
+      question: "How fast is deployment really?",
+      answer: "Most clients have an AI engineer onboarded and working in their codebase within 72 hours of the discovery call. There's no months-long recruitment cycle, job posts, or interview marathons to manage."
+    },
+    {
+      question: "Can we scale the team and scope as our AI roadmap grows?",
+      answer: "Yes. Teams 24 engagements run on annual contracts for stability, and within that engagement you can expand scope — add models, build new AI features, or grow into a full AI pod with data engineering and MLOps support — as your roadmap expands."
+    },
+    {
+      question: "What models, frameworks, and tools do your AI engineers work with?",
+      answer: "Across the network: PyTorch, TensorFlow and Hugging Face; LLMs including GPT, Claude, Llama, Gemini and Mistral; LangChain, LlamaIndex and LangGraph; vector stores like Pinecone, Weaviate and pgvector; plus MLOps and cloud AI on SageMaker, Vertex AI and Azure AI. We match the engineer to your existing stack."
+    },
+    {
+      question: "Can your engineers work with our existing models, data, and codebase?",
+      answer: "Yes. They plug into your current repos, data, and model pipelines, audit what exists, and build on it rather than rebuilding from scratch — so you keep your data, prior training work, and engineering history intact."
+    }
+  ],
+  testimonials: [
+    {
+      name: "Niranjan Venugopal",
+      title: "Founder, Specflicks",
+      quote: "Teams 24 made it incredibly easy to ship AI features. Their engineer took us from prototype to a production RAG pipeline — exactly the commitment and flexibility an early-stage startup needs."
+    },
+    {
+      name: "Sasha Ray",
+      title: "Product Lead",
+      quote: "The discovery call was eye-opening. We had an AI engineer integrating an LLM agent into our product in less than 72 hours, which is unheard of in traditional recruitment."
+    },
+    {
+      name: "Anand",
+      title: "Founder, AuraGold",
+      quote: "We'd tried multiple agencies and it didn't work. With Teams 24 we got a dedicated AI engineer who owned our models end-to-end, with no timeline constraints in setting up our core team."
+    }
   ]
 };
 
@@ -718,8 +1246,12 @@ export const contentMap: Record<string, HirePageContent> = {
   "express.js-developer": expressJsContent,
   "automation-tester": automationTestingContent,
   "salesforce-developer": salesforceDeveloperContent,
+  "performance-marketing": performanceMarketingContent,
+  "power-bi-developer": powerBIContent,
+  "ai-engineer": aiEngineerContent,
 };
 
 export const getContentBySlug = (slug: string): HirePageContent => {
   return contentMap[slug] || defaultContent;
 };
+

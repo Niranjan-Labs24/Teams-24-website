@@ -316,7 +316,7 @@ export default function HeroSection(): JSX.Element {
                     className="mx-auto w-full h-[46px] xl:h-[3.5vw] flex items-center justify-center bg-white text-black rounded-[62px] xl:rounded-[4vw] border-[3px] xl:border-[0.2vw] border-[#131313]/15 font-semibold text-[13px] xl:text-[1.05vw] leading-[24px] xl:leading-[1.3] px-6 xl:px-[1.5vw] py-2.5 xl:py-[0.6vw] hover:bg-gray-100 transition-all shadow-xl shadow-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.03em' }}
                   >
-                    {isSubmitting ? "..." : "Book a demo call"}
+                    {isSubmitting ? "..." : "Book a call"}
                   </button>
                 </form>
                 </>
