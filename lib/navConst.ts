@@ -11,6 +11,7 @@ export const NAV_CONTENT = {
       "Salesforce Developer",
       "Performance Marketing",
       "Power BI",
+      "AI Engineer",
     ]
   },
   talent: {
