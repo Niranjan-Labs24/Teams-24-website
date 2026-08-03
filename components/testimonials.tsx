@@ -40,7 +40,7 @@ export default function Testimonials({ items }: { items?: TestimonialItem[] }) {
 
   return (
     <section 
-      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 flex items-center justify-center min-h-[632px] xl:min-h-[44vw]"
+      className="w-full bg-white text-[#1A1A1A] font-manrope py-10 md:py-16 flex items-center justify-center min-h-0 md:min-h-[632px] xl:min-h-[44vw]"
     >
       <div className="w-full max-w-[1240px] xl:max-w-none xl:w-[85vw] mx-auto flex flex-col items-center px-6 md:px-12 lg:px-16 xl:px-0">
         {/* Adjusted Heading based on dimensions */}
@@ -59,9 +59,9 @@ export default function Testimonials({ items }: { items?: TestimonialItem[] }) {
           {displayData.map((t, idx) => (
             <div 
               key={idx} 
-              className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow min-h-[300px] md:min-h-[350px] xl:min-h-[22vw]
-                before:content-['“'] before:absolute before:top-2 before:left-4 before:text-[60px] md:before:text-[80px] xl:before:text-[5vw] before:leading-none before:text-[#1A1A1A]/10 before:font-serif
-                after:content-['”'] after:absolute after:bottom-12 md:after:bottom-16 xl:after:bottom-[5vw] after:right-4 md:after:right-8 xl:after:right-[2vw] after:text-[60px] md:after:text-[80px] xl:after:text-[5vw] after:leading-none after:text-[#1A1A1A]/10 after:font-serif"
+              className="relative bg-[#FAFAFA] rounded-[1.5rem] xl:rounded-[2vw] p-6 sm:p-8 md:p-10 xl:p-[2.5vw] flex flex-col justify-start gap-4 sm:gap-6 xl:gap-[1.5vw] border border-[#00000005] hover:shadow-sm transition-shadow h-auto min-h-fit md:min-h-[350px] xl:min-h-[22vw] overflow-hidden
+                before:content-['“'] before:absolute before:top-2 before:left-4 before:text-[60px] md:before:text-[80px] xl:before:text-[5vw] before:leading-none before:text-[#1A1A1A]/10 before:font-serif pointer-events-none
+                after:content-['”'] after:absolute after:bottom-2 after:right-4 md:after:bottom-4 md:after:right-6 xl:after:bottom-[2vw] xl:after:right-[2vw] after:text-[60px] md:after:text-[80px] xl:after:text-[5vw] after:leading-none after:text-[#1A1A1A]/10 after:font-serif pointer-events-none"
             >
               
               <p className="text-[#1A1A1A] text-base sm:text-lg xl:text-[1.2vw] leading-relaxed xl:leading-[1.8] font-medium pr-2 md:pr-4 xl:pr-[1vw] relative z-10">
@@ -69,9 +69,9 @@ export default function Testimonials({ items }: { items?: TestimonialItem[] }) {
               </p>
 
               
-              <div className="flex items-center gap-2 xl:gap-[0.8vw] mt-auto relative z-10">
-                <span className="text-[#1A1A1A] font-bold xl:text-[1.1vw]">- {t.name}</span>
-                <span className="text-[#1A1A1A]/40 text-sm xl:text-[0.9vw] font-medium">{t.title}</span>
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mt-1 sm:mt-2 md:mt-auto relative z-10">
+                <span className="text-[#1A1A1A] font-bold text-sm sm:text-base xl:text-[1.1vw]">- {t.name}</span>
+                <span className="text-[#1A1A1A]/50 text-xs sm:text-sm xl:text-[0.9vw] font-medium">{t.title}</span>
               </div>
             </div>
           ))}

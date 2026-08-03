@@ -136,29 +136,34 @@ export function CTASection() {
     let observer: IntersectionObserver | null = null;
 
     const initLogoAnimations = async () => {
-      const { gsap } = await loadGSAP();
-      ctx = gsap.context(() => {
-        logosRef.current.forEach((el, index) => {
-          if (!el) return;
-          
-          // Set initial rotation through GSAP to avoid conflict with CSS transform
-          const initialRotate = parseInt(logos[index].style.rotate) || 0;
-          gsap.set(el, { rotation: initialRotate });
+      try {
+        const { gsap } = await loadGSAP();
+        if (!gsap) return;
+        ctx = gsap.context(() => {
+          logosRef.current.forEach((el, index) => {
+            if (!el) return;
+            
+            // Set initial rotation through GSAP to avoid conflict with CSS transform
+            const initialRotate = parseInt(logos[index].style.rotate) || 0;
+            gsap.set(el, { rotation: initialRotate });
 
-          gsap.to(el, {
-            x: "random(-10, 10)",
-            y: "random(-8, 8)",
-            rotation: `${initialRotate} + random(-5, 5)`,
-            scale: "random(0.95, 1.05)",
-            duration: "random(2, 3)",
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            force3D: true,
-            autoRound: false,
+            gsap.to(el, {
+              x: "random(-10, 10)",
+              y: "random(-8, 8)",
+              rotation: `${initialRotate} + random(-5, 5)`,
+              scale: "random(0.95, 1.05)",
+              duration: "random(2, 3)",
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+              force3D: true,
+              autoRound: false,
+            });
           });
         });
-      });
+      } catch (err) {
+        console.warn("Failed to load GSAP in CTASection:", err);
+      }
     };
 
     if (section) {

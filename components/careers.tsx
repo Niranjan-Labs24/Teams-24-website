@@ -111,12 +111,12 @@ export function Careers() {
                   rel="noopener noreferrer"
                   className="group block border-b border-[#0000000F] hover:bg-gray-50/50 transition-colors"
                 >
-                  <div className="flex items-center justify-between py-6 px-2 sm:px-4">
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-[#1A1A1A] text-2xl md:text-3xl font-medium tracking-tight font-manrope">
+                  <div className="flex items-center justify-between gap-4 sm:gap-6 py-5 px-3 sm:py-6 sm:px-4">
+                    <div className="flex-1 min-w-0 flex flex-col gap-1.5 sm:gap-2">
+                      <h3 className="text-[#1A1A1A] text-xl sm:text-2xl md:text-3xl font-medium tracking-tight font-manrope leading-snug break-words">
                         {job.title}
                       </h3>
-                      <div className="flex flex-wrap items-center gap-x-2 text-[#71717A] text-base md:text-lg font-medium">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[#71717A] text-sm sm:text-base md:text-lg font-medium">
                         <span>{job.type}</span>
                         {job.salary_min && job.salary_max && (
                           <>
@@ -131,8 +131,8 @@ export function Careers() {
                       </div>
                     </div>
 
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
-                      <ArrowUpRight className="text-white w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-black rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                      <ArrowUpRight className="text-white w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-45" />
                     </div>
                   </div>
                 </a>
