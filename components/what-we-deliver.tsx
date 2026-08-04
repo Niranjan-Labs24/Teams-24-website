@@ -34,10 +34,11 @@ export default function WhatWeDeliver() {
     let observer: IntersectionObserver | null = null;
 
     const initAnimations = async () => {
-      const { gsap, ScrollTrigger } = await loadGSAP({ scrollTrigger: true });
-      if (!ScrollTrigger || !sectionRef.current) return;
+      try {
+        const { gsap, ScrollTrigger } = await loadGSAP({ scrollTrigger: true });
+        if (!gsap || !ScrollTrigger || !sectionRef.current) return;
 
-      ctx = gsap.context(() => {
+        ctx = gsap.context(() => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top center",
@@ -72,6 +73,9 @@ export default function WhatWeDeliver() {
           }
         });
       }, sectionRef);
+      } catch (err) {
+        console.warn("Failed to load GSAP in WhatWeDeliver:", err);
+      }
     };
 
     observer = new IntersectionObserver(

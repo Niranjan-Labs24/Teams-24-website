@@ -12,6 +12,18 @@ export interface FramerMotionModules {
 let gsapCache: GSAPModules | null = null;
 let framerMotionCache: FramerMotionModules | null = null;
 
+async function retryImport<T>(fn: () => Promise<T>, retries = 2, delay = 250): Promise<T> {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0) {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      return retryImport(fn, retries - 1, delay * 2);
+    }
+    throw error;
+  }
+}
+
 export async function loadGSAP(
   plugins?: {
     scrollTrigger?: boolean;
@@ -29,21 +41,21 @@ export async function loadGSAP(
 
   let gsapInstance = gsapCache?.gsap;
   if (!gsapInstance) {
-    const module = await import("gsap");
-    gsapInstance = module.gsap;
+    const module = await retryImport(() => import("gsap"));
+    gsapInstance = module.gsap || (module as any).default?.gsap || (module as any).default || (module as any);
   }
 
   const modules: GSAPModules = { gsap: gsapInstance };
   const promises: Promise<any>[] = [];
 
   if (plugins?.scrollTrigger && !gsapCache?.ScrollTrigger) {
-    promises.push(import("gsap/ScrollTrigger"));
+    promises.push(retryImport(() => import("gsap/ScrollTrigger")));
   } else if (gsapCache?.ScrollTrigger) {
     modules.ScrollTrigger = gsapCache.ScrollTrigger;
   }
 
   if (plugins?.scrollToPlugin && !gsapCache?.ScrollToPlugin) {
-    promises.push(import("gsap/ScrollToPlugin"));
+    promises.push(retryImport(() => import("gsap/ScrollToPlugin")));
   } else if (gsapCache?.ScrollToPlugin) {
     modules.ScrollToPlugin = gsapCache.ScrollToPlugin;
   }
@@ -51,13 +63,16 @@ export async function loadGSAP(
   const resolvedPlugins = await Promise.all(promises);
 
   resolvedPlugins.forEach((pluginModule) => {
-    if (pluginModule.ScrollTrigger) {
-      modules.ScrollTrigger = pluginModule.ScrollTrigger;
-      gsapInstance!.registerPlugin(pluginModule.ScrollTrigger);
+    const st = pluginModule.ScrollTrigger || (pluginModule as any).default?.ScrollTrigger || (pluginModule as any).default;
+    const stp = pluginModule.ScrollToPlugin || (pluginModule as any).default?.ScrollToPlugin || (pluginModule as any).default;
+    
+    if (st) {
+      modules.ScrollTrigger = st;
+      gsapInstance!.registerPlugin(st);
     }
-    if (pluginModule.ScrollToPlugin) {
-      modules.ScrollToPlugin = pluginModule.ScrollToPlugin;
-      gsapInstance!.registerPlugin(pluginModule.ScrollToPlugin);
+    if (stp) {
+      modules.ScrollToPlugin = stp;
+      gsapInstance!.registerPlugin(stp);
     }
   });
 
